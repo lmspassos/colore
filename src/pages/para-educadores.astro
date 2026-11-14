@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const materiais = await getCollection('materiais');
+---
+
+<BaseLayout title="Para educadores">
+  <section class="section container">
+    <h1>Para educadores</h1>
+    <ul>
+      {
+        materiais.map((m) => (
+          <li>
+            <a href={m.data.file} download>
+              {m.data.title} (PDF)
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const faq = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Colorê">
+  <section class="section container">
+    <h1>Colorê: uma exposição para descobrir as cores</h1>
+    <p>
+      Exposição educativa e itinerante sobre cores e percepção, para crianças de 4 a 8 anos.
+      Pensada para que todas as crianças, inclusive as daltônicas, explorem as cores juntas.
+    </p>
+    <p>
+      <a class="button" href="/para-instituicoes">Quero receber a Colorê</a>
+      <a href="/a-exposicao">Conheça a exposição</a>
+    </p>
+  </section>
+
+  <section class="section container">
+    <h2>Perguntas frequentes</h2>
+    {
+      faq.map((f) => (
+        <details>
+          <summary>{f.data.question}</summary>
+          <div set:html={f.rendered?.html} />
+        </details>
+      ))
+    }
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+:root {
+  --graphite: #2b2b29;
+  --cream: #fef8e6;
+  --orange: #f26e36;
+  --yellow: #f1d51c;
+  --blue: #93bee6;
+  --green: #1eb46f;
+  --pink: #eca5a6;
+
+  --font-title: 'Fredoka Variable', 'Trebuchet MS', sans-serif;
+  /* TODO(marca): trocar por Codec Pro em public/fonts/ quando houver licença web */
+  --font-body: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+
+  --radius: 1rem;
+  --radius-round: 999px;
+  --content-width: 64rem;
+}
