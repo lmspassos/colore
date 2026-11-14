@@ -8,64 +8,30 @@ Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda 
 
 ## Stack
 
-| Camada | Escolha | Por quê |
-|---|---|---|
-| Framework | Astro + TypeScript | Site de conteúdo, HTML estático, zero JS por padrão, ótimo SEO |
-| Estilo | CSS puro com variáveis (tokens) + `<style>` com escopo nos componentes | A identidade já define tokens; sem Tailwind/UI kit |
-| Conteúdo | Astro Content Collections (Markdown/YAML validados com schema) | FAQ e materiais editáveis sem mexer em código; abre caminho p/ CMS git-based depois |
-| Fontes | Fredoka (via @fontsource) + Codec Pro self-hosted em `public/fonts/` **só com licença web** | Sem dependência de CDN externo |
-| Imagens | `astro:assets` (`<Image>`) | Otimização e dimensões automáticas |
-| Formulário | Netlify Forms (honeypot + consentimento LGPD), redireciona p/ `/obrigado` | Funciona sem backend e sem JS |
-| Hospedagem | Netlify, deploy automático da branch `main`, preview por PR | |
-| Qualidade | `astro check` + `astro build` no CI; Prettier (+ plugin astro) | |
+HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no GitHub Pages (https://lmspassos.github.io/colore/), publicado da branch `main`, pasta raiz.
+Tudo foi gerado a partir de um projeto Astro antigo (está no histórico do git, antes do commit "Troca Astro por HTML e CSS puros").
+Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Pro só entra com licença web.
+Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funcionar de verdade, usar Formspree ou similar.
 
-Não adicionar dependência sem necessidade real (regra Ponytail). JS no cliente só como ilha (`client:*`) quando não houver alternativa em HTML/CSS.
-
-## Estrutura de pastas
+## Estrutura
 
 ```
 /
-├─ AGENTS.md · CLAUDE.md · README.md
-├─ astro.config.mjs · tsconfig.json · package.json · netlify.toml
-├─ public/
-│  ├─ favicon.svg
-│  ├─ fonts/                 # Codec Pro (se licenciada)
-│  └─ downloads/             # apresentacao-colore.pdf, materiais/*.pdf
-├─ docs/
-│  └─ marca/                 # PDF da identidade visual e fontes originais (não vão para o build)
-└─ src/
-   ├─ assets/                # logo.svg, imagens processadas pelo astro:assets
-   ├─ components/            # PascalCase.astro, um componente por arquivo
-   ├─ content/
-   │  ├─ faq/                # um .md por pergunta
-   │  └─ materiais/          # um .md por material pedagógico (aponta p/ public/downloads)
-   ├─ content.config.ts      # schemas das collections
-   ├─ layouts/
-   │  └─ BaseLayout.astro    # <head>, SEO, Header, Footer, skip link
-   ├─ pages/
-   │  ├─ index.astro                 # Início
-   │  ├─ a-exposicao.astro
-   │  ├─ para-instituicoes.astro     # formulário de interesse
-   │  ├─ para-educadores.astro       # materiais pedagógicos (lista pública)
-   │  ├─ sobre.astro
-   │  ├─ contato.astro
-   │  ├─ privacidade.astro           # obrigatório (LGPD, formulário)
-   │  ├─ obrigado.astro
-   │  └─ 404.astro
-   └─ styles/
-      ├─ tokens.css          # cores, fontes, espaçamentos, raios
-      └─ global.css          # reset mínimo, tipografia base, utilitários de acessibilidade
+├─ index.html · 404.html · favicon.svg · .nojekyll
+├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ · contato/ · privacidade/ · obrigado/   (cada um com index.html)
+├─ _astro/                   # fontes Fredoka
+├─ docs/marca/               # identidade visual (referência)
+└─ AGENTS.md · CLAUDE.md · README.md
 ```
 
 ## Convenções
 
-- URLs, slugs e arquivos de conteúdo em português, kebab-case, sem acento (`para-instituicoes`).
-- Código (variáveis, props, componentes) em inglês; textos visíveis em português.
+- Todos os links e recursos usam o prefixo `/colore/` (o site mora em `/colore/` no GitHub Pages). Se mudar para domínio próprio, trocar `/colore/` por `/` em todos os `.html`.
+- O CSS está dentro de `<style>` em cada página (herança do build). Cabeçalho e rodapé se repetem: ao mudar um, mude em todas as páginas.
+- Textos visíveis em português; URLs em português, kebab-case, sem acento.
 - Mobile-first. Breakpoints: `48rem` e `64rem`. Unidades relativas.
-- Texto do site vive nas páginas `.astro`; o que se repete ou será editado por não-devs vai para `src/content/`.
-- Um único formulário (campo "tipo de contato"), reutilizado em Para instituições e Contato.
-- Galeria só é exibida quando houver fotos reais com direito de uso.
-- Git: `main` sempre publicável; trabalho em branches `feat/…`, `fix/…`, `content/…`; mensagens de commit no imperativo, em português.
+- Galeria só é exibida quando houver fotos reais com direito de uso. Conteúdo ainda em definição: use `TODO(conteudo):`.
+- Git: `main` publicada; trabalho em branches `feat/…`, `fix/…`, `content/…`; commits no imperativo, em português.
 
 ## Identidade visual (tokens)
 
