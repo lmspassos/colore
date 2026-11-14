@@ -9,172 +9,129 @@
     />
     <link rel="icon" type="image/svg+xml" href="/colore/favicon.svg" />
     <title>Colorê</title>
+    <link rel="stylesheet" href="/colore/_astro/BaseLayout.BFC50tiN.css" />
     <style>
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-hebrew-wght-normal.DdnsCkLr.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+307-308, U+590-5FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+      .center[data-astro-cid-lcdefpme] {
+        text-align: center;
       }
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-latin-ext-wght-normal.CYrqKuxd.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308,
-          U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-          U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      .lead[data-astro-cid-lcdefpme] {
+        margin-top: 0;
       }
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-latin-wght-normal.DM6njrJ3.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308,
-          U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-          U+FEFF, U+FFFD;
+      .hero[data-astro-cid-lcdefpme] {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: clamp(30rem, 80vh, 52rem);
+        display: grid;
+        overflow: hidden;
       }
-      :root {
-        --graphite: #2b2b29;
-        --cream: #fef8e6;
-        --orange: #f26e36;
-        --yellow: #f1d51c;
-        --blue: #93bee6;
-        --green: #1eb46f;
-        --pink: #eca5a6;
-        --font-title: "Fredoka Variable", "Trebuchet MS", sans-serif;
-        --font-body: system-ui, "Segoe UI", Roboto, sans-serif;
-        --space-1: 0.5rem;
-        --space-2: 1rem;
-        --space-3: 1.5rem;
-        --space-4: 2.5rem;
-        --space-5: 4rem;
-        --radius: 1rem;
-        --radius-round: 999px;
-        --content-width: 64rem;
+      .hero[data-astro-cid-lcdefpme] img {
+        object-fit: cover;
+        grid-area: 1/1;
+        width: 100%;
+        height: 100%;
       }
-      *,
-      :before,
-      :after {
-        box-sizing: border-box;
-      }
-      body {
-        background: var(--cream);
-        color: var(--graphite);
-        font-family: var(--font-body);
-        margin: 0;
-        font-size: 1.125rem;
-        line-height: 1.6;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: var(--font-title);
-        line-height: 1.15;
-      }
-      h1 {
-        font-size: clamp(2.25rem, 6vw, 3.5rem);
-      }
-      h2 {
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-      }
-      img,
-      svg {
-        max-width: 100%;
-        height: auto;
-      }
-      a {
-        color: inherit;
-        text-underline-offset: 0.2em;
-      }
-      :focus-visible {
-        outline: 3px solid var(--graphite);
-        outline-offset: 3px;
-        box-shadow: 0 0 0 6px var(--yellow);
-      }
-      .container {
-        width: min(100% - 2rem, var(--content-width));
-        margin-inline: auto;
-      }
-      .section {
-        padding-block: var(--space-5);
-      }
-      .button {
-        border: 3px solid var(--graphite);
-        border-radius: var(--radius-round);
-        background: var(--yellow);
-        color: var(--graphite);
-        font: 600 1.125rem var(--font-title);
-        cursor: pointer;
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        display: inline-block;
-      }
-      .button:hover {
-        background: var(--orange);
-      }
-      .skip-link {
-        left: var(--space-2);
-        padding: var(--space-1) var(--space-2);
+      .hero-card[data-astro-cid-lcdefpme] {
+        width: min(100% - 2rem, 36rem);
+        margin-bottom: var(--space-4);
+        padding: var(--space-3);
         background: var(--graphite);
         color: var(--cream);
-        z-index: 10;
-        position: absolute;
-        top: -4rem;
+        border-radius: var(--radius);
+        text-align: center;
+        grid-area: 1/1;
+        place-self: end center;
       }
-      .skip-link:focus {
-        top: var(--space-2);
+      .hero-card[data-astro-cid-lcdefpme] h1[data-astro-cid-lcdefpme] {
+        margin: 0 0 var(--space-1);
       }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          scroll-behavior: auto !important;
-          transition: none !important;
-          animation: none !important;
-        }
+      .hero-card[data-astro-cid-lcdefpme] p[data-astro-cid-lcdefpme] {
+        margin: 0 0 var(--space-2);
       }
-      header[data-astro-cid-nen7h5rs] {
-        border-bottom: 3px solid var(--graphite);
-      }
-      .bar[data-astro-cid-nen7h5rs] {
+      .band[data-astro-cid-lcdefpme] {
         justify-content: space-between;
         align-items: center;
-        gap: var(--space-2);
-        padding-block: var(--space-2);
+        gap: var(--space-2) var(--space-4);
+        margin-top: var(--space-4);
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius);
+        color: var(--graphite);
         flex-wrap: wrap;
         display: flex;
       }
-      .brand[data-astro-cid-nen7h5rs] {
-        font: 700 2rem var(--font-title);
-        text-decoration: none;
+      .band[data-astro-cid-lcdefpme] h2[data-astro-cid-lcdefpme],
+      .band[data-astro-cid-lcdefpme] p[data-astro-cid-lcdefpme] {
+        margin: 0;
       }
-      ul[data-astro-cid-nen7h5rs] {
+      .band-yellow[data-astro-cid-lcdefpme] {
+        background: var(--yellow);
+      }
+      .band-blue[data-astro-cid-lcdefpme] {
+        background: var(--blue);
+      }
+      .cta[data-astro-cid-lcdefpme] {
+        margin-bottom: var(--space-4);
+      }
+      .button[data-astro-cid-lcdefpme].dark {
+        background: var(--graphite);
+        color: var(--cream);
+      }
+      .button[data-astro-cid-lcdefpme].dark:hover {
+        background: var(--cream);
+        color: var(--graphite);
+      }
+      .duo[data-astro-cid-lcdefpme] {
+        gap: var(--space-3);
+        margin-top: var(--space-4);
+        display: grid;
+      }
+      .big[data-astro-cid-lcdefpme] {
+        padding: var(--space-4);
+        border-radius: var(--radius);
+        color: var(--graphite);
+      }
+      .big[data-astro-cid-lcdefpme] h3[data-astro-cid-lcdefpme] {
+        margin-top: 0;
+      }
+      .strip[data-astro-cid-lcdefpme] {
+        background: var(--graphite);
+        color: var(--cream);
+        padding-block: var(--space-2);
+      }
+      .strip[data-astro-cid-lcdefpme] ul[data-astro-cid-lcdefpme] {
+        justify-content: space-around;
         gap: var(--space-1) var(--space-3);
         flex-wrap: wrap;
-        margin: 0;
+        margin-inline: auto;
         padding: 0;
+        font-weight: 700;
         list-style: none;
         display: flex;
       }
-      [data-astro-cid-nen7h5rs][aria-current="page"] {
-        font-weight: 700;
-        text-decoration: underline 3px;
+      .how[data-astro-cid-lcdefpme] {
+        padding-block: var(--space-5);
+        background: var(--green);
       }
-      footer[data-astro-cid-jo6i4kqk] {
-        margin-top: var(--space-5);
-        padding-block: var(--space-4);
-        background: var(--graphite);
-        color: var(--cream);
-        font-size: 1rem;
+      .how[data-astro-cid-lcdefpme] h2[data-astro-cid-lcdefpme] {
+        color: var(--graphite);
+        margin: 0;
+      }
+      .faq[data-astro-cid-lcdefpme] {
+        max-width: 44rem;
+        margin: var(--space-3) auto 0;
+      }
+      details[data-astro-cid-lcdefpme] {
+        margin-bottom: var(--space-1);
+        padding: var(--space-2);
+        border: 3px solid var(--graphite);
+        border-radius: var(--radius);
+      }
+      summary[data-astro-cid-lcdefpme] {
+        font: 600 1.125rem var(--font-title);
+        cursor: pointer;
+      }
+      @media (width>=48rem) {
+        .duo[data-astro-cid-lcdefpme] {
+          grid-template-columns: 1fr 1fr;
+        }
       }
     </style>
   </head>
@@ -182,7 +139,14 @@
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header data-astro-cid-nen7h5rs>
       <div class="container bar" data-astro-cid-nen7h5rs>
-        <a href="/colore/" class="brand" data-astro-cid-nen7h5rs>Colorê</a>
+        <a href="/colore/" class="brand" data-astro-cid-nen7h5rs
+          ><img
+            src="/colore/_astro/logo-grafite.CC9-Zpy-.svg"
+            alt="Colorê"
+            width="112"
+            height="35"
+            data-astro-cid-nen7h5rs
+        /></a>
         <nav aria-label="Principal" data-astro-cid-nen7h5rs>
           <ul data-astro-cid-nen7h5rs>
             <li data-astro-cid-nen7h5rs>
@@ -208,40 +172,231 @@
             </li>
           </ul>
         </nav>
+        <details class="search" data-astro-cid-nen7h5rs>
+          <summary aria-label="Buscar no site" data-astro-cid-nen7h5rs>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              data-astro-cid-nen7h5rs
+            >
+              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
+              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
+            </svg>
+          </summary>
+          <!-- TODO(busca): ligar ao Pagefind (busca estática) quando houver conteúdo -->
+          <form role="search" action="/colore/busca" data-astro-cid-nen7h5rs>
+            <label for="q" class="sr-only" data-astro-cid-nen7h5rs
+              >Buscar no site</label
+            ><input
+              id="q"
+              name="q"
+              type="search"
+              placeholder="Buscar…"
+              data-astro-cid-nen7h5rs
+            /><button class="button" type="submit" data-astro-cid-nen7h5rs>
+              Buscar
+            </button>
+          </form>
+        </details>
       </div>
     </header>
-    <main id="conteudo">
-      <section class="section container">
-        <h1>Colorê: uma exposição para descobrir as cores</h1>
-        <p>
-          Exposição educativa e itinerante sobre cores e percepção, para
-          crianças de 4 a 8 anos. Pensada para que todas as crianças, inclusive
-          as daltônicas, explorem as cores juntas.
-        </p>
-        <p>
-          <a class="button" href="/colore/para-instituicoes"
+    <main id="conteudo" data-pagefind-body>
+      <section class="hero" data-astro-cid-lcdefpme>
+        <img
+          src="/colore/_astro/hero.8RsypCQc_Z1M3U8e.webp"
+          srcset="
+            /colore/_astro/hero.8RsypCQc_Z1GE3P.webp   640w,
+            /colore/_astro/hero.8RsypCQc_Z1M3U8e.webp 1280w
+          "
+          alt="Criança pintando com as mãos uma folha de papel, ao lado de uma mulher, com tintas azul, vermelha e amarela."
+          sizes="100vw"
+          loading="eager"
+          data-astro-cid-lcdefpme="true"
+          decoding="async"
+          width="1280"
+          height="720"
+        />
+        <div class="hero-card" data-astro-cid-lcdefpme>
+          <h1 data-astro-cid-lcdefpme>Descobrir é colorir.</h1>
+          <p data-astro-cid-lcdefpme>
+            Exposição educativa e itinerante sobre cores e percepção, para
+            crianças de 4 a 8 anos.
+          </p>
+          <a
+            class="button"
+            href="/colore/para-instituicoes"
+            data-astro-cid-lcdefpme
             >Quero receber a Colorê</a
-          ><a href="/colore/a-exposicao">Conheça a exposição</a>
+          >
+        </div>
+      </section>
+      <div class="container" data-astro-cid-lcdefpme>
+        <section class="band band-yellow" data-astro-cid-lcdefpme>
+          <h2 data-astro-cid-lcdefpme>
+            Quer a Colorê na sua escola, museu ou centro cultural?
+          </h2>
+          <a
+            class="button dark"
+            href="/colore/para-instituicoes"
+            data-astro-cid-lcdefpme
+            >Fale com a gente</a
+          >
+        </section>
+      </div>
+      <section class="section container" data-astro-cid-lcdefpme>
+        <h2 class="center" data-astro-cid-lcdefpme>Estações da exposição</h2>
+        <p class="center lead" data-astro-cid-lcdefpme>
+          Um percurso para olhar, misturar e conversar sobre cores.
+        </p>
+        <ul class="cards">
+          <li class="card orange">
+            <span class="dot" aria-hidden="true"></span
+            ><span class="num">1</span>
+            <h3>Estação 1</h3>
+            <p>TODO(conteudo): descrição da primeira estação.</p>
+          </li>
+          <li class="card blue">
+            <span class="dot" aria-hidden="true"></span
+            ><span class="num">2</span>
+            <h3>Estação 2</h3>
+            <p>TODO(conteudo): descrição da segunda estação.</p>
+          </li>
+          <li class="card pink">
+            <span class="dot" aria-hidden="true"></span
+            ><span class="num">3</span>
+            <h3>Estação 3</h3>
+            <p>TODO(conteudo): descrição da terceira estação.</p>
+          </li>
+        </ul>
+        <p class="center" data-astro-cid-lcdefpme>
+          <a class="button" href="/colore/a-exposicao" data-astro-cid-lcdefpme
+            >Conheça a exposição</a
+          >
         </p>
       </section>
-      <section class="section container">
-        <h2>Perguntas frequentes</h2>
-        <details>
-          <summary>Para quem é a exposição?</summary>
-          <div>
-            <p>
-              Para crianças de 4 a 8 anos, em escolas, museus e centros
-              culturais. TODO(conteudo): detalhar formato e duração.
+      <section class="section container" data-astro-cid-lcdefpme>
+        <h2 class="center" data-astro-cid-lcdefpme>Para quem é a Colorê</h2>
+        <div class="duo" data-astro-cid-lcdefpme>
+          <article class="big blue" data-astro-cid-lcdefpme>
+            <h3 data-astro-cid-lcdefpme>Para instituições</h3>
+            <p data-astro-cid-lcdefpme>
+              Escolas, museus e centros culturais que querem receber a
+              exposição.
             </p>
-          </div>
-        </details>
+            <a
+              class="button"
+              href="/colore/para-instituicoes"
+              data-astro-cid-lcdefpme
+              >Receber a exposição</a
+            >
+          </article>
+          <article class="big pink" data-astro-cid-lcdefpme>
+            <h3 data-astro-cid-lcdefpme>Para educadores</h3>
+            <p data-astro-cid-lcdefpme>
+              Materiais pedagógicos para preparar e continuar a conversa em
+              sala.
+            </p>
+            <a
+              class="button"
+              href="/colore/para-educadores"
+              data-astro-cid-lcdefpme
+              >Ver materiais</a
+            >
+          </article>
+        </div>
+      </section>
+      <div class="strip" data-astro-cid-lcdefpme>
+        <ul class="container" data-astro-cid-lcdefpme>
+          <li data-astro-cid-lcdefpme>● Para crianças de 4 a 8 anos</li>
+          <li data-astro-cid-lcdefpme>▲ Exposição itinerante</li>
+          <li data-astro-cid-lcdefpme>
+            ■ Pensada para incluir quem tem daltonismo
+          </li>
+        </ul>
+      </div>
+      <section class="how" data-astro-cid-lcdefpme>
+        <div class="container" data-astro-cid-lcdefpme>
+          <h2 class="center" data-astro-cid-lcdefpme>Como funciona</h2>
+          <ol class="cards" data-astro-cid-lcdefpme>
+            <li class="card cream" data-astro-cid-lcdefpme>
+              <span class="num" data-astro-cid-lcdefpme>1</span>
+              <h3 data-astro-cid-lcdefpme>Você conta sobre o seu espaço</h3>
+              <p data-astro-cid-lcdefpme>
+                Preencha o formulário com os dados da instituição.
+              </p>
+            </li>
+            <li class="card cream" data-astro-cid-lcdefpme>
+              <span class="num" data-astro-cid-lcdefpme>2</span>
+              <h3 data-astro-cid-lcdefpme>Combinamos data e montagem</h3>
+              <p data-astro-cid-lcdefpme>
+                TODO(conteudo): prazos, equipe e estrutura necessária.
+              </p>
+            </li>
+            <li class="card cream" data-astro-cid-lcdefpme>
+              <span class="num" data-astro-cid-lcdefpme>3</span>
+              <h3 data-astro-cid-lcdefpme>As crianças exploram as cores</h3>
+              <p data-astro-cid-lcdefpme>
+                Visitas guiadas e atividades para turmas de 4 a 8 anos.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <div class="container" data-astro-cid-lcdefpme>
+        <section class="band band-blue cta" data-astro-cid-lcdefpme>
+          <h2 data-astro-cid-lcdefpme>Vamos levar a Colorê até você?</h2>
+          <p data-astro-cid-lcdefpme>
+            Conte um pouco sobre a sua instituição e responderemos em breve.
+          </p>
+          <a
+            class="button dark"
+            href="/colore/para-instituicoes"
+            data-astro-cid-lcdefpme
+            >Preencher o formulário</a
+          >
+        </section>
+      </div>
+      <section class="section container" data-astro-cid-lcdefpme>
+        <h2 class="center" data-astro-cid-lcdefpme>Perguntas frequentes</h2>
+        <div class="faq" data-astro-cid-lcdefpme>
+          <details data-astro-cid-lcdefpme>
+            <summary data-astro-cid-lcdefpme>Para quem é a exposição?</summary>
+            <div data-astro-cid-lcdefpme>
+              <p>
+                Para crianças de 4 a 8 anos, em escolas, museus e centros
+                culturais. TODO(conteudo): detalhar formato e duração.
+              </p>
+            </div>
+          </details>
+        </div>
       </section>
     </main>
     <footer data-astro-cid-jo6i4kqk>
       <div class="container" data-astro-cid-jo6i4kqk>
+        <img
+          src="/colore/_astro/logo-creme.DSI7b76l.svg"
+          alt="Colorê"
+          width="120"
+          height="35"
+          data-astro-cid-jo6i4kqk
+        />
         <p data-astro-cid-jo6i4kqk>
           © 2026 Colorê · exposição educativa e itinerante sobre cores e
           percepção.
+        </p>
+        <p data-astro-cid-jo6i4kqk>
+          Font: Codec Family by
+          <a
+            href="http://www.zetafonts.com/collection/2102"
+            data-astro-cid-jo6i4kqk
+            >Zetafonts</a
+          >
         </p>
         <p data-astro-cid-jo6i4kqk>
           <a href="/colore/privacidade" data-astro-cid-jo6i4kqk

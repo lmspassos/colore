@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos."
+    />
+    <link rel="icon" type="image/svg+xml" href="/colore/favicon.svg" />
+    <title>Busca · Colorê</title>
+    <link rel="stylesheet" href="/colore/_astro/BaseLayout.BFC50tiN.css" />
+    <style>
+      .page-header[data-astro-cid-b2i3gsw2] {
+        padding-block: var(--space-5);
+        color: var(--graphite);
+        position: relative;
+        overflow: hidden;
+      }
+      .container[data-astro-cid-b2i3gsw2] {
+        z-index: 1;
+        position: relative;
+      }
+      h1[data-astro-cid-b2i3gsw2] {
+        max-width: 22ch;
+        margin: 0 0 var(--space-1);
+      }
+      p[data-astro-cid-b2i3gsw2] {
+        max-width: 40rem;
+        margin: 0;
+        font-size: 1.25rem;
+      }
+      .yellow[data-astro-cid-b2i3gsw2] {
+        background: var(--yellow);
+      }
+      .blue[data-astro-cid-b2i3gsw2] {
+        background: var(--blue);
+      }
+      .pink[data-astro-cid-b2i3gsw2] {
+        background: var(--pink);
+      }
+      .orange[data-astro-cid-b2i3gsw2] {
+        background: var(--orange);
+      }
+      .green[data-astro-cid-b2i3gsw2] {
+        background: var(--green);
+      }
+      .circle[data-astro-cid-b2i3gsw2] {
+        background: var(--cream);
+        opacity: 0.55;
+        border-radius: 50%;
+        position: absolute;
+      }
+      .a[data-astro-cid-b2i3gsw2] {
+        width: 16rem;
+        height: 16rem;
+        top: -5rem;
+        right: -4rem;
+      }
+      .b[data-astro-cid-b2i3gsw2] {
+        background: var(--graphite);
+        opacity: 0.12;
+        width: 8rem;
+        height: 8rem;
+        bottom: -4rem;
+        right: 8rem;
+      }
+      #results {
+        margin: var(--space-3) 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      #results li {
+        margin-bottom: var(--space-2);
+        padding: var(--space-2);
+        border: 3px solid var(--graphite);
+        border-radius: var(--radius);
+      }
+      #results a {
+        font: 600 1.25rem var(--font-title);
+      }
+      #results p {
+        margin: var(--space-1) 0 0;
+      }
+      #results mark {
+        background: var(--yellow);
+        color: var(--graphite);
+      }
+      .row {
+        gap: var(--space-1);
+        display: flex;
+      }
+      .row input {
+        border: 3px solid var(--graphite);
+        border-radius: var(--radius-round);
+        min-width: 0;
+        color: var(--graphite);
+        font: inherit;
+        background: #fff;
+        flex: 1;
+        padding: 0.6rem 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <header data-astro-cid-nen7h5rs>
+      <div class="container bar" data-astro-cid-nen7h5rs>
+        <a href="/colore/" class="brand" data-astro-cid-nen7h5rs
+          ><img
+            src="/colore/_astro/logo-grafite.CC9-Zpy-.svg"
+            alt="Colorê"
+            width="112"
+            height="35"
+            data-astro-cid-nen7h5rs
+        /></a>
+        <nav aria-label="Principal" data-astro-cid-nen7h5rs>
+          <ul data-astro-cid-nen7h5rs>
+            <li data-astro-cid-nen7h5rs>
+              <a href="/colore/a-exposicao" data-astro-cid-nen7h5rs
+                >A exposição</a
+              >
+            </li>
+            <li data-astro-cid-nen7h5rs>
+              <a href="/colore/para-instituicoes" data-astro-cid-nen7h5rs
+                >Para instituições</a
+              >
+            </li>
+            <li data-astro-cid-nen7h5rs>
+              <a href="/colore/para-educadores" data-astro-cid-nen7h5rs
+                >Para educadores</a
+              >
+            </li>
+            <li data-astro-cid-nen7h5rs>
+              <a href="/colore/sobre" data-astro-cid-nen7h5rs>Sobre</a>
+            </li>
+            <li data-astro-cid-nen7h5rs>
+              <a href="/colore/contato" data-astro-cid-nen7h5rs>Contato</a>
+            </li>
+          </ul>
+        </nav>
+        <details class="search" data-astro-cid-nen7h5rs>
+          <summary aria-label="Buscar no site" data-astro-cid-nen7h5rs>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              data-astro-cid-nen7h5rs
+            >
+              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
+              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
+            </svg>
+          </summary>
+          <!-- TODO(busca): ligar ao Pagefind (busca estática) quando houver conteúdo -->
+          <form role="search" action="/colore/busca" data-astro-cid-nen7h5rs>
+            <label for="q" class="sr-only" data-astro-cid-nen7h5rs
+              >Buscar no site</label
+            ><input
+              id="q"
+              name="q"
+              type="search"
+              placeholder="Buscar…"
+              data-astro-cid-nen7h5rs
+            /><button class="button" type="submit" data-astro-cid-nen7h5rs>
+              Buscar
+            </button>
+          </form>
+        </details>
+      </div>
+    </header>
+    <main id="conteudo">
+      <section class="page-header yellow" data-astro-cid-b2i3gsw2>
+        <div class="container" data-astro-cid-b2i3gsw2>
+          <h1 data-astro-cid-b2i3gsw2>Busca</h1>
+          <p data-astro-cid-b2i3gsw2>Encontre páginas do site.</p>
+        </div>
+        <!-- círculos do grafismo da marca, só decoração --><span
+          class="circle a"
+          aria-hidden="true"
+          data-astro-cid-b2i3gsw2
+        ></span
+        ><span
+          class="circle b"
+          aria-hidden="true"
+          data-astro-cid-b2i3gsw2
+        ></span>
+      </section>
+      <section class="section container prose">
+        <form role="search" action="/colore/busca">
+          <label for="bq">Buscar no site</label>
+          <div class="row">
+            <input id="bq" name="q" type="search" required /><button
+              class="button"
+              type="submit"
+            >
+              Buscar
+            </button>
+          </div>
+        </form>
+        <p id="status" aria-live="polite"></p>
+        <ul id="results"></ul>
+        <noscript><p>A busca precisa de JavaScript ativado.</p></noscript>
+      </section>
+      <script type="module">
+        const q = new URLSearchParams(location.search).get("q")?.trim();
+        const status = document.getElementById("status");
+        const list = document.getElementById("results");
+        if (q) {
+          document.getElementById("bq").value = q;
+          try {
+            // gerado pelo `pagefind` no build; não existe no `astro dev`
+            const pf = await import("/colore/pagefind/pagefind.js");
+            await pf.options({
+              language: document.documentElement.lang.toLowerCase(),
+            });
+            const { results } = await pf.search(q);
+            status.textContent = results.length
+              ? `${results.length} resultado(s) para “${q}”`
+              : `Nenhum resultado para “${q}”.`;
+            for (const r of results.slice(0, 20)) {
+              const d = await r.data();
+              const li = document.createElement("li");
+              const a = document.createElement("a");
+              a.href = "/colore" + d.url;
+              a.textContent = d.meta.title;
+              const p = document.createElement("p");
+              p.innerHTML = d.excerpt; // trecho vindo do nosso próprio índice (<mark>)
+              li.append(a, p);
+              list.append(li);
+            }
+          } catch {
+            status.textContent =
+              "A busca só funciona no site gerado: rode npm run build e npm run preview.";
+          }
+        }
+      </script>
+    </main>
+    <footer data-astro-cid-jo6i4kqk>
+      <div class="container" data-astro-cid-jo6i4kqk>
+        <img
+          src="/colore/_astro/logo-creme.DSI7b76l.svg"
+          alt="Colorê"
+          width="120"
+          height="35"
+          data-astro-cid-jo6i4kqk
+        />
+        <p data-astro-cid-jo6i4kqk>
+          © 2026 Colorê · exposição educativa e itinerante sobre cores e
+          percepção.
+        </p>
+        <p data-astro-cid-jo6i4kqk>
+          Font: Codec Family by
+          <a
+            href="http://www.zetafonts.com/collection/2102"
+            data-astro-cid-jo6i4kqk
+            >Zetafonts</a
+          >
+        </p>
+        <p data-astro-cid-jo6i4kqk>
+          <a href="/colore/privacidade" data-astro-cid-jo6i4kqk
+            >Política de privacidade</a
+          >
+          · <a href="/colore/contato" data-astro-cid-jo6i4kqk>Contato</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -9,176 +9,69 @@
     />
     <link rel="icon" type="image/svg+xml" href="/colore/favicon.svg" />
     <title>Para instituições · Colorê</title>
+    <link rel="stylesheet" href="/colore/_astro/BaseLayout.BFC50tiN.css" />
     <style>
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-hebrew-wght-normal.DdnsCkLr.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+307-308, U+590-5FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
-      }
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-latin-ext-wght-normal.CYrqKuxd.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308,
-          U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-          U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-      @font-face {
-        font-family: Fredoka Variable;
-        font-style: normal;
-        font-display: swap;
-        font-weight: 300 700;
-        src: url(/colore/_astro/fredoka-latin-wght-normal.DM6njrJ3.woff2)
-          format("woff2-variations");
-        unicode-range:
-          U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308,
-          U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-          U+FEFF, U+FFFD;
-      }
-      :root {
-        --graphite: #2b2b29;
-        --cream: #fef8e6;
-        --orange: #f26e36;
-        --yellow: #f1d51c;
-        --blue: #93bee6;
-        --green: #1eb46f;
-        --pink: #eca5a6;
-        --font-title: "Fredoka Variable", "Trebuchet MS", sans-serif;
-        --font-body: system-ui, "Segoe UI", Roboto, sans-serif;
-        --space-1: 0.5rem;
-        --space-2: 1rem;
-        --space-3: 1.5rem;
-        --space-4: 2.5rem;
-        --space-5: 4rem;
-        --radius: 1rem;
-        --radius-round: 999px;
-        --content-width: 64rem;
-      }
-      *,
-      :before,
-      :after {
-        box-sizing: border-box;
-      }
-      body {
-        background: var(--cream);
-        color: var(--graphite);
-        font-family: var(--font-body);
-        margin: 0;
-        font-size: 1.125rem;
-        line-height: 1.6;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: var(--font-title);
-        line-height: 1.15;
-      }
-      h1 {
-        font-size: clamp(2.25rem, 6vw, 3.5rem);
-      }
-      h2 {
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-      }
-      img,
-      svg {
-        max-width: 100%;
-        height: auto;
-      }
-      a {
-        color: inherit;
-        text-underline-offset: 0.2em;
-      }
-      :focus-visible {
-        outline: 3px solid var(--graphite);
-        outline-offset: 3px;
-        box-shadow: 0 0 0 6px var(--yellow);
-      }
-      .container {
-        width: min(100% - 2rem, var(--content-width));
-        margin-inline: auto;
-      }
-      .section {
+      .page-header[data-astro-cid-b2i3gsw2] {
         padding-block: var(--space-5);
-      }
-      .button {
-        border: 3px solid var(--graphite);
-        border-radius: var(--radius-round);
-        background: var(--yellow);
         color: var(--graphite);
-        font: 600 1.125rem var(--font-title);
-        cursor: pointer;
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        display: inline-block;
+        position: relative;
+        overflow: hidden;
       }
-      .button:hover {
+      .container[data-astro-cid-b2i3gsw2] {
+        z-index: 1;
+        position: relative;
+      }
+      h1[data-astro-cid-b2i3gsw2] {
+        max-width: 22ch;
+        margin: 0 0 var(--space-1);
+      }
+      p[data-astro-cid-b2i3gsw2] {
+        max-width: 40rem;
+        margin: 0;
+        font-size: 1.25rem;
+      }
+      .yellow[data-astro-cid-b2i3gsw2] {
+        background: var(--yellow);
+      }
+      .blue[data-astro-cid-b2i3gsw2] {
+        background: var(--blue);
+      }
+      .pink[data-astro-cid-b2i3gsw2] {
+        background: var(--pink);
+      }
+      .orange[data-astro-cid-b2i3gsw2] {
         background: var(--orange);
       }
-      .skip-link {
-        left: var(--space-2);
-        padding: var(--space-1) var(--space-2);
-        background: var(--graphite);
-        color: var(--cream);
-        z-index: 10;
+      .green[data-astro-cid-b2i3gsw2] {
+        background: var(--green);
+      }
+      .circle[data-astro-cid-b2i3gsw2] {
+        background: var(--cream);
+        opacity: 0.55;
+        border-radius: 50%;
         position: absolute;
-        top: -4rem;
       }
-      .skip-link:focus {
-        top: var(--space-2);
+      .a[data-astro-cid-b2i3gsw2] {
+        width: 16rem;
+        height: 16rem;
+        top: -5rem;
+        right: -4rem;
       }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          scroll-behavior: auto !important;
-          transition: none !important;
-          animation: none !important;
-        }
-      }
-      header[data-astro-cid-nen7h5rs] {
-        border-bottom: 3px solid var(--graphite);
-      }
-      .bar[data-astro-cid-nen7h5rs] {
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--space-2);
-        padding-block: var(--space-2);
-        flex-wrap: wrap;
-        display: flex;
-      }
-      .brand[data-astro-cid-nen7h5rs] {
-        font: 700 2rem var(--font-title);
-        text-decoration: none;
-      }
-      ul[data-astro-cid-nen7h5rs] {
-        gap: var(--space-1) var(--space-3);
-        flex-wrap: wrap;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-      }
-      [data-astro-cid-nen7h5rs][aria-current="page"] {
-        font-weight: 700;
-        text-decoration: underline 3px;
-      }
-      footer[data-astro-cid-jo6i4kqk] {
-        margin-top: var(--space-5);
-        padding-block: var(--space-4);
+      .b[data-astro-cid-b2i3gsw2] {
         background: var(--graphite);
-        color: var(--cream);
-        font-size: 1rem;
+        opacity: 0.12;
+        width: 8rem;
+        height: 8rem;
+        bottom: -4rem;
+        right: 8rem;
       }
       form[data-astro-cid-vekgkm42] {
         gap: var(--space-1);
         max-width: 36rem;
+        padding: var(--space-3);
+        border: 3px solid var(--graphite);
+        border-radius: var(--radius);
+        background: #fff;
         display: grid;
       }
       p[data-astro-cid-vekgkm42] {
@@ -220,13 +113,32 @@
       button[data-astro-cid-vekgkm42] {
         justify-self: start;
       }
+      .split[data-astro-cid-bujyao3u] {
+        gap: var(--space-4);
+        display: grid;
+      }
+      .split[data-astro-cid-bujyao3u] h2[data-astro-cid-bujyao3u] {
+        margin-top: 0;
+      }
+      @media (width>=64rem) {
+        .split[data-astro-cid-bujyao3u] {
+          grid-template-columns: 1fr 1.2fr;
+        }
+      }
     </style>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header data-astro-cid-nen7h5rs>
       <div class="container bar" data-astro-cid-nen7h5rs>
-        <a href="/colore/" class="brand" data-astro-cid-nen7h5rs>Colorê</a>
+        <a href="/colore/" class="brand" data-astro-cid-nen7h5rs
+          ><img
+            src="/colore/_astro/logo-grafite.CC9-Zpy-.svg"
+            alt="Colorê"
+            width="112"
+            height="35"
+            data-astro-cid-nen7h5rs
+        /></a>
         <nav aria-label="Principal" data-astro-cid-nen7h5rs>
           <ul data-astro-cid-nen7h5rs>
             <li data-astro-cid-nen7h5rs>
@@ -255,101 +167,182 @@
             </li>
           </ul>
         </nav>
+        <details class="search" data-astro-cid-nen7h5rs>
+          <summary aria-label="Buscar no site" data-astro-cid-nen7h5rs>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              data-astro-cid-nen7h5rs
+            >
+              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
+              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
+            </svg>
+          </summary>
+          <!-- TODO(busca): ligar ao Pagefind (busca estática) quando houver conteúdo -->
+          <form role="search" action="/colore/busca" data-astro-cid-nen7h5rs>
+            <label for="q" class="sr-only" data-astro-cid-nen7h5rs
+              >Buscar no site</label
+            ><input
+              id="q"
+              name="q"
+              type="search"
+              placeholder="Buscar…"
+              data-astro-cid-nen7h5rs
+            /><button class="button" type="submit" data-astro-cid-nen7h5rs>
+              Buscar
+            </button>
+          </form>
+        </details>
       </div>
     </header>
-    <main id="conteudo">
-      <section class="section container">
-        <h1>Receba a Colorê na sua instituição</h1>
-        <p>
-          Escolas, museus e centros culturais: conte sobre o seu espaço e
-          entraremos em contato. TODO(conteudo): requisitos de espaço, período e
-          valores.
-        </p>
-        <form
-          name="contato"
-          method="get"
-          action="/colore/obrigado"
-          data-astro-cid-vekgkm42
-        >
-          <p data-astro-cid-vekgkm42>
-            <label for="tipo" data-astro-cid-vekgkm42>Tipo de contato</label
-            ><select id="tipo" name="tipo" required data-astro-cid-vekgkm42>
-              <option value="instituicao" selected data-astro-cid-vekgkm42>
-                Quero receber a exposição
-              </option>
-              <option value="educador" data-astro-cid-vekgkm42>
-                Sou educador(a)
-              </option>
-              <option value="outro" data-astro-cid-vekgkm42>
-                Outro assunto
-              </option>
-            </select>
+    <main id="conteudo" data-pagefind-body>
+      <section class="page-header orange" data-astro-cid-b2i3gsw2>
+        <div class="container" data-astro-cid-b2i3gsw2>
+          <h1 data-astro-cid-b2i3gsw2>Receba a Colorê na sua instituição</h1>
+          <p data-astro-cid-b2i3gsw2>
+            Escolas, museus e centros culturais: conte sobre o seu espaço e
+            entraremos em contato.
           </p>
-          <p data-astro-cid-vekgkm42>
-            <label for="nome" data-astro-cid-vekgkm42>Nome</label
-            ><input
-              id="nome"
-              name="nome"
-              required
-              autocomplete="name"
-              data-astro-cid-vekgkm42
-            />
-          </p>
-          <p data-astro-cid-vekgkm42>
-            <label for="email" data-astro-cid-vekgkm42>E-mail</label
-            ><input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autocomplete="email"
-              data-astro-cid-vekgkm42
-            />
-          </p>
-          <p data-astro-cid-vekgkm42>
-            <label for="instituicao" data-astro-cid-vekgkm42
-              >Instituição (se houver)</label
-            ><input
-              id="instituicao"
-              name="instituicao"
-              data-astro-cid-vekgkm42
-            />
-          </p>
-          <p data-astro-cid-vekgkm42>
-            <label for="mensagem" data-astro-cid-vekgkm42>Mensagem</label
-            ><textarea
-              id="mensagem"
-              name="mensagem"
-              rows="5"
-              required
-              data-astro-cid-vekgkm42
-            ></textarea>
-          </p>
-          <p class="consent" data-astro-cid-vekgkm42>
-            <input
-              id="lgpd"
-              name="lgpd"
-              type="checkbox"
-              required
-              data-astro-cid-vekgkm42
-            /><label for="lgpd" data-astro-cid-vekgkm42
-              >Li e concordo com a
-              <a href="/colore/privacidade" data-astro-cid-vekgkm42
-                >política de privacidade</a
-              >.</label
-            >
-          </p>
-          <button class="button" type="submit" data-astro-cid-vekgkm42>
-            Enviar
-          </button>
-        </form>
+        </div>
+        <!-- círculos do grafismo da marca, só decoração --><span
+          class="circle a"
+          aria-hidden="true"
+          data-astro-cid-b2i3gsw2
+        ></span
+        ><span
+          class="circle b"
+          aria-hidden="true"
+          data-astro-cid-b2i3gsw2
+        ></span>
+      </section>
+      <section class="section container split" data-astro-cid-bujyao3u>
+        <div class="prose" data-astro-cid-bujyao3u>
+          <h2 data-astro-cid-bujyao3u>O que você precisa saber</h2>
+          <ul data-astro-cid-bujyao3u>
+            <li data-astro-cid-bujyao3u>TODO(conteudo): espaço necessário</li>
+            <li data-astro-cid-bujyao3u>TODO(conteudo): período e duração</li>
+            <li data-astro-cid-bujyao3u>TODO(conteudo): equipe e montagem</li>
+            <li data-astro-cid-bujyao3u>TODO(conteudo): valores e condições</li>
+          </ul>
+        </div>
+        <div data-astro-cid-bujyao3u>
+          <h2 data-astro-cid-bujyao3u>Fale com a gente</h2>
+          <form
+            name="contato"
+            method="get"
+            action="/colore/obrigado"
+            data-astro-cid-vekgkm42
+          >
+            <p class="hp" data-astro-cid-vekgkm42>
+              <label data-astro-cid-vekgkm42
+                >Não preencha: <input name="bot-field" data-astro-cid-vekgkm42
+              /></label>
+            </p>
+            <p data-astro-cid-vekgkm42>
+              <label for="tipo" data-astro-cid-vekgkm42
+                >Tipo de contato (obrigatório)</label
+              ><select id="tipo" name="tipo" required data-astro-cid-vekgkm42>
+                <option value="instituicao" selected data-astro-cid-vekgkm42>
+                  Quero receber a exposição
+                </option>
+                <option value="educador" data-astro-cid-vekgkm42>
+                  Sou educador(a)
+                </option>
+                <option value="outro" data-astro-cid-vekgkm42>
+                  Outro assunto
+                </option>
+              </select>
+            </p>
+            <p data-astro-cid-vekgkm42>
+              <label for="nome" data-astro-cid-vekgkm42
+                >Nome (obrigatório)</label
+              ><input
+                id="nome"
+                name="nome"
+                required
+                autocomplete="name"
+                data-astro-cid-vekgkm42
+              />
+            </p>
+            <p data-astro-cid-vekgkm42>
+              <label for="email" data-astro-cid-vekgkm42
+                >E-mail (obrigatório)</label
+              ><input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                data-astro-cid-vekgkm42
+              />
+            </p>
+            <p data-astro-cid-vekgkm42>
+              <label for="instituicao" data-astro-cid-vekgkm42
+                >Instituição (se houver)</label
+              ><input
+                id="instituicao"
+                name="instituicao"
+                data-astro-cid-vekgkm42
+              />
+            </p>
+            <p data-astro-cid-vekgkm42>
+              <label for="mensagem" data-astro-cid-vekgkm42
+                >Mensagem (obrigatório)</label
+              ><textarea
+                id="mensagem"
+                name="mensagem"
+                rows="5"
+                required
+                data-astro-cid-vekgkm42
+              ></textarea>
+            </p>
+            <p class="consent" data-astro-cid-vekgkm42>
+              <input
+                id="lgpd"
+                name="lgpd"
+                type="checkbox"
+                required
+                data-astro-cid-vekgkm42
+              /><label for="lgpd" data-astro-cid-vekgkm42
+                >Li e concordo com a
+                <a href="/colore/privacidade" data-astro-cid-vekgkm42
+                  >política de privacidade</a
+                >.</label
+              >
+            </p>
+            <button class="button" type="submit" data-astro-cid-vekgkm42>
+              Enviar
+            </button>
+          </form>
+        </div>
       </section>
     </main>
     <footer data-astro-cid-jo6i4kqk>
       <div class="container" data-astro-cid-jo6i4kqk>
+        <img
+          src="/colore/_astro/logo-creme.DSI7b76l.svg"
+          alt="Colorê"
+          width="120"
+          height="35"
+          data-astro-cid-jo6i4kqk
+        />
         <p data-astro-cid-jo6i4kqk>
           © 2026 Colorê · exposição educativa e itinerante sobre cores e
           percepção.
+        </p>
+        <p data-astro-cid-jo6i4kqk>
+          Font: Codec Family by
+          <a
+            href="http://www.zetafonts.com/collection/2102"
+            data-astro-cid-jo6i4kqk
+            >Zetafonts</a
+          >
         </p>
         <p data-astro-cid-jo6i4kqk>
           <a href="/colore/privacidade" data-astro-cid-jo6i4kqk
