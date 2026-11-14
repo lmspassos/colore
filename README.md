@@ -22,3 +22,7 @@ e acesse http://localhost:3000/colore/ (a pasta precisa se chamar `colore`).
 ## Fonte Codec Pro
 
 Não está no repositório (licença). Só usar com licença web.
+
+## Documentação
+
+- [docs/conceito-colore.md](docs/conceito-colore.md): conceito, propósito, público, tom e estrutura do site. Leitura obrigatória.
