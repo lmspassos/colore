@@ -1,3 +1,3 @@
-# fontes originais (Codec Pro tem licença)
+# pacotes originais da fonte Codec (só os .ttf em fonts/ entram)
 *.zip
 node_modules/

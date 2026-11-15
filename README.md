@@ -19,9 +19,9 @@ e acesse http://localhost:3000/colore/ (a pasta precisa se chamar `colore`).
 
 `git push` na `main`. No GitHub: Settings → Pages → Deploy from a branch → `main` / `(root)`.
 
-## Fonte Codec Pro
+## Fonte Codec
 
-Não está no repositório (licença). Só usar com licença web.
+Os arquivos estão em `fonts/` por ser um projeto de estudo. O crédito à Codec Family (Zetafonts) fica no rodapé de cada página.
 
 ## Documentação
 

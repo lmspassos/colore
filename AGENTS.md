@@ -12,7 +12,7 @@ Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda 
 
 HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no GitHub Pages (https://lmspassos.github.io/colore/), publicado da branch `main`, pasta raiz.
 Tudo foi gerado a partir de um projeto Astro antigo (está no histórico do git, antes do commit "Troca Astro por HTML e CSS puros").
-Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Pro só entra com licença web.
+Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Family (Zetafonts) em `fonts/Codec-Regular.ttf` e `Codec-Bold.ttf`, versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
 Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funcionar de verdade, usar Formspree ou similar.
 
 ## Estrutura
@@ -20,7 +20,7 @@ Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funciona
 ```
 /
 ├─ index.html · 404.html · favicon.svg · .nojekyll
-├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ · contato/ · privacidade/ · obrigado/   (cada um com index.html)
+├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ (só redireciona para a-exposicao) · contato/ · privacidade/ · obrigado/   (cada um com index.html)
 ├─ _astro/                   # fontes Fredoka
 ├─ docs/marca/               # identidade visual (referência)
 └─ AGENTS.md · CLAUDE.md · README.md
