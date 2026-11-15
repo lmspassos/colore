@@ -5,10 +5,10 @@ if (f) {
   const set = (open) => { f.classList.toggle("open", open); b.setAttribute("aria-expanded", open); };
   set(false);
   b.addEventListener("click", (e) => {
-    if (!f.classList.contains("open")) { e.preventDefault(); set(true); i.focus(); }
+    if (!f.classList.contains("open")) { e.preventDefault(); set(true); i.focus({ preventScroll: true }); }
     else if (!i.value.trim()) { e.preventDefault(); set(false); }
   });
-  f.addEventListener("keydown", (e) => { if (e.key === "Escape") { set(false); b.focus(); } });
+  f.addEventListener("keydown", (e) => { if (e.key === "Escape") { set(false); b.focus({ preventScroll: true }); } });
   document.addEventListener("click", (e) => { if (!f.contains(e.target) && !i.value.trim()) set(false); });
 }
 
@@ -21,7 +21,7 @@ if (nav && scrim && abrir && fechar) {
     scrim.classList.toggle("open", v);
     abrir.setAttribute("aria-expanded", v);
     document.body.style.overflow = v ? "hidden" : "";
-    (v ? fechar : abrir).focus();
+    (v ? fechar : abrir).focus({ preventScroll: true });
   };
   abrir.addEventListener("click", () => show(true));
   fechar.addEventListener("click", () => show(false));
@@ -40,14 +40,20 @@ if (A) {
   const mais = A.querySelector("[data-fonte=mais]"), menos = A.querySelector("[data-fonte=menos]"), orig = A.querySelector("[data-fonte=original]");
   const abrir = (v) => { A.classList.toggle("open", v); btn.setAttribute("aria-expanded", v); if (!v) { main.hidden = false; sub.hidden = true; A.querySelectorAll(".a11y-desc").forEach((p) => { p.hidden = true; }); A.querySelectorAll(".a11y-info").forEach((b) => b.setAttribute("aria-expanded", false)); } };
   btn.addEventListener("click", () => abrir(!A.classList.contains("open")));
-  cores.addEventListener("click", () => { main.hidden = true; sub.hidden = false; sub.querySelector("button").focus(); });
+  cores.addEventListener("click", () => { main.hidden = true; sub.hidden = false; sub.querySelector("button").focus({ preventScroll: true }); });
   const tema = (t) => {
     if (t) root.dataset.tema = t; else delete root.dataset.tema;
     guarda("colore-tema", t || null);
     temas.forEach((b) => b.setAttribute("aria-pressed", b.dataset.tema === t));
   };
+  // ao escolher um modo, só o descritivo dele fica aberto
+  const descricao = (t) => A.querySelectorAll(".a11y-info").forEach((i) => {
+    const p = document.getElementById(i.getAttribute("aria-controls")), abre = t !== "" && p.id === "info-" + t;
+    p.hidden = !abre;
+    i.setAttribute("aria-expanded", abre);
+  });
   tema(root.dataset.tema || "");
-  temas.forEach((b) => b.addEventListener("click", () => tema(b.dataset.tema)));
+  temas.forEach((b) => b.addEventListener("click", () => { tema(b.dataset.tema); descricao(b.dataset.tema); }));
   const passos = [87.5, 100, 112.5, 125, 150];
   let i = passos.indexOf(parseFloat(root.style.fontSize));
   if (i < 0) i = 1;
@@ -72,6 +78,19 @@ if (A) {
   const lugar = () => { const dest = mq.matches && nav ? nav : document.querySelector(".tools"); if (dest && A.parentNode !== dest) dest.append(A); };
   mq.addEventListener("change", lugar);
   lugar();
-  A.addEventListener("keydown", (e) => { if (e.key === "Escape") { abrir(false); btn.focus(); } });
+  A.addEventListener("keydown", (e) => { if (e.key === "Escape") { abrir(false); btn.focus({ preventScroll: true }); } });
   document.addEventListener("click", (e) => { if (!A.contains(e.target)) abrir(false); });
+}
+
+// Cabeçalho some ao rolar para baixo e volta no primeiro gesto para cima.
+const cab = document.querySelector("header");
+if (cab) {
+  let y0 = scrollY;
+  const emUso = () => cab.matches(":focus-within") || (nav && nav.classList.contains("open")) || cab.querySelector(".a11y.open");
+  addEventListener("scroll", () => {
+    const y = scrollY, dy = y - y0;
+    y0 = y;
+    if (y <= 0 || dy < 0) cab.classList.remove("oculto");
+    else if (dy > 0 && y > cab.offsetHeight && !emUso()) cab.classList.add("oculto");
+  }, { passive: true });
 }
