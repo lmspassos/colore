@@ -3,7 +3,7 @@
 Site institucional da Colorê, exposição educativa e itinerante sobre cores e percepção (crianças de 4 a 8 anos).
 HTML e CSS puros. Regras do projeto: [AGENTS.md](AGENTS.md).
 
-Online: https://lmspassos.github.io/colore/
+Online: https://projeto-colore.pages.dev/
 
 ## Ver no computador
 
@@ -17,7 +17,7 @@ e acesse http://localhost:3000/colore/ (a pasta precisa se chamar `colore`).
 
 ## Publicar
 
-`git push` na `main`. No GitHub: Settings → Pages → Deploy from a branch → `main` / `(root)`.
+`git push` na `main`. O Cloudflare Pages publica sozinho (projeto `projeto-colore`, sem build, pasta raiz).
 
 ## Fonte Codec
 

@@ -10,7 +10,7 @@ Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda 
 
 ## Stack
 
-HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no GitHub Pages (https://lmspassos.github.io/colore/), publicado da branch `main`, pasta raiz.
+HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no Cloudflare Pages (https://projeto-colore.pages.dev/), publicado da branch `main`, pasta raiz, sem build.
 Tudo foi gerado a partir de um projeto Astro antigo (está no histórico do git, antes do commit "Troca Astro por HTML e CSS puros").
 Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Family (Zetafonts) em `fonts/Codec-Regular.ttf` e `Codec-Bold.ttf`, versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
 Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funcionar de verdade, usar Formspree ou similar.
@@ -28,7 +28,7 @@ Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funciona
 
 ## Convenções
 
-- Todos os links e recursos usam o prefixo `/colore/` (o site mora em `/colore/` no GitHub Pages). Se mudar para domínio próprio, trocar `/colore/` por `/` em todos os `.html`.
+- Todos os links e recursos começam com `/` (o site mora na raiz do domínio). Não use o prefixo `/colore/`: ele só existia quando o site ficava em lmspassos.github.io/colore/.
 - O CSS está dentro de `<style>` em cada página (herança do build). Cabeçalho e rodapé se repetem: ao mudar um, mude em todas as páginas.
 - Textos visíveis em português; URLs em português, kebab-case, sem acento.
 - Mobile-first. Breakpoints: `48rem` e `64rem`. Unidades relativas.
