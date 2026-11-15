@@ -142,14 +142,6 @@
         .prose > .split {
           grid-template-columns: 1fr 1fr;
         }
-        .cards.cards-4 {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (width >= 64rem) {
-        .cards.cards-4 {
-          grid-template-columns: repeat(4, 1fr);
-        }
       }
       .prose .split-text {
         display: flex;
@@ -204,7 +196,99 @@
         right: -9%;
         background: var(--pink);
       }
-      .cta[data-astro-cid-lcdefpme] {
+      .lead[data-astro-cid-lcdefpme] {
+        max-width: 46rem;
+        margin-inline: auto;
+      }
+      .card.yellow {
+        background: var(--yellow);
+      }
+      .card.yellow .dot {
+        background: var(--orange);
+      }
+      .estacoes {
+        margin-block: var(--space-5);
+        padding-block: var(--space-5);
+        overflow: hidden;
+      }
+      .estacoes .deck-track {
+        margin-top: var(--space-4);
+      }
+      .deck {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: var(--space-3);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .deck .card > :not(.dot) {
+        position: relative;
+        z-index: 1;
+      }
+      .estacoes .button {
+        border: 0;
+      }
+      .deck-dots {
+        display: none;
+        justify-content: center;
+        margin-top: var(--space-2);
+      }
+      .deck-on .deck-dots {
+        display: flex;
+      }
+      .deck-dots button {
+        display: grid;
+        place-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+      }
+      .deck-dots button::before {
+        content: "";
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background: var(--graphite);
+        opacity: 0.3;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .deck-dots .on::before {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+      .deck-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+      }
+      /* Baralho: um card por vez, avança sozinho, ao clique, arrastando ou pelas bolinhas (deck.js) */
+      .deck-on .deck {
+        display: block;
+        position: relative;
+        width: min(28rem, 100% - 4rem);
+        height: min(18rem, 60vh);
+        margin-inline: auto;
+        cursor: pointer;
+        touch-action: pan-y;
+        user-select: none;
+      }
+      .deck-on .deck .card {
+        position: absolute;
+        inset: 0;
+        animation: none;
+        transition:
+          transform 0.9s ease,
+          opacity 0.7s ease;
+        will-change: transform;
+      }      .cta[data-astro-cid-lcdefpme] {
         margin-bottom: var(--space-4);
       }
       .button[data-astro-cid-lcdefpme].dark {
@@ -274,6 +358,7 @@
     <link rel="stylesheet" href="/colore/galeria.css" />
     <link rel="stylesheet" href="/colore/animacoes.css" />
     <script src="/colore/header.js" defer></script>
+    <script src="/colore/deck.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -480,44 +565,66 @@
           </div>
         </div>
       </section>
-      <section class="section container" data-astro-cid-lcdefpme>
-        <h2 class="center" data-astro-cid-lcdefpme>As estações</h2>
-        <p class="center lead" data-astro-cid-lcdefpme>
-          Um percurso para olhar, misturar e conversar sobre cores.
-        </p>
-        <ul class="cards cards-4">
-          <li class="card orange">
-            <span class="dot" aria-hidden="true"></span
-            ><span class="num">1</span>
-            <h3>Estação 1</h3>
-            <p>TODO(conteudo): descrição da primeira estação.</p>
-          </li>
-          <li class="card blue">
-            <span class="dot" aria-hidden="true"></span
-            ><span class="num">2</span>
-            <h3>Estação 2</h3>
-            <p>TODO(conteudo): descrição da segunda estação.</p>
-          </li>
-          <li class="card pink">
-            <span class="dot" aria-hidden="true"></span
-            ><span class="num">3</span>
-            <h3>Estação 3</h3>
-            <p>TODO(conteudo): descrição da terceira estação.</p>
-          </li>
-          <li class="card green">
-            <span class="dot" aria-hidden="true"></span
-            ><span class="num">4</span>
-            <h3>Estação 4</h3>
-            <p>TODO(conteudo): descrição da quarta estação.</p>
-          </li>
-        </ul>
-        <p class="center" data-astro-cid-lcdefpme>
-          <a class="button" href="/colore/a-exposicao" data-astro-cid-lcdefpme
-            >Conheça a exposição</a
-          >
-        </p>
-      </section>
-      <section class="section container">
+                  <section class="estacoes pink" data-astro-cid-lcdefpme>
+        <div class="container" data-astro-cid-lcdefpme>
+          <h2 class="center" data-astro-cid-lcdefpme>
+            Um percurso por diferentes descobertas.
+          </h2>
+          <p class="center lead" data-astro-cid-lcdefpme>
+            A experiência Colorê é organizada em quatro estações que exploram
+            diferentes aspectos do universo cromático. Cada uma propõe uma forma
+            de interação e descoberta, convidando as crianças a construir novas
+            relações com as cores. Ao final, a oficina Criar amplia essas
+            descobertas por meio da expressão artística.
+          </p>
+          <div class="deck-track">
+            <ul class="deck">
+              <li class="card orange">
+                <span class="dot" aria-hidden="true"></span
+                ><span class="num">1</span>
+                <h3>Descobrir</h3>
+                <p>Um primeiro contato com o universo das cores e suas possibilidades.</p>
+              </li>
+              <li class="card blue">
+                <span class="dot" aria-hidden="true"></span
+                ><span class="num">2</span>
+                <h3>Transformar</h3>
+                <p>Explorar misturas, combinações e as transformações das cores.</p>
+              </li>
+              <li class="card cream">
+                <span class="dot" aria-hidden="true"></span
+                ><span class="num">3</span>
+                <h3>Perceber</h3>
+                <p>Investigar como a luz e o olhar influenciam nossa percepção das cores.</p>
+              </li>
+              <li class="card green">
+                <span class="dot" aria-hidden="true"></span
+                ><span class="num">4</span>
+                <h3>Representar</h3>
+                <p>Descobrir diferentes maneiras de expressar ideias por meio das cores.</p>
+              </li>
+              <li class="card yellow">
+                <span class="dot" aria-hidden="true"></span
+                ><span class="num">5</span>
+                <h3>Criar (Oficina)</h3>
+                <p>Transformar descobertas em uma produção artística autoral.</p>
+              </li>
+            </ul>
+            <div class="deck-dots">
+              <button type="button" class="on" aria-label="Ir para a estação 1" aria-current="true"></button>
+              <button type="button" aria-label="Ir para a estação 2"></button>
+              <button type="button" aria-label="Ir para a estação 3"></button>
+              <button type="button" aria-label="Ir para a estação 4"></button>
+              <button type="button" aria-label="Ir para a estação 5"></button>
+            </div>
+          </div>
+          <div class="deck-actions" data-astro-cid-lcdefpme>
+            <a class="button" href="/colore/a-exposicao" data-astro-cid-lcdefpme
+              >Conheça a exposição</a
+            >
+          </div>
+        </div>
+      </section>      <section class="section container">
         <h2 class="center">A experiência em imagens</h2>
         <ul class="gallery">
           <li>
