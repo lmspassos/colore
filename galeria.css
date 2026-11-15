@@ -1,5 +1,31 @@
-.gallery{display:grid;gap:var(--space-2);grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));margin:var(--space-3) 0;padding:0;list-style:none}
-.gallery img,.photo{display:block;width:100%;height:auto;border:3px solid var(--graphite);border-radius:var(--radius)}
-.gallery img{aspect-ratio:3/2;object-fit:cover}
-.photo{max-width:44rem;margin-block:var(--space-3)}
-.ref-note{font-size:.95rem}
+.gallery {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    margin: var(--space-3) 0;
+    padding: 0;
+    list-style: none
+}
+
+.gallery img,
+.photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--graphite);
+    border-radius: var(--radius)
+}
+
+.gallery img {
+    aspect-ratio: 3/2;
+    object-fit: cover
+}
+
+.photo {
+    max-width: 44rem;
+    margin-block: var(--space-3)
+}
+
+.ref-note {
+    font-size: .95rem
+}
