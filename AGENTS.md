@@ -12,7 +12,7 @@ Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda 
 
 HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no Cloudflare Pages (https://projeto-colore.pages.dev/), publicado da branch `main`, pasta raiz, sem build.
 Tudo foi gerado a partir de um projeto Astro antigo (está no histórico do git, antes do commit "Troca Astro por HTML e CSS puros").
-Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Family (Zetafonts) em `fonts/Codec-Regular.ttf` e `Codec-Bold.ttf`, versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
+Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Family (Zetafonts) em `fonts/Codec-Cold-*-trial.ttf` (família Codec Cold completa, 8 pesos com itálicos), versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
 Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funcionar de verdade, usar Formspree ou similar.
 
 ## Estrutura

@@ -197,15 +197,150 @@
         background: var(--pink);
       }
       .lead[data-astro-cid-lcdefpme] {
-        max-width: 46rem;
+        max-width: 52rem;
+        text-wrap: balance; /* linhas com tamanho parecido, texto centralizado */
         margin-inline: auto;
       }
       .card.yellow {
         background: var(--yellow);
       }
-      .card.yellow .dot {
+      /* cada card tem uma bolinha de cor diferente da dele */
+      .deck .card:nth-child(1) .dot {
+        background: var(--yellow);
+      }
+      .deck .card:nth-child(2) .dot {
+        background: var(--green);
+      }
+      .deck .card:nth-child(3) .dot {
         background: var(--orange);
       }
+      .deck .card:nth-child(4) .dot {
+        background: var(--cream);
+      }
+      .deck .card:nth-child(5) .dot {
+        background: var(--blue);
+      }
+      /* carrossel de fora a fora: passa sozinho (faixa.js duplica a lista), fotos 4:5 */
+      .faixa {
+        overflow: hidden;
+      }
+      .faixa:not(.anda) {
+        overflow-x: auto;
+      }
+      .faixa ul {
+        display: flex;
+        gap: var(--space-3);
+        width: max-content;
+        margin: 0;
+        padding: var(--space-3) 0;
+        list-style: none;
+      }
+      .faixa:not(.anda) ul {
+        padding-inline: var(--space-3);
+      }
+      .faixa li {
+        flex: 0 0 clamp(13rem, 22vw, 18rem);
+        transition: transform 0.3s ease;
+      }
+      .faixa li:nth-child(odd) { transform: rotate(-2deg); }
+      .faixa li:nth-child(even) { transform: rotate(2deg) translateY(0.5rem); }
+      .faixa li:hover,
+      .faixa li:focus-within {
+        transform: rotate(0) scale(1.06);
+        position: relative;
+        z-index: 1;
+      }
+      .faixa button {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: none;
+        border-radius: var(--radius);
+        cursor: zoom-in;
+      }
+      .faixa img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: var(--radius);
+      }
+      .faixa.anda ul {
+        animation: faixa 60s linear infinite;
+      }
+      .faixa.anda ul:has(button:hover, button:focus-visible),
+      .faixa.anda.pausa ul {
+        animation-play-state: paused;
+      }
+      @keyframes faixa {
+        to { transform: translateX(-50%); }
+      }
+      .foto-modal {
+        padding: 0;
+        border: 0;
+        border-radius: var(--radius);
+        overflow: hidden;
+        width: fit-content;
+        max-width: none;
+        background: var(--cream);
+      }
+      .foto-modal::backdrop {
+        background: rgba(43, 43, 41, 0.75);
+      }
+      .foto-modal img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: min(92vw, 56rem);
+        max-height: 85vh;
+      }
+      .foto-modal .fechar {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 0;
+        border-radius: 50%;
+        background: var(--cream);
+        color: var(--graphite);
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .espacos {
+        padding-top: var(--space-3); /* soma com a margem de baixo das estações */
+      }
+      .espacos .esp-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+        margin-top: var(--space-4);
+      }
+      .esp-grid article {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-3);
+        border-radius: var(--radius);
+        color: var(--graphite);
+      }
+      @media (max-width: 36rem) {
+        .espacos .esp-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .esp-grid .wide {
+        grid-column: 1 / -1;
+      }
+      .esp-grid .orange { background: var(--orange); }
+      .esp-grid .blue { background: var(--blue); }
+      .esp-grid .green { background: var(--green); color: var(--cream); }
+      .esp-grid h3 { margin: 0 0 var(--space-1); }
+      .esp-grid p { margin: 0 0 var(--space-2); }
+      .esp-grid .n { font-weight: 700; font-size: 1.5rem; margin-bottom: var(--space-1); }
+      .esp-grid .button { margin-top: auto; align-self: stretch; text-align: center; border: 0; }
       .estacoes {
         margin-block: var(--space-5);
         padding-block: var(--space-5);
@@ -339,16 +474,43 @@
         max-width: 44rem;
         margin: var(--space-3) auto 0;
       }
-      details[data-astro-cid-lcdefpme] {
+      /* FAQ colorido, sem contorno; o + vira × ao abrir */
+      .faq details {
         margin-bottom: var(--space-1);
-        padding: var(--space-2);
-        border: 3px solid var(--graphite);
         border-radius: var(--radius);
+        color: var(--graphite);
       }
-      summary[data-astro-cid-lcdefpme] {
+      .faq details:nth-child(4n + 1) { background: var(--blue); }
+      .faq details:nth-child(4n + 2) { background: var(--pink); }
+      .faq details:nth-child(4n + 3) { background: var(--yellow); }
+      .faq details:nth-child(4n + 4) { background: var(--orange); }
+      .faq summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+        padding: var(--space-2) var(--space-3);
         font: 600 1.125rem var(--font-title);
+        list-style: none;
         cursor: pointer;
       }
+      .faq summary::-webkit-details-marker { display: none; }
+      .faq summary::after {
+        content: "+";
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--cream);
+        font: 700 1.25rem/1 var(--font-body);
+        transition: transform 0.3s ease;
+      }
+      .faq details[open] summary::after { transform: rotate(45deg); }
+      .faq details > div { padding: 0 var(--space-3) var(--space-2); }
+      .faq details p { margin: 0; }
+      .espacos + .section { padding-top: calc(var(--space-5) - var(--space-1)); }
       @media (width>=48rem) {
         .duo[data-astro-cid-lcdefpme] {
           grid-template-columns: 1fr 1fr;
@@ -359,6 +521,7 @@
     <link rel="stylesheet" href="/animacoes.css" />
     <script src="/header.js" defer></script>
     <script src="/deck.js" defer></script>
+    <script src="/faixa.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -624,125 +787,49 @@
             >
           </div>
         </div>
-      </section>      <section class="section container">
-        <h2 class="center">A experiência em imagens</h2>
-        <ul class="gallery">
-          <li>
-            <img
-              src="/img/sombras-coloridas.webp"
-              alt="Três crianças de costas diante de uma parede em que as sombras delas aparecem em várias cores: ciano, magenta, amarelo, vermelho e verde."
-              width="1200"
-              height="800"
-              loading="lazy"
-            />
-          </li>
-          <li>
-            <img
-              src="/img/luzes-parede-azul.webp"
-              alt="Um adulto e três crianças com as mãos levantadas diante de um círculo de luz verde, azul e vermelha projetado numa parede azul."
-              width="650"
-              height="482"
-              loading="lazy"
-            />
-          </li>
-          <li>
-            <img
-              src="/img/projecao-peixes.webp"
-              alt="Crianças tocando uma parede com desenhos de peixes e recifes coloridos projetados."
-              width="1200"
-              height="800"
-              loading="lazy"
-            />
-          </li>
+      </section>
+      <section class="faixa" aria-label="Imagens da exposição">
+        <ul>
+          <li><button type="button"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/instalacao-pendurada.webp" alt="Duas crianças dançando em uma sala rosa, com objetos coloridos pendurados no teto e luzes projetadas." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/mesa-interativa-cores.webp" alt="Duas meninas em uma mesa interativa azul, tocando uma tela colorida; na parede, um diagrama mostra a mistura de cores." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/sombra-colorida-menino.webp" alt="Menino de braços abertos diante de uma parede iluminada em roxo, azul e verde, com a sombra dele projetada em roxo." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/mesa-pinceis-de-luz.webp" alt="Três crianças sorrindo ao mexer em pincéis de luz sobre uma mesa redonda que projeta cores em espiral." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/mural-colorido.webp" alt="Duas crianças em uma sala com um mural gigante e colorido, apontando para os desenhos; à frente, pedestais vermelho e verde." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." width="800" height="1000" loading="lazy" /></button></li>
+          <li><button type="button"><img src="/img/instalacao-triangulos.webp" alt="Sala com uma grande instalação suspensa de acetatos coloridos que projeta triângulos amarelos, rosa e azuis nas paredes e no chão." width="800" height="1000" loading="lazy" /></button></li>
         </ul>
-        <p class="ref-note">
-          Imagens de referência do universo da exposição. A Colorê ainda está em
-          desenvolvimento.
+        <dialog class="foto-modal" aria-label="Foto ampliada">
+          <button class="fechar" type="button" aria-label="Fechar">×</button>
+          <img src="" alt="" />
+        </dialog>
+      </section>
+      <section class="espacos section container">
+        <h2 class="center" data-astro-cid-lcdefpme>Tem espaço para mais descobertas por aí?</h2>
+        <p class="center lead" data-astro-cid-lcdefpme>
+          A Colorê é itinerante e está pronta para ganhar novos espaços!
+          Escolas, centros culturais e instituições podem receber nossa
+          exposição e proporcionar às crianças uma experiência de aprendizado
+          que une arte, curiosidade e exploração do universo das cores.
         </p>
-      </section>
-      <section class="section container" data-astro-cid-lcdefpme>
-        <h2 class="center" data-astro-cid-lcdefpme>Para quem é a Colorê</h2>
-        <div class="duo" data-astro-cid-lcdefpme>
-          <article class="big blue" data-astro-cid-lcdefpme>
-            <h3 data-astro-cid-lcdefpme>Para instituições</h3>
-            <p data-astro-cid-lcdefpme>
-              Escolas, museus e centros culturais que querem receber a
-              exposição.
-            </p>
-            <a
-              class="button"
-              href="/para-instituicoes"
-              data-astro-cid-lcdefpme
-              >Receber a exposição</a
-            >
+        <div class="esp-grid">
+          <article class="orange">
+            <p class="n">01</p>
+            <h3>Escolas</h3>
+            <p>Novas possibilidades de aprendizagem para as crianças.</p>
           </article>
-          <article class="big pink" data-astro-cid-lcdefpme>
-            <h3 data-astro-cid-lcdefpme>Para educadores</h3>
-            <p data-astro-cid-lcdefpme>
-              Materiais pedagógicos para preparar e continuar a conversa em
-              sala.
-            </p>
-            <a
-              class="button"
-              href="/para-educadores"
-              data-astro-cid-lcdefpme
-              >Ver materiais</a
-            >
+          <article class="blue">
+            <p class="n">02</p>
+            <h3>Espaços culturais</h3>
+            <p>Experiências artísticas e educativas para o público infantil.</p>
+          </article>
+          <article class="green wide">
+            <h3>Vamos levar essa experiência mais longe?</h3>
+            <p>Entre em contato e descubra como receber a Colorê em sua instituição.</p>
+            <a class="button dark" href="/para-instituicoes">Quero levar a Colorê para minha instituição ↗</a>
           </article>
         </div>
       </section>
-      <div class="strip" data-astro-cid-lcdefpme>
-        <ul class="container" data-astro-cid-lcdefpme>
-          <li data-astro-cid-lcdefpme>● Para crianças de 4 a 8 anos</li>
-          <li data-astro-cid-lcdefpme>▲ Exposição itinerante</li>
-          <li data-astro-cid-lcdefpme>
-            ■ Inclusiva: cada criança percebe as cores do seu jeito
-          </li>
-        </ul>
-      </div>
-      <section class="how" data-astro-cid-lcdefpme>
-        <div class="container" data-astro-cid-lcdefpme>
-          <h2 class="center" data-astro-cid-lcdefpme>Como funciona</h2>
-          <ol class="cards" data-astro-cid-lcdefpme>
-            <li class="card cream" data-astro-cid-lcdefpme>
-              <span class="num" data-astro-cid-lcdefpme>1</span>
-              <h3 data-astro-cid-lcdefpme>Você conta sobre o seu espaço</h3>
-              <p data-astro-cid-lcdefpme>
-                Preencha o formulário com os dados da instituição.
-              </p>
-            </li>
-            <li class="card cream" data-astro-cid-lcdefpme>
-              <span class="num" data-astro-cid-lcdefpme>2</span>
-              <h3 data-astro-cid-lcdefpme>Combinamos data e montagem</h3>
-              <p data-astro-cid-lcdefpme>
-                TODO(conteudo): prazos, equipe e estrutura necessária.
-              </p>
-            </li>
-            <li class="card cream" data-astro-cid-lcdefpme>
-              <span class="num" data-astro-cid-lcdefpme>3</span>
-              <h3 data-astro-cid-lcdefpme>As crianças exploram as cores</h3>
-              <p data-astro-cid-lcdefpme>
-                As crianças exploram as estações, acompanhadas por mediadores,
-                em turmas de 4 a 8 anos.
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
-      <div class="container" data-astro-cid-lcdefpme>
-        <section class="band band-blue cta" data-astro-cid-lcdefpme>
-          <h2 data-astro-cid-lcdefpme>Vamos levar a Colorê até você?</h2>
-          <p data-astro-cid-lcdefpme>
-            Conte um pouco sobre a sua instituição e responderemos em breve.
-          </p>
-          <a
-            class="button dark"
-            href="/para-instituicoes"
-            data-astro-cid-lcdefpme
-            >Preencher o formulário</a
-          >
-        </section>
-      </div>
       <section class="section container" data-astro-cid-lcdefpme>
         <h2 class="center" data-astro-cid-lcdefpme>Perguntas frequentes</h2>
         <div class="faq" data-astro-cid-lcdefpme>

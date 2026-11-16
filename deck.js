@@ -11,7 +11,7 @@ if (track && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   // d = lugar no baralho: 0 na frente, os outros atrás, abertos à direita
   const pos = (c, i) => {
     const d = (i - ativo + n) % n;
-    c.style.transform = `translateX(${d * Math.min(56, stage.offsetWidth * 0.1)}px) rotate(${2 * d}deg) scale(${Math.max(0.7, 1 - 0.05 * d)})`;
+    c.style.transform = `translateX(${d * Math.min(80, stage.offsetWidth * 0.16)}px) rotate(${2 * d}deg) scale(${Math.max(0.7, 1 - 0.05 * d)})`;
     c.style.opacity = 1;
     c.style.zIndex = 100 - d * 10;
   };
@@ -60,8 +60,9 @@ if (track && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   bolas.forEach((b, i) => b.addEventListener("click", () => vai(i, i > ativo ? 1 : -1)));
 
   // arrastar: para a esquerda avança, para a direita volta; um toque sem arrastar avança
-  let x0 = null, dx = 0, moveu = false;
+  let x0 = null, dx = 0, moveu = false, alvo = null;
   stage.addEventListener("pointerdown", (e) => {
+    alvo = e.target.closest(".card"); // guardado antes da captura do ponteiro
     if (e.button || ocupado) return;
     x0 = e.clientX; dx = 0; moveu = false; arrastando = true;
     stage.setPointerCapture(e.pointerId);
@@ -84,7 +85,12 @@ if (track && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   };
   stage.addEventListener("pointerup", solta);
   stage.addEventListener("pointercancel", solta);
-  stage.addEventListener("click", () => { if (moveu) { moveu = false; return; } avanca(); });
+  // clicar num card de trás traz ele para a frente; no da frente, avança
+  stage.addEventListener("click", () => {
+    if (moveu) { moveu = false; return; }
+    const i = cards.indexOf(alvo);
+    vai(i >= 0 && i !== ativo ? i : (ativo + 1) % n, 1);
+  });
   addEventListener("resize", desenha);
 
   // avanço automático: segue sozinho e recomeça a contar depois de qualquer interação

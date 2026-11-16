@@ -21,7 +21,7 @@ e acesse http://localhost:3000/colore/ (a pasta precisa se chamar `colore`).
 
 ## Fonte Codec
 
-Os arquivos estão em `fonts/` por ser um projeto de estudo. O crédito à Codec Family (Zetafonts) fica no rodapé de cada página.
+Usamos a família Codec Cold completa (8 pesos, com itálicos, versão trial), em `fonts/` por ser um projeto de estudo. O crédito à Codec Family (Zetafonts) fica no rodapé de cada página.
 
 ## Documentação
 
