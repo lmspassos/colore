@@ -67,3 +67,13 @@ html{scroll-padding-top:6rem}
 
 /* Do banner para baixo, os títulos (h2/h3) usam a fonte de texto (Codec); o h1 do banner segue em Fredoka */
 main h2,main h3{font-family:var(--font-body)}
+.rodape{display:grid;gap:var(--space-4)}
+.rodape-marca p{margin:var(--space-1) 0 0;max-width:20rem}
+.rodape-mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--space-3)}
+.rodape-mapa ul{display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
+.rodape-titulo{margin:0 0 var(--space-1);color:var(--yellow);font-size:1rem}
+.rodape-fim{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-1) var(--space-3)}
+.rodape-fim p{margin:0}
+@media (min-width:48rem){.rodape{grid-template-columns:minmax(14rem,1fr) 3fr}.rodape-fim{grid-column:1/-1}}
+.rodape-mapa a{text-decoration:none}
+.rodape-mapa a:hover,.rodape-mapa a:focus-visible{color:var(--hover,var(--yellow))}

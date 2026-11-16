@@ -94,3 +94,13 @@ if (cab) {
     else if (dy > 0 && y > cab.offsetHeight && !emUso()) cab.classList.add("oculto");
   }, { passive: true });
 }
+
+// Rodapé: cada hover sorteia uma cor da identidade visual (sem o grafite, que some no fundo).
+{
+  const cores = ["--yellow", "--orange", "--blue", "--green", "--pink"];
+  document.querySelectorAll(".rodape-mapa a").forEach((a) => {
+    const sorteia = () => a.style.setProperty("--hover", `var(${cores[Math.floor(Math.random() * cores.length)]})`);
+    a.addEventListener("mouseenter", sorteia);
+    a.addEventListener("focus", sorteia);
+  });
+}

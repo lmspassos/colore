@@ -309,8 +309,49 @@
         line-height: 1;
         cursor: pointer;
       }
-      .espacos {
-        padding-top: var(--space-3); /* soma com a margem de baixo das estações */
+      /* espaçamento padrão entre seções da home: 4rem (a faixa de fotos já tem 1,5rem de folga interna) */
+      main > section:not(.hero) {
+        margin-block: var(--space-5) 0;
+        padding-block: 0;
+      }
+      main > section.estacoes,
+      main > section.cta-final {
+        padding-block: var(--space-5);
+      }
+      main > section.faixa,
+      main > section.faixa + section {
+        margin-top: calc(var(--space-5) - var(--space-3));
+      }
+      /* faixa final de ponta a ponta, colada no rodapé */
+      .cta-final {
+        padding-block: var(--space-5);
+        background: var(--orange);
+        color: var(--cream);
+      }
+      .cta-final-in {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2) var(--space-4);
+      }
+      .cta-final .button[data-astro-cid-lcdefpme].dark {
+        border: 0;
+        background: var(--green);
+        color: var(--cream);
+      }
+      .cta-final .button[data-astro-cid-lcdefpme].dark:hover {
+        background: var(--graphite);
+      }
+      .cta-final h2,
+      .cta-final p {
+        margin: 0;
+      }
+      .cta-final p {
+        margin-top: var(--space-1);
+      }
+      footer.colado[data-astro-cid-jo6i4kqk] {
+        margin-top: 0;
       }
       .espacos .esp-grid {
         display: grid;
@@ -471,19 +512,21 @@
         margin: 0;
       }
       .faq[data-astro-cid-lcdefpme] {
-        max-width: 44rem;
+        max-width: 56rem;
         margin: var(--space-3) auto 0;
       }
       /* FAQ colorido, sem contorno; o + vira × ao abrir */
       .faq details {
         margin-bottom: var(--space-1);
+        overflow: hidden;
         border-radius: var(--radius);
         color: var(--graphite);
       }
-      .faq details:nth-child(4n + 1) { background: var(--blue); }
-      .faq details:nth-child(4n + 2) { background: var(--pink); }
-      .faq details:nth-child(4n + 3) { background: var(--yellow); }
-      .faq details:nth-child(4n + 4) { background: var(--orange); }
+      .faq details:nth-child(1), .faq details:nth-child(6) { background: var(--blue); }
+      .faq details:nth-child(2) { background: var(--pink); }
+      .faq details:nth-child(3) { background: var(--yellow); }
+      .faq details:nth-child(4) { background: var(--green); }
+      .faq details:nth-child(5) { background: var(--orange); }
       .faq summary {
         display: flex;
         align-items: center;
@@ -510,7 +553,37 @@
       .faq details[open] summary::after { transform: rotate(45deg); }
       .faq details > div { padding: 0 var(--space-3) var(--space-2); }
       .faq details p { margin: 0; }
-      .espacos + .section { padding-top: calc(var(--space-5) - var(--space-1)); }
+      /* FAQ em módulos 2x2; ao abrir um, ele ocupa uma coluna e os outros três empilham na outra */
+      .faq details > div { animation: faq-abre 0.4s ease; }
+      @keyframes faq-abre { from { opacity: 0; transform: translateY(-0.5rem); } }
+      @media (max-width: 39.99rem) {
+      @supports selector(::details-content) {
+        :root { interpolate-size: allow-keywords; }
+        .faq details::details-content {
+          block-size: 0;
+          overflow: hidden;
+          transition: block-size 0.4s ease, content-visibility 0.4s ease allow-discrete;
+        }
+        .faq details[open]::details-content { block-size: auto; }
+      }
+      }
+      @media (min-width: 40rem) {
+        .faq {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: var(--space-2);
+        }
+        .faq details { margin: 0; min-height: 7rem; }
+        .faq:has(details[open]) details[open] { grid-row: 1 / span 5; }
+        /* o módulo aberto fica na coluna em que já estava; os outros vão para a outra */
+        .faq:has(details:nth-child(odd)[open]) details[open] { grid-column: 1; }
+        .faq:has(details:nth-child(odd)[open]) details:not([open]) { grid-column: 2; }
+        .faq:has(details:nth-child(even)[open]) details[open] { grid-column: 2; }
+        .faq:has(details:nth-child(even)[open]) details:not([open]) { grid-column: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .faq *, .faq *::details-content { animation: none !important; transition: none !important; }
+      }
       @media (width>=48rem) {
         .duo[data-astro-cid-lcdefpme] {
           grid-template-columns: 1fr 1fr;
@@ -522,6 +595,7 @@
     <script src="/header.js" defer></script>
     <script src="/deck.js" defer></script>
     <script src="/faixa.js" defer></script>
+    <script src="/faq.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -728,7 +802,7 @@
           </div>
         </div>
       </section>
-                  <section class="estacoes pink" data-astro-cid-lcdefpme>
+                  <section id="estacoes" class="estacoes pink" data-astro-cid-lcdefpme>
         <div class="container" data-astro-cid-lcdefpme>
           <h2 class="center" data-astro-cid-lcdefpme>
             Um percurso por diferentes descobertas.
@@ -830,96 +904,155 @@
           </article>
         </div>
       </section>
-      <section class="section container" data-astro-cid-lcdefpme>
+      <section id="faq" class="section container" data-astro-cid-lcdefpme>
         <h2 class="center" data-astro-cid-lcdefpme>Perguntas frequentes</h2>
         <div class="faq" data-astro-cid-lcdefpme>
-          <details data-astro-cid-lcdefpme>
+          <details name="faq" data-astro-cid-lcdefpme>
             <summary data-astro-cid-lcdefpme>Para quem é a exposição?</summary>
             <div data-astro-cid-lcdefpme>
               <p>
-                Para crianças de 4 a 8 anos, em escolas, museus e centros
-                culturais. TODO(conteudo): detalhar formato e duração.
+                A Colorê é destinada a crianças de 4 a 8 anos e pode ser recebida por
+                escolas, museus, centros culturais e outras instituições
+                interessadas em proporcionar experiências educativas e
+                artísticas para o público infantil.
               </p>
             </div>
           </details>
-          <details data-astro-cid-lcdefpme>
+          <details name="faq" data-astro-cid-lcdefpme>
             <summary data-astro-cid-lcdefpme>
               A Colorê é uma exposição sobre daltonismo?
             </summary>
             <div data-astro-cid-lcdefpme>
               <p>
-                Não. O daltonismo foi o ponto de partida da investigação, mas a
-                exposição trata de cores, percepção e expressão, para todas as
-                crianças.
+                Não. O daltonismo foi um dos pontos de partida para o desenvolvimento
+                do projeto, mas a proposta vai além. A Colorê explora o universo
+                das cores a partir da percepção, da experimentação e da
+                expressão, convidando todas as crianças a descobrir diferentes
+                formas de observar e se relacionar com o mundo cromático.
               </p>
             </div>
           </details>
-          <details data-astro-cid-lcdefpme>
+          <details name="faq" data-astro-cid-lcdefpme>
             <summary data-astro-cid-lcdefpme>
               O que as crianças fazem na exposição?
             </summary>
             <div data-astro-cid-lcdefpme>
               <p>
-                Exploram estações de interação: experimentam materiais, testam
-                combinações e criam livremente, com o acompanhamento de
-                mediadores.
+                As crianças percorrem quatro estações interativas, nas quais são
+                convidadas a observar, experimentar, investigar e representar as
+                cores de diferentes maneiras. A experiência termina com a
+                oficina Criar, um momento de expressão artística em que podem
+                transformar suas descobertas em produções próprias. Todo o
+                percurso conta com o acompanhamento de mediadores.
               </p>
             </div>
           </details>
-          <details data-astro-cid-lcdefpme>
+          <details name="faq" data-astro-cid-lcdefpme>
             <summary data-astro-cid-lcdefpme>
               Quanto custa receber a Colorê?
             </summary>
             <div data-astro-cid-lcdefpme>
               <p>
-                Cada instituição recebe uma proposta personalizada. Preencha o
-                formulário em Para instituições e entraremos em contato.
+                O investimento depende das características da instituição e das
+                condições de realização da exposição. Entre em contato com a
+                nossa equipe para apresentar seu espaço e conhecer as
+                possibilidades de receber a Colorê.
+              </p>
+            </div>
+          </details>
+          <details name="faq" data-astro-cid-lcdefpme>
+            <summary data-astro-cid-lcdefpme>Quanto tempo dura a visita?</summary>
+            <div data-astro-cid-lcdefpme>
+              <p>
+                A duração da experiência será definida de acordo com o formato
+                de visitação e a organização das atividades. Entre em contato
+                para consultar as possibilidades de atendimento.
+              </p>
+            </div>
+          </details>
+          <details name="faq" data-astro-cid-lcdefpme>
+            <summary data-astro-cid-lcdefpme>
+              As crianças precisam estar acompanhadas?
+            </summary>
+            <div data-astro-cid-lcdefpme>
+              <p>
+                A experiência conta com o acompanhamento de mediadores durante
+                as atividades. A participação de professores e responsáveis
+                pode ser organizada de acordo com o formato da visita.
               </p>
             </div>
           </details>
         </div>
       </section>
-      <div class="container" data-astro-cid-lcdefpme>
-        <section class="band band-yellow" data-astro-cid-lcdefpme>
-          <h2 data-astro-cid-lcdefpme>
-            Quer a Colorê na sua escola, museu ou centro cultural?
-          </h2>
+      <section class="cta-final" data-astro-cid-lcdefpme>
+        <div class="container cta-final-in" data-astro-cid-lcdefpme>
+          <div data-astro-cid-lcdefpme>
+            <h2 data-astro-cid-lcdefpme>Colorê - descobrir é colorir.</h2>
+            <p data-astro-cid-lcdefpme>
+              Um universo de cores, possibilidades e descobertas esperando para
+              ser explorado.
+            </p>
+          </div>
           <a
             class="button dark"
             href="/para-instituicoes"
             data-astro-cid-lcdefpme
             >Fale com a gente</a
           >
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
-    <footer data-astro-cid-jo6i4kqk>
-      <div class="container" data-astro-cid-jo6i4kqk>
-        <img
-          src="/_astro/logo-creme.DSI7b76l.svg"
-          alt="Colorê"
-          width="120"
-          height="35"
-          data-astro-cid-jo6i4kqk
-        />
-        <p data-astro-cid-jo6i4kqk>
-          © 2026 Colorê · exposição educativa e itinerante sobre cores e
-          percepção.
-        </p>
-        <p data-astro-cid-jo6i4kqk>
-          Font: Codec Family by
-          <a
-            href="http://www.zetafonts.com/collection/2102"
+    <footer class="colado" data-astro-cid-jo6i4kqk>
+      <div class="container rodape" data-astro-cid-jo6i4kqk>
+        <div class="rodape-marca" data-astro-cid-jo6i4kqk>
+          <img
+            src="/_astro/logo-creme.DSI7b76l.svg"
+            alt="Colorê"
+            width="120"
+            height="35"
             data-astro-cid-jo6i4kqk
-            >Zetafonts</a
-          >
-        </p>
-        <p data-astro-cid-jo6i4kqk>
-          <a href="/privacidade" data-astro-cid-jo6i4kqk
-            >Política de privacidade</a
-          >
-          · <a href="/contato" data-astro-cid-jo6i4kqk>Contato</a>
-        </p>
+          />
+          <p data-astro-cid-jo6i4kqk>
+            Exposição educativa e itinerante sobre cores e percepção.
+          </p>
+        </div>
+        <nav class="rodape-mapa" aria-label="Mapa do site" data-astro-cid-jo6i4kqk>
+          <div data-astro-cid-jo6i4kqk>
+            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Colorê</h2>
+            <ul data-astro-cid-jo6i4kqk>
+              <li><a href="/" data-astro-cid-jo6i4kqk>Início</a></li>
+              <li><a href="/#estacoes" data-astro-cid-jo6i4kqk>As estações</a></li>
+              <li><a href="/#faq" data-astro-cid-jo6i4kqk>Perguntas frequentes</a></li>
+            </ul>
+          </div>
+          <div data-astro-cid-jo6i4kqk>
+            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>A exposição</h2>
+            <ul data-astro-cid-jo6i4kqk>
+              <li><a href="/a-exposicao" data-astro-cid-jo6i4kqk>A exposição</a></li>
+              <li><a href="/a-exposicao#sobre" data-astro-cid-jo6i4kqk>De onde surgiu a ideia</a></li>
+              <li><a href="/a-exposicao#metodologia" data-astro-cid-jo6i4kqk>Proposta educativa</a></li>
+            </ul>
+          </div>
+          <div data-astro-cid-jo6i4kqk>
+            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Para você</h2>
+            <ul data-astro-cid-jo6i4kqk>
+              <li><a href="/para-instituicoes" data-astro-cid-jo6i4kqk>Para instituições</a></li>
+              <li><a href="/para-educadores" data-astro-cid-jo6i4kqk>Para educadores</a></li>
+              <li><a href="/contato" data-astro-cid-jo6i4kqk>Contato</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="rodape-fim" data-astro-cid-jo6i4kqk>
+          <p data-astro-cid-jo6i4kqk>© 2026 Colorê</p>
+          <p data-astro-cid-jo6i4kqk>
+            Font: Codec Family by
+            <a
+              href="http://www.zetafonts.com/collection/2102"
+              data-astro-cid-jo6i4kqk
+              >Zetafonts</a
+            >
+          </p>
+        </div>
       </div>
     </footer>
   </body>
