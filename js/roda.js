@@ -34,8 +34,23 @@
   // ângulo da roda: múltiplos pares de 180° = instituições no topo, ímpares = educadores
   let ang = parseFloat(getComputedStyle(r).getPropertyValue("--a")), repouso = ang, mostrado = lado0, anima = 0;
   const ladoDe = (a) => (((Math.round(a / 180) % 2) + 2) % 2 === 0 ? "instituicoes" : "educadores");
+  // peças que se mexem: cada quadro escreve só transformações e transparências nelas (o celular move camadas prontas)
+  const q = (sel) => [...r.querySelectorAll(sel)];
+  const W = r.querySelector(".roda-w"), ceu = q(".roda-ceu, .terra-b"), cenaI = r.querySelector(".f-inst .cena"), cenaE = r.querySelector(".f-edu .cena");
+  const cams = q(".cam").map((el) => [el, parseFloat(el.style.getPropertyValue("--z")) || 0, el.closest(".f-edu") ? -1 : 1]);
+  const ar = r.querySelector(".roda-ar"), corts = q(".cort");
+  const lim = (v) => Math.max(0, Math.min(1, v));
   const poe = (a) => {
-    ang = a; r.style.setProperty("--a", a + "deg");
+    ang = a;
+    const rad = (a * Math.PI) / 180, sn = Math.sin(rad), cs = Math.cos(rad), s2 = Math.sin(2 * rad);
+    W.style.rotate = a + "deg";
+    ceu.forEach((el) => (el.style.opacity = ((1 - cs) / 2).toFixed(3)));
+    cenaI.style.opacity = lim(0.5 + cs * 0.9).toFixed(3);
+    cenaE.style.opacity = lim(0.5 - cs * 0.9).toFixed(3);
+    cams.forEach(([el, z, k]) => (el.style.translate = `${(sn * z * k * 1.5).toFixed(2)}vw 0`));
+    ar.style.translate = `${(s2 * 20).toFixed(2)}vw 0`;
+    corts.forEach((el) => (el.style.translate = `${(s2 * 0.75).toFixed(3)}rem 0`));
+    card.style.scale = `${Math.abs(cs).toFixed(3)} 1`;
     const l = ladoDe(a);
     if (l !== mostrado && lados[l]) { card.innerHTML = lados[l].card; mostrado = l; } // o cartão vira no meio da volta
   };
@@ -60,7 +75,8 @@
     const a0 = ang, dur = calmo ? 0 : 1400 * Math.max(0.35, Math.abs(alvo - a0) / 180), t0 = performance.now();
     const fim = () => {
       poe(alvo);
-      if (ladoDe(alvo) !== r.dataset.lado) { repouso = alvo; trocaPagina(ladoDe(alvo), empurra); }
+      // troca o conteúdo de baixo um instante depois de a roda parar: a pausa do navegador não aparece no giro
+      if (ladoDe(alvo) !== r.dataset.lado) { repouso = alvo; const l = ladoDe(alvo); setTimeout(() => trocaPagina(l, empurra), 80); }
       else repouso = alvo;
     };
     if (!dur) return fim();
@@ -86,15 +102,16 @@
   });
 
   // arraste: a roda acompanha o dedo/mouse; soltar depois de 1/4 da volta completa o giro, antes disso volta
-  let x0 = null, id = null, mexeu = false;
+  let x0 = null, y0 = 0, id = null, mexeu = false;
   r.addEventListener("pointerdown", (e) => {
     if (e.button !== 0 || e.target.closest("a, button, .roda-card")) return;
-    x0 = e.clientX; id = e.pointerId; mexeu = false;
+    x0 = e.clientX; y0 = e.clientY; id = e.pointerId; mexeu = false;
   });
   r.addEventListener("pointermove", (e) => {
     if (x0 === null || e.pointerId !== id) return;
     const dx = e.clientX - x0;
     if (!mexeu) {
+      if (Math.abs(e.clientY - y0) > Math.abs(dx) && Math.abs(e.clientY - y0) > 8) { x0 = null; return; } // é rolagem
       if (Math.abs(dx) < 8) return;
       mexeu = true; r.setPointerCapture(id); r.classList.add("arrasta"); cancelAnimationFrame(anima);
     }

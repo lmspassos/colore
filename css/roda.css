@@ -6,7 +6,7 @@
 @property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
 
 /* céu único: passa do azul (instituições) ao rosa (educadores) conforme a roda gira */
-.roda { background: color-mix(in srgb, var(--pink) calc((1 - cos(var(--a))) * 50%), var(--blue)); --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.roda { background: var(--blue); contain: paint; --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda[data-lado=instituicoes] { --a: 0deg; }
 .roda[data-lado=educadores] { --a: 180deg; }
 .roda.arrasta { cursor: grabbing; }
@@ -19,13 +19,20 @@
 .roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 0; height: 0; rotate: var(--a); }
 .fatia { position: absolute; left: 0; top: 0; width: 0; height: 0; }
 /* chão em forma de pequeno planeta: gira com a roda, está sempre no palco e muda de cor junto com o céu */
-.terra { --base: color-mix(in srgb, color-mix(in srgb, var(--blue) 55%, var(--cream)) calc((1 - cos(var(--a))) * 50%), color-mix(in srgb, var(--green) 55%, var(--cream))); position: absolute; left: 0; top: 0; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
+.terra { --base: color-mix(in srgb, var(--green) 55%, var(--cream)); position: absolute; left: 0; top: 0; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
 .f-edu { rotate: 180deg; }
 /* a transparência fica no cenário (do tamanho da tela), não na metade da roda */
 .f-inst .cena { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
 .f-edu .cena { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); }
 /* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem */
 .cena { position: absolute; left: 50%; bottom: 0; width: max(100vw, var(--h)); height: calc(var(--h) + var(--p)); translate: -50% 0; }
+/* camadas que trocam aos poucos: só a transparência muda no giro (js/roda.js); sem JS, valem os lados em repouso */
+.roda-ceu { position: absolute; inset: 0; background: var(--pink); opacity: 0; }
+.terra-b { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(var(--b2) 0 3deg, color-mix(in srgb, var(--b2) 88%, var(--graphite)) 3deg 3.4deg); --b2: color-mix(in srgb, var(--blue) 55%, var(--cream)); opacity: 0; }
+.roda[data-lado=educadores] :is(.roda-ceu, .terra-b) { opacity: 1; }
+/* cada peça que se mexe vira camada própria: o celular só move, sem redesenhar */
+/* só o que se move muito vira camada (camadas demais estouram a memória do iPhone) */
+.roda-w, .cena, .terra-b, .roda-ceu, .roda-ar, .roda-card { will-change: transform, opacity; }
 .palco { position: absolute; inset: 0 0 var(--p) 0; }
 /* camadas de papel: quanto maior --z, mais à frente e mais ela se desloca no giro */
 .cam { position: absolute; inset: 0; translate: calc(sin(var(--a)) * var(--z, 0) * 1.5vw) 0; }
