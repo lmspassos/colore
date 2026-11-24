@@ -19,6 +19,10 @@
 .m1 { left: 0; top: 0; } .m2 { right: 0; top: 10%; } .m3 { left: 21%; bottom: 0; }
 .mix-hint { position: absolute; left: 0; right: 0; bottom: -2.25rem; text-align: center; font-family: var(--fd); font-weight: 500; font-size: .9375rem; margin: 0; color: var(--graphite-soft); }
 
+/* Foto em moldura de arco que sobe e se endireita ao rolar */
+.pi-ph { margin-block: 0 clamp(2rem, 5cqi, 4rem); display: block; }
+.pi-ph img { display: block; width: 100%; max-width: 64rem; margin-inline: auto; aspect-ratio: 16 / 8; object-fit: cover; border: 3px solid var(--graphite); border-radius: 999px 999px 2rem 2rem; }
+
 /* Por que receber: arte, descoberta e aprendizagem se aproximam */
 .apx { position: relative; width: 100%; max-width: 34rem; aspect-ratio: 1 / .78; margin: 3rem auto 2.5rem; }
 .ap { position: absolute; width: 56%; aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--graphite); mix-blend-mode: multiply; display: grid; font-family: var(--fd); font-weight: 600; font-size: clamp(.9375rem, 1.6cqi, 1.375rem); color: var(--graphite); }
@@ -37,12 +41,12 @@
 .ages li.pp { background: var(--cream); }
 .ages-l { margin: .75rem 0 0; text-align: center; font-family: var(--fd); font-weight: 600; font-size: 1.25rem; }
 .chips2 { list-style: none; margin: 1.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .625rem; }
-.chips2 li { padding: .5rem 1.125rem; border: 2px solid var(--graphite); border-radius: 999px; background: var(--cream); font-family: var(--fd); font-weight: 600; }
+.chips2 li { rotate: var(--tl, 0deg); padding: .5rem 1.125rem; border: 2px solid var(--graphite); border-radius: 999px; background: var(--cream); font-family: var(--fd); font-weight: 600; }
 
 /* Objetivos: cada arco se colore ao ser descoberto */
 .pi-goals-h { margin-bottom: 2rem; }
 .archs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
-.arch { aspect-ratio: .72; border: 3px solid var(--graphite); border-radius: 999px 999px 2rem 2rem; padding: 2rem 1.25rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; font-size: 1.0625rem; line-height: 1.35; color: var(--graphite); }
+.arch { --i: 0; aspect-ratio: .72; border: 3px solid var(--graphite); border-radius: 999px 999px 2rem 2rem; padding: 2rem 1.25rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; font-size: 1.0625rem; line-height: 1.35; color: var(--graphite); }
 .arch i { order: -1; display: grid; place-items: center; width: 70%; aspect-ratio: 1; border: 2px solid var(--graphite); border-radius: 50%; background: var(--paper); }
 .arch i svg { width: 78%; height: 78%; stroke: var(--graphite); stroke-width: 2.5; stroke-linejoin: round; }
 .arch i .fo { fill: var(--orange); } .arch i .fy { fill: var(--yellow); } .arch i .fb { fill: var(--blue); } .arch i .fp { fill: var(--pink); } .arch i .fg { fill: var(--green); } .arch i .fk { fill: var(--graphite); } .arch i .fw { fill: var(--paper); }
@@ -82,11 +86,19 @@
 /* Movimento só com suporte e sem preferência por menos movimento */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
+    .mc { animation: pi-par linear both; animation-timeline: scroll(root); animation-range: 0 70vh; }
+    .m1 { --py: -4; } .m2 { --py: 7; } .m3 { --py: -9; }
+    .pi-ph img { animation: pi-rise linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
+    .chips2 li { animation: pi-drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
     .ap { animation: pi-join linear both; animation-timeline: view(); animation-range: entry 10% cover 50%; }
     .a1 { --dx: -42%; --dy: -12%; } .a2 { --dx: 42%; --dy: -12%; } .a3 { --dx: 0%; --dy: 40%; }
     .ap-c { animation: pi-fade linear both; animation-timeline: view(); animation-range: cover 40% cover 55%; }
     .ages li { animation: pi-grow linear both; animation-timeline: view(); animation-range: entry calc(var(--n) * 6%) cover calc(22% + var(--n) * 6%); }
     .arch { animation: pi-color linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
+    .arch:nth-child(2) { --i: 1; } .arch:nth-child(3) { --i: 2; } .arch:nth-child(4) { --i: 3; }
+    @container site (min-width: 52.01rem) {
+      .arch { animation: pi-color linear both, pi-fan linear both; animation-timeline: view(), view(); animation-range: entry 10% cover 40%, entry 0% cover 35%; }
+    }
     .flow::after { animation: pi-draw linear both; animation-timeline: view(); animation-range: cover 18% cover 72%; }
     .fs .num { animation: pi-color linear both; animation-timeline: view(); animation-range: entry 30% cover 40%; }
     .pi-road { view-timeline: --rd block; height: 280vh; }
@@ -104,3 +116,7 @@
 @keyframes pi-roll { from { left: 6%; rotate: 0deg; } to { left: 94%; rotate: 900deg; } }
 @keyframes pi-trail { from { scale: 0 1; } }
 @keyframes pi-stop { to { scale: 1.6; background: var(--c); } }
+@keyframes pi-par { to { margin-top: calc(var(--py) * 1rem); } }
+@keyframes pi-rise { from { scale: .8; rotate: -3deg; translate: 0 4rem; } }
+@keyframes pi-drift { from { translate: 0 calc(var(--sp) * 2.5rem); } to { translate: 0 calc(var(--sp) * -2.5rem); } }
+@keyframes pi-fan { from { translate: calc((1.5 - var(--i)) * 105%) calc(abs(var(--i) - 1.5) * 1rem); rotate: calc((var(--i) - 1.5) * 9deg); } }
