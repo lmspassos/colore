@@ -1,32 +1,104 @@
 /* a-exposicao-2: camada de estilo sobre a-exposicao.css. Só sobrescreve.
-   Referência: mundo de brincar (capítulos de cor cheios, tipografia de cartaz, baralho de cartões,
-   palavra gigante, navegação flutuante). Cores só por token; formas circulares. */
+   Referência: "mundo de brincar" — palco de abertura com cartão central, capítulos de cor cheios,
+   baralho de cartões, palavra gigante, painel claro de informações, botões em pílula,
+   adesivos e fechamento com identidade monumental.
+   Cores só por token (nada de hex); formas circulares; Fredoka + Codec. */
 
-/* Navegação flutuante: cápsula + controles redondos soltos sobre a cena */
+/* ── Navegação flutuante: cápsula + controles redondos soltos sobre a cena ── */
 .hdr { top: .75rem; margin-bottom: -4.5rem; background: transparent; border-bottom: 0; }
 :root .hdr.bg-pink { border: 0; }
 .hdr.oculto { transform: translateY(calc(-100% - 1.5rem)); }
 .hdr-in { padding-block: .5rem; }
-@media (width > 67.5rem) { .nav-wrap { background: var(--paper); border: 2px solid var(--graphite); border-radius: 999px; padding: .1875rem; } }
 .ibtn, .search { background: var(--paper); }
-.phero { padding-top: calc(4.5rem + clamp(2rem, 4cqi, 4rem)); }
+@media (width > 67.5rem) {
+  .nav-wrap { background: var(--paper); border: 2px solid var(--graphite); border-radius: 999px; padding: .1875rem; }
+  /* ação de destaque, em laranja, separada visualmente dos demais itens */
+  .nav a[href="/contato"]:not(:hover):not(:focus-visible):not([aria-current=page]) { background: var(--orange); }
+}
 
-/* Títulos de cartaz: maiúsculas, entrelinha curta (só em títulos curtos; parágrafos ficam em caixa normal) */
-.phero .d1, .end .d1 { font-size: clamp(2.75rem, 6.5cqi, 6.25rem); line-height: .88; letter-spacing: 0; text-transform: uppercase; }
+/* ── Títulos de cartaz: maiúsculas e entrelinha curta (só em títulos; parágrafos em caixa normal) ── */
+.stage-card .d1, .end .d1 { font-size: clamp(2.5rem, 5.2cqi, 4.5rem); line-height: .88; letter-spacing: 0; text-transform: uppercase; }
+.end .d1 { font-size: clamp(2.75rem, 6.5cqi, 6.25rem); }
 .d2 { font-size: clamp(1.875rem, 4.4cqi, 3.75rem); line-height: .92; letter-spacing: 0; text-transform: uppercase; }
 
-/* Palavra-escultura: slogan gigante que sangra a largura e passa por trás do bloco seguinte */
-.gword { position: relative; z-index: 0; width: 100cqi; margin: clamp(2rem, 5cqi, 5rem) 0 -.3em calc(50% - 50cqi); color: var(--blue); font-family: var(--fd); font-weight: 700; font-size: clamp(3.75rem, 20cqi, 18rem); line-height: .8; letter-spacing: -.02em; pointer-events: none; user-select: none; }
+/* ── 1. Palco de abertura: cena de círculos em tela cheia + cartão laranja centralizado ── */
+.stage { position: relative; overflow: clip; padding: calc(clamp(24rem, 46cqi, 40rem) - 7rem) 0 clamp(3.5rem, 6cqi, 5.5rem); }
+.stage-art { position: absolute; inset: 0 0 auto 0; height: clamp(24rem, 46cqi, 40rem); }
+.sa { position: absolute; display: block; aspect-ratio: 1; border-radius: 50%; overflow: hidden; }
+.sa.ph { border: .4375rem solid var(--cream); }
+.sa.ph img { width: 100%; height: 100%; object-fit: cover; }
+.stage-art .tri { display: block; }
+/* nuvem: aglomerado de círculos chapados, sem sombra */
+.cloud { position: absolute; display: block; aspect-ratio: 2.4; background:
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 6% 100% / 30% 72% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 38% 0 / 38% 100% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 74% 100% / 32% 78% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 100% 100% / 22% 56% no-repeat; }
+/* carinha: dois olhos e um sorriso */
+.face { position: absolute; left: 50%; top: 50%; width: 34%; aspect-ratio: 1.5; translate: -50% -45%; background:
+  radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 8% 0 / 20% 30% no-repeat,
+  radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 92% 0 / 20% 30% no-repeat; }
+.face::after { content: ""; position: absolute; left: 22%; right: 22%; top: 46%; height: 42%; border: .3rem solid var(--fc, var(--graphite)); border-top: 0; border-radius: 0 0 999px 999px; }
+.stage-card { position: relative; z-index: 2; margin-inline: auto; width: min(100% - 2.5rem, 31rem); padding: 2.25rem 2.5rem 2.5rem; border-radius: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.stage-card .crumb { margin: 0; justify-content: center; }
+.stage-sub { font-family: var(--fd); font-weight: 500; font-size: 1.1875rem; line-height: 1.3; max-width: 24ch; }
+.down { display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; border: 2px solid var(--graphite); background: var(--paper); color: var(--graphite); transition: transform .4s var(--ease), background .25s; }
+.down:hover, .down:focus-visible { background: var(--yellow); transform: translateY(.25rem); }
+@container site (max-width: 35rem) { .stage-card { padding: 1.75rem 1.5rem 2rem; border-radius: 2.5rem; } }
+/* modos de daltonismo: o cartão não pode sumir no fundo nem perder o contraste do texto */
+:root[data-tema=protanopia] .stage-card, :root[data-tema=deuteranopia] .stage-card, :root[data-tema=acromatopsia] .sa { border: 2px solid var(--graphite); }
+:root[data-tema=tritanopia] .stage .stage-card, :root[data-tema=tritanopia] .stage .stage-card * { color: var(--graphite); }
+
+/* ── 2. Palavra-escultura + panorama: o slogan sangra a largura e passa por trás da foto ── */
+.gword { position: relative; z-index: 0; margin: clamp(2rem, 5cqi, 5rem) 0 -.08em; color: var(--blue); font-family: var(--fd); font-weight: 700; font-size: clamp(3.75rem, 20cqi, 18rem); line-height: .8; letter-spacing: -.02em; pointer-events: none; user-select: none; }
 .gword span { display: block; white-space: nowrap; }
 .gword span:nth-child(1) { margin-left: 3cqi; rotate: -3deg; }
 .gword span:nth-child(2) { margin-left: 12cqi; rotate: 2deg; }
-.origin { position: relative; z-index: 1; }
-/* acromatopsia: o azul vira creme sobre creme, então a letra ganha contorno */
 :root[data-tema=acromatopsia] .gword { -webkit-text-stroke: 3px var(--graphite); letter-spacing: .02em; }
+.pano { position: relative; z-index: 1; margin: 0 clamp(1rem, 3.3cqi, 3rem); height: clamp(20rem, 46cqi, 42rem); border-radius: clamp(2rem, 8cqi, 8rem); overflow: clip; background: var(--graphite); }
+.pano > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+.pano .tag { position: absolute; right: 1.25rem; top: 1.25rem; z-index: 2; background: var(--paper); color: var(--graphite); }
 
-/* Objetivos como baralho de discos: título, emblema e texto centrados, escalonados e sobrepostos */
+/* ── 3. Capítulo de cor cheio (Origem), em largura total ── */
+.chap { padding-block: clamp(4rem, 8cqi, 7rem); }
+.origin2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); gap: clamp(1.5rem, 4cqi, 3.5rem); align-items: center; }
+@container site (max-width: 51.25rem) { .origin2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Adesivos: formas circulares com borda clara, girados ── */
+.stk { position: absolute; z-index: 2; width: clamp(4.5rem, 9cqi, 7.5rem); aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 .5rem var(--paper); pointer-events: none; }
+.stk-sun { right: clamp(1.25rem, 8cqi, 9rem); top: clamp(2rem, 4cqi, 3.5rem); background: var(--yellow); rotate: -12deg; }
+.stk-dots { right: clamp(1.25rem, 6cqi, 7rem); top: clamp(2rem, 4cqi, 3.5rem); background: radial-gradient(var(--graphite) 0 .2rem, transparent .22rem) 0 0 / 1.1rem 1.1rem, var(--orange); rotate: 14deg; }
+:root[data-tema=tritanopia] .stk-sun { --fc: var(--cream); }
+
+/* ── Objetivos: baralho de discos, escalonados e sobrepostos ── */
 .objs:not(.descobrem) { gap: 0; padding-bottom: 2.5rem; align-items: start; }
 .objs:not(.descobrem) .obj { flex-direction: column; justify-content: center; gap: .75rem; width: min(100%, 19.5rem); aspect-ratio: 1; margin: -.75rem auto; padding: 2rem; border-radius: 50%; background: var(--c); text-align: center; font-weight: 600; font-size: clamp(1.125rem, 1.7cqi, 1.3125rem); }
 @container site (min-width: 60.0625rem) { .objs:not(.descobrem) .obj:nth-child(3n+2) { margin-top: 2rem; } }
 .objs:not(.descobrem) .obj i, .objs:not(.descobrem) .obj:hover i { width: 2.75rem; height: 2.75rem; background: radial-gradient(circle, var(--graphite) 0 .4375rem, var(--cream) .4375rem); border: 2px solid var(--graphite); transform: none; }
 :root[data-tema=tritanopia] .objs:not(.descobrem) .obj.c-ye { color: var(--cream); }
+
+/* ── Painel claro de informações práticas (Atividades) e do material ── */
+.panel2 { background: var(--paper); border: 2px solid var(--graphite); border-radius: clamp(2rem, 5cqi, 4rem); padding: clamp(1.5rem, 4cqi, 3.5rem); }
+.panel2 .concept + .concept { margin-top: clamp(1.5rem, 3cqi, 2.5rem); padding-top: clamp(1.5rem, 3cqi, 2.5rem); border-top: 2px dashed var(--graphite-soft); }
+.dlband .dl { background: var(--paper); border-radius: clamp(2rem, 5cqi, 4rem); padding: clamp(1.75rem, 4cqi, 3.5rem); }
+
+/* ── Botões: pílula de conversão em azul (o ponto de tinta do hover continua) ── */
+.btn { background: var(--blue); color: var(--graphite); }
+.btn.lt { background: var(--cream); }
+:root[data-tema=acromatopsia] .btn { box-shadow: inset 0 0 0 2px var(--graphite); }
+
+/* ── Fechamento: mundo verde com o destino em letras grandes ── */
+.end { background: var(--green); }
+
+/* ── Rodapé monumental: painel claro dentro do mundo verde, com a identidade em escala enorme ── */
+.ftr { background: var(--green); color: var(--graphite); padding: 0 0 clamp(1rem, 2.4cqi, 2rem); }
+.ftr :focus-visible { outline-color: var(--graphite); }
+.ftr .wrap { width: auto; max-width: none; margin-inline: clamp(1rem, 3.3cqi, 3rem); padding: clamp(2rem, 4cqi, 3.5rem) clamp(1.5rem, 4cqi, 3.5rem) 1.5rem; background: var(--paper); border-radius: clamp(2rem, 5cqi, 4rem); }
+.ftr-g img { display: none; }
+.rodape-titulo { color: var(--graphite-soft); font-size: .875rem; letter-spacing: .04em; text-transform: uppercase; }
+.flinks a, .ftr-b a { color: var(--graphite); }
+.ftr-dots { margin-top: clamp(2rem, 4cqi, 3rem); }
+.ftr-mark { display: block; width: 100%; height: auto; margin-top: clamp(1.5rem, 4cqi, 3rem); }
+.ftr-b { margin-top: 1.5rem; padding-top: 0; border-top: 0; color: var(--graphite-soft); }
+:root[data-tema=tritanopia] .site .ftr .rodape-titulo { color: var(--graphite); }
+:root[data-tema=acromatopsia] .ftr .wrap { border: 2px solid var(--graphite); }
