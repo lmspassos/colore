@@ -311,21 +311,11 @@ html { scroll-behavior: smooth; }
   .conc-dots li:nth-child(4) { margin-left: 0; }
 }
 
-/* Objetivos como cartões (referência): placa colorida atrás, ilustração de círculos, título colorido e texto abaixo */
-.obj-block .objs .obj { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: .9rem; aspect-ratio: auto; width: min(100%, 22rem); padding: 2rem 1.75rem 2.25rem; border: 0; border-radius: 2.5rem; background: transparent; color: var(--graphite); text-align: center; font-weight: 500; line-height: 1.25; font-size: clamp(1.0625rem, 1.5cqi, 1.25rem); }
-.obj-block .objs .obj::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--paper); box-shadow: 0 .25rem 0 var(--graphite); }
-.obj-block .objs .obj:hover { background: transparent; }
-.obj-block .objs .obj::before { content: ""; position: absolute; inset: 0; z-index: -2; border-radius: inherit; background: var(--c); rotate: 5deg; }
-.obj-block .objs .obj:nth-child(even)::before { rotate: -5deg; }
-.obj-block .objs .obj i, .obj-block .objs .obj:hover i { position: relative; flex: none; width: 9rem; height: 7rem; border: 0; border-radius: 0; background: none; transform: none; order: -1; }
-.obj-block .objs .obj i::before, .obj-block .objs .obj i::after { content: ""; position: absolute; border-radius: 50%; }
-.obj-block .objs .obj i::before { left: 0; top: 0; width: 6.5rem; aspect-ratio: 1; background: var(--c); border: 2px solid var(--graphite); }
-.obj-block .objs .obj i::after { right: 0; bottom: 0; width: 4.25rem; aspect-ratio: 1; background: var(--c2, var(--blue)); border: 2px solid var(--graphite); }
-.obj-block .objs .obj:nth-child(5n+1) { --c2: var(--yellow); }
-.obj-block .objs .obj:nth-child(5n+2) { --c2: var(--pink); }
-.obj-block .objs .obj:nth-child(5n+3) { --c2: var(--green); }
-.obj-block .objs .obj:nth-child(5n+4) { --c2: var(--orange); }
-.obj-block .objs .obj:nth-child(5n+5) { --c2: var(--blue); }
-.obj .ot { order: -2; display: block; font-family: var(--fd); font-weight: 700; font-size: 2.4em; line-height: 1; color: var(--c); paint-order: stroke fill; -webkit-text-stroke: .14em var(--graphite); }
+/* Objetivos como círculos coloridos (placa sobreposta ao baralho): título, ícone do conteúdo e texto abaixo */
+.obj-block .objs .obj { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; aspect-ratio: 1; width: min(100%, 21rem); padding: 3.25rem; border: 2px solid var(--graphite); border-radius: 50%; background: var(--c); color: var(--graphite); text-align: center; font-weight: 500; line-height: 1.2; font-size: clamp(1rem, 1.4cqi, 1.1875rem); }
+.obj-block .objs .obj:hover { background: var(--c); }
+.obj-block .objs .obj i, .obj-block .objs .obj:hover i { flex: none; order: -1; display: grid; place-items: center; width: 4.5em; height: 4.5em; border: 2px solid var(--graphite); border-radius: 50%; background: var(--paper); transform: none; }
+.obj i svg { width: 62%; height: 62%; fill: none; stroke: var(--graphite); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.obj .ot { order: -2; display: block; font-family: var(--fd); font-weight: 700; font-size: 1.9em; line-height: 1; color: var(--paper); paint-order: stroke fill; -webkit-text-stroke: .14em var(--graphite); }
 :root[data-tema=tritanopia] .obj-block .objs .obj.c-ye { color: var(--graphite); }
-.obj-block .objs.deck .obj { width: min(84vw, 30rem); font-size: 1.45em; gap: 1.1rem; padding: 2.25rem 2rem 2.5rem; }
+.obj-block .objs.deck .obj { align-self: center; justify-self: center; width: min(86vw, 30rem); font-size: min(1.5rem, 5vw); }
