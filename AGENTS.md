@@ -6,7 +6,7 @@ Site institucional da Colorê, exposição educativa e itinerante sobre cores e 
 Objetivo: apresentar a exposição e captar instituições (escolas, museus, centros culturais) interessadas em recebê-la.
 Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda está em definição: use placeholders marcados com `TODO(conteudo):`.
 
-**Leia [docs/conceito-colore.md](docs/conceito-colore.md) antes de escrever textos, escolher imagens ou decidir estrutura.** É a referência de conceito, propósito, público, tom da marca e estrutura do site. Regra central: a Colorê **não** é uma exposição sobre daltonismo (ele é só o ponto de partida), não é contemplativa e não é brinquedoteca nem oficina de pintura. Não trate como definido o que o documento marca como "em desenvolvimento" ou "a definir".
+**Leia [docs/base-do-projeto.md](docs/base-do-projeto.md) (fonte de verdade: pesquisa, marca, identidade visual, estações do percurso e o que ainda não está definido, extraído do Relatório de Desenvolvimento) e [docs/conceito-colore.md](docs/conceito-colore.md) antes de escrever textos, escolher imagens ou decidir estrutura.** É a referência de conceito, propósito, público, tom da marca e estrutura do site. Regra central: a Colorê **não** é uma exposição sobre daltonismo (ele é só o ponto de partida), não é contemplativa e não é brinquedoteca nem oficina de pintura. Não trate como definido o que os documentos marcam como "em desenvolvimento", "a definir" ou pendente. Em conflito de identidade visual, vale o relatório (base-do-projeto.md §4), não o que o site já tem.
 
 ## Stack
 

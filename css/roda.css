@@ -6,7 +6,7 @@
 @property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
 
 /* céu único: passa do azul (instituições) ao rosa (educadores) conforme a roda gira */
-.roda { --cw: max(100vw, var(--h)); --R: calc(var(--h) * .36 + var(--p)); background: var(--blue); contain: paint; --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.roda { --cw: min(max(100vw, var(--h)), calc(var(--h) * 1.5)); --R: calc(var(--h) * .44 + var(--p)); background: var(--blue); contain: paint; --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda[data-lado=instituicoes] { --a: 0deg; }
 .roda[data-lado=educadores] { --a: 180deg; }
 .roda.arrasta { cursor: grabbing; }
@@ -19,13 +19,13 @@
 .roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 0; height: 0; rotate: var(--a); }
 .fatia { position: absolute; left: 0; top: 0; width: 0; height: 0; }
 /* chão em forma de pequeno planeta: gira com a roda, está sempre no palco e muda de cor junto com o céu */
-.terra { --base: color-mix(in srgb, var(--green) 55%, var(--cream)); position: absolute; left: 0; top: 0; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
+.terra { --base: color-mix(in srgb, var(--green) 55%, var(--cream)); position: absolute; left: 0; top: 0; width: calc(2 * var(--R)); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
 .f-edu { rotate: 180deg; }
 /* a transparência fica no cenário (do tamanho da tela), não na metade da roda */
 .f-inst .cena { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
 .f-edu .cena { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); }
-/* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem */
-.cena { position: absolute; left: 50%; bottom: 0; width: max(100vw, var(--h)); height: calc(var(--h) + var(--p)); translate: -50% 0; }
+/* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem; em tela larga e baixa (notebook) ela não passa de 1,5x a altura, para não ficar gigante */
+.cena { position: absolute; left: 50%; bottom: 0; width: var(--cw); height: calc(var(--h) + var(--p)); translate: -50% 0; }
 /* camadas que trocam aos poucos: só a transparência muda no giro (js/roda.js); sem JS, valem os lados em repouso */
 .roda-ceu { position: absolute; inset: 0; background: var(--pink); opacity: 0; }
 .terra-b { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(var(--b2) 0 3deg, color-mix(in srgb, var(--b2) 88%, var(--graphite)) 3deg 3.4deg); --b2: color-mix(in srgb, var(--blue) 55%, var(--cream)); opacity: 0; }
@@ -44,6 +44,7 @@
 /* peça presa à borda do chão: --g = ângulo, --d = diâmetro (fração da largura da cena), --up = quanto fica acima do chão */
 .arco { position: absolute; left: 50%; top: 100%; width: 0; height: 0; rotate: var(--g); }
 .arco .s { --x: calc(var(--cw) * var(--d) * -.5); --y: calc(-1 * var(--R) - var(--cw) * var(--d) * var(--up)); --w: calc(var(--cw) * var(--d)); box-shadow: none; }
+.arco .s.pg { box-shadow: .375rem .375rem 0 var(--sombra); }
 .arco .arbusto { box-shadow: 0 -.375rem 0 var(--sombra) inset; }
 
 /* formas recortadas (posição e tamanho em % do palco) */
@@ -89,9 +90,9 @@
 .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 13%; border-top: 3px solid var(--graphite); background: repeating-linear-gradient(90deg, var(--yellow) 0 5rem, color-mix(in srgb, var(--yellow) 78%, var(--graphite)) 5rem 5.2rem); }
 
 /* cartão: vira como moeda conforme a roda gira (|cos|: inteiro em repouso, fino no meio da volta, quando troca de lado) */
-.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(25rem, 80%); translate: -50% 0; rotate: -3deg; scale: max(cos(var(--a)), -1 * cos(var(--a))) 1; display: flex; flex-direction: column; align-items: center; gap: .75rem; padding: clamp(1.25rem, 3cqi, 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
+.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(22rem, 80%); translate: -50% 0; rotate: -3deg; scale: max(cos(var(--a)), -1 * cos(var(--a))) 1; display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: clamp(1rem, min(3cqi, 3svh), 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
 .roda-card .crumb { margin: 0; justify-content: center; }
-.roda-card h1 { margin: 0; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, 5.5cqi, 4.5rem); line-height: .9; letter-spacing: -.03em; }
+.roda-card h1 { margin: 0; font-family: var(--fd); font-weight: 700; font-size: clamp(2.25rem, min(5.5cqi, 7svh), 4.5rem); line-height: .9; letter-spacing: -.03em; }
 .roda-card .tag { background: var(--cream); border-width: 2px; }
 
 /* setas: links de verdade para a outra página */
