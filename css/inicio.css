@@ -174,7 +174,6 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
 .trilha-ativa .trilha{visibility:visible}
 .trilha-ativa .logo-anim .lt,.trilha-ativa .logo-anim:hover .lt{animation:none}
 :root[data-tema=tritanopia] .trilha path,:root[data-tema=acromatopsia] .trilha path{opacity:.25}
-@container site (max-width:56.25rem){.trilha{display:none}}
 
 /* Fechamento: bolinhas com gravidade (js/bolinhas.js) */
 .close-art.pit{position:absolute;inset:0;justify-self:stretch;z-index:1;max-width:none;width:auto;aspect-ratio:auto;touch-action:pan-y;user-select:none}

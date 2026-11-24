@@ -21,8 +21,6 @@
   let comp = 0, topo = 0, fim = 1, w0 = 1;
   const mede = () => {
     const m = main.getBoundingClientRect(), y0 = scrollY + m.top;
-    trilha.hidden = m.width < 800; // shortcut: em tela estreita a trilha some (não há laterais livres), revisar se houver design de celular
-    if (trilha.hidden) { html.classList.remove("trilha-ativa"); return; }
     // x do triângulo da logo, medido sem o pulo da animação (getBBox ignora o transform do CSS)
     const sv = lt.ownerSVGElement, ctm = sv.getScreenCTM(), pt = sv.createSVGPoint();
     pt.x = bb.x + bb.width / 2; pt.y = bb.y + bb.height; // base do triângulo
@@ -54,7 +52,6 @@
   };
 
   const anda = () => {
-    if (trilha.hidden) return;
     const ativa = scrollY > 0;
     html.classList.toggle("trilha-ativa", ativa);
     if (!ativa) return;
