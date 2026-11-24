@@ -47,7 +47,7 @@
     ceu.forEach((el) => (el.style.opacity = ((1 - cs) / 2).toFixed(3)));
     cenaI.style.opacity = lim(0.5 + cs * 0.9).toFixed(3);
     cenaE.style.opacity = lim(0.5 - cs * 0.9).toFixed(3);
-    cams.forEach(([el, z, k]) => (el.style.translate = `${(sn * z * k * 1.5).toFixed(2)}vw 0`));
+    cams.forEach(([el, z, k]) => (el.style.rotate = `${(sn * z * k * 0.6).toFixed(2)}deg`));
     ar.style.translate = `${(s2 * 20).toFixed(2)}vw 0`;
     corts.forEach((el) => (el.style.translate = `${(s2 * 0.75).toFixed(3)}rem 0`));
     card.style.scale = `${Math.abs(cs).toFixed(3)} 1`;
