@@ -17,7 +17,7 @@
         for (const ch of w) {
           const l = document.createElement("span"); l.className = "gl"; l.textContent = ch; l.style.setProperty("--i", idx++);
           l.style.cssText += `;--dx:${(rnd() * 3).toFixed(1)}rem;--dy:${(rnd() * 2 + 3.5).toFixed(1)}rem;--r:${Math.round(rnd() * 28)}deg`;
-          if (big) l.style.cssText += `;--rr:${Math.round(rnd() * 44)}deg;--ry:${(rnd() * .3).toFixed(2)}em`; // repouso torto, como na referência
+          if (big) l.style.cssText += `;--rr:${Math.round(rnd() * 28)}deg;--ry:${(rnd() * .2).toFixed(2)}em`; // repouso torto, como na referência
           p.append(l);
         }
         frag.append(p);

@@ -249,7 +249,7 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 [id] { scroll-margin-top: 6rem; }
 /* encaixe da foto: letras por cima, foto sem recorte animado */
-.gword { z-index: 2; margin-bottom: -.2em; }
+.gword { z-index: 2; margin-bottom: .12em; }
 .pano { z-index: 1; animation: none !important; clip-path: none; }
 
 /* camadas em círculos concêntricos (referência: cena em camadas que se abre sobre o cartão) */
@@ -280,5 +280,8 @@ html { scroll-behavior: smooth; }
   }
 }
 
-.gword { letter-spacing: -.05em; }
+.gword { letter-spacing: .01em; }
+.gword.g2 { color: var(--orange); margin: clamp(1.5rem, 4cqi, 4rem) 0 clamp(3rem, 6cqi, 6rem); text-align: right; }
+.gword.g2 > span { margin-left: 0; margin-right: 4cqi; }
+.gword:not(.g2) { margin-top: clamp(1.5rem, 4cqi, 4rem); }
 .gword .gl { transform-origin: 50% 70%; }
