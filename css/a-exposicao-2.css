@@ -266,3 +266,8 @@ html { scroll-behavior: smooth; }
 .pin .intro .cloud-bg { animation: none; translate: calc(var(--q, 0) * -45cqi) calc(var(--q, 0) * -8cqi); }
 .pin .intro .cloud-bg.cb2 { translate: calc(var(--q, 0) * 45cqi) calc(var(--q, 0) * -8cqi); }
 .pin .intro .intro-dot { scale: calc(1 - var(--q, 0)); }
+
+/* ── Ritmo de seções: faixas coloridas separadas por creme e bordas recortadas ── */
+.prop2.bg-yellow { background: var(--yellow); }
+.galband { padding-bottom: clamp(3rem, 6cqi, 5.5rem); }
+.dlband { padding-top: clamp(3rem, 6cqi, 5.5rem); }
