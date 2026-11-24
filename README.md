@@ -1,19 +1,18 @@
 # Colorê
 
 Site institucional da Colorê, exposição educativa e itinerante sobre cores e percepção (crianças de 4 a 8 anos).
-HTML e CSS puros. Regras do projeto: [AGENTS.md](AGENTS.md).
+HTML, CSS e JavaScript puros (`css/` e `js/`). Regras do projeto: [AGENTS.md](AGENTS.md).
 
 Online: https://projeto-colore.pages.dev/
 
 ## Ver no computador
 
-Os links começam com `/colore/`, então abra por um servidor local na pasta **acima**:
+Os links começam com `/` (o site mora na raiz), então sirva a pasta do projeto:
 
 ```
-cd ..
 npx serve
 ```
-e acesse http://localhost:3000/colore/ (a pasta precisa se chamar `colore`).
+e acesse http://localhost:3000/.
 
 ## Publicar
 

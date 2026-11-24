@@ -4,347 +4,281 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.add("js");try{var d=document.documentElement,t=localStorage.getItem("colore-tema"),z=localStorage.getItem("colore-fonte");if(t)d.dataset.tema=t;if(z)d.style.fontSize=z+"%"}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos."
-    />
+    <meta name="description" content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Para educadores · Colorê</title>
-    <link rel="stylesheet" href="/_astro/BaseLayout.BFC50tiN.css" />
-    <style>
-      .page-header[data-astro-cid-b2i3gsw2] {
-        padding-block: var(--space-5);
-        color: var(--graphite);
-        position: relative;
-        overflow: hidden;
-      }
-      .container[data-astro-cid-b2i3gsw2] {
-        z-index: 1;
-        position: relative;
-      }
-      h1[data-astro-cid-b2i3gsw2] {
-        max-width: 22ch;
-        margin: 0 0 var(--space-1);
-      }
-      p[data-astro-cid-b2i3gsw2] {
-        max-width: 40rem;
-        margin: 0;
-        font-size: 1.25rem;
-      }
-      .yellow[data-astro-cid-b2i3gsw2] {
-        background: var(--yellow);
-      }
-      .blue[data-astro-cid-b2i3gsw2] {
-        background: var(--blue);
-      }
-      .pink[data-astro-cid-b2i3gsw2] {
-        background: var(--pink);
-      }
-      .orange[data-astro-cid-b2i3gsw2] {
-        background: var(--orange);
-      }
-      .green[data-astro-cid-b2i3gsw2] {
-        background: var(--green);
-      }
-      .circle[data-astro-cid-b2i3gsw2] {
-        background: var(--cream);
-        opacity: 0.55;
-        border-radius: 50%;
-        position: absolute;
-      }
-      .a[data-astro-cid-b2i3gsw2] {
-        width: 16rem;
-        height: 16rem;
-        top: -5rem;
-        right: -4rem;
-      }
-      .b[data-astro-cid-b2i3gsw2] {
-        background: var(--graphite);
-        opacity: 0.12;
-        width: 8rem;
-        height: 8rem;
-        bottom: -4rem;
-        right: 8rem;
-      }
-      .list[data-astro-cid-fg5fbhas] {
-        gap: var(--space-3);
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-      }
-      .item[data-astro-cid-fg5fbhas] {
-        padding: var(--space-3);
-        border: 3px solid var(--graphite);
-        border-radius: var(--radius);
-      }
-      .item[data-astro-cid-fg5fbhas] h2[data-astro-cid-fg5fbhas] {
-        margin-top: 0;
-        font-size: 1.5rem;
-      }
-      @media (width>=48rem) {
-        .list[data-astro-cid-fg5fbhas] {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="/galeria.css" />
-    <link rel="stylesheet" href="/animacoes.css" />
-    <script src="/header.js" defer></script>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/para-educadores.css" />
+    <script src="/js/base.js" defer></script>
+    <script src="/js/para-educadores.js" defer></script>
+    <script src="/js/galeria.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-    <header data-astro-cid-nen7h5rs>
-      <div class="container bar" data-astro-cid-nen7h5rs>
-        <button
-          class="menu-btn"
-          type="button"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="menu-lateral"
-        >
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        </button>
-        <a href="/" class="brand" data-astro-cid-nen7h5rs
-          ><img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="112"
-            height="35"
-            data-astro-cid-nen7h5rs
-        /></a>
-        <nav id="menu-lateral" aria-label="Principal" data-astro-cid-nen7h5rs>
-          <div class="drawer-top">
-            <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="112" height="35" />
-            <button class="menu-close" type="button" aria-label="Fechar menu">
-              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    <div class="prog" aria-hidden="true"></div>
+    <div class="site">
+      <header class="hdr bg-pink">
+        <div class="wrap hdr-in">
+          <nav class="nav-wrap" id="menu" aria-label="Principal">
+            <ul class="nav">
+              <li><a href="/" class="c-or"><i></i>Início</a></li>
+              <li><a href="/a-exposicao" class="c-ye"><i></i>A exposição</a></li>
+              <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
+              <li><a href="/para-educadores" class="c-pk" aria-current="page"><i></i>Para educadores</a></li>
+              <li><a href="/contato" class="c-gr"><i></i>Contato</a></li>
+            </ul>
+          </nav>
+          <div class="tools">
+            <form class="search" role="search" action="/busca">
+              <label for="q" class="sr-only">Buscar no site</label><input id="q" name="q" type="search" placeholder="Buscar…" /><button type="submit" aria-label="Buscar">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+              </button>
+            </form>
+            <div class="a11y">
+              <button class="ibtn a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
+              </button>
+              <div class="a11y-menu" id="a11y-menu">
+                <div id="a11y-principal">
+                  <button type="button" data-cores>Modo daltonismo</button>
+                  <button type="button" data-fonte="mais">Aumentar fonte</button>
+                  <button type="button" data-fonte="menos">Diminuir fonte</button>
+                  <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+                </div>
+                <div id="a11y-cores" hidden>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
+                  </div>
+                  <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+                </div>
+              </div>
+            </div>
+            <button class="ibtn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>
             </button>
           </div>
-          <ul data-astro-cid-nen7h5rs>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/" data-astro-cid-nen7h5rs>Início</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/a-exposicao" data-astro-cid-nen7h5rs>A exposição</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-instituicoes" data-astro-cid-nen7h5rs>Para instituições</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-educadores"
-                aria-current="page" data-astro-cid-nen7h5rs>Para educadores</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/contato" data-astro-cid-nen7h5rs>Contato</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="scrim"></div>
-        <div class="tools">
-        <form
-          class="search"
-          role="search"
-          action="/busca"
-          data-astro-cid-nen7h5rs
-        >
-          <label for="q" class="sr-only" data-astro-cid-nen7h5rs
-            >Buscar no site</label
-          ><input
-            id="q"
-            name="q"
-            type="search"
-            placeholder="Buscar…"
-            data-astro-cid-nen7h5rs
-          /><button type="submit" aria-label="Buscar" data-astro-cid-nen7h5rs>
-            <svg
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              aria-hidden="true"
-              data-astro-cid-nen7h5rs
-            >
-              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
-              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
-            </svg>
-          </button>
-        </form>
-        <div class="a11y">
-          <button class="a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
-            <span class="a11y-label">Acessibilidade</span>
-          </button>
-          <div class="a11y-menu" id="a11y-menu">
-            <div id="a11y-principal">
-              <button type="button" data-cores>Modo daltonismo</button>
-              <button type="button" data-fonte="mais">Aumentar fonte</button>
-              <button type="button" data-fonte="menos">Diminuir fonte</button>
-              <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+        </div>
+      </header>
+      <main id="conteudo" data-pagefind-body>
+        <section class="phero bg-pink" aria-labelledby="h-top">
+          <div class="wrap phero-g">
+            <div>
+              <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Para educadores</span></p>
+              <h1 class="d1" id="h-top">Para educadores</h1>
+              <p class="lead" style="margin:1.5rem 0 2.125rem">A experiência não termina na exposição. Descubra possibilidades para preparar a visita e continuar a conversa sobre as cores em sala de aula.</p>
+              <a class="btn c-cr" href="#visita">Antes, durante e depois <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
             </div>
-            <div id="a11y-cores" hidden>
-              <div class="a11y-row">
-                <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
-                <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
-              </div>
-              <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+            <div class="orb" aria-hidden="true">
+              <span class="c" style="left:0;top:14%;width:60%;height:60%;background:var(--yellow)"></span>
+              <span class="c" style="left:30%;top:0;width:64%;height:64%;background:var(--blue);mix-blend-mode:multiply"></span>
+              <div class="ph blob" style="left:22%;top:30%;width:58%;height:58%;z-index:3;border-radius:62% 38% 55% 45% / 48% 60% 40% 52%"><img src="/img/maos-no-papel.jpg" alt="" width="440" height="270" /></div>
+              <span class="c rot" style="left:76%;top:64%;width:18%;height:18%;background:var(--green);z-index:4"></span>
+              <svg class="tri spin-s" style="left:4%;top:76%;width:22%;z-index:5;--c:var(--orange)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
             </div>
           </div>
+        </section>
+        <div class="sc" style="--c:var(--pink)" aria-hidden="true"></div>
+
+        <section class="band" aria-labelledby="h-ped">
+          <div class="wrap ped">
+            <div class="ped-a rv">
+              <p class="kicker c-pk"><i></i>Abordagem</p>
+              <h2 class="d2" id="h-ped">Proposta pedagógica</h2>
+              <p class="lead" style="margin-top:1.375rem">A aprendizagem infantil ganha significado quando a criança participa da construção do conhecimento. A Colorê aproxima arte e educação por meio de uma abordagem experimental, investigativa e participativa. Em vez de apresentar respostas prontas, a exposição cria situações para observar, levantar hipóteses, testar possibilidades, conversar e criar.</p>
+              <ul class="verbs" aria-label="O que a exposição propõe">
+                <li class="verb c-ye">observar</li>
+                <li class="verb c-bl">levantar hipóteses</li>
+                <li class="verb c-pk">testar possibilidades</li>
+                <li class="verb c-gr">conversar</li>
+                <li class="verb c-or">criar</li>
+              </ul>
+            </div>
+            <div class="ped-b bg-yellow rv">
+              <h2 class="d3">Relação com a aprendizagem infantil</h2>
+              <p>Entre 4 e 8 anos, as crianças ampliam suas formas de perceber, comunicar, imaginar e compreender o mundo. A experiência respeita diferentes ritmos e valoriza a curiosidade, a experimentação e a expressão individual. O contato com cores, materiais, luzes e composições pode abrir oportunidades para observar relações, formular perguntas e compartilhar interpretações.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="band" id="visita" aria-labelledby="h-vis" style="padding-top:0">
+          <div class="wrap">
+            <div style="text-align:center">
+              <p class="kicker c-bl" style="justify-content:center"><i></i>A visita</p>
+              <h2 class="d2" id="h-vis">Antes, durante e depois</h2>
+            </div>
+            <div class="venn" role="tablist" aria-label="Momentos da visita" data-abas>
+              <button type="button" role="tab" class="vt c-ye" id="tab-0" aria-selected="true" aria-controls="painel-0"><small>Momento 1</small><span>Antes</span></button>
+              <button type="button" role="tab" class="vt c-bl" id="tab-1" aria-selected="false" aria-controls="painel-1" tabindex="-1"><small>Momento 2</small><span>Durante</span></button>
+              <button type="button" role="tab" class="vt c-pk" id="tab-2" aria-selected="false" aria-controls="painel-2" tabindex="-1"><small>Momento 3</small><span>Depois</span></button>
+            </div>
+
+            <div class="phase c-ye" id="painel-0" role="tabpanel" aria-labelledby="tab-0">
+              <div class="phase-top">
+                <h3 class="d3">Antes da visita</h3>
+                <p class="lead">Prepare o grupo para uma experiência de observação e descoberta. Não é necessário antecipar respostas ou ensinar previamente um conteúdo específico sobre cores. O mais importante é despertar a curiosidade e convidar as crianças a observar o que já conhecem.</p>
+              </div>
+              <div class="phase-body">
+                <h4 class="d4">Sugestões de preparação</h4>
+                <ul class="sugs">
+                  <li class="sug c-ye"><i></i><span>Convide as crianças a observar as cores presentes no caminho até a escola, no pátio ou na sala.</span></li>
+                  <li class="sug c-ye"><i></i><span>Proponha uma conversa: existem cores que parecem mudar dependendo da luz ou do lugar?</span></li>
+                  <li class="sug c-ye"><i></i><span>Peça que cada criança escolha uma cor de que gosta e conte o que ela faz lembrar, sem exigir uma justificativa única.</span></li>
+                  <li class="sug c-ye"><i></i><span>Apresente a visita como um espaço para experimentar, perguntar e descobrir, não como uma atividade com respostas certas.</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="phase c-bl" id="painel-1" role="tabpanel" aria-labelledby="tab-1">
+              <div class="phase-top">
+                <h3 class="d3">Durante a visita</h3>
+                <p class="lead">Acompanhe a curiosidade das crianças sem antecipar conclusões. Estimule a observação, escute as hipóteses e valorize diferentes interpretações. Perguntas abertas podem ajudar a ampliar a experiência.</p>
+              </div>
+              <div class="phase-body">
+                <h4 class="d4" style="margin-bottom:1.125rem">Perguntas abertas que podem ajudar</h4>
+                <ul class="bubbles">
+                  <li class="bub c-ye">“O que você percebeu?”</li>
+                  <li class="bub c-pk">“O que mudou?”</li>
+                  <li class="bub c-cr">“Como podemos experimentar de outro jeito?”</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="phase c-pk" id="painel-2" role="tabpanel" aria-labelledby="tab-2">
+              <div class="phase-top">
+                <h3 class="d3">Depois da visita</h3>
+                <p class="lead">Retome as descobertas e convide as crianças a compartilhar o que chamou sua atenção. A experiência pode continuar em sala por meio de conversas, registros visuais e novas experimentações. Mais do que reproduzir uma atividade da exposição, a proposta é manter viva a curiosidade despertada.</p>
+              </div>
+              <div class="phase-body">
+                <h4 class="d4">Sugestões de continuidade</h4>
+                <ul class="sugs">
+                  <li class="sug c-pk"><i></i><span><b>Mapa coletivo de descobertas:</b> registrar palavras, desenhos e perguntas que surgiram durante a visita.</span></li>
+                  <li class="sug c-pk"><i></i><span><b>Composição com recortes:</b> criar imagens a partir de formas e cores, observando como a organização altera a leitura visual.</span></li>
+                  <li class="sug c-pk"><i></i><span><b>Observação da luz:</b> comparar como um mesmo objeto pode parecer diferente em ambientes ou condições de iluminação distintas.</span></li>
+                  <li class="sug c-pk"><i></i><span><b>Ateliê de experimentação:</b> oferecer materiais diversos para que as crianças criem livremente, sem modelo obrigatório.</span></li>
+                </ul>
+                <p class="note"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16v.5"></path></svg>As atividades acima são sugestões complementares para educadores, não descrições das estações da exposição. Ajustar materiais e orientações conforme a faixa etária, o contexto e as condições da escola.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="band" aria-labelledby="h-cores" style="padding-top:0">
+          <div class="wrap">
+            <p class="kicker c-or"><i></i>Referências visuais</p>
+            <h2 class="d2" id="h-cores">Cores para experimentar</h2>
+            <div class="cores" data-galeria>
+              <button type="button" class="gt rv"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." data-legenda="Tintas em círculos" width="1200" height="675" loading="lazy" /><span class="cap">Tintas em círculos</span></button>
+              <button type="button" class="gt rv"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." data-legenda="Misturas de tinta" width="980" height="980" loading="lazy" /><span class="cap">Misturas de tinta</span></button>
+              <button type="button" class="gt rv"><img src="/img/materiais-de-cores.webp" alt="Mesa com cartões, círculos cromáticos, quebra-cabeça e arcos de madeira nas cores do arco-íris." data-legenda="Materiais de cores" width="1200" height="900" loading="lazy" /><span class="cap">Materiais de cores</span></button>
+            </div>
+            <p class="muted gal-nota">Imagens de referência do universo da exposição. A Colorê ainda está em desenvolvimento. Toque para ampliar.</p>
+          </div>
+        </section>
+
+        <section class="band" aria-labelledby="h-mat" style="padding-top:0">
+          <div class="wrap">
+            <div class="mat rv">
+              <div class="papers" aria-hidden="true">
+                <span style="left:0;top:.875rem;background:var(--blue);transform:rotate(-10deg)"></span>
+                <span style="left:1.375rem;top:.375rem;background:var(--yellow);transform:rotate(4deg)"></span>
+                <span style="left:2.5rem;top:1.125rem;background:var(--cream);transform:rotate(14deg)"></span>
+              </div>
+              <div>
+                <h2 class="d3" id="h-mat">Materiais para download</h2>
+                <p class="muted" style="margin-top:.5rem">Em breve, materiais complementares em PDF para apoiar a preparação da visita e ampliar as descobertas em sala de aula.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="sc up" style="--c:var(--green)" aria-hidden="true"></div>
+        <section class="band cta bg-green" aria-labelledby="h-cta">
+          <div class="wrap cta-g">
+            <div class="rv">
+              <h2 class="d1" id="h-cta">Leve a experiência para sua turma.</h2>
+              <p class="lead" style="margin:1.5rem 0 2.125rem">Quer conhecer a exposição ou conversar sobre uma visita com seus alunos? Entre em contato com a equipe da Colorê.</p>
+              <a class="btn c-ye" href="/contato">Fale com a Colorê <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </div>
+            <div class="cta-art" aria-hidden="true">
+              <span class="drift" style="left:4%;top:6%;width:60%;height:60%;background:var(--cream)"></span>
+              <span style="left:36%;top:36%;width:58%;height:58%;background:var(--pink);mix-blend-mode:multiply"></span>
+              <span style="left:0;top:70%;width:22%;height:22%;background:var(--yellow)"></span>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="ftr on-dark">
+        <div class="wrap">
+          <div class="ftr-g">
+            <div>
+              <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="205" height="64" />
+              <p class="ftr-tag">Exposição educativa e itinerante sobre cores e percepção.</p>
+            </div>
+            <nav class="rodape-mapa" aria-label="Mapa do site">
+              <div>
+                <h2 class="rodape-titulo">Colorê</h2>
+                <ul class="flinks">
+                  <li><a href="/" class="c-or"><i></i>Início</a></li>
+                  <li><a href="/#estacoes" class="c-ye"><i></i>As estações</a></li>
+                  <li><a href="/#faq" class="c-bl"><i></i>Perguntas frequentes</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">A exposição</h2>
+                <ul class="flinks">
+                  <li><a href="/a-exposicao" class="c-pk"><i></i>A exposição</a></li>
+                  <li><a href="/a-exposicao#sobre" class="c-gr"><i></i>De onde surgiu a ideia</a></li>
+                  <li><a href="/a-exposicao#metodologia" class="c-or"><i></i>Proposta educativa</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">Para você</h2>
+                <ul class="flinks">
+                  <li><a href="/para-instituicoes" class="c-ye"><i></i>Para instituições</a></li>
+                  <li><a href="/para-educadores" class="c-bl"><i></i>Para educadores</a></li>
+                  <li><a href="/contato" class="c-pk"><i></i>Contato</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="ftr-dots" aria-hidden="true"><i class="bg-orange"></i><i class="bg-yellow"></i><i class="bg-blue"></i><i class="bg-pink"></i><i class="bg-green"></i><i style="background:var(--cream)"></i></div>
+          <div class="ftr-b">
+            <p>© 2026 Colorê · Exposição educativa e itinerante sobre cores e percepção.</p>
+            <p><a href="/privacidade">Política de privacidade</a> · <a href="/contato">Contato</a></p>
+            <p>Font: Codec Family by <a href="http://www.zetafonts.com/collection/2102">Zetafonts</a></p>
+          </div>
         </div>
+      </footer>
+    </div>
+    <dialog class="lb" aria-label="Foto ampliada">
+      <div class="lb-card">
+        <img src="" alt="" />
+        <div class="lb-bar">
+          <span><span class="lb-cap"></span><small>Imagem de referência</small></span>
+          <span class="lb-btns">
+            <button class="ibtn" type="button" data-lb="prev" aria-label="Foto anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+            <button class="ibtn" type="button" data-lb="next" aria-label="Próxima foto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+            <button class="ibtn" type="button" data-lb="fechar" aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </span>
         </div>
       </div>
-    </header>
-    <main id="conteudo" data-pagefind-body>
-      <section class="page-header pink" data-astro-cid-b2i3gsw2>
-        <div class="container" data-astro-cid-b2i3gsw2>
-          <h1 data-astro-cid-b2i3gsw2>Para educadores</h1>
-          <p data-astro-cid-b2i3gsw2>
-            Materiais para preparar a visita e continuar a conversa sobre cores
-            em sala.
-          </p>
-        </div>
-        <!-- círculos do grafismo da marca, só decoração --><span
-          class="circle a"
-          aria-hidden="true"
-          data-astro-cid-b2i3gsw2
-        ></span
-        ><span
-          class="circle b"
-          aria-hidden="true"
-          data-astro-cid-b2i3gsw2
-        ></span>
-      </section>
-      <section class="section container prose">
-        <h2>Proposta pedagógica</h2>
-        <p>
-          A aprendizagem infantil é significativa quando a criança participa da
-          construção do conhecimento. A Colorê aproxima arte e educação por uma
-          abordagem experimental, investigativa e participativa: sem aula
-          expositiva, sem exercícios e sem respostas prontas.
-        </p>
-        <h2>Relação com a aprendizagem infantil</h2>
-        <p>
-          A faixa de 4 a 8 anos é um período importante para a percepção, a
-          criatividade, a comunicação e a autonomia. A exposição respeita o
-          ritmo de descoberta das crianças e valoriza a curiosidade, a
-          experimentação e a expressão individual.
-        </p>
-        <h2>Antes da visita</h2>
-        <p>TODO(conteudo): orientações para preparar as crianças.</p>
-        <h2>Atividades de cores para a sala de aula</h2>
-        <p>TODO(conteudo): sugestões de atividades.</p>
-        <h2>Depois da visita</h2>
-        <p>TODO(conteudo): possibilidades de continuidade em sala.</p>
-        <h2>Materiais para download</h2>
-        <p>Em breve, materiais complementares em PDF.</p>
-      </section>
-      <section class="section container">
-        <h2>Cores para experimentar</h2>
-        <ul class="gallery">
-          <li>
-            <img
-              src="/img/tintas-circulos.webp"
-              alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis."
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
-          </li>
-          <li>
-            <img
-              src="/img/criancas-pintando.webp"
-              alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores."
-              width="980"
-              height="980"
-              loading="lazy"
-            />
-          </li>
-          <li>
-            <img
-              src="/img/materiais-de-cores.webp"
-              alt="Mesa com cartões, círculos cromáticos, quebra-cabeça e arcos de madeira nas cores do arco-íris."
-              width="1200"
-              height="900"
-              loading="lazy"
-            />
-          </li>
-        </ul>
-        <p class="ref-note">
-          Imagens de referência do universo da exposição. A Colorê ainda está em
-          desenvolvimento.
-        </p>
-      </section>
-    </main>
-    <footer data-astro-cid-jo6i4kqk>
-      <div class="container rodape" data-astro-cid-jo6i4kqk>
-        <div class="rodape-marca" data-astro-cid-jo6i4kqk>
-          <img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="120"
-            height="35"
-            data-astro-cid-jo6i4kqk
-          />
-          <p data-astro-cid-jo6i4kqk>
-            Exposição educativa e itinerante sobre cores e percepção.
-          </p>
-        </div>
-        <nav class="rodape-mapa" aria-label="Mapa do site" data-astro-cid-jo6i4kqk>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Colorê</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/" data-astro-cid-jo6i4kqk>Início</a></li>
-              <li><a href="/#estacoes" data-astro-cid-jo6i4kqk>As estações</a></li>
-              <li><a href="/#faq" data-astro-cid-jo6i4kqk>Perguntas frequentes</a></li>
-            </ul>
-          </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>A exposição</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/a-exposicao" data-astro-cid-jo6i4kqk>A exposição</a></li>
-              <li><a href="/a-exposicao#sobre" data-astro-cid-jo6i4kqk>De onde surgiu a ideia</a></li>
-              <li><a href="/a-exposicao#metodologia" data-astro-cid-jo6i4kqk>Proposta educativa</a></li>
-            </ul>
-          </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Para você</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/para-instituicoes" data-astro-cid-jo6i4kqk>Para instituições</a></li>
-              <li><a href="/para-educadores" data-astro-cid-jo6i4kqk>Para educadores</a></li>
-              <li><a href="/contato" data-astro-cid-jo6i4kqk>Contato</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="rodape-fim" data-astro-cid-jo6i4kqk>
-          <p data-astro-cid-jo6i4kqk>© 2026 Colorê</p>
-          <p data-astro-cid-jo6i4kqk>
-            Font: Codec Family by
-            <a
-              href="http://www.zetafonts.com/collection/2102"
-              data-astro-cid-jo6i4kqk
-              >Zetafonts</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
+    </dialog>
   </body>
 </html>

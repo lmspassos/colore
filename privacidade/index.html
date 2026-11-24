@@ -4,284 +4,149 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.add("js");try{var d=document.documentElement,t=localStorage.getItem("colore-tema"),z=localStorage.getItem("colore-fonte");if(t)d.dataset.tema=t;if(z)d.style.fontSize=z+"%"}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos."
-    />
+    <meta name="description" content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Política de privacidade · Colorê</title>
-    <link rel="stylesheet" href="/_astro/BaseLayout.BFC50tiN.css" />
-    <style>
-      .page-header[data-astro-cid-b2i3gsw2] {
-        padding-block: var(--space-5);
-        color: var(--graphite);
-        position: relative;
-        overflow: hidden;
-      }
-      .container[data-astro-cid-b2i3gsw2] {
-        z-index: 1;
-        position: relative;
-      }
-      h1[data-astro-cid-b2i3gsw2] {
-        max-width: 22ch;
-        margin: 0 0 var(--space-1);
-      }
-      p[data-astro-cid-b2i3gsw2] {
-        max-width: 40rem;
-        margin: 0;
-        font-size: 1.25rem;
-      }
-      .yellow[data-astro-cid-b2i3gsw2] {
-        background: var(--yellow);
-      }
-      .blue[data-astro-cid-b2i3gsw2] {
-        background: var(--blue);
-      }
-      .pink[data-astro-cid-b2i3gsw2] {
-        background: var(--pink);
-      }
-      .orange[data-astro-cid-b2i3gsw2] {
-        background: var(--orange);
-      }
-      .green[data-astro-cid-b2i3gsw2] {
-        background: var(--green);
-      }
-      .circle[data-astro-cid-b2i3gsw2] {
-        background: var(--cream);
-        opacity: 0.55;
-        border-radius: 50%;
-        position: absolute;
-      }
-      .a[data-astro-cid-b2i3gsw2] {
-        width: 16rem;
-        height: 16rem;
-        top: -5rem;
-        right: -4rem;
-      }
-      .b[data-astro-cid-b2i3gsw2] {
-        background: var(--graphite);
-        opacity: 0.12;
-        width: 8rem;
-        height: 8rem;
-        bottom: -4rem;
-        right: 8rem;
-      }
-    </style>
-    <link rel="stylesheet" href="/animacoes.css" />
-    <script src="/header.js" defer></script>
+    <link rel="stylesheet" href="/css/base.css" />
+    <script src="/js/base.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-    <header data-astro-cid-nen7h5rs>
-      <div class="container bar" data-astro-cid-nen7h5rs>
-        <button
-          class="menu-btn"
-          type="button"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="menu-lateral"
-        >
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        </button>
-        <a href="/" class="brand" data-astro-cid-nen7h5rs
-          ><img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="112"
-            height="35"
-            data-astro-cid-nen7h5rs
-        /></a>
-        <nav id="menu-lateral" aria-label="Principal" data-astro-cid-nen7h5rs>
-          <div class="drawer-top">
-            <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="112" height="35" />
-            <button class="menu-close" type="button" aria-label="Fechar menu">
-              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    <div class="prog" aria-hidden="true"></div>
+    <div class="site">
+      <header class="hdr bg-pink">
+        <div class="wrap hdr-in">
+          <nav class="nav-wrap" id="menu" aria-label="Principal">
+            <ul class="nav">
+              <li><a href="/" class="c-or"><i></i>Início</a></li>
+              <li><a href="/a-exposicao" class="c-ye"><i></i>A exposição</a></li>
+              <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
+              <li><a href="/para-educadores" class="c-pk"><i></i>Para educadores</a></li>
+              <li><a href="/contato" class="c-gr"><i></i>Contato</a></li>
+            </ul>
+          </nav>
+          <div class="tools">
+            <form class="search" role="search" action="/busca">
+              <label for="q" class="sr-only">Buscar no site</label><input id="q" name="q" type="search" placeholder="Buscar…" /><button type="submit" aria-label="Buscar">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+              </button>
+            </form>
+            <div class="a11y">
+              <button class="ibtn a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
+              </button>
+              <div class="a11y-menu" id="a11y-menu">
+                <div id="a11y-principal">
+                  <button type="button" data-cores>Modo daltonismo</button>
+                  <button type="button" data-fonte="mais">Aumentar fonte</button>
+                  <button type="button" data-fonte="menos">Diminuir fonte</button>
+                  <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+                </div>
+                <div id="a11y-cores" hidden>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
+                  </div>
+                  <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+                </div>
+              </div>
+            </div>
+            <button class="ibtn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>
             </button>
           </div>
-          <ul data-astro-cid-nen7h5rs>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/" data-astro-cid-nen7h5rs>Início</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/a-exposicao" data-astro-cid-nen7h5rs>A exposição</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-instituicoes" data-astro-cid-nen7h5rs>Para instituições</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-educadores" data-astro-cid-nen7h5rs>Para educadores</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/contato" data-astro-cid-nen7h5rs>Contato</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="scrim"></div>
-        <div class="tools">
-        <form
-          class="search"
-          role="search"
-          action="/busca"
-          data-astro-cid-nen7h5rs
-        >
-          <label for="q" class="sr-only" data-astro-cid-nen7h5rs
-            >Buscar no site</label
-          ><input
-            id="q"
-            name="q"
-            type="search"
-            placeholder="Buscar…"
-            data-astro-cid-nen7h5rs
-          /><button type="submit" aria-label="Buscar" data-astro-cid-nen7h5rs>
-            <svg
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              aria-hidden="true"
-              data-astro-cid-nen7h5rs
-            >
-              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
-              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
-            </svg>
-          </button>
-        </form>
-        <div class="a11y">
-          <button class="a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
-            <span class="a11y-label">Acessibilidade</span>
-          </button>
-          <div class="a11y-menu" id="a11y-menu">
-            <div id="a11y-principal">
-              <button type="button" data-cores>Modo daltonismo</button>
-              <button type="button" data-fonte="mais">Aumentar fonte</button>
-              <button type="button" data-fonte="menos">Diminuir fonte</button>
-              <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+        </div>
+      </header>
+      <main id="conteudo" data-pagefind-body>
+        <section class="phero mini bg-blue" aria-labelledby="h-top">
+          <div class="wrap phero-g">
+            <div>
+              <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Política de privacidade</span></p>
+              <h1 class="d1" id="h-top">Política de privacidade</h1>
+              <p class="lead" style="margin-top:1.5rem">Como tratamos os dados que você envia pelo formulário.</p>
             </div>
-            <div id="a11y-cores" hidden>
-              <div class="a11y-row">
-                <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
-                <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
-              </div>
-              <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+            <div class="orb" aria-hidden="true">
+              <span class="c" style="left:6%;top:10%;width:62%;height:62%;background:var(--cream)"></span>
+              <span class="c" style="left:40%;top:36%;width:54%;height:54%;background:var(--yellow);mix-blend-mode:multiply"></span>
+              <span class="c" style="left:4%;top:70%;width:22%;height:22%;background:var(--graphite)"></span>
             </div>
           </div>
-        </div>
-        </div>
-      </div>
-    </header>
-    <main id="conteudo" data-pagefind-body>
-      <section class="page-header blue" data-astro-cid-b2i3gsw2>
-        <div class="container" data-astro-cid-b2i3gsw2>
-          <h1 data-astro-cid-b2i3gsw2>Política de privacidade</h1>
-          <p data-astro-cid-b2i3gsw2>
-            Como tratamos os dados que você envia pelo formulário.
-          </p>
-        </div>
-        <!-- círculos do grafismo da marca, só decoração --><span
-          class="circle a"
-          aria-hidden="true"
-          data-astro-cid-b2i3gsw2
-        ></span
-        ><span
-          class="circle b"
-          aria-hidden="true"
-          data-astro-cid-b2i3gsw2
-        ></span>
-      </section>
-      <section class="section container prose">
-        <h2>Quais dados coletamos</h2>
-        <p>
-          Nome, e-mail, instituição (se houver) e a mensagem que você escrever
-          no formulário.
-        </p>
-        <h2>Para que usamos</h2>
-        <p>Apenas para responder ao seu contato.</p>
-        <h2>Compartilhamento</h2>
-        <p>Não compartilhamos esses dados com terceiros.</p>
-        <h2>Seus direitos</h2>
-        <p>
-          Você pode pedir acesso, correção ou exclusão dos seus dados a qualquer
-          momento, escrevendo pelo
-          <a href="/contato">formulário de contato</a>.
-        </p>
-        <p>
-          TODO(conteudo): revisão jurídica, controlador dos dados e e-mail do
-          encarregado (LGPD).
-        </p>
-      </section>
-    </main>
-    <footer data-astro-cid-jo6i4kqk>
-      <div class="container rodape" data-astro-cid-jo6i4kqk>
-        <div class="rodape-marca" data-astro-cid-jo6i4kqk>
-          <img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="120"
-            height="35"
-            data-astro-cid-jo6i4kqk
-          />
-          <p data-astro-cid-jo6i4kqk>
-            Exposição educativa e itinerante sobre cores e percepção.
-          </p>
-        </div>
-        <nav class="rodape-mapa" aria-label="Mapa do site" data-astro-cid-jo6i4kqk>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Colorê</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/" data-astro-cid-jo6i4kqk>Início</a></li>
-              <li><a href="/#estacoes" data-astro-cid-jo6i4kqk>As estações</a></li>
-              <li><a href="/#faq" data-astro-cid-jo6i4kqk>Perguntas frequentes</a></li>
-            </ul>
+        </section>
+        <div class="sc" style="--c:var(--blue)" aria-hidden="true"></div>
+        <section class="band">
+          <div class="wrap">
+            <div class="prose">
+              <h2>Quais dados coletamos</h2>
+              <p>Nome, e-mail, instituição (se houver) e a mensagem que você escrever no formulário.</p>
+              <h2>Para que usamos</h2>
+              <p>Apenas para responder ao seu contato.</p>
+              <h2>Compartilhamento</h2>
+              <p>Não compartilhamos esses dados com terceiros.</p>
+              <h2>Seus direitos</h2>
+              <p>Você pode pedir acesso, correção ou exclusão dos seus dados a qualquer momento, escrevendo pelo <a class="lnk c-bl" href="/contato">formulário de contato</a>.</p>
+              <p>TODO(conteudo): revisão jurídica, controlador dos dados e e-mail do encarregado (LGPD).</p>
+            </div>
           </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>A exposição</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/a-exposicao" data-astro-cid-jo6i4kqk>A exposição</a></li>
-              <li><a href="/a-exposicao#sobre" data-astro-cid-jo6i4kqk>De onde surgiu a ideia</a></li>
-              <li><a href="/a-exposicao#metodologia" data-astro-cid-jo6i4kqk>Proposta educativa</a></li>
-            </ul>
+        </section>
+      </main>
+      <footer class="ftr on-dark">
+        <div class="wrap">
+          <div class="ftr-g">
+            <div>
+              <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="205" height="64" />
+              <p class="ftr-tag">Exposição educativa e itinerante sobre cores e percepção.</p>
+            </div>
+            <nav class="rodape-mapa" aria-label="Mapa do site">
+              <div>
+                <h2 class="rodape-titulo">Colorê</h2>
+                <ul class="flinks">
+                  <li><a href="/" class="c-or"><i></i>Início</a></li>
+                  <li><a href="/#estacoes" class="c-ye"><i></i>As estações</a></li>
+                  <li><a href="/#faq" class="c-bl"><i></i>Perguntas frequentes</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">A exposição</h2>
+                <ul class="flinks">
+                  <li><a href="/a-exposicao" class="c-pk"><i></i>A exposição</a></li>
+                  <li><a href="/a-exposicao#sobre" class="c-gr"><i></i>De onde surgiu a ideia</a></li>
+                  <li><a href="/a-exposicao#metodologia" class="c-or"><i></i>Proposta educativa</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">Para você</h2>
+                <ul class="flinks">
+                  <li><a href="/para-instituicoes" class="c-ye"><i></i>Para instituições</a></li>
+                  <li><a href="/para-educadores" class="c-bl"><i></i>Para educadores</a></li>
+                  <li><a href="/contato" class="c-pk"><i></i>Contato</a></li>
+                </ul>
+              </div>
+            </nav>
           </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Para você</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/para-instituicoes" data-astro-cid-jo6i4kqk>Para instituições</a></li>
-              <li><a href="/para-educadores" data-astro-cid-jo6i4kqk>Para educadores</a></li>
-              <li><a href="/contato" data-astro-cid-jo6i4kqk>Contato</a></li>
-            </ul>
+          <div class="ftr-dots" aria-hidden="true"><i class="bg-orange"></i><i class="bg-yellow"></i><i class="bg-blue"></i><i class="bg-pink"></i><i class="bg-green"></i><i style="background:var(--cream)"></i></div>
+          <div class="ftr-b">
+            <p>© 2026 Colorê · Exposição educativa e itinerante sobre cores e percepção.</p>
+            <p><a href="/privacidade">Política de privacidade</a> · <a href="/contato">Contato</a></p>
+            <p>Font: Codec Family by <a href="http://www.zetafonts.com/collection/2102">Zetafonts</a></p>
           </div>
-        </nav>
-        <div class="rodape-fim" data-astro-cid-jo6i4kqk>
-          <p data-astro-cid-jo6i4kqk>© 2026 Colorê</p>
-          <p data-astro-cid-jo6i4kqk>
-            Font: Codec Family by
-            <a
-              href="http://www.zetafonts.com/collection/2102"
-              data-astro-cid-jo6i4kqk
-              >Zetafonts</a
-            >
-          </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

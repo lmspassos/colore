@@ -4,1056 +4,403 @@
     <meta charset="utf-8" />
     <script>document.documentElement.classList.add("js");try{var d=document.documentElement,t=localStorage.getItem("colore-tema"),z=localStorage.getItem("colore-fonte");if(t)d.dataset.tema=t;if(z)d.style.fontSize=z+"%"}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos."
-    />
+    <meta name="description" content="Colorê: exposição educativa e itinerante sobre cores e percepção para crianças de 4 a 8 anos." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Colorê</title>
-    <link rel="stylesheet" href="/_astro/BaseLayout.BFC50tiN.css" />
-    <style>
-      .center[data-astro-cid-lcdefpme] {
-        text-align: center;
-      }
-      .lead[data-astro-cid-lcdefpme] {
-        margin-top: 0;
-      }
-      .hero[data-astro-cid-lcdefpme] {
-        grid-template-columns: minmax(0, 1fr);
-        min-height: 570px;
-        position: relative;
-        display: grid;
-        overflow: hidden;
-      }
-      .hero[data-astro-cid-lcdefpme] img {
-        object-fit: cover;
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .hero-card[data-astro-cid-lcdefpme] {
-        width: min(100% - 2rem, 42rem);
-        margin-left: max(var(--space-2), calc((100% - 80rem) / 2));
-        padding: var(--space-3);
-        background: var(--graphite);
-        color: var(--cream);
-        border-radius: var(--radius);
-        text-align: left;
-        grid-area: 1/1;
-        place-self: center start;
-        position: relative;
-      }
-      .hero-card[data-astro-cid-lcdefpme] h1[data-astro-cid-lcdefpme] {
-        margin: 0 0 var(--space-1);
-      }
-      .hero-card[data-astro-cid-lcdefpme] p[data-astro-cid-lcdefpme] {
-        margin: 0 0 var(--space-2);
-      }
-      .hero-card {
-        line-height: 1.35;
-      }
-      .hero-card h1 {
-        font-size: 1.75rem;
-        line-height: 1.2;
-      }
-      .hero-card .hero-sub {
-        font-family: var(--font-title);
-        font-size: 0.9375rem;
-        line-height: 1.3;
-        font-style: italic;
-        font-weight: 300;
-      }
-      .scroll-hint {
-        padding-block: var(--space-2) var(--space-3);
-        text-align: center;
-        background-image: radial-gradient(
-          circle,
-          rgb(43 43 41 / 0.1) 1px,
-          transparent 1.5px
-        );
-        background-size: 2.25rem 2.25rem;
-      }
-      .scroll-hint a {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-1);
-        color: var(--graphite);
-        font-size: 0.8125rem;
-        letter-spacing: 0.15em;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
-      @media (prefers-reduced-motion: no-preference) {
-        html {
-          scroll-behavior: smooth;
-        }
-        .scroll-hint svg {
-          animation: balanca 1.6s ease-in-out infinite;
-        }
-        @keyframes balanca {
-          50% {
-            transform: translateY(0.4rem);
-          }
-        }
-      }      @media (width <= 47.99rem) {
-        .hero[data-astro-cid-lcdefpme] {
-          display: block;
-          min-height: 0;
-        }
-        .hero[data-astro-cid-lcdefpme] img {
-          position: static;
-          height: 550px;
-        }
-        .hero-card[data-astro-cid-lcdefpme] {
-          width: auto;
-          margin: -2.5rem var(--space-2) 0;
-        }
-      }
-      .band[data-astro-cid-lcdefpme] {
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--space-2) var(--space-4);
-        margin-top: var(--space-4);
-        padding: var(--space-3) var(--space-4);
-        border-radius: var(--radius);
-        color: var(--graphite);
-        flex-wrap: wrap;
-        display: flex;
-      }
-      .band[data-astro-cid-lcdefpme] h2[data-astro-cid-lcdefpme],
-      .band[data-astro-cid-lcdefpme] p[data-astro-cid-lcdefpme] {
-        margin: 0;
-      }
-      .band-yellow[data-astro-cid-lcdefpme] {
-        background: var(--yellow);
-      }
-      .band-blue[data-astro-cid-lcdefpme] {
-        background: var(--blue);
-      }
-      .prose > .split {
-        display: grid;
-        gap: var(--space-4);
-        align-items: center;
-        max-width: none;
-      }
-      @media (width >= 48rem) {
-        .prose > .split {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      .prose .split-text {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-3);
-      }
-      .prose .split-text > * {
-        margin: 0;
-      }
-      .destaque {
-        color: var(--orange);
-      }
-      .split-text .button {
-        border: 0;
-        background: var(--green);
-        color: var(--cream);
-      }
-      .art {
-        position: relative;
-        width: min(100% - 4rem, 22rem);
-        aspect-ratio: 1;
-        justify-self: center;
-      }
-      .art img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .art .c {
-        position: absolute;
-        aspect-ratio: 1;
-        border-radius: 50%;
-      }
-      .art .c1 {
-        width: 55%;
-        top: -8%;
-        left: -9%;
-        background: var(--orange);
-      }
-      .art .c2 {
-        width: 38%;
-        right: -7%;
-        bottom: -6%;
-        background: var(--yellow);
-      }
-      .art .c3 {
-        width: 24%;
-        top: 8%;
-        right: -9%;
-        background: var(--pink);
-      }
-      .lead[data-astro-cid-lcdefpme] {
-        max-width: 52rem;
-        text-wrap: balance; /* linhas com tamanho parecido, texto centralizado */
-        margin-inline: auto;
-      }
-      .card.yellow {
-        background: var(--yellow);
-      }
-      /* cada card tem uma bolinha de cor diferente da dele */
-      .deck .card:nth-child(1) .dot {
-        background: var(--yellow);
-      }
-      .deck .card:nth-child(2) .dot {
-        background: var(--green);
-      }
-      .deck .card:nth-child(3) .dot {
-        background: var(--orange);
-      }
-      .deck .card:nth-child(4) .dot {
-        background: var(--cream);
-      }
-      .deck .card:nth-child(5) .dot {
-        background: var(--blue);
-      }
-      /* carrossel de fora a fora: passa sozinho (faixa.js duplica a lista), fotos 4:5 */
-      .faixa {
-        overflow: hidden;
-      }
-      .faixa:not(.anda) {
-        overflow-x: auto;
-      }
-      .faixa ul {
-        display: flex;
-        gap: var(--space-3);
-        width: max-content;
-        margin: 0;
-        padding: var(--space-3) 0;
-        list-style: none;
-      }
-      .faixa:not(.anda) ul {
-        padding-inline: var(--space-3);
-      }
-      .faixa li {
-        flex: 0 0 clamp(13rem, 22vw, 18rem);
-        transition: transform 0.3s ease;
-      }
-      .faixa li:nth-child(odd) { transform: rotate(-2deg); }
-      .faixa li:nth-child(even) { transform: rotate(2deg) translateY(0.5rem); }
-      .faixa li:hover,
-      .faixa li:focus-within {
-        transform: rotate(0) scale(1.06);
-        position: relative;
-        z-index: 1;
-      }
-      .faixa button {
-        display: block;
-        width: 100%;
-        padding: 0;
-        border: 0;
-        background: none;
-        border-radius: var(--radius);
-        cursor: zoom-in;
-      }
-      .faixa img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        object-fit: cover;
-        border-radius: var(--radius);
-      }
-      .faixa.anda ul {
-        animation: faixa 60s linear infinite;
-      }
-      .faixa.anda ul:has(button:hover, button:focus-visible),
-      .faixa.anda.pausa ul {
-        animation-play-state: paused;
-      }
-      @keyframes faixa {
-        to { transform: translateX(-50%); }
-      }
-      .foto-modal {
-        padding: 0;
-        border: 0;
-        border-radius: var(--radius);
-        overflow: hidden;
-        width: fit-content;
-        max-width: none;
-        background: var(--cream);
-      }
-      .foto-modal::backdrop {
-        background: rgba(43, 43, 41, 0.75);
-      }
-      .foto-modal img {
-        display: block;
-        width: auto;
-        height: auto;
-        max-width: min(92vw, 56rem);
-        max-height: 85vh;
-      }
-      .foto-modal .fechar {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 2.5rem;
-        height: 2.5rem;
-        border: 0;
-        border-radius: 50%;
-        background: var(--cream);
-        color: var(--graphite);
-        font-size: 1.5rem;
-        line-height: 1;
-        cursor: pointer;
-      }
-      /* espaçamento padrão entre seções da home: 4rem (a faixa de fotos já tem 1,5rem de folga interna) */
-      main > section:not(.hero) {
-        margin-block: var(--space-5) 0;
-        padding-block: 0;
-      }
-      main > section.estacoes,
-      main > section.cta-final {
-        padding-block: var(--space-5);
-      }
-      main > section.faixa,
-      main > section.faixa + section {
-        margin-top: calc(var(--space-5) - var(--space-3));
-      }
-      /* faixa final de ponta a ponta, colada no rodapé */
-      .cta-final {
-        padding-block: var(--space-5);
-        background: var(--orange);
-        color: var(--cream);
-      }
-      .cta-final-in {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-2) var(--space-4);
-      }
-      .cta-final .button[data-astro-cid-lcdefpme].dark {
-        border: 0;
-        background: var(--green);
-        color: var(--cream);
-      }
-      .cta-final .button[data-astro-cid-lcdefpme].dark:hover {
-        background: var(--graphite);
-      }
-      .cta-final h2,
-      .cta-final p {
-        margin: 0;
-      }
-      .cta-final p {
-        margin-top: var(--space-1);
-      }
-      footer.colado[data-astro-cid-jo6i4kqk] {
-        margin-top: 0;
-      }
-      .espacos .esp-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-2);
-        margin-top: var(--space-4);
-      }
-      .esp-grid article {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: var(--space-3);
-        border-radius: var(--radius);
-        color: var(--graphite);
-      }
-      @media (max-width: 36rem) {
-        .espacos .esp-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-      .esp-grid .wide {
-        grid-column: 1 / -1;
-      }
-      .esp-grid .orange { background: var(--orange); }
-      .esp-grid .blue { background: var(--blue); }
-      .esp-grid .green { background: var(--green); color: var(--cream); }
-      .esp-grid h3 { margin: 0 0 var(--space-1); }
-      .esp-grid p { margin: 0 0 var(--space-2); }
-      .esp-grid .n { font-weight: 700; font-size: 1.5rem; margin-bottom: var(--space-1); }
-      .esp-grid .button { margin-top: auto; align-self: stretch; text-align: center; border: 0; }
-      .estacoes {
-        margin-block: var(--space-5);
-        padding-block: var(--space-5);
-        overflow: hidden;
-      }
-      .estacoes .deck-track {
-        margin-top: var(--space-4);
-      }
-      .deck {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-        gap: var(--space-3);
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      .deck .card > :not(.dot) {
-        position: relative;
-        z-index: 1;
-      }
-      .estacoes .button {
-        border: 0;
-      }
-      .deck-dots {
-        display: none;
-        justify-content: center;
-        margin-top: var(--space-2);
-      }
-      .deck-on .deck-dots {
-        display: flex;
-      }
-      .deck-dots button {
-        display: grid;
-        place-items: center;
-        width: 1.5rem;
-        height: 1.5rem;
-        padding: 0;
-        border: 0;
-        background: none;
-        cursor: pointer;
-      }
-      .deck-dots button::before {
-        content: "";
-        width: 0.6rem;
-        height: 0.6rem;
-        border-radius: 50%;
-        background: var(--graphite);
-        opacity: 0.3;
-        transition:
-          opacity 0.3s,
-          transform 0.3s;
-      }
-      .deck-dots .on::before {
-        opacity: 1;
-        transform: scale(1.5);
-      }
-      .deck-actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--space-2);
-        margin-top: var(--space-4);
-      }
-      /* Baralho: um card por vez, avança sozinho, ao clique, arrastando ou pelas bolinhas (deck.js) */
-      .deck-on .deck {
-        display: block;
-        position: relative;
-        width: min(28rem, 100% - 4rem);
-        height: min(18rem, 60vh);
-        margin-inline: auto;
-        cursor: pointer;
-        touch-action: pan-y;
-        user-select: none;
-      }
-      .deck-on .deck .card {
-        position: absolute;
-        inset: 0;
-        animation: none;
-        transition:
-          transform 0.9s ease,
-          opacity 0.7s ease;
-        will-change: transform;
-      }      .cta[data-astro-cid-lcdefpme] {
-        margin-bottom: var(--space-4);
-      }
-      .button[data-astro-cid-lcdefpme].dark {
-        background: var(--graphite);
-        color: var(--cream);
-      }
-      .button[data-astro-cid-lcdefpme].dark:hover {
-        background: var(--cream);
-        color: var(--graphite);
-      }
-      .duo[data-astro-cid-lcdefpme] {
-        gap: var(--space-3);
-        margin-top: var(--space-4);
-        display: grid;
-      }
-      .big[data-astro-cid-lcdefpme] {
-        padding: var(--space-4);
-        border-radius: var(--radius);
-        color: var(--graphite);
-      }
-      .big[data-astro-cid-lcdefpme] h3[data-astro-cid-lcdefpme] {
-        margin-top: 0;
-      }
-      .strip[data-astro-cid-lcdefpme] {
-        background: var(--graphite);
-        color: var(--cream);
-        padding-block: var(--space-2);
-      }
-      .strip[data-astro-cid-lcdefpme] ul[data-astro-cid-lcdefpme] {
-        justify-content: space-around;
-        gap: var(--space-1) var(--space-3);
-        flex-wrap: wrap;
-        margin-inline: auto;
-        padding: 0;
-        font-weight: 700;
-        list-style: none;
-        display: flex;
-      }
-      .how[data-astro-cid-lcdefpme] {
-        padding-block: var(--space-5);
-        background: var(--green);
-      }
-      .how[data-astro-cid-lcdefpme] h2[data-astro-cid-lcdefpme] {
-        color: var(--graphite);
-        margin: 0;
-      }
-      .faq[data-astro-cid-lcdefpme] {
-        max-width: 56rem;
-        margin: var(--space-3) auto 0;
-      }
-      /* FAQ colorido, sem contorno; o + vira × ao abrir */
-      .faq details {
-        margin-bottom: var(--space-1);
-        overflow: hidden;
-        border-radius: var(--radius);
-        color: var(--graphite);
-      }
-      .faq details:nth-child(1), .faq details:nth-child(6) { background: var(--blue); }
-      .faq details:nth-child(2) { background: var(--pink); }
-      .faq details:nth-child(3) { background: var(--yellow); }
-      .faq details:nth-child(4) { background: var(--green); }
-      .faq details:nth-child(5) { background: var(--orange); }
-      .faq summary {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-2);
-        padding: var(--space-2) var(--space-3);
-        font: 600 1.125rem var(--font-title);
-        list-style: none;
-        cursor: pointer;
-      }
-      .faq summary::-webkit-details-marker { display: none; }
-      .faq summary::after {
-        content: "+";
-        flex: none;
-        display: grid;
-        place-items: center;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background: var(--cream);
-        font: 700 1.25rem/1 var(--font-body);
-        transition: transform 0.3s ease;
-      }
-      .faq details[open] summary::after { transform: rotate(45deg); }
-      .faq details > div { padding: 0 var(--space-3) var(--space-2); }
-      .faq details p { margin: 0; }
-      /* FAQ em módulos 2x2; ao abrir um, ele ocupa uma coluna e os outros três empilham na outra */
-      .faq details > div { animation: faq-abre 0.4s ease; }
-      @keyframes faq-abre { from { opacity: 0; transform: translateY(-0.5rem); } }
-      @media (max-width: 39.99rem) {
-      @supports selector(::details-content) {
-        :root { interpolate-size: allow-keywords; }
-        .faq details::details-content {
-          block-size: 0;
-          overflow: hidden;
-          transition: block-size 0.4s ease, content-visibility 0.4s ease allow-discrete;
-        }
-        .faq details[open]::details-content { block-size: auto; }
-      }
-      }
-      @media (min-width: 40rem) {
-        .faq {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: var(--space-2);
-        }
-        .faq details { margin: 0; min-height: 7rem; }
-        .faq:has(details[open]) details[open] { grid-row: 1 / span 5; }
-        /* o módulo aberto fica na coluna em que já estava; os outros vão para a outra */
-        .faq:has(details:nth-child(odd)[open]) details[open] { grid-column: 1; }
-        .faq:has(details:nth-child(odd)[open]) details:not([open]) { grid-column: 2; }
-        .faq:has(details:nth-child(even)[open]) details[open] { grid-column: 2; }
-        .faq:has(details:nth-child(even)[open]) details:not([open]) { grid-column: 1; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .faq *, .faq *::details-content { animation: none !important; transition: none !important; }
-      }
-      @media (width>=48rem) {
-        .duo[data-astro-cid-lcdefpme] {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="/galeria.css" />
-    <link rel="stylesheet" href="/animacoes.css" />
-    <script src="/header.js" defer></script>
-    <script src="/deck.js" defer></script>
-    <script src="/faixa.js" defer></script>
-    <script src="/faq.js" defer></script>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/inicio.css" />
+    <script src="/js/base.js" defer></script>
+    <script src="/js/orb.js" defer></script>
+    <script src="/js/inicio.js" defer></script>
+    <script src="/js/trilha.js" defer></script>
+    <script src="/js/bolinhas.js" defer></script>
+    <script src="/js/galeria.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-    <header data-astro-cid-nen7h5rs>
-      <div class="container bar" data-astro-cid-nen7h5rs>
-        <button
-          class="menu-btn"
-          type="button"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="menu-lateral"
-        >
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        </button>
-        <a href="/" class="brand" data-astro-cid-nen7h5rs
-          ><img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="112"
-            height="35"
-            data-astro-cid-nen7h5rs
-        /></a>
-        <nav id="menu-lateral" aria-label="Principal" data-astro-cid-nen7h5rs>
-          <div class="drawer-top">
-            <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="112" height="35" />
-            <button class="menu-close" type="button" aria-label="Fechar menu">
-              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    <div class="prog" aria-hidden="true"></div>
+    <div class="site">
+      <header class="hdr bg-pink">
+        <div class="wrap hdr-in">
+          <nav class="nav-wrap" id="menu" aria-label="Principal">
+            <ul class="nav">
+              <li><a href="/" class="c-or" aria-current="page"><i></i>Início</a></li>
+              <li><a href="/a-exposicao" class="c-ye"><i></i>A exposição</a></li>
+              <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
+              <li><a href="/para-educadores" class="c-pk"><i></i>Para educadores</a></li>
+              <li><a href="/contato" class="c-gr"><i></i>Contato</a></li>
+            </ul>
+          </nav>
+          <div class="tools">
+            <form class="search" role="search" action="/busca">
+              <label for="q" class="sr-only">Buscar no site</label><input id="q" name="q" type="search" placeholder="Buscar…" /><button type="submit" aria-label="Buscar">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+              </button>
+            </form>
+            <div class="a11y">
+              <button class="ibtn a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
+              </button>
+              <div class="a11y-menu" id="a11y-menu">
+                <div id="a11y-principal">
+                  <button type="button" data-cores>Modo daltonismo</button>
+                  <button type="button" data-fonte="mais">Aumentar fonte</button>
+                  <button type="button" data-fonte="menos">Diminuir fonte</button>
+                  <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+                </div>
+                <div id="a11y-cores" hidden>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
+                  </div>
+                  <div class="a11y-row">
+                    <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
+                    <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
+                    <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
+                  </div>
+                  <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+                </div>
+              </div>
+            </div>
+            <button class="ibtn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>
             </button>
           </div>
-          <ul data-astro-cid-nen7h5rs>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/"
-                aria-current="page" data-astro-cid-nen7h5rs>Início</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/a-exposicao" data-astro-cid-nen7h5rs>A exposição</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-instituicoes" data-astro-cid-nen7h5rs>Para instituições</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/para-educadores" data-astro-cid-nen7h5rs>Para educadores</a>
-            </li>
-            <li data-astro-cid-nen7h5rs>
-              <a href="/contato" data-astro-cid-nen7h5rs>Contato</a>
-            </li>
+        </div>
+      </header>
+      <main id="conteudo" data-pagefind-body>
+        <section class="hero" data-orb aria-labelledby="h-hero">
+          <div class="cur" aria-hidden="true"></div>
+          <div class="hero-logo"><svg class="logo-anim" viewBox="395 283 660 227" role="img" aria-label="Colorê"><path class="lg" d="M606.38,379.95c-9.38-5.55-19.86-8.32-31.42-8.32c-8.44,0-16.38,1.64-23.8,4.92
+        	c-7.43,3.28-13.99,7.78-19.7,13.48c-5.71,5.71-10.2,12.31-13.48,19.82c-3.28,7.5-4.92,15.56-4.92,24.15
+        	c0,9.38,1.84,17.86,5.51,25.44c3.67,7.58,8.6,14.07,14.77,19.46c6.17,5.39,12.93,9.54,20.28,12.43c7.35,2.89,14.62,4.34,21.81,4.34
+        	c7.04,0,14.19-1.37,21.46-4.1s13.95-6.76,20.05-12.08c6.1-5.31,11.02-11.8,14.77-19.46c3.75-7.66,5.63-16.42,5.63-26.26
+        	c0-11.57-2.81-22.04-8.44-31.42S615.76,385.5,606.38,379.95z M591.02,445.03c-2.27,2.81-4.92,4.81-7.97,5.98
+        	c-3.05,1.17-5.75,1.76-8.09,1.76s-5.01-0.59-7.97-1.76c-2.97-1.17-5.55-3.17-7.74-5.98c-2.19-2.81-3.28-6.57-3.28-11.26
+        	c0-3.75,0.86-7.07,2.58-9.97c1.72-2.89,3.99-5.16,6.8-6.8c2.81-1.64,5.94-2.46,9.38-2.46c3.91,0,7.35,0.78,10.32,2.34
+        	c2.97,1.56,5.28,3.75,6.92,6.57c1.64,2.81,2.46,6.18,2.46,10.08C594.42,438.38,593.29,442.21,591.02,445.03z"/><path class="lg" d="M698.89,453.35c-2.27-0.55-4.42-0.82-6.45-0.82c-1.56,0-2.78-0.04-3.63-0.12c-0.86-0.08-1.49-0.43-1.88-1.06
+        	c-0.39-0.62-0.63-1.6-0.7-2.93c-0.08-1.33-0.12-3.17-0.12-5.51V341.84c0-3.59-0.32-7.04-0.94-10.32c-0.63-3.28-2.39-5.98-5.28-8.09
+        	c-2.89-2.11-7.86-3.17-14.89-3.17s-12.04,1.06-15.01,3.17c-2.97,2.11-4.77,4.77-5.39,7.97c-0.63,3.21-0.94,6.61-0.94,10.2v103.88
+        	c0,8.6,0.55,15.75,1.64,21.46c1.09,5.71,2.81,10.32,5.16,13.84c2.34,3.52,5.39,6.21,9.15,8.09c3.75,1.88,8.32,3.13,13.72,3.75
+        	c5.39,0.62,11.68,0.94,18.88,0.94c2.03,0,4.22-0.27,6.57-0.82c2.34-0.55,4.34-2.3,5.98-5.28c1.64-2.97,2.46-7.97,2.46-15.01
+        	c0-6.72-0.82-11.45-2.46-14.19C703.12,455.54,701.16,453.9,698.89,453.35z"/><path class="lg" d="M874.42,387.34l3.75,1.41c0-1.11-0.26-2.64-0.75-4.56C876.42,385.17,875.42,386.21,874.42,387.34z"/><path class="lg" d="M799.85,379.95c-9.38-5.55-19.86-8.32-31.42-8.32c-8.44,0-16.38,1.64-23.8,4.92
+        	c-7.43,3.28-13.99,7.78-19.7,13.48c-5.71,5.71-10.2,12.31-13.48,19.82c-3.28,7.5-4.92,15.56-4.92,24.15
+        	c0,9.38,1.84,17.86,5.51,25.44c3.67,7.58,8.6,14.07,14.77,19.46c6.17,5.39,12.93,9.54,20.28,12.43c7.35,2.89,14.62,4.34,21.81,4.34
+        	c7.04,0,14.19-1.37,21.46-4.1s13.95-6.76,20.05-12.08c6.1-5.31,11.02-11.8,14.77-19.46c3.75-7.66,5.63-16.42,5.63-26.26
+        	c0-11.57-2.81-22.04-8.44-31.42C816.73,392.97,809.23,385.5,799.85,379.95z M784.49,445.03c-2.27,2.81-4.92,4.81-7.97,5.98
+        	c-3.05,1.17-5.75,1.76-8.09,1.76c-2.35,0-5.01-0.59-7.97-1.76c-2.97-1.17-5.55-3.17-7.74-5.98c-2.19-2.81-3.28-6.57-3.28-11.26
+        	c0-3.75,0.86-7.07,2.58-9.97c1.72-2.89,3.99-5.16,6.8-6.8c2.81-1.64,5.94-2.46,9.38-2.46c3.91,0,7.35,0.78,10.32,2.34
+        	c2.97,1.56,5.28,3.75,6.92,6.57c1.64,2.81,2.46,6.18,2.46,10.08C787.89,438.38,786.75,442.21,784.49,445.03z"/><path class="lg" d="M925.89,382.65c-1.33-2.03-3.05-3.67-5.16-4.92c-2.11-1.25-4.38-2.19-6.8-2.81c-2.43-0.62-4.69-1.06-6.8-1.29
+        	c-2.11-0.23-3.87-0.35-5.28-0.35c-4.22,0-8.01,0.7-11.37,2.11c-3.36,1.41-6.25,3.05-8.68,4.92c-1.45,1.12-2.91,2.43-4.39,3.89
+        	c0.49,1.91,0.75,3.45,0.75,4.56l-3.75-1.41c1.01-1.13,2-2.17,3-3.15c-0.06-0.24-0.11-0.47-0.18-0.72c-0.63-2.26-2.39-4.34-5.28-6.21
+        	c-2.89-1.88-7.78-2.81-14.66-2.81c-7.04,0-12.04,1.02-15.01,3.05c-2.97,2.03-4.77,4.65-5.39,7.86c-0.63,3.21-0.94,6.61-0.94,10.2
+        	v76.45c0,3.44,0.27,6.84,0.82,10.2c0.55,3.36,2.3,6.1,5.28,8.21c2.97,2.11,7.97,3.17,15.01,3.17c7.19,0,12.27-1.02,15.24-3.05
+        	c2.97-2.03,4.77-4.69,5.39-7.97c0.62-3.28,0.94-6.64,0.94-10.08v-45.73c0-1.72,0.39-3.32,1.17-4.81c0.78-1.48,1.91-2.77,3.4-3.87
+        	c1.48-1.09,3.2-1.91,5.16-2.46c1.95-0.55,4.1-0.82,6.45-0.82c1.88,0,3.17,0.2,3.87,0.59c0.7,0.39,1.33,0.78,1.88,1.17
+        	c0.55,0.39,1.44,0.78,2.7,1.17c1.25,0.39,3.36,0.59,6.33,0.59c5.47,0,9.89-2.73,13.25-8.21c3.36-5.47,5.04-12.11,5.04-19.93
+        	C927.88,387.18,927.22,384.68,925.89,382.65z"/><path class="lg" d="M509.43,455.58c-3.44-4.37-6.57-7.54-9.38-9.5c-2.81-1.95-5.55-2.93-8.21-2.93c-2.03,0-4.03,0.55-5.98,1.64
+        	c-1.96,1.1-4.03,2.27-6.21,3.52c-0.16,0-0.63,0.27-1.41,0.82c-0.78,0.55-1.92,1.06-3.4,1.52c-1.49,0.47-3.32,0.7-5.51,0.7
+        	c-2.97,0-5.75-0.78-8.32-2.35c-2.58-1.56-4.65-3.67-6.21-6.33c-1.56-2.66-2.35-5.63-2.35-8.91s0.78-6.21,2.35-8.79
+        	c1.56-2.58,3.67-4.65,6.33-6.21c2.66-1.56,5.55-2.35,8.68-2.35c2.66,0,4.88,0.43,6.68,1.29c1.8,0.86,3.48,1.84,5.04,2.93
+        	c1.56,1.1,3.28,2.07,5.16,2.93c1.88,0.86,4.06,1.29,6.57,1.29c5.63,0,11.26-4.3,16.88-12.9c1.72-2.66,2.97-5.04,3.75-7.15
+        	c0.78-2.11,1.17-4.18,1.17-6.21c0-4.06-1.37-7.31-4.1-9.73c-2.74-2.42-5.67-4.57-8.79-6.45c-1.25-0.78-3.28-1.91-6.1-3.4
+        	c-2.81-1.48-6.41-2.85-10.79-4.1c-4.38-1.25-9.54-1.88-15.48-1.88c-6.25,0-12.94,1.29-20.05,3.87c-7.12,2.58-13.76,6.37-19.93,11.37
+        	c-6.18,5.01-11.22,11.3-15.13,18.88c-3.91,7.58-5.86,16.38-5.86,26.38c0,10.16,1.95,19.08,5.86,26.73
+        	c3.91,7.66,8.99,14.03,15.24,19.11c6.25,5.08,12.93,8.91,20.05,11.49c7.11,2.58,13.87,3.87,20.28,3.87c6.25,0,11.64-0.7,16.18-2.11
+        	c4.53-1.41,8.17-2.85,10.9-4.34c2.73-1.48,4.34-2.38,4.81-2.7c4.53-2.81,7.89-5.75,10.08-8.79c2.19-3.05,3.09-6.33,2.7-9.85
+        	C514.55,463.43,512.71,459.64,509.43,455.58z"/><path class="lg" d="M1036.5,439.63c4.38-4.69,6.57-11.49,6.57-20.4c0-4.69-1.02-9.77-3.05-15.24c-2.03-5.47-5.2-10.63-9.5-15.48
+        	c-4.3-4.84-9.89-8.83-16.77-11.96c-6.88-3.13-15.17-4.69-24.86-4.69c-12.51,0-23.61,2.66-33.3,7.97
+        	c-9.7,5.32-17.28,12.66-22.75,22.04c-5.47,9.38-8.21,20.25-8.21,32.6c0,6.72,1.17,13.68,3.52,20.87
+        	c2.35,7.19,6.02,13.88,11.02,20.05c5,6.18,11.57,11.18,19.7,15.01c8.13,3.83,18.06,5.75,29.78,5.75c10.47,0,19.31-0.82,26.5-2.46
+        	c7.19-1.64,12.7-4.02,16.53-7.15c3.83-3.13,5.75-7.04,5.75-11.73c0-1.56-0.23-3.24-0.7-5.04c-0.47-1.8-1.25-3.71-2.34-5.75
+        	c-1.88-3.75-3.99-6.57-6.33-8.44c-2.34-1.88-4.92-2.81-7.74-2.81c-1.25,0-2.54,0.2-3.87,0.59c-1.33,0.39-2.81,0.9-4.46,1.52
+        	c-1.64,0.63-3.44,1.25-5.39,1.88c-1.96,0.63-4.26,1.14-6.92,1.52c-2.66,0.39-5.71,0.59-9.15,0.59c-3.44,0-6.65-0.51-9.61-1.52
+        	c-2.97-1.01-5.43-2.42-7.39-4.22c-1.96-1.8-3.25-3.95-3.87-6.45h49.95C1026.49,446.67,1032.12,444.32,1036.5,439.63z
+        	 M1000.74,423.22c-1.02,0.94-2.62,1.41-4.81,1.41h-26.26c0.15-2.5,0.97-4.88,2.46-7.15c1.48-2.26,3.63-4.14,6.45-5.63
+        	c2.81-1.48,6.1-2.23,9.85-2.23c2.81,0,5.24,0.35,7.27,1.06c2.03,0.7,3.63,1.76,4.81,3.17c1.17,1.41,1.76,3.13,1.76,5.16
+        	C1002.26,420.87,1001.75,422.28,1000.74,423.22z"/><path class="lt" d="M1018.09,355.79c2.02-4.4,1.29-9.58-1.86-13.25l-13.3-15.47c-4.41-5.13-10.83-8.08-17.6-8.08
+        	s-13.19,2.95-17.6,8.08l-13.3,15.47c-3.16,3.67-3.89,8.85-1.86,13.25c2.02,4.4,6.42,7.22,11.27,7.22h42.98
+        	C1011.66,363.01,1016.06,360.19,1018.09,355.79z"/></svg></div>
+          <div class="sc" style="--c:var(--blue)" aria-hidden="true"></div>
+          <div class="wrap hero-body">
+            <div class="hero-g">
+              <div>
+                <div class="tags">
+                  <span class="tag c-or"><i></i>Exposição educativa</span>
+                  <span class="tag c-bl"><i></i>Itinerante</span>
+                  <span class="tag c-gr"><i></i>Crianças de 4 a 8 anos</span>
+                </div>
+                <h1 class="d1" id="h-hero">Existe um mundo inteiro por trás de <span class="u"><i class="c-or">c</i><i class="c-ye">a</i><i class="c-bl">d</i><i class="c-gr">a</i> <i class="c-pk">c</i><i class="c-or">o</i><i class="c-ye">r</i><i class="c-bl">.</i></span></h1>
+                <p class="lead">Mais do que reconhecer cores, há um universo de possibilidades para descobrir. A Colorê é uma exposição educativa e itinerante que aproxima crianças do universo cromático por meio da arte, da interação e da experimentação, convidando-as a observar, explorar e criar novas formas de aprender.</p>
+                <div class="btns">
+                  <a class="btn" href="/a-exposicao">Conheça a exposição <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                  <a class="lnk c-bl" href="/para-instituicoes">Quero receber a Colorê</a>
+                </div>
+              </div>
+              <div class="orb" aria-hidden="true">
+                <span class="c" style="left:2%;top:4%;width:56%;height:56%;background:var(--pink);z-index:1;mix-blend-mode:multiply;--d:18"></span>
+                <span class="c" style="left:44%;top:0;width:50%;height:50%;background:var(--blue);z-index:1;mix-blend-mode:multiply;--d:-16"></span>
+                <span class="c" style="left:30%;top:48%;width:52%;height:52%;background:var(--green);z-index:1;mix-blend-mode:multiply;--d:26"></span>
+                <span class="c" style="left:68%;top:58%;width:28%;height:28%;background:var(--orange);z-index:4;--d:-30"></span>
+                <span class="c" style="left:4%;top:72%;width:15%;height:15%;background:var(--yellow);z-index:4;--d:40"></span>
+                <div class="ph" style="left:20%;top:18%;width:56%;height:56%;z-index:2;--d:8"><img src="/img/maos-na-tinta.jpg" alt="" width="500" height="350" /></div>
+                <svg class="tri" style="left:74%;top:4%;width:19%;z-index:6;--d:-38;--r:14deg;--c:var(--yellow)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+              </div>
+            </div>
+            <div class="hero-foot">
+              <span class="hint"><b></b>Role para descobrir</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="mq" aria-hidden="true">
+          <div class="mq-t">
+            <span>Descobrir <b class="bg-yellow"></b> Transformar <b class="sq bg-pink"></b> Perceber <b class="tri bg-blue"></b> Representar <b class="bg-green"></b> Criar <b class="sq bg-orange"></b> Descobrir é colorir <b class="tri" style="background:var(--cream)"></b></span>
+            <span>Descobrir <b class="bg-yellow"></b> Transformar <b class="sq bg-pink"></b> Perceber <b class="tri bg-blue"></b> Representar <b class="bg-green"></b> Criar <b class="sq bg-orange"></b> Descobrir é colorir <b class="tri" style="background:var(--cream)"></b></span>
+          </div>
+        </div>
+
+        <section class="band" aria-labelledby="h-prop">
+          <div class="wrap prop">
+            <div class="prop-vis rv-l">
+              <div class="pk"></div>
+              <div class="blob"><img src="/img/maos-no-papel.jpg" alt="Mãos de uma criança espalhando tinta azul, laranja e amarela sobre o papel" width="440" height="270" loading="lazy" /></div>
+              <div class="gc"></div>
+              <div class="yc"></div>
+              <svg class="tri spin-s" style="--c:var(--orange)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+            </div>
+            <div class="rv">
+              <p class="kicker c-bl"><i></i>A proposta</p>
+              <h2 class="d2" id="h-prop">Aprender também é experimentar!</h2>
+              <p class="lead" style="margin:1.5rem 0 2rem">Na infância, a descoberta acontece de muitas formas: no olhar curioso, nas tentativas, nas combinações e na liberdade de criar. A Colorê transforma o aprendizado sobre as cores em uma experiência de exploração e expressão, aproximando arte e conhecimento de maneira lúdica e participativa.</p>
+              <a class="btn c-pk" href="/a-exposicao#metodologia">Conheça nossa metodologia <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              <div class="mixer" data-gode>
+                <div>
+                  <h3>Godê digital</h3>
+                  <p class="muted" style="font-size:.9375rem">Escolha duas cores e veja o que acontece onde elas se encontram.</p>
+                  <div class="sws" role="group" aria-label="Cores para misturar">
+                    <button type="button" class="sw on" style="background:var(--yellow)" data-cor="--yellow" aria-pressed="true" aria-label="Amarelo"></button>
+                    <button type="button" class="sw on" style="background:var(--blue)" data-cor="--blue" aria-pressed="true" aria-label="Azul"></button>
+                    <button type="button" class="sw" style="background:var(--pink)" data-cor="--pink" aria-pressed="false" aria-label="Rosa"></button>
+                    <button type="button" class="sw" style="background:var(--orange)" data-cor="--orange" aria-pressed="false" aria-label="Laranja"></button>
+                    <button type="button" class="sw" style="background:var(--green)" data-cor="--green" aria-pressed="false" aria-label="Verde"></button>
+                  </div>
+                </div>
+                <div>
+                  <div class="stage joined" aria-hidden="true"><span class="a" style="background:var(--yellow)"></span><span class="b" style="background:var(--blue)"></span></div>
+                  <p class="mixlbl" aria-live="polite">Amarelo + Azul</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="sc up" style="--c:var(--graphite)" aria-hidden="true"></div>
+        <section class="band on-dark bg-graphite" id="estacoes" aria-labelledby="h-st">
+          <div class="wrap">
+            <div class="st-head">
+              <div>
+                <p class="kicker c-ye"><i></i>As estações</p>
+                <h2 class="d2" id="h-st">Um percurso por diferentes descobertas.</h2>
+              </div>
+              <div>
+                <p class="lead muted">A experiência Colorê é organizada em quatro estações que exploram diferentes aspectos do universo cromático. Cada uma propõe uma forma de interação e descoberta, convidando as crianças a construir novas relações com as cores. Ao final, a oficina Criar amplia essas descobertas por meio da expressão artística.</p>
+              </div>
+            </div>
+            <div class="st-wrap">
+              <svg class="trail" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0,230 C120,40 220,380 330,210 S520,30 610,200 S820,390 900,190 S1100,40 1200,230" vector-effect="non-scaling-stroke"></path></svg>
+              <div class="st-grid">
+                <a class="st s1 c-ye rv" href="/a-exposicao#estacoes"><span class="gx" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></span><span class="n">01</span><span class="nm">Descobrir</span><p>Um primeiro contato com o universo das cores e suas possibilidades.</p><span class="more">Ver na exposição →</span></a>
+                <a class="st s2 c-pk rv" href="/a-exposicao#estacoes"><span class="gx" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></span><span class="n">02</span><span class="nm">Transformar</span><p>Explorar misturas, combinações e as transformações das cores.</p><span class="more">Ver na exposição →</span></a>
+                <a class="st s3 c-bl rv" href="/a-exposicao#estacoes"><span class="gx" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></span><span class="n">03</span><span class="nm">Perceber</span><p>Investigar como a luz e o olhar influenciam nossa percepção das cores.</p><span class="more">Ver na exposição →</span></a>
+                <a class="st s4 c-gr rv" href="/a-exposicao#estacoes"><span class="gx" aria-hidden="true"><span class="g1"></span><span class="g2"></span><span class="g3"></span></span><span class="n">04</span><span class="nm">Representar</span><p>Descobrir diferentes maneiras de expressar ideias por meio das cores.</p><span class="more">Ver na exposição →</span></a>
+              </div>
+            </div>
+            <article class="criar bg-orange rv">
+              <span class="dots" aria-hidden="true"></span>
+              <div>
+                <span class="badge">05 · Criar — Oficina</span>
+                <h3 class="d2" style="font-size:clamp(1.75rem,3.2cqi,2.5rem)">Depois de tantas descobertas, é hora de criar!</h3>
+                <p class="lead" style="margin-top:1.25rem">Um espaço de experimentação e liberdade, onde as crianças podem explorar as cores e transformar suas descobertas em uma produção artística própria.</p>
+              </div>
+              <div class="blob"><img src="/_astro/hero.8RsypCQc_Z1M3U8e.webp" srcset="/_astro/hero.8RsypCQc_Z1GE3P.webp 640w, /_astro/hero.8RsypCQc_Z1M3U8e.webp 1280w" sizes="(min-width: 51rem) 40vw, 90vw" alt="Criança pintando com as mãos uma folha de papel, ao lado de uma mulher, com tintas azul, vermelha e amarela." width="1280" height="720" loading="lazy" /></div>
+            </article>
+            <div class="criar-cta">
+              <a class="btn lt c-ye" href="/a-exposicao">Conheça a exposição <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            </div>
+          </div>
+        </section>
+        <div class="sc" style="--c:var(--graphite)" aria-hidden="true"></div>
+
+        <section class="faixa" aria-label="Imagens da exposição" data-galeria>
+          <ul>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/instalacao-pendurada.webp" alt="Duas crianças dançando em uma sala rosa, com objetos coloridos pendurados no teto e luzes projetadas." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/mesa-interativa-cores.webp" alt="Duas meninas em uma mesa interativa azul, tocando uma tela colorida; na parede, um diagrama mostra a mistura de cores." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/sombra-colorida-menino.webp" alt="Menino de braços abertos diante de uma parede iluminada em roxo, azul e verde, com a sombra dele projetada em roxo." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/mesa-pinceis-de-luz.webp" alt="Três crianças sorrindo ao mexer em pincéis de luz sobre uma mesa redonda que projeta cores em espiral." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/mural-colorido.webp" alt="Duas crianças em uma sala com um mural gigante e colorido, apontando para os desenhos; à frente, pedestais vermelho e verde." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." width="800" height="1000" loading="lazy" /></button></li>
+            <li><button type="button" aria-label="Ampliar foto"><img src="/img/instalacao-triangulos.webp" alt="Sala com uma grande instalação suspensa de acetatos coloridos que projeta triângulos amarelos, rosa e azuis nas paredes e no chão." width="800" height="1000" loading="lazy" /></button></li>
           </ul>
-        </nav>
-        <div class="scrim"></div>
-        <div class="tools">
-        <form
-          class="search"
-          role="search"
-          action="/busca"
-          data-astro-cid-nen7h5rs
-        >
-          <label for="q" class="sr-only" data-astro-cid-nen7h5rs
-            >Buscar no site</label
-          ><input
-            id="q"
-            name="q"
-            type="search"
-            placeholder="Buscar…"
-            data-astro-cid-nen7h5rs
-          /><button type="submit" aria-label="Buscar" data-astro-cid-nen7h5rs>
-            <svg
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              aria-hidden="true"
-              data-astro-cid-nen7h5rs
-            >
-              <circle cx="11" cy="11" r="7" data-astro-cid-nen7h5rs></circle>
-              <path d="m16.5 16.5 4.5 4.5" data-astro-cid-nen7h5rs></path>
-            </svg>
-          </button>
-        </form>
-        <div class="a11y">
-          <button class="a11y-btn" type="button" aria-label="Acessibilidade" aria-expanded="false" aria-controls="a11y-menu">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle><path d="M7 10.5l5 1 5-1M12 11.5V15m0 0l-2.5 4M12 15l2.5 4"></path></svg>
-            <span class="a11y-label">Acessibilidade</span>
-          </button>
-          <div class="a11y-menu" id="a11y-menu">
-            <div id="a11y-principal">
-              <button type="button" data-cores>Modo daltonismo</button>
-              <button type="button" data-fonte="mais">Aumentar fonte</button>
-              <button type="button" data-fonte="menos">Diminuir fonte</button>
-              <button type="button" data-fonte="original" aria-pressed="true">Tamanho original</button>
+        </section>
+
+        <section class="band" aria-labelledby="h-inv">
+          <div class="wrap">
+            <div class="inv">
+              <div class="inv-main bg-blue rv">
+                <span class="halo spin-s" aria-hidden="true"></span>
+                <div>
+                  <p class="kicker c-cr"><i></i>Para instituições</p>
+                  <h2 class="d2" id="h-inv">Tem espaço para mais descobertas por aí?</h2>
+                </div>
+                <p class="lead">A Colorê é itinerante e está pronta para ganhar novos espaços! Escolas, centros culturais e instituições podem receber nossa exposição e proporcionar às crianças uma experiência de aprendizado que une arte, curiosidade e exploração do universo das cores.</p>
+              </div>
+              <div class="inv-side">
+                <div class="ic a bg-yellow rv"><h3>Escolas</h3><p>Novas possibilidades de aprendizagem para as crianças.</p></div>
+                <div class="ic b bg-pink rv"><h3>Espaços culturais</h3><p>Experiências artísticas e educativas para o público infantil.</p></div>
+                <svg class="tri drift" style="--c:var(--green)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+                <span class="oc" aria-hidden="true"></span>
+              </div>
             </div>
-            <div id="a11y-cores" hidden>
-              <div class="a11y-row">
-                <button type="button" data-tema="protanopia" aria-pressed="false">Protanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Protanopia" aria-expanded="false" aria-controls="info-protanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-protanopia" hidden>Para quem enxerga tons avermelhados muito escuros ou apagados. Substituímos o laranja e o verde por amarelo vibrante e azul claro.</p>
+            <div class="ticket rv">
+              <div class="ds" aria-hidden="true"><i class="bg-orange"></i><i class="bg-yellow"></i><i class="bg-blue"></i><i class="bg-pink"></i><i class="bg-green"></i></div>
+              <div>
+                <h3 class="d3">Vamos levar essa experiência mais longe?</h3>
+                <p class="muted" style="margin-top:.375rem">Entre em contato e descubra como receber a Colorê em sua instituição.</p>
               </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="deuteranopia" aria-pressed="false">Deuteranopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Deuteranopia" aria-expanded="false" aria-controls="info-deuteranopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-deuteranopia" hidden>Para quem tem dificuldade em distinguir verde e vermelho. Trocamos o verde e o laranja por azul e amarelo para aumentar o contraste.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="tritanopia" aria-pressed="false">Tritanopia</button>
-                <button type="button" class="a11y-info" aria-label="O que é Tritanopia" aria-expanded="false" aria-controls="info-tritanopia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-tritanopia" hidden>Para quem confunde azul com verde ou amarelo com claro. Trocamos azul, verde e amarelo por rosa, laranja e grafite.</p>
-              </div>
-              <div class="a11y-row">
-                <button type="button" data-tema="acromatopsia" aria-pressed="false">Acromatopsia (escala de cinza)</button>
-                <button type="button" class="a11y-info" aria-label="O que é Acromatopsia" aria-expanded="false" aria-controls="info-acromatopsia"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r="1" fill="currentColor"></circle></svg></button>
-                <p class="a11y-desc" id="info-acromatopsia" hidden>Para quem enxerga em escala de cinza. Removemos as cores e usamos fundo creme com bordas em grafite escuro para leitura nítida.</p>
-              </div>
-              <button type="button" data-tema="" aria-pressed="true">Modo padrão</button>
+              <a class="btn c-bl" href="/para-instituicoes">Quero levar a Colorê para minha instituição <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
             </div>
           </div>
+        </section>
+
+        <div class="sc up" style="--c:var(--yellow)" aria-hidden="true"></div>
+        <section class="band bg-yellow" id="faq" aria-labelledby="h-faq">
+          <div class="wrap faq-g">
+            <div>
+              <p class="kicker c-ink"><i></i>Dúvidas</p>
+              <h2 class="d2" id="h-faq">Perguntas frequentes</h2>
+              <p class="lead" style="margin-top:1.125rem">Outras dúvidas sobre visitas e montagem estão em <a class="lnk c-ink" href="/para-instituicoes">Para instituições</a>.</p>
+              <div class="faq-art" aria-hidden="true">
+                <span class="spin-s" style="left:0;top:0;width:70%;height:70%;background:var(--cream)"></span>
+                <span style="left:40%;top:34%;width:56%;height:56%;background:var(--orange);mix-blend-mode:multiply"></span>
+                <span style="left:12%;top:60%;width:26%;height:26%;background:var(--graphite)"></span>
+              </div>
+            </div>
+            <div class="faq">
+              <details class="qa c-or" name="faq" open>
+                <summary class="qbtn">Para quem é a exposição?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>A Colorê é destinada a crianças de 4 a 8 anos e pode ser recebida por escolas, museus, centros culturais e outras instituições interessadas em proporcionar experiências educativas e artísticas para o público infantil.</p></div>
+              </details>
+              <details class="qa c-bl" name="faq">
+                <summary class="qbtn">A Colorê é uma exposição sobre daltonismo?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>Não. O daltonismo foi um dos pontos de partida para o desenvolvimento do projeto, mas a proposta vai além. A Colorê explora o universo das cores a partir da percepção, da experimentação e da expressão, convidando todas as crianças a descobrir diferentes formas de observar e se relacionar com o mundo cromático.</p></div>
+              </details>
+              <details class="qa c-pk" name="faq">
+                <summary class="qbtn">O que as crianças fazem na exposição?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>As crianças percorrem quatro estações interativas, nas quais são convidadas a observar, experimentar, investigar e representar as cores de diferentes maneiras. A experiência termina com a oficina Criar, um momento de expressão artística em que podem transformar suas descobertas em produções próprias. Todo o percurso conta com o acompanhamento de mediadores.</p></div>
+              </details>
+              <details class="qa c-gr" name="faq">
+                <summary class="qbtn">Quanto custa receber a Colorê?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>O investimento depende das características da instituição e das condições de realização da exposição. Entre em contato com a nossa equipe para apresentar seu espaço e conhecer as possibilidades de receber a Colorê.</p></div>
+              </details>
+              <details class="qa c-or" name="faq">
+                <summary class="qbtn">Quanto tempo dura a visita?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>A duração da experiência será definida de acordo com o formato de visitação e a organização das atividades. Entre em contato para consultar as possibilidades de atendimento.</p></div>
+              </details>
+              <details class="qa c-bl" name="faq">
+                <summary class="qbtn">As crianças precisam estar acompanhadas?<span class="pm" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+                <div class="ans"><p>A experiência conta com o acompanhamento de mediadores durante as atividades. A participação de professores e responsáveis pode ser organizada de acordo com o formato da visita.</p></div>
+              </details>
+            </div>
+          </div>
+        </section>
+        <div class="sc" style="--c:var(--yellow)" aria-hidden="true"></div>
+
+        <section class="band close bg-green" aria-labelledby="h-close">
+          <div class="wrap close-g">
+            <div class="rv">
+              <img class="logo-big" src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="540" height="169" />
+              <h2 class="sig" id="h-close">Descobrir é <span>colorir.</span></h2>
+              <p class="lead">Um universo de cores, possibilidades e descobertas esperando para ser explorado.</p>
+              <div class="btns" style="margin-top:2rem"><a class="btn c-ye" href="/para-instituicoes">Fale com a gente <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+            </div>
+            <div class="close-art" aria-hidden="true">
+              <span class="drift" style="left:10%;top:0;width:55%;height:55%;background:var(--yellow)"></span>
+              <span style="left:0;top:40%;width:60%;height:60%;background:var(--pink);mix-blend-mode:multiply"></span>
+              <span style="left:45%;top:30%;width:55%;height:55%;background:var(--orange);mix-blend-mode:multiply"></span>
+              <span class="drift" style="left:62%;top:4%;width:24%;height:24%;background:var(--blue)"></span>
+              <span style="left:30%;top:72%;width:18%;height:18%;background:var(--cream)"></span>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="ftr on-dark">
+        <div class="wrap">
+          <div class="ftr-g">
+            <div>
+              <img src="/_astro/logo-creme.DSI7b76l.svg" alt="Colorê" width="205" height="64" />
+              <p class="ftr-tag">Exposição educativa e itinerante sobre cores e percepção.</p>
+            </div>
+            <nav class="rodape-mapa" aria-label="Mapa do site">
+              <div>
+                <h2 class="rodape-titulo">Colorê</h2>
+                <ul class="flinks">
+                  <li><a href="/" class="c-or"><i></i>Início</a></li>
+                  <li><a href="/#estacoes" class="c-ye"><i></i>As estações</a></li>
+                  <li><a href="/#faq" class="c-bl"><i></i>Perguntas frequentes</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">A exposição</h2>
+                <ul class="flinks">
+                  <li><a href="/a-exposicao" class="c-pk"><i></i>A exposição</a></li>
+                  <li><a href="/a-exposicao#sobre" class="c-gr"><i></i>De onde surgiu a ideia</a></li>
+                  <li><a href="/a-exposicao#metodologia" class="c-or"><i></i>Proposta educativa</a></li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="rodape-titulo">Para você</h2>
+                <ul class="flinks">
+                  <li><a href="/para-instituicoes" class="c-ye"><i></i>Para instituições</a></li>
+                  <li><a href="/para-educadores" class="c-bl"><i></i>Para educadores</a></li>
+                  <li><a href="/contato" class="c-pk"><i></i>Contato</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="ftr-dots" aria-hidden="true"><i class="bg-orange"></i><i class="bg-yellow"></i><i class="bg-blue"></i><i class="bg-pink"></i><i class="bg-green"></i><i style="background:var(--cream)"></i></div>
+          <div class="ftr-b">
+            <p>© 2026 Colorê · Exposição educativa e itinerante sobre cores e percepção.</p>
+            <p><a href="/privacidade">Política de privacidade</a> · <a href="/contato">Contato</a></p>
+            <p>Font: Codec Family by <a href="http://www.zetafonts.com/collection/2102">Zetafonts</a></p>
+          </div>
         </div>
+      </footer>
+    </div>
+    <dialog class="lb" aria-label="Foto ampliada">
+      <div class="lb-card">
+        <img src="" alt="" />
+        <div class="lb-bar">
+          <span><span class="lb-cap"></span><small>Imagem de referência</small></span>
+          <span class="lb-btns">
+            <button class="ibtn" type="button" data-lb="prev" aria-label="Foto anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+            <button class="ibtn" type="button" data-lb="next" aria-label="Próxima foto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+            <button class="ibtn" type="button" data-lb="fechar" aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </span>
         </div>
       </div>
-    </header>
-    <main id="conteudo" data-pagefind-body>
-      <section class="hero" data-astro-cid-lcdefpme>
-        <img
-          src="/_astro/hero.8RsypCQc_Z1M3U8e.webp"
-          srcset="
-            /_astro/hero.8RsypCQc_Z1GE3P.webp   640w,
-            /_astro/hero.8RsypCQc_Z1M3U8e.webp 1280w
-          "
-          alt="Criança pintando com as mãos uma folha de papel, ao lado de uma mulher, com tintas azul, vermelha e amarela."
-          sizes="100vw"
-          loading="eager"
-          data-astro-cid-lcdefpme="true"
-          decoding="async"
-          width="1280"
-          height="720"
-        />
-        <div class="hero-card" data-astro-cid-lcdefpme>
-          <h1 data-astro-cid-lcdefpme>
-            Existe um mundo inteiro por trás de cada cor.
-          </h1>
-          <p class="hero-sub" data-astro-cid-lcdefpme>
-            Mais do que reconhecer cores, há um universo de possibilidades para
-            descobrir.
-          </p>
-          <p data-astro-cid-lcdefpme>
-            A Colorê é uma exposição educativa e itinerante que aproxima
-            crianças do universo cromático por meio da arte, da interação e da
-            experimentação, convidando-as a observar, explorar e criar novas
-            formas de aprender.
-          </p>
-        </div>
-      </section>
-      <div class="scroll-hint">
-        <a
-          href="#o-que-e"
-          aria-label="Scroll: ir para a seção O que é a Colorê"
-        >
-          <span>Scroll</span>
-          <svg
-            viewBox="0 0 24 24"
-            width="28"
-            height="28"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
-        </a>
-      </div>
-      <section id="o-que-e" class="section container prose">
-        <div class="split">
-          <div class="split-text">
-            <h2>Aprender também é <span class="destaque">experimentar!</span></h2>
-            <p>
-              Na infância, a descoberta acontece de muitas formas: no olhar
-              curioso, nas tentativas, nas combinações e na liberdade de criar. A
-              Colorê transforma o aprendizado sobre as cores em uma experiência
-              de exploração e expressão, aproximando arte e conhecimento de
-              maneira lúdica e participativa.
-            </p>
-            <p>
-              <a class="button" href="/a-exposicao/#metodologia"
-                >Conheça nossa metodologia</a
-              >
-            </p>
-          </div>
-          <!-- TODO(conteudo): trocar pela imagem final da exposição -->
-          <div class="art">
-            <span class="c c1" aria-hidden="true"></span>
-            <span class="c c2" aria-hidden="true"></span>
-            <span class="c c3" aria-hidden="true"></span>
-            <img
-              src="/img/criancas-pintando.webp"
-              alt="Três crianças de avental despejando tintas coloridas sobre telas, que formam desenhos em espiral."
-              width="980"
-              height="980"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-                  <section id="estacoes" class="estacoes pink" data-astro-cid-lcdefpme>
-        <div class="container" data-astro-cid-lcdefpme>
-          <h2 class="center" data-astro-cid-lcdefpme>
-            Um percurso por diferentes descobertas.
-          </h2>
-          <p class="center lead" data-astro-cid-lcdefpme>
-            A experiência Colorê é organizada em quatro estações que exploram
-            diferentes aspectos do universo cromático. Cada uma propõe uma forma
-            de interação e descoberta, convidando as crianças a construir novas
-            relações com as cores. Ao final, a oficina Criar amplia essas
-            descobertas por meio da expressão artística.
-          </p>
-          <div class="deck-track">
-            <ul class="deck">
-              <li class="card orange">
-                <span class="dot" aria-hidden="true"></span
-                ><span class="num">1</span>
-                <h3>Descobrir</h3>
-                <p>Um primeiro contato com o universo das cores e suas possibilidades.</p>
-              </li>
-              <li class="card blue">
-                <span class="dot" aria-hidden="true"></span
-                ><span class="num">2</span>
-                <h3>Transformar</h3>
-                <p>Explorar misturas, combinações e as transformações das cores.</p>
-              </li>
-              <li class="card cream">
-                <span class="dot" aria-hidden="true"></span
-                ><span class="num">3</span>
-                <h3>Perceber</h3>
-                <p>Investigar como a luz e o olhar influenciam nossa percepção das cores.</p>
-              </li>
-              <li class="card green">
-                <span class="dot" aria-hidden="true"></span
-                ><span class="num">4</span>
-                <h3>Representar</h3>
-                <p>Descobrir diferentes maneiras de expressar ideias por meio das cores.</p>
-              </li>
-              <li class="card yellow">
-                <span class="dot" aria-hidden="true"></span
-                ><span class="num">5</span>
-                <h3>Criar (Oficina)</h3>
-                <p>Transformar descobertas em uma produção artística autoral.</p>
-              </li>
-            </ul>
-            <div class="deck-dots">
-              <button type="button" class="on" aria-label="Ir para a estação 1" aria-current="true"></button>
-              <button type="button" aria-label="Ir para a estação 2"></button>
-              <button type="button" aria-label="Ir para a estação 3"></button>
-              <button type="button" aria-label="Ir para a estação 4"></button>
-              <button type="button" aria-label="Ir para a estação 5"></button>
-            </div>
-          </div>
-          <div class="deck-actions" data-astro-cid-lcdefpme>
-            <a class="button" href="/a-exposicao" data-astro-cid-lcdefpme
-              >Conheça a exposição</a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="faixa" aria-label="Imagens da exposição">
-        <ul>
-          <li><button type="button"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/instalacao-pendurada.webp" alt="Duas crianças dançando em uma sala rosa, com objetos coloridos pendurados no teto e luzes projetadas." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/mesa-interativa-cores.webp" alt="Duas meninas em uma mesa interativa azul, tocando uma tela colorida; na parede, um diagrama mostra a mistura de cores." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/sombra-colorida-menino.webp" alt="Menino de braços abertos diante de uma parede iluminada em roxo, azul e verde, com a sombra dele projetada em roxo." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/mesa-pinceis-de-luz.webp" alt="Três crianças sorrindo ao mexer em pincéis de luz sobre uma mesa redonda que projeta cores em espiral." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/mural-colorido.webp" alt="Duas crianças em uma sala com um mural gigante e colorido, apontando para os desenhos; à frente, pedestais vermelho e verde." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." width="800" height="1000" loading="lazy" /></button></li>
-          <li><button type="button"><img src="/img/instalacao-triangulos.webp" alt="Sala com uma grande instalação suspensa de acetatos coloridos que projeta triângulos amarelos, rosa e azuis nas paredes e no chão." width="800" height="1000" loading="lazy" /></button></li>
-        </ul>
-        <dialog class="foto-modal" aria-label="Foto ampliada">
-          <button class="fechar" type="button" aria-label="Fechar">×</button>
-          <img src="" alt="" />
-        </dialog>
-      </section>
-      <section class="espacos section container">
-        <h2 class="center" data-astro-cid-lcdefpme>Tem espaço para mais descobertas por aí?</h2>
-        <p class="center lead" data-astro-cid-lcdefpme>
-          A Colorê é itinerante e está pronta para ganhar novos espaços!
-          Escolas, centros culturais e instituições podem receber nossa
-          exposição e proporcionar às crianças uma experiência de aprendizado
-          que une arte, curiosidade e exploração do universo das cores.
-        </p>
-        <div class="esp-grid">
-          <article class="orange">
-            <p class="n">01</p>
-            <h3>Escolas</h3>
-            <p>Novas possibilidades de aprendizagem para as crianças.</p>
-          </article>
-          <article class="blue">
-            <p class="n">02</p>
-            <h3>Espaços culturais</h3>
-            <p>Experiências artísticas e educativas para o público infantil.</p>
-          </article>
-          <article class="green wide">
-            <h3>Vamos levar essa experiência mais longe?</h3>
-            <p>Entre em contato e descubra como receber a Colorê em sua instituição.</p>
-            <a class="button dark" href="/para-instituicoes">Quero levar a Colorê para minha instituição ↗</a>
-          </article>
-        </div>
-      </section>
-      <section id="faq" class="section container" data-astro-cid-lcdefpme>
-        <h2 class="center" data-astro-cid-lcdefpme>Perguntas frequentes</h2>
-        <div class="faq" data-astro-cid-lcdefpme>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>Para quem é a exposição?</summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                A Colorê é destinada a crianças de 4 a 8 anos e pode ser recebida por
-                escolas, museus, centros culturais e outras instituições
-                interessadas em proporcionar experiências educativas e
-                artísticas para o público infantil.
-              </p>
-            </div>
-          </details>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>
-              A Colorê é uma exposição sobre daltonismo?
-            </summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                Não. O daltonismo foi um dos pontos de partida para o desenvolvimento
-                do projeto, mas a proposta vai além. A Colorê explora o universo
-                das cores a partir da percepção, da experimentação e da
-                expressão, convidando todas as crianças a descobrir diferentes
-                formas de observar e se relacionar com o mundo cromático.
-              </p>
-            </div>
-          </details>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>
-              O que as crianças fazem na exposição?
-            </summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                As crianças percorrem quatro estações interativas, nas quais são
-                convidadas a observar, experimentar, investigar e representar as
-                cores de diferentes maneiras. A experiência termina com a
-                oficina Criar, um momento de expressão artística em que podem
-                transformar suas descobertas em produções próprias. Todo o
-                percurso conta com o acompanhamento de mediadores.
-              </p>
-            </div>
-          </details>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>
-              Quanto custa receber a Colorê?
-            </summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                O investimento depende das características da instituição e das
-                condições de realização da exposição. Entre em contato com a
-                nossa equipe para apresentar seu espaço e conhecer as
-                possibilidades de receber a Colorê.
-              </p>
-            </div>
-          </details>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>Quanto tempo dura a visita?</summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                A duração da experiência será definida de acordo com o formato
-                de visitação e a organização das atividades. Entre em contato
-                para consultar as possibilidades de atendimento.
-              </p>
-            </div>
-          </details>
-          <details name="faq" data-astro-cid-lcdefpme>
-            <summary data-astro-cid-lcdefpme>
-              As crianças precisam estar acompanhadas?
-            </summary>
-            <div data-astro-cid-lcdefpme>
-              <p>
-                A experiência conta com o acompanhamento de mediadores durante
-                as atividades. A participação de professores e responsáveis
-                pode ser organizada de acordo com o formato da visita.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
-      <section class="cta-final" data-astro-cid-lcdefpme>
-        <div class="container cta-final-in" data-astro-cid-lcdefpme>
-          <div data-astro-cid-lcdefpme>
-            <h2 data-astro-cid-lcdefpme>Colorê - descobrir é colorir.</h2>
-            <p data-astro-cid-lcdefpme>
-              Um universo de cores, possibilidades e descobertas esperando para
-              ser explorado.
-            </p>
-          </div>
-          <a
-            class="button dark"
-            href="/para-instituicoes"
-            data-astro-cid-lcdefpme
-            >Fale com a gente</a
-          >
-        </div>
-      </section>
-    </main>
-    <footer class="colado" data-astro-cid-jo6i4kqk>
-      <div class="container rodape" data-astro-cid-jo6i4kqk>
-        <div class="rodape-marca" data-astro-cid-jo6i4kqk>
-          <img
-            src="/_astro/logo-creme.DSI7b76l.svg"
-            alt="Colorê"
-            width="120"
-            height="35"
-            data-astro-cid-jo6i4kqk
-          />
-          <p data-astro-cid-jo6i4kqk>
-            Exposição educativa e itinerante sobre cores e percepção.
-          </p>
-        </div>
-        <nav class="rodape-mapa" aria-label="Mapa do site" data-astro-cid-jo6i4kqk>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Colorê</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/" data-astro-cid-jo6i4kqk>Início</a></li>
-              <li><a href="/#estacoes" data-astro-cid-jo6i4kqk>As estações</a></li>
-              <li><a href="/#faq" data-astro-cid-jo6i4kqk>Perguntas frequentes</a></li>
-            </ul>
-          </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>A exposição</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/a-exposicao" data-astro-cid-jo6i4kqk>A exposição</a></li>
-              <li><a href="/a-exposicao#sobre" data-astro-cid-jo6i4kqk>De onde surgiu a ideia</a></li>
-              <li><a href="/a-exposicao#metodologia" data-astro-cid-jo6i4kqk>Proposta educativa</a></li>
-            </ul>
-          </div>
-          <div data-astro-cid-jo6i4kqk>
-            <h2 class="rodape-titulo" data-astro-cid-jo6i4kqk>Para você</h2>
-            <ul data-astro-cid-jo6i4kqk>
-              <li><a href="/para-instituicoes" data-astro-cid-jo6i4kqk>Para instituições</a></li>
-              <li><a href="/para-educadores" data-astro-cid-jo6i4kqk>Para educadores</a></li>
-              <li><a href="/contato" data-astro-cid-jo6i4kqk>Contato</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="rodape-fim" data-astro-cid-jo6i4kqk>
-          <p data-astro-cid-jo6i4kqk>© 2026 Colorê</p>
-          <p data-astro-cid-jo6i4kqk>
-            Font: Codec Family by
-            <a
-              href="http://www.zetafonts.com/collection/2102"
-              data-astro-cid-jo6i4kqk
-              >Zetafonts</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
+    </dialog>
   </body>
 </html>
