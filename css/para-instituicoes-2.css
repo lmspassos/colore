@@ -96,12 +96,12 @@
   .fl{animation:sobe linear both;animation-timeline:scroll(root);animation-range:0 100vh}
   .ih-t .l{animation:entra .9s var(--ease) both,solta linear both;animation-delay:calc(var(--i) * 35ms),0s;animation-timeline:auto,scroll(root);animation-range:normal,0 90vh}
   .ih-in>:not(.ih-t){animation:esvai linear both;animation-timeline:scroll(root);animation-range:0 60vh}
-  /* por que: a seção fica presa na tela enquanto os círculos crescem */
-  .rev{height:280svh;view-timeline:--rev block}
+  /* por que: os círculos já crescem enquanto a seção entra (sem tela vazia) e ela fica presa até o cartão assentar */
+  .rev{height:220svh;view-timeline:--rev block}
   .rev-st{position:sticky;top:0;height:100svh}
-  .rg{animation:abre linear both;animation-timeline:--rev;animation-range:contain var(--de) contain var(--ate)}
-  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:contain 22% contain 72%}
-  .rev-card{animation:cartao linear both;animation-timeline:--rev;animation-range:contain 55% contain 90%}
+  .rg{animation:abre linear both;animation-timeline:--rev;animation-range:var(--de) var(--ate)}
+  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:entry 55% contain 55%}
+  .rev-card{animation:cartao linear both;animation-timeline:--rev;animation-range:contain 40% contain 80%}
   /* objetivos: cada cartão cai girando e assenta sobre o anterior */
   .gcard{animation:cai linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
   .deck-side .d1{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
@@ -120,7 +120,7 @@
 @keyframes sobe{to{translate:0 calc(var(--v) * 1px);rotate:calc(var(--rr) + 40deg)}}
 @keyframes esvai{to{opacity:0;translate:0 -3rem}}
 @keyframes recorte{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(75% at 50% 42%)}}
-@keyframes abre{from{scale:0}to{scale:1}}
+@keyframes abre{from{scale:var(--s0,0)}to{scale:1}}
 @keyframes cartao{from{translate:0 70%;rotate:8deg;opacity:0}to{translate:none;rotate:-1.5deg;opacity:1}}
 @keyframes cai{from{translate:0 50%;rotate:calc(var(--r) * -5)}to{translate:none;rotate:var(--r)}}
 @keyframes viaja{from{translate:30% 0}to{translate:-55% 0}}
