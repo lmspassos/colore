@@ -314,8 +314,10 @@ html { scroll-behavior: smooth; }
 /* Objetivos como círculos coloridos (placa sobreposta ao baralho): título, ícone do conteúdo e texto abaixo */
 .obj-block .objs .obj { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; aspect-ratio: 1; width: min(100%, 21rem); padding: 3.25rem; border: 2px solid var(--graphite); border-radius: 50%; background: var(--c); color: var(--graphite); text-align: center; font-weight: 500; line-height: 1.2; font-size: clamp(1rem, 1.4cqi, 1.1875rem); }
 .obj-block .objs .obj:hover { background: var(--c); }
-.obj-block .objs .obj i, .obj-block .objs .obj:hover i { flex: none; order: -1; display: grid; place-items: center; width: 4.5em; height: 4.5em; border: 2px solid var(--graphite); border-radius: 50%; background: var(--paper); transform: none; }
-.obj i svg { width: 62%; height: 62%; fill: none; stroke: var(--graphite); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.obj-block .objs .obj i, .obj-block .objs .obj:hover i { flex: none; order: -1; display: grid; place-items: center; width: 7em; height: 7em; border: 2px solid var(--graphite); border-radius: 50%; background: var(--paper); transform: none; }
+.obj i svg { width: 78%; height: 78%; stroke: var(--graphite); stroke-width: 2.5; stroke-linejoin: round; }
+.obj i .fo { fill: var(--orange); } .obj i .fy { fill: var(--yellow); } .obj i .fb { fill: var(--blue); } .obj i .fp { fill: var(--pink); } .obj i .fg { fill: var(--green); } .obj i .fk { fill: var(--graphite); } .obj i .fw { fill: var(--paper); }
 .obj .ot { order: -2; display: block; font-family: var(--fd); font-weight: 700; font-size: 1.9em; line-height: 1; color: var(--paper); paint-order: stroke fill; -webkit-text-stroke: .14em var(--graphite); }
 :root[data-tema=tritanopia] .obj-block .objs .obj.c-ye { color: var(--graphite); }
 .obj-block .objs.deck .obj { align-self: center; justify-self: center; width: min(86vw, 30rem); font-size: min(1.5rem, 5vw); }
+@container site (max-width: 35rem) { .obj-block .objs .obj { padding: 2.25rem; gap: .4rem; } .obj-block .objs .obj i, .obj-block .objs .obj:hover i { width: 5em; height: 5em; } .obj .ot { font-size: 1.6em; } }
