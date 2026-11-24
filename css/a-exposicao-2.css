@@ -180,3 +180,38 @@
 @media (prefers-reduced-motion: no-preference) {
   .stage-card .d1 .gl { animation: a2-hero .9s var(--ease) both; animation-delay: calc(.15s + var(--i) * 55ms); animation-timeline: auto; animation-range: normal; }
 }
+
+/* super abertura: tela cheia que "afunda" num círculo amarelo até o palco */
+.intro { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: clip; text-align: center; }
+.intro-in { position: relative; z-index: 2; padding: 6rem 1.5rem 3rem; max-width: 70rem; }
+.intro-logo { display: block; margin: 0 auto 1.25rem; width: 8rem; height: auto; }
+.intro-h { margin: 0; font-family: var(--fd); font-weight: 700; text-transform: uppercase; font-size: clamp(2.5rem, 9cqi, 8rem); line-height: .9; color: var(--graphite); }
+.intro-sub { margin: 1.5rem auto 0; max-width: 28rem; font-weight: 600; }
+.intro-dot { position: absolute; aspect-ratio: 1; border-radius: 50%; z-index: 1; }
+.intro-zoom { display: none; }
+.intro-wrap.pin { height: 220vh; position: relative; }
+.pin .intro { position: sticky; top: 0; height: 100svh; }
+.pin .intro-zoom { display: block; position: absolute; z-index: 3; left: 50%; top: 50%; width: 220vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; scale: calc(var(--q, 0) * var(--q, 0)); }
+.pin .intro-in { opacity: calc(1.6 - var(--q, 0) * 1.9); scale: calc(1 + var(--q, 0) * .25); rotate: calc(var(--q, 0) * -4deg); }
+.intro .cloud { --cl: var(--blue); }
+.intro .cloud.cb2 { --cl: var(--pink); }
+.intro .gl { display: inline-block; }
+@keyframes a2-hero2 { from { opacity: 0; filter: blur(.6rem); translate: var(--dx) var(--dy); rotate: var(--r); scale: .5; transform: skewX(-20deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .intro .gl { animation: a2-hero2 1s var(--ease) both; animation-delay: calc(.1s + var(--i) * 40ms); animation-timeline: auto; animation-range: normal; }
+}
+/* colagem de fotos inclinadas */
+.prop2-r { display: grid; gap: 1.5rem; }
+.collage { position: relative; height: clamp(11rem, 24cqi, 20rem); }
+.collage img { position: absolute; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: .4375rem solid var(--cream); }
+.co-a { left: 6%; top: 0; width: 46%; rotate: -8deg; }
+.co-b { right: 4%; top: 18%; width: 38%; rotate: 9deg; }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .co-a { animation: a2-pa linear both; animation-timeline: view(); }
+    .co-b { animation: a2-pb linear both; animation-timeline: view(); }
+  }
+}
+@keyframes a2-pa { from { translate: 0 4rem; rotate: -20deg; } to { translate: 0 -2rem; rotate: 4deg; } }
+@keyframes a2-pb { from { translate: 0 8rem; rotate: 25deg; } to { translate: 0 -4rem; rotate: -2deg; } }
+.end { position: relative; overflow: clip; }

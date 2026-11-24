@@ -22,7 +22,17 @@
       f.replaceWith(frag);
     }
   };
-  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1").forEach((h) => { idx = 0; quebra(h); });
+  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h").forEach((h) => { idx = 0; quebra(h); });
+
+  // Super abertura: o círculo amarelo cresce com a rolagem (q de 0 a 1) e leva ao palco
+  const ab = document.querySelector("[data-intro]");
+  if (ab) {
+    ab.classList.add("pin");
+    let pi = 0;
+    const q = () => { pi = 0; const r = ab.getBoundingClientRect(); ab.style.setProperty("--q", Math.min(1, Math.max(0, -r.top / (r.height - innerHeight))).toFixed(3)); };
+    addEventListener("scroll", () => { if (!pi) pi = requestAnimationFrame(q); }, { passive: true });
+    addEventListener("resize", q); q();
+  }
 
   // Baralho: os cards ficam empilhados e inclinados; a cada trecho de rolagem o de cima sai voando e revela o próximo, enquanto as nuvens passam atrás.
   const deck = document.querySelector(".objs:not(.descobrem)");
