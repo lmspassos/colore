@@ -1,5 +1,8 @@
-// Cabeçalho. Busca: abre a partir da lupa; sem JS o botão só leva à página de busca.
-const f = document.querySelector("header .search");
+// Cabeçalho (busca, menu, acessibilidade, rolagem) e rodapé. Todas as páginas.
+(() => {
+
+// Busca: abre a partir da lupa; sem JS o botão só leva à página de busca.
+const f = document.querySelector(".hdr .search");
 if (f) {
   const i = f.querySelector("input"), b = f.querySelector("button");
   const set = (open) => { f.classList.toggle("open", open); b.setAttribute("aria-expanded", open); };
@@ -12,21 +15,14 @@ if (f) {
   document.addEventListener("click", (e) => { if (!f.contains(e.target) && !i.value.trim()) set(false); });
 }
 
-// Menu lateral (celular): abre/fecha com animação, Esc e clique no fundo também fecham.
-const nav = document.querySelector("header nav"), scrim = document.querySelector(".scrim");
-const abrir = document.querySelector(".menu-btn"), fechar = document.querySelector(".menu-close");
-if (nav && scrim && abrir && fechar) {
-  const show = (v) => {
-    nav.classList.toggle("open", v);
-    scrim.classList.toggle("open", v);
-    abrir.setAttribute("aria-expanded", v);
-    document.body.style.overflow = v ? "hidden" : "";
-    (v ? fechar : abrir).focus({ preventScroll: true });
-  };
-  abrir.addEventListener("click", () => show(true));
-  fechar.addEventListener("click", () => show(false));
-  scrim.addEventListener("click", () => show(false));
-  nav.addEventListener("keydown", (e) => { if (e.key === "Escape") show(false); });
+// Menu (telas estreitas): desce do cabeçalho; Esc, clique fora e escolher um link fecham.
+const nav = document.querySelector(".nav-wrap"), abrir = document.querySelector(".menu-btn");
+if (nav && abrir) {
+  const show = (v) => { nav.classList.toggle("open", v); abrir.setAttribute("aria-expanded", v); };
+  abrir.addEventListener("click", () => show(!nav.classList.contains("open")));
+  nav.addEventListener("click", (e) => { if (e.target.closest("a")) show(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && nav.classList.contains("open")) { show(false); abrir.focus({ preventScroll: true }); } });
+  document.addEventListener("click", (e) => { if (!nav.contains(e.target) && !abrir.contains(e.target)) show(false); });
 }
 
 // Acessibilidade: tema de cor (data-tema) e tamanho da fonte, lembrados no navegador.
@@ -38,8 +34,8 @@ if (A) {
   const cores = A.querySelector("[data-cores]");
   const temas = [...A.querySelectorAll("[data-tema]")];
   const mais = A.querySelector("[data-fonte=mais]"), menos = A.querySelector("[data-fonte=menos]"), orig = A.querySelector("[data-fonte=original]");
-  const abrir = (v) => { A.classList.toggle("open", v); btn.setAttribute("aria-expanded", v); if (!v) { main.hidden = false; sub.hidden = true; A.querySelectorAll(".a11y-desc").forEach((p) => { p.hidden = true; }); A.querySelectorAll(".a11y-info").forEach((b) => b.setAttribute("aria-expanded", false)); } };
-  btn.addEventListener("click", () => abrir(!A.classList.contains("open")));
+  const abre = (v) => { A.classList.toggle("open", v); btn.setAttribute("aria-expanded", v); if (!v) { main.hidden = false; sub.hidden = true; A.querySelectorAll(".a11y-desc").forEach((p) => { p.hidden = true; }); A.querySelectorAll(".a11y-info").forEach((b) => b.setAttribute("aria-expanded", false)); } };
+  btn.addEventListener("click", () => abre(!A.classList.contains("open")));
   cores.addEventListener("click", () => { main.hidden = true; sub.hidden = false; sub.querySelector("button").focus({ preventScroll: true }); });
   const tema = (t) => {
     if (t) root.dataset.tema = t; else delete root.dataset.tema;
@@ -48,9 +44,9 @@ if (A) {
   };
   // ao escolher um modo, só o descritivo dele fica aberto
   const descricao = (t) => A.querySelectorAll(".a11y-info").forEach((i) => {
-    const p = document.getElementById(i.getAttribute("aria-controls")), abre = t !== "" && p.id === "info-" + t;
-    p.hidden = !abre;
-    i.setAttribute("aria-expanded", abre);
+    const p = document.getElementById(i.getAttribute("aria-controls")), abreP = t !== "" && p.id === "info-" + t;
+    p.hidden = !abreP;
+    i.setAttribute("aria-expanded", abreP);
   });
   tema(root.dataset.tema || "");
   temas.forEach((b) => b.addEventListener("click", () => { tema(b.dataset.tema); descricao(b.dataset.tema); }));
@@ -74,16 +70,12 @@ if (A) {
     p.hidden = !p.hidden;
     b.setAttribute("aria-expanded", !p.hidden);
   }));
-  const mq = matchMedia("(max-width: 47.99rem)");
-  const lugar = () => { const dest = mq.matches && nav ? nav : document.querySelector(".tools"); if (dest && A.parentNode !== dest) dest.append(A); };
-  mq.addEventListener("change", lugar);
-  lugar();
-  A.addEventListener("keydown", (e) => { if (e.key === "Escape") { abrir(false); btn.focus({ preventScroll: true }); } });
-  document.addEventListener("click", (e) => { if (!A.contains(e.target)) abrir(false); });
+  A.addEventListener("keydown", (e) => { if (e.key === "Escape") { abre(false); btn.focus({ preventScroll: true }); } });
+  document.addEventListener("click", (e) => { if (!A.contains(e.target)) abre(false); });
 }
 
 // Cabeçalho some ao rolar para baixo e volta no primeiro gesto para cima.
-const cab = document.querySelector("header");
+const cab = document.querySelector(".hdr");
 if (cab) {
   let y0 = scrollY;
   const emUso = () => cab.matches(":focus-within") || (nav && nav.classList.contains("open")) || cab.querySelector(".a11y.open");
@@ -95,12 +87,33 @@ if (cab) {
   }, { passive: true });
 }
 
+// Nav: cada hover sorteia uma cor da paleta, menos a da própria barra (rosa). Por modo de daltonismo, só entram
+// as cores que continuam diferentes da barra e com contraste para o texto grafite.
+{
+  const cores = {
+    "": ["--yellow", "--orange", "--blue", "--green", "--cream"],
+    protanopia: ["--yellow", "--orange", "--blue", "--green"],
+    deuteranopia: ["--yellow", "--orange", "--blue", "--green"],
+    tritanopia: ["--orange", "--green", "--cream"],
+    acromatopsia: ["--yellow"],
+  };
+  document.querySelectorAll(".nav a").forEach((a) => {
+    const sorteia = () => {
+      const ok = cores[document.documentElement.dataset.tema || ""];
+      a.style.setProperty("--nav-hover", `var(${ok[Math.floor(Math.random() * ok.length)]})`);
+    };
+    a.addEventListener("mouseenter", sorteia);
+    a.addEventListener("focus", sorteia);
+  });
+}
+
 // Rodapé: cada hover sorteia uma cor da identidade visual (sem o grafite, que some no fundo).
 {
   const cores = ["--yellow", "--orange", "--blue", "--green", "--pink"];
-  document.querySelectorAll(".rodape-mapa a").forEach((a) => {
+  document.querySelectorAll(".flinks a").forEach((a) => {
     const sorteia = () => a.style.setProperty("--hover", `var(${cores[Math.floor(Math.random() * cores.length)]})`);
     a.addEventListener("mouseenter", sorteia);
     a.addEventListener("focus", sorteia);
   });
 }
+})();

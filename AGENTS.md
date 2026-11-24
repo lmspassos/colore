@@ -10,10 +10,11 @@ Não é loja. Conteúdo da exposição (percurso, estações, atividades) ainda 
 
 ## Stack
 
-HTML e CSS puros, sem framework, sem build, sem dependências. Hospedado no Cloudflare Pages (https://projeto-colore.pages.dev/), publicado da branch `main`, pasta raiz, sem build.
-Tudo foi gerado a partir de um projeto Astro antigo (está no histórico do git, antes do commit "Troca Astro por HTML e CSS puros").
-Fontes: Fredoka em `_astro/*.woff2` (já referenciada no CSS de cada página). Codec Family (Zetafonts) em `fonts/Codec-Cold-*-trial.ttf` (família Codec Cold completa, 8 pesos com itálicos), versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
+HTML, CSS e JavaScript puros, sem framework, sem build, sem dependências. Hospedado no Cloudflare Pages (https://projeto-colore.pages.dev/), publicado da branch `main`, pasta raiz, sem build.
+Veio de um projeto Astro antigo (histórico do git, antes do commit "Troca Astro por HTML e CSS puros"). O visual atual segue a proposta visual (`referencias/`): círculos chapados, formas de godê, Fredoka + Codec, animações em CSS ligadas à rolagem.
+Fontes: Fredoka em `_astro/*.woff2` (declarada em `css/base.css`). Codec Family (Zetafonts) em `fonts/Codec-Cold-*-trial.ttf` (família Codec Cold completa, 8 pesos com itálicos), versionada por ser projeto de estudo; o crédito fica no rodapé de cada página.
 Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funcionar de verdade, usar Formspree ou similar.
+Busca: Pagefind (índice estático em `pagefind/`). Depois de mudar texto, regerar com `npx pagefind --site . --glob "{index.html,*/index.html}"` (só as páginas com `data-pagefind-body` entram no índice).
 
 ## Estrutura
 
@@ -21,24 +22,31 @@ Formulário: **simulado** (GET para `obrigado/`, não envia nada). Para funciona
 /
 ├─ index.html · 404.html · favicon.svg · .nojekyll
 ├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ (só redireciona para a-exposicao) · contato/ · privacidade/ · obrigado/   (cada um com index.html)
-├─ _astro/                   # fontes Fredoka
+├─ css/                      # base.css (tokens, cabeçalho, rodapé, FAQ, formulários, temas de daltonismo) + um CSS por página (inicio, a-exposicao, para-instituicoes, para-educadores, contato)
+├─ js/                       # base.js (cabeçalho, menu, busca, acessibilidade) · orb.js (heróis) · galeria.js (faixa + foto ampliada) · form.js (validação) · inicio.js · trilha.js (caminho amarelo da home) · bolinhas.js (bolinhas com gravidade do fechamento) · a-exposicao.js · para-educadores.js · busca.js
+├─ img/ · fonts/ · pagefind/ # fotos (webp/jpg), fontes Codec, índice da busca
+├─ _astro/                   # fontes Fredoka, logos, imagem do herói
 ├─ docs/marca/               # identidade visual (referência)
+├─ referencias/              # proposta visual do site (arquivo de design, só referência; não publicar)
 └─ AGENTS.md · CLAUDE.md · README.md
 ```
 
 ## Convenções
 
 - Todos os links e recursos começam com `/` (o site mora na raiz do domínio). Não use o prefixo `/colore/`: ele só existia quando o site ficava em lmspassos.github.io/colore/.
-- O CSS está dentro de `<style>` em cada página (herança do build). Cabeçalho e rodapé se repetem: ao mudar um, mude em todas as páginas.
+- Cada página carrega `/css/base.css` + o CSS da própria página e os scripts de `/js/` com `defer`. Cada script é uma IIFE (não declare `const` global). Cabeçalho e rodapé se repetem em todas as páginas: ao mudar um, mude em todas.
+- Cores **só por token** (`var(--orange)`…), nunca hex solto, e pelas classes `c-or/ye/bl/pk/gr/cr/ink` (define `--c`) e `bg-orange/yellow/…` (fundo): o menu de acessibilidade troca os tokens para os modos de daltonismo (`data-tema`). Ao criar um componente com fundo colorido, confira os quatro modos (regras em `css/base.css`).
+- Conteúdo interativo precisa funcionar sem JS: o HTML já traz todo o texto e o JS só esconde/mostra (classe `js` no `<html>`). Respeite `prefers-reduced-motion`.
+- Animações ligadas à rolagem usam as propriedades `translate`/`rotate` (não `transform`), para não brigar com os `:hover`.
 - Textos visíveis em português; URLs em português, kebab-case, sem acento.
-- Mobile-first. Breakpoints: `48rem` e `64rem`. Unidades relativas.
+- Layout: `.site` é um *container* e os breakpoints são `@container site (max-width: …rem)` (valores da proposta, validados em 1440, 820 e 390 px); só o cabeçalho usa `@media` (`67.5rem` e `47.99rem`). Unidades relativas (rem, cqi), exceto bordas de até 3px.
 - Galeria só é exibida quando houver fotos reais com direito de uso. Conteúdo ainda em definição: use `TODO(conteudo):`.
 - Git: `main` publicada; trabalho em branches `feat/…`, `fix/…`, `content/…`; commits no imperativo, em português.
 
 ## Identidade visual (tokens)
 
 Grafite `#2B2B29` · Creme `#FEF8E6` · Laranja `#F26E36` · Amarelo `#F1D51C` · Azul `#93BEE6` · Verde `#1EB46F` · Rosa `#ECA5A6`.
-Fredoka para títulos, Codec Pro para texto. Grafismo: círculos chapados sobrepostos.
+Fredoka para títulos, Codec para texto. Grafismo: círculos chapados sobrepostos, bordas recortadas por círculos (`.sc`), formas de godê/arco.
 
 ## Acessibilidade (inegociável — o projeto nasce do daltonismo)
 
