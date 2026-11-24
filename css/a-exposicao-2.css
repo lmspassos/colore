@@ -325,6 +325,23 @@ html { scroll-behavior: smooth; }
 /* interação nos círculos do conceito: o círculo sobe, endireita e ganha rosto; os vizinhos abrem espaço */
 .conc-dots li { position: relative; transition: scale .45s var(--ease), rotate .45s var(--ease), translate .45s var(--ease), box-shadow .3s; }
 .conc-dots .face { top: 24%; width: 30%; opacity: 0; scale: .4; transition: opacity .3s, scale .45s var(--ease); animation: none; }
+/* cada círculo do conceito tem a sua carinha: óculos, piscadinha, surpresa, gargalhada e bochechas */
+.conc-dots .face::before { content: ""; position: absolute; }
+.conc-dots li:nth-child(1) .face { background: radial-gradient(circle closest-side, var(--fc, var(--graphite)) 0 30%, transparent 34% 56%, var(--fc, var(--graphite)) 60% 94%, transparent 98%) 0 0 / 36% 54% no-repeat, radial-gradient(circle closest-side, var(--fc, var(--graphite)) 0 30%, transparent 34% 56%, var(--fc, var(--graphite)) 60% 94%, transparent 98%) 100% 0 / 36% 54% no-repeat; }
+.conc-dots li:nth-child(1) .face::before { left: 34%; right: 34%; top: 22%; height: .25rem; border-radius: 999px; background: var(--fc, var(--graphite)); }
+.conc-dots li:nth-child(1) .face::after { left: 34%; right: 34%; top: 66%; height: 26%; }
+.conc-dots li:nth-child(2) .face { background: radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 8% 0 / 20% 30% no-repeat; }
+.conc-dots li:nth-child(2) .face::before { right: 4%; top: 4%; width: 26%; height: 18%; border: .25rem solid var(--fc, var(--graphite)); border-top: 0; border-radius: 0 0 999px 999px; }
+.conc-dots li:nth-child(2) .face::after { left: 10%; right: 10%; height: 48%; }
+.conc-dots li:nth-child(3) .face { background: radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 4% 0 / 28% 42% no-repeat, radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 96% 0 / 28% 42% no-repeat; }
+.conc-dots li:nth-child(3) .face::after { left: 36%; right: 36%; top: 58%; height: auto; aspect-ratio: 1; border-top: .3rem solid var(--fc, var(--graphite)); border-radius: 50%; }
+.conc-dots li:nth-child(4) .face { background: radial-gradient(circle at 50% 100%, transparent 42%, var(--fc, var(--graphite)) 45% 66%, transparent 69%) 6% 0 / 24% 26% no-repeat, radial-gradient(circle at 50% 100%, transparent 42%, var(--fc, var(--graphite)) 45% 66%, transparent 69%) 94% 0 / 24% 26% no-repeat; }
+.conc-dots li:nth-child(4) .face::after { left: 20%; right: 20%; top: 40%; height: 52%; border: 0; background: var(--fc, var(--graphite)); }
+.conc-dots li:nth-child(4) .face::before { z-index: 1; left: 37%; right: 37%; top: 74%; height: 16%; border-radius: 999px 999px 0 0; background: var(--pink); }
+.conc-dots li:nth-child(5) .face::before { left: -22%; right: -22%; top: 36%; height: 30%; background: radial-gradient(circle closest-side, var(--orange) 96%, transparent 100%) 0 0 / 22% 100% no-repeat, radial-gradient(circle closest-side, var(--orange) 96%, transparent 100%) 100% 0 / 22% 100% no-repeat; }
+.conc-dots li:nth-child(5) .face::after { left: 26%; right: 26%; height: 36%; }
+/* tritanopia: o amarelo vira grafite, então a carinha de "artística" passa a creme */
+:root[data-tema=tritanopia] .conc-dots li.bg-yellow { --fc: var(--cream); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .conc-dots li:hover, .conc-dots li:active { scale: 1.16; rotate: 0deg; translate: 0 calc(var(--wy) - 1.25rem); z-index: 3; box-shadow: 0 .5rem 0 var(--graphite); }
   .conc-dots li:hover .face, .conc-dots li:active .face { opacity: 1; scale: 1; }
