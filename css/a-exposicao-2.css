@@ -115,8 +115,6 @@
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .stage-art { animation: a2-up linear both; animation-timeline: scroll(root); animation-range: 0 60vh; }
-    .gword > span:nth-child(1) { animation: a2-in-l linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
-    .gword > span:nth-child(2) { animation: a2-in-r linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
     .pano { animation: a2-open linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
     .pano > img { scale: 1.12; animation: a2-pan linear both; animation-timeline: view(); animation-range: cover; }
     .objs:not(.descobrem) .obj { animation: a2-disc linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
@@ -138,7 +136,8 @@
   @supports (animation-timeline: view()) {
     .cloud-bg { animation: a2-drift-l linear both; animation-timeline: view(); }
     .cloud-bg.cb2 { animation-name: a2-drift-r; }
-    .gword > span, .d2, .stage-card .d1, .end .d1, .side-h > span, .side-h2 { view-timeline: --h block; }
+    .gword { view-timeline: --g block; }
+    .d2, .stage-card .d1, .end .d1, .side-h > span, .side-h2 { view-timeline: --h block; }
     .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry calc(var(--i) * 3.5%) entry calc(38% + var(--i) * 3.5%); }
   }
 }
@@ -271,3 +270,12 @@ html { scroll-behavior: smooth; }
 .prop2.bg-yellow { background: var(--yellow); }
 .galband { padding-bottom: clamp(3rem, 6cqi, 5.5rem); }
 .dlband { padding-top: clamp(3rem, 6cqi, 5.5rem); }
+
+/* "descobrir é colorir": letra a letra, a 1ª palavra e depois "é colorir"; cada letra vem de um canto, alternando por cima e por baixo */
+@keyframes a2-gl { from { opacity: 0; translate: calc(var(--dx) * 5) calc(var(--dy) * var(--sy, 2.4)); rotate: calc(var(--r) * 2.5); scale: .6; } to { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; } }
+.gword .gl:nth-child(even) { --sy: -2.4; }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .gword .gl { animation: a2-gl linear both; animation-timeline: --g; animation-range: cover calc(var(--i) * 1.7%) cover calc(20% + var(--i) * 1.7%); }
+  }
+}

@@ -24,7 +24,7 @@
       f.replaceWith(frag);
     }
   };
-  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { idx = 0; const c = h.closest("[aria-hidden=true]") ? null : sr(h); quebra(h); if (c) h.append(c); });
+  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { if (!h.parentElement.classList.contains("gword") || !h.previousElementSibling) idx = 0; const c = h.closest("[aria-hidden=true]") ? null : sr(h); quebra(h); if (c) h.append(c); });
 
   // Super abertura: o círculo amarelo cresce com a rolagem (q de 0 a 1) e leva ao palco
   const ab = document.querySelector("[data-intro]");
