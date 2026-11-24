@@ -94,13 +94,7 @@
             <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Contato 2</span></p>
             <h1 class="c2-t" id="h-top" data-letras>Vamos conversar?</h1>
             <p class="lead">Dúvidas, ideias ou vontade de receber a exposição? Escreva para a gente. Queremos conhecer seu interesse e entender como a Colorê pode chegar até você.</p>
-            <p class="c2-dica">Sobre o que você quer falar?</p>
-            <ul class="bolhas">
-              <li style="--d:0s"><a class="bolha c-ye" style="--r:-3deg" href="#formulario" data-tipo="receber">Quero receber a exposição</a></li>
-              <li style="--d:-1.2s"><a class="bolha c-pk" style="--r:2deg" href="#formulario" data-tipo="educador">Sou educador(a)</a></li>
-              <li style="--d:-.6s"><a class="bolha c-bl" style="--r:-2deg" href="#formulario" data-tipo="duvida">Tenho uma dúvida</a></li>
-              <li style="--d:-1.8s"><a class="bolha c-or" style="--r:3deg" href="#formulario" data-tipo="outro">Outro assunto</a></li>
-            </ul>
+            <a class="btn c-ye c2-cta" href="#formulario">Começar a conversa <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
           </div>
         </section>
 
@@ -110,7 +104,7 @@
             <div class="c2-side">
               <p class="kicker c-ink"><i></i>Formulário</p>
               <h2 class="c2-big" id="h-form">Escreva para a gente</h2>
-              <p class="lead">Respondemos pelo e-mail ou telefone que você informar. Usamos esses dados apenas para responder ao seu contato.</p>
+              <p class="lead">Conte o que você tem em mente. Respondemos pelo e-mail ou telefone que você informar.</p>
             </div>
             <div class="c2-card">
               <div class="masc" aria-hidden="true"><span class="olho" style="left:20%"><i></i></span><span class="olho" style="right:20%"><i></i></span><span class="boca"></span></div>
@@ -119,12 +113,12 @@
               <form class="form" name="contato" method="get" action="/obrigado" data-validar style="--fc:var(--green)">
                 <p class="f full privacy">Campos com <span class="req">*</span> são obrigatórios.</p>
                 <fieldset class="f full" style="border:0;padding:0;margin:0">
-                  <legend class="lbl" style="margin-bottom:.625rem">Tipo de contato <span class="req" aria-hidden="true">*</span></legend>
-                  <div class="chips">
-                    <label class="chip"><input type="radio" name="tipo" value="receber" required /><span>Quero receber a exposição</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="educador" required /><span>Sou educador(a)</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="duvida" required /><span>Tenho uma dúvida</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="outro" required /><span>Outro assunto</span></label>
+                  <legend class="lbl c2-pergunta">Sobre o que você quer falar? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="chips bolhas">
+                    <label class="chip bolha c-ye" style="--r:-2deg"><input type="radio" name="tipo" value="receber" required /><span>Quero receber a exposição</span></label>
+                    <label class="chip bolha c-pk" style="--r:2deg"><input type="radio" name="tipo" value="educador" required /><span>Sou educador(a)</span></label>
+                    <label class="chip bolha c-bl" style="--r:-1.5deg"><input type="radio" name="tipo" value="duvida" required /><span>Tenho uma dúvida</span></label>
+                    <label class="chip bolha c-or" style="--r:2.5deg"><input type="radio" name="tipo" value="outro" required /><span>Outro assunto</span></label>
                   </div>
                   <p class="emsg" data-erro="tipo" hidden style="margin-top:.5rem"></p>
                 </fieldset>
@@ -176,9 +170,9 @@
             <p class="kicker c-gr"><i></i>Atalhos</p>
             <h2 class="c2-big" id="h-dir">Procurando algo específico?</h2>
             <ul class="dirs2" data-toque>
-              <li style="--i:0;--r:-5deg"><a class="dir2 c-bl" href="/para-instituicoes-2"><span class="selo bg-yellow" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Quero receber a exposição</span><span>Formato itinerante, como funciona o contato e formulário para instituições.</span><span class="go">Para instituições <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
-              <li style="--i:1;--r:2deg"><a class="dir2 c-pk" href="/para-educadores-2"><span class="selo bg-green" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Sou educador(a)</span><span>Proposta pedagógica e ideias para antes, durante e depois da visita.</span><span class="go">Para educadores <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
-              <li style="--i:2;--r:6deg"><a class="dir2 c-ye" href="/a-exposicao-2"><span class="selo bg-orange" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Quero conhecer a exposição</span><span>Conceito, pilares, estações e a oficina Criar.</span><span class="go">A exposição <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+              <li style="--i:0;--r:-5deg"><a class="dir2 c-bl" href="/para-instituicoes-2"><span class="selo bg-yellow" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Para instituições</span><span>Formato itinerante, como funciona o contato e formulário para instituições.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+              <li style="--i:1;--r:2deg"><a class="dir2 c-pk" href="/para-educadores-2"><span class="selo bg-green" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Para educadores</span><span>Proposta pedagógica e ideias para antes, durante e depois da visita.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+              <li style="--i:2;--r:6deg"><a class="dir2 c-ye" href="/a-exposicao-2"><span class="selo bg-orange" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">A exposição</span><span>Conceito, pilares, estações e a oficina Criar.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
             </ul>
             <div class="c2-info">
               <div class="c2-priv rv">

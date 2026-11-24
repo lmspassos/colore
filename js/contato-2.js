@@ -1,5 +1,5 @@
-// Contato 2: título em letras soltas, balões que escolhem o assunto e mascote que acompanha o formulário.
-// Sem JS: o título fica inteiro, os balões são links para o formulário e o mascote fica parado.
+// Contato 2: título em letras soltas e mascote que acompanha o formulário.
+// Sem JS: o título fica inteiro e o mascote fica parado.
 (() => {
   // título letra a letra (o aria-label mantém a leitura como frase)
   document.querySelectorAll("[data-letras]").forEach((h) => {
@@ -10,16 +10,6 @@
 
   const form = document.querySelector("#formulario form");
   if (!form) return;
-
-  // balão escolhido = tipo de contato marcado no formulário; o foco vai para o primeiro campo depois da rolagem
-  document.querySelectorAll("[data-tipo]").forEach((a) => a.addEventListener("click", () => {
-    const r = form.querySelector(`input[name=tipo][value="${a.dataset.tipo}"]`);
-    if (!r) return;
-    r.checked = true;
-    r.dispatchEvent(new Event("input", { bubbles: true }));
-    r.dispatchEvent(new Event("change", { bubbles: true }));
-    setTimeout(() => form.querySelector("input[name=nome]").focus({ preventScroll: true }), 700);
-  }));
 
   // mascote: olha para o campo em foco (ou para o cursor), sorri com tudo preenchido e se assusta com erro
   const m = document.querySelector(".masc");
