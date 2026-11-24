@@ -5,17 +5,21 @@
    Tudo que se mexe deriva de --a (ângulo da roda) por seno e cosseno, para não dar salto em nenhum ponto da volta. */
 @property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
 
-.roda { --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+/* céu único: passa do azul (instituições) ao rosa (educadores) conforme a roda gira */
+.roda { background: color-mix(in srgb, var(--pink) calc((1 - cos(var(--a))) * 50%), var(--blue)); --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda[data-lado=instituicoes] { --a: 0deg; }
 .roda[data-lado=educadores] { --a: 180deg; }
 .roda.arrasta { cursor: grabbing; }
 .roda img, .roda svg { -webkit-user-drag: none; }
 
-/* ── a roda: duas metades; a de educadores fica de cabeça para baixo até a roda virar ── */
+/* ── a roda: duas metades; a de educadores fica de cabeça para baixo até a roda virar.
+   Sem corte entre elas: cada cenário some aos poucos enquanto o outro aparece (mais forte perto do meio da volta) ── */
 .roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 300vmax; height: 300vmax; margin: -150vmax 0 0 -150vmax; rotate: var(--a); will-change: rotate; }
-.fatia { position: absolute; inset: 0 0 50% 0; overflow: hidden; }
-.f-inst { background: var(--blue); }
-.f-edu { background: var(--pink); rotate: 180deg; transform-origin: 50% 100%; }
+.fatia { position: absolute; inset: 0 0 50% 0; }
+/* chão em forma de pequeno planeta: gira com a roda, está sempre no palco e muda de cor junto com o céu */
+.terra { --base: color-mix(in srgb, color-mix(in srgb, var(--blue) 55%, var(--cream)) calc((1 - cos(var(--a))) * 50%), color-mix(in srgb, var(--green) 55%, var(--cream))); position: absolute; left: 50%; top: 50%; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
+.f-inst { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
+.f-edu { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); rotate: 180deg; transform-origin: 50% 100%; }
 /* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem */
 .cena { position: absolute; left: 50%; bottom: 0; width: max(100vw, var(--h)); height: calc(var(--h) + var(--p)); translate: -50% 0; }
 .palco { position: absolute; inset: 0 0 var(--p) 0; }
@@ -97,3 +101,8 @@
 .sol .raios { position: absolute; inset: -70%; border-radius: 50%; background: repeating-conic-gradient(color-mix(in srgb, var(--c) 50%, transparent) 0 9deg, transparent 9deg 22.5deg); }
 .sol .s { --x: 0%; --y: 0%; --w: 100%; }
 @media (prefers-reduced-motion: no-preference) { .sol .raios { animation: spin 40s linear infinite; } }
+/* árvores redondas espalhadas pela borda do planeta (entre um cenário e outro, sempre há algo passando) */
+.marco { position: absolute; left: 50%; top: 0; width: 0; height: 50%; rotate: var(--g); transform-origin: 50% 100%; }
+.marco b { position: absolute; bottom: 100%; left: 0; width: var(--s); height: calc(var(--s) * 1.7); translate: -50% 0; }
+.marco b::before { content: ""; position: absolute; left: 50%; bottom: 0; height: 45%; border-left: 3px solid var(--graphite); }
+.marco b::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--c); border: 3px solid var(--graphite); box-shadow: .3rem .3rem 0 var(--sombra); }
