@@ -285,3 +285,13 @@ html { scroll-behavior: smooth; }
 .gword.g2 > span { margin-left: 0; margin-right: 4cqi; }
 .gword:not(.g2) { margin-top: clamp(1.5rem, 4cqi, 4rem); }
 .gword .gl { transform-origin: 50% 70%; }
+
+/* cada letra numa cor da paleta; as palavras avançam sobre a borda de cima e a de baixo da foto */
+.gword .gl:nth-child(5n+1) { color: var(--orange); }
+.gword .gl:nth-child(5n+2) { color: var(--yellow); }
+.gword .gl:nth-child(5n+3) { color: var(--blue); }
+.gword .gl:nth-child(5n+4) { color: var(--pink); }
+.gword .gl:nth-child(5n+5) { color: var(--green); }
+.gword:not(.g2) { margin-bottom: -.38em; }
+.gword.g2 { margin-top: -.38em; }
+.pano .tag { top: 50%; }
