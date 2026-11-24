@@ -16,7 +16,7 @@
         const p = document.createElement("span"); p.className = "gw"; p.setAttribute("aria-hidden", "true");
         for (const ch of w) {
           const l = document.createElement("span"); l.className = "gl"; l.textContent = ch; l.style.setProperty("--i", idx++);
-          l.style.cssText += `;--dx:${(rnd() * 9).toFixed(1)}rem;--dy:${(rnd() * 7).toFixed(1)}rem;--r:${Math.round(rnd() * 100)}deg`;
+          l.style.cssText += `;--dx:${(rnd() * 3).toFixed(1)}rem;--dy:${(rnd() * 2 + 3.5).toFixed(1)}rem;--r:${Math.round(rnd() * 28)}deg`;
           p.append(l);
         }
         frag.append(p);
@@ -31,7 +31,7 @@
   if (ab) {
     ab.classList.add("pin");
     let pi = 0;
-    const q = () => { pi = 0; const r = ab.getBoundingClientRect(); ab.style.setProperty("--q", Math.min(1, Math.max(0, -r.top / (r.height - innerHeight))).toFixed(3)); };
+    const q = () => { pi = 0; const r = document.querySelector(".stage").getBoundingClientRect(); ab.style.setProperty("--q", Math.min(1, Math.max(0, 1 - r.top / innerHeight)).toFixed(3)); };
     addEventListener("scroll", () => { if (!pi) pi = requestAnimationFrame(q); }, { passive: true });
     addEventListener("resize", q); q();
   }

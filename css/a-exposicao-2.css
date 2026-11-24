@@ -159,13 +159,13 @@
 .gw { display: inline-block; white-space: nowrap; }
 @keyframes a2-drift-l { from { translate: -14cqi 0; } to { translate: 14cqi 0; } }
 @keyframes a2-drift-r { from { translate: 14cqi 0; } to { translate: -14cqi 0; } }
-@keyframes a2-letter { from { opacity: 0; translate: var(--dx) var(--dy); rotate: var(--r); scale: .6; } to { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; } }
+@keyframes a2-letter { from { opacity: 0; translate: var(--dx) var(--dy); rotate: var(--r); scale: .8; } to { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .cloud-bg { animation: a2-drift-l linear both; animation-timeline: view(); }
     .cloud-bg.cb2 { animation-name: a2-drift-r; }
-    .gword > span, .d2, .stage-card .d1, .end .d1 { view-timeline: --h block; }
-    .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry 0% entry 100%; }
+    .gword > span, .d2, .stage-card .d1, .end .d1, .side-h > span, .side-h2 { view-timeline: --h block; }
+    .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry calc(var(--i) * 3.5%) entry calc(38% + var(--i) * 3.5%); }
   }
 }
 
@@ -191,7 +191,7 @@
 .intro-zoom { display: none; }
 .intro-wrap.pin { height: 220vh; position: relative; }
 .pin .intro { position: sticky; top: 0; height: 100svh; }
-.pin .intro-zoom { display: block; position: absolute; z-index: 3; left: 50%; top: 50%; width: 220vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; scale: calc(var(--q, 0) * var(--q, 0)); }
+.pin .intro-zoom-off { display: block; position: absolute; z-index: 3; left: 50%; top: 50%; width: 220vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; scale: calc(var(--q, 0) * var(--q, 0)); }
 .pin .intro-in { opacity: calc(1.6 - var(--q, 0) * 1.9); scale: calc(1 + var(--q, 0) * .25); rotate: calc(var(--q, 0) * -4deg); }
 .intro .cloud { --cl: var(--blue); }
 .intro .cloud.cb2 { --cl: var(--pink); }
@@ -218,7 +218,7 @@
 
 /* respiro: menos branco entre as seções */
 .band { padding-block: clamp(2.5rem, 4.5cqi, 4.5rem); }
-.intro-wrap.pin { height: 150vh; }
+.intro-wrap { position: relative; }
 .objs.deck { height: calc(var(--n) * 38vh + 40vh); }
 
 /* texto gigante lateralizado (referência: "the first years matter most") */
@@ -251,7 +251,6 @@
     .po-a { animation: a2-polaroid-a linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
     .po-b { animation: a2-polaroid-b linear both; animation-timeline: view(); animation-range: entry 0% cover 55%; }
     .exp .arch img, .gal .gt img { animation: a2-reveal linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
-    .side-sun { animation: a2-up linear both; animation-timeline: view(); }
   }
   .exp .arch { animation: a2-wobble 7s ease-in-out infinite; }
   .gal .gt { transition: rotate .5s var(--ease), scale .5s var(--ease); }
@@ -269,3 +268,13 @@
 #h-obj { position: sticky; top: 5.5rem; z-index: 4; width: fit-content; }
 .obj-block { position: relative; }
 .deck-stage { box-sizing: border-box; padding-top: 7rem; }
+
+/* abertura: a cúpula amarela sobe já com o conteúdo do palco (sem tela amarela vazia) */
+.pin .stage { position: relative; z-index: 3; border-radius: 50% 50% 0 0 / clamp(6rem, 16cqi, 16rem) clamp(6rem, 16cqi, 16rem) 0 0; margin-top: -.5px; }
+.pin .stage-art { top: clamp(3rem, 6cqi, 6rem); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+[id] { scroll-margin-top: 6rem; }
+/* encaixe da foto: letras por cima, foto sem recorte animado */
+.gword { z-index: 2; margin-bottom: -.2em; }
+.pano { z-index: 1; animation: none !important; clip-path: none; }
