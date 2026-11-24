@@ -321,3 +321,13 @@ html { scroll-behavior: smooth; }
 :root[data-tema=tritanopia] .obj-block .objs .obj.c-ye { color: var(--graphite); }
 .obj-block .objs.deck .obj { align-self: center; justify-self: center; width: min(86vw, 30rem); font-size: min(1.5rem, 5vw); }
 @container site (max-width: 35rem) { .obj-block .objs .obj { padding: 2.25rem; gap: .4rem; } .obj-block .objs .obj i, .obj-block .objs .obj:hover i { width: 5em; height: 5em; } .obj .ot { font-size: 1.6em; } }
+
+/* interação nos círculos do conceito: o círculo sobe, endireita e ganha rosto; os vizinhos abrem espaço */
+.conc-dots li { position: relative; transition: scale .45s var(--ease), rotate .45s var(--ease), translate .45s var(--ease), box-shadow .3s; }
+.conc-dots .face { top: 24%; width: 30%; opacity: 0; scale: .4; transition: opacity .3s, scale .45s var(--ease); animation: none; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .conc-dots li:hover, .conc-dots li:active { scale: 1.16; rotate: 0deg; translate: 0 calc(var(--wy) - 1.25rem); z-index: 3; box-shadow: 0 .5rem 0 var(--graphite); }
+  .conc-dots li:hover .face, .conc-dots li:active .face { opacity: 1; scale: 1; }
+  .conc-dots li:hover + li { translate: 3cqi var(--wy); }
+  .conc-dots li:has(+ li:hover) { translate: -3cqi var(--wy); }
+}
