@@ -10,8 +10,8 @@ with sync_playwright() as p:
         pg.goto(URL); pg.wait_for_timeout(800)
         assert not erros, erros
         assert pg.evaluate("document.documentElement.scrollWidth") <= w, f"rolagem horizontal em {w}px"
-        for sel, n in ((".mc", 3), (".ap", 3), ("#conteudo .ages li", 5), (".arch", 4), (".stop", 3), (".fs", 4), ("details.qa", 5)):
+        for sel, n in ((".fl", 7), (".rg", 3), (".gcard", 4), (".stops li", 4), (".hstep", 4), ("details.qa", 5)):
             assert pg.evaluate(f"document.querySelectorAll('{sel}').length") == n, sel
-        assert pg.evaluate("document.querySelector('#h-top').textContent.includes('Receba a Colorê na sua instituição')")
+        assert pg.evaluate("document.querySelector('#h-top').getAttribute('aria-label')") == "Receba a Colorê na sua instituição", "título com aria-label"
         assert pg.evaluate("document.querySelectorAll('form[data-validar] input, form[data-validar] textarea').length") >= 8, "formulário"
     print("ok")

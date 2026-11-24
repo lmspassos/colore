@@ -1,122 +1,133 @@
-/* Para instituições 2. Ideia de movimento: "descobrir é colorir". O que ainda não foi descoberto aparece sem cor e ganha cor ao ser alcançado. */
-#conteudo { overflow-x: clip; }
-.pi-hero .d1 { font-weight: 700; letter-spacing: -.03em; line-height: .98; margin-bottom: 1.5rem; font-size: clamp(2.5rem, 5.2cqi, 4.75rem); }
-.pi-hero .btns { margin-top: 1.75rem; }
-.btn.pill { background: var(--c); color: var(--graphite); border: 3px solid var(--graphite); min-height: 4.25rem; padding: .375rem .375rem .375rem 1.75rem; font-size: 1.125rem; }
-.btn.pill::before { display: none; }
-.btn.pill .disc { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--cream); border: 2px solid var(--graphite); }
-.btn.pill:hover .disc svg { translate: .25rem 0; }
-.pi-head { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 2rem clamp(2rem, 6cqi, 5rem); align-items: end; }
-.pi-h2 { font-weight: 700; letter-spacing: -.025em; line-height: 1; font-size: clamp(2rem, 4.4cqi, 3.75rem); }
-.pi-lead { font-size: 1rem; margin: 0; }
+/* Para instituições 2: rolagem em camadas (parallax). Sem suporte a animação ligada à rolagem, tudo fica no estado final. */
 
-/* Início: a criança experimenta combinações arrastando e misturando cores */
-.pi-hero { padding-block: clamp(2rem, 5cqi, 4.5rem) clamp(2.5rem, 5cqi, 4rem); }
-.pi-hero-g { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
-.mix { position: relative; aspect-ratio: 1; width: 100%; max-width: 32rem; justify-self: center; }
-.mc { position: absolute; width: 58%; aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--graphite); mix-blend-mode: multiply; cursor: grab; touch-action: none; transition: scale .3s var(--ease); }
-.mc.on { cursor: grabbing; scale: 1.04; }
-.m1 { left: 0; top: 0; } .m2 { right: 0; top: 10%; } .m3 { left: 21%; bottom: 0; }
-.mix-hint { position: absolute; left: 0; right: 0; bottom: -2.25rem; text-align: center; font-family: var(--fd); font-weight: 500; font-size: .9375rem; margin: 0; color: var(--graphite-soft); }
+/* ── Herói: título letra a letra e formas que sobem em velocidades diferentes ── */
+.ih{position:relative;min-height:calc(100svh - 4.5rem);display:grid;align-items:center;overflow:clip;padding-block:clamp(3rem,7cqi,6rem)}
+.ih-sky{position:absolute;inset:0;pointer-events:none}
+.fl{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;border-radius:50%;rotate:var(--rr)}
+.fl.arc{border-radius:999px 999px 0 0;aspect-ratio:2/1}
+.fl.tri{border-radius:0;aspect-ratio:10/7}
+.fl.ph{overflow:hidden;border:.4375rem solid var(--paper);box-shadow:0 .375rem 0 var(--graphite)}
+.fl.ph img{width:100%;height:100%;object-fit:cover}
+.ih-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(1.25rem,2.5cqi,2rem)}
+.ih-in .crumb{margin:0}
+.ih-in .btns{justify-content:center}
+.ih-t{margin:0;font-family:var(--fd);font-weight:700;font-size:clamp(3rem,9cqi,8.5rem);line-height:.92;letter-spacing:-.03em;max-width:12ch;text-wrap:balance}
+.ih-t .w{display:inline-block;white-space:nowrap}
+.ih-t .l{display:inline-block}
+.ih-t .l:nth-child(4n+1){rotate:-4deg}
+.ih-t .l:nth-child(4n+3){rotate:3deg;translate:0 .04em}
+.ih .hint{margin-top:clamp(.5rem,3cqi,2.5rem)}
+@container site (max-width:40rem){.fl.ph{display:none}}
 
-/* Foto em moldura de arco que sobe e se endireita ao rolar */
-.pi-ph { margin-block: 0 clamp(2rem, 5cqi, 4rem); display: block; }
-.pi-ph img { display: block; width: 100%; max-width: 64rem; margin-inline: auto; aspect-ratio: 16 / 8; object-fit: cover; border: 3px solid var(--graphite); border-radius: 999px 999px 2rem 2rem; }
+/* ── Por que receber: círculos que se abrem até virar a foto, cartão sobe por cima ── */
+.rev{position:relative;background:var(--cream)}
+.rev-st{position:relative;min-height:100svh;display:grid;place-items:end center;overflow:clip;padding:clamp(6rem,12cqi,10rem) clamp(1.25rem,4.5cqi,4rem) clamp(2rem,5cqi,4rem)}
+.rev-art{position:absolute;inset:0}
+.rg{position:absolute;left:50%;top:42%;width:150vmax;aspect-ratio:1;margin:-75vmax 0 0 -75vmax;border-radius:50%;background:var(--c)}
+/* a foto fica parada e só o recorte em círculo cresce (clip-path), para não ampliar a imagem */
+.rev-ph{position:absolute;inset:0}
+.rev-ph img{width:100%;height:100%;object-fit:cover}
+.rev-card{position:relative;z-index:2;width:min(42rem,100%);display:flex;flex-direction:column;gap:1rem;background:var(--orange);border:2px solid var(--graphite);border-radius:2.5rem;padding:clamp(1.5rem,3.5cqi,3rem);box-shadow:0 .5rem 0 var(--graphite);rotate:-1.5deg}
+.rev-card .kicker{margin:0}
+@container site (max-width:40rem){.rev-card p:last-child{font-size:1rem;line-height:1.5}}
 
-/* Por que receber: arte, descoberta e aprendizagem se aproximam */
-.apx { position: relative; width: 100%; max-width: 34rem; aspect-ratio: 1 / .78; margin: 3rem auto 2.5rem; }
-.ap { position: absolute; width: 56%; aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--graphite); mix-blend-mode: multiply; display: grid; font-family: var(--fd); font-weight: 600; font-size: clamp(.9375rem, 1.6cqi, 1.375rem); color: var(--graphite); }
-.ap b { place-self: center; }
-.a1 { left: 0; top: 0; } .a1 b { translate: -20% -26%; }
-.a2 { right: 0; top: 0; } .a2 b { translate: 20% -26%; }
-.a3 { left: 22%; bottom: 0; } .a3 b { translate: 0 30%; }
-.ap-c { position: absolute; left: 50%; top: 40%; translate: -50% -50%; font-family: var(--fd); font-weight: 700; font-size: clamp(1.125rem, 2cqi, 1.75rem); }
-.duo { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-.duo li { padding: 1rem 1.75rem; border: 2px solid var(--graphite); border-radius: 999px; font-family: var(--fd); font-size: 1.25rem; }
+/* ── Objetivos: baralho de cartões que se empilham na rolagem ── */
+.deck{padding-bottom:clamp(4rem,10cqi,8rem)}
+.deck-g{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2rem,6cqi,6rem);align-items:start}
+.deck-side{position:sticky;top:7rem;display:flex;flex-direction:column;gap:1.5rem}
+.deck-side .kicker{margin:0}
+.deck-side .d1{font-size:clamp(2.75rem,6.5cqi,6rem);line-height:.95}
+.gcards{display:grid;gap:clamp(8rem,28vh,16rem)}
+.gcard{position:sticky;top:calc(7rem + var(--i) * 1.25rem);rotate:var(--r);min-height:clamp(17rem,30cqi,23rem);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:1.25rem;background:var(--c);border:2px solid var(--graphite);border-radius:2.5rem;padding:clamp(1.5rem,3.5cqi,2.75rem);box-shadow:0 .5rem 0 var(--graphite)}
+.gcard .gn{font-family:var(--fd);font-weight:700;font-size:clamp(2.5rem,5cqi,4rem);line-height:1}
+.gcard i{width:clamp(4.5rem,8cqi,6.5rem);aspect-ratio:1;border-radius:50%;background:var(--cream);border:2px solid var(--graphite);display:grid;place-items:center;transition:rotate .5s var(--ease)}
+.gcard i svg{width:50%;height:50%}
+.gcard:hover i{rotate:-14deg}
+.gcard p{grid-column:1/-1;align-self:end;font-family:var(--fd);font-weight:600;font-size:clamp(1.5rem,2.8cqi,2.375rem);line-height:1.1;text-wrap:balance}
+@container site (max-width:53.75rem){.deck-g{grid-template-columns:minmax(0,1fr)}.deck-side{position:static}.gcard{top:calc(5.5rem + var(--i) * 1rem)}}
 
-/* Para quem: de 4 a 8 anos, cada idade um círculo maior */
-.pi-quem-g { display: grid; grid-template-columns: minmax(0, 36rem) minmax(0, 1fr); gap: clamp(2rem, 5cqi, 5rem); align-items: center; }
-.ages { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-end; justify-content: space-between; container-type: inline-size; }
-.ages li { width: calc(var(--s) * 1%); aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--graphite); display: grid; place-items: center; font-family: var(--fd); font-weight: 700; font-size: calc(var(--s) * .4cqi); color: var(--graphite); transform-origin: bottom; }
-.ages li.pp { background: var(--cream); }
-.ages-l { margin: .75rem 0 0; text-align: center; font-family: var(--fd); font-weight: 600; font-size: 1.25rem; }
-.chips2 { list-style: none; margin: 1.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .625rem; }
-.chips2 li { rotate: var(--tl, 0deg); padding: .5rem 1.125rem; border: 2px solid var(--graphite); border-radius: 999px; background: var(--cream); font-family: var(--fd); font-weight: 600; }
+/* ── Itinerante: a palavra viaja na horizontal, a bolinha percorre as paradas ── */
+.iti{overflow:clip}
+.iti-in{display:flex;flex-direction:column;gap:1.5rem;max-width:58rem}
+.iti-in .kicker{margin:0}
+.iti .statement{font-size:clamp(1.75rem,3.4cqi,3rem);line-height:1.15}
+.giant{margin-block:clamp(1rem,3cqi,2.5rem)}
+.giant-t{display:flex;width:max-content;margin-left:4cqi;font-family:var(--fd);font-weight:700;font-size:clamp(6rem,24cqi,22rem);line-height:.9;letter-spacing:-.04em}
+.giant-t b{display:block;color:var(--c);translate:0 var(--y);rotate:var(--r)}
+.stops{position:relative;display:flex;justify-content:space-between;gap:1rem;padding-top:.5rem}
+.stops::before{content:"";position:absolute;left:2.25rem;right:2.25rem;top:2.75rem;border-top:3px dashed var(--graphite)}
+.stops li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.75rem;min-width:4.5rem;font-family:var(--fd);font-weight:600;font-size:clamp(1.0625rem,1.6cqi,1.375rem);text-align:center}
+.stops li i{width:4.5rem;height:4.5rem;border-radius:50%;background:var(--c);border:3px solid var(--graphite);display:block}
+.stops li:first-child{align-items:flex-start;text-align:left}
+.stops li:nth-child(3){align-items:flex-end;text-align:right}
+.stops .trk{position:absolute;left:2.25rem;right:2.25rem;top:2.75rem;min-width:0;container-type:inline-size;z-index:2}
+.trk b{position:absolute;left:0;top:0;width:1.5rem;height:1.5rem;margin:-.75rem 0 0 -.75rem;border-radius:50%;background:var(--orange);border:2px solid var(--graphite);opacity:0}
 
-/* Objetivos: cada arco se colore ao ser descoberto */
-.pi-goals-h { margin-bottom: 2rem; }
-.archs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
-.arch { --i: 0; aspect-ratio: .72; border: 3px solid var(--graphite); border-radius: 999px 999px 2rem 2rem; padding: 2rem 1.25rem 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; font-size: 1.0625rem; line-height: 1.35; color: var(--graphite); }
-.arch i { order: -1; display: grid; place-items: center; width: 70%; aspect-ratio: 1; border: 2px solid var(--graphite); border-radius: 50%; background: var(--paper); }
-.arch i svg { width: 78%; height: 78%; stroke: var(--graphite); stroke-width: 2.5; stroke-linejoin: round; }
-.arch i .fo { fill: var(--orange); } .arch i .fy { fill: var(--yellow); } .arch i .fb { fill: var(--blue); } .arch i .fp { fill: var(--pink); } .arch i .fg { fill: var(--green); } .arch i .fk { fill: var(--graphite); } .arch i .fw { fill: var(--paper); }
-.arch .ot { display: block; font-family: var(--fd); font-weight: 700; font-size: 1.75rem; line-height: 1; }
+/* ── Como funciona: cartão claro que sobe sobre o verde ── */
+.how-card{display:flex;flex-direction:column;gap:clamp(2rem,5cqi,4rem);background:var(--paper);border:2px solid var(--graphite);border-radius:2.5rem;padding:clamp(1.75rem,5cqi,4.5rem);box-shadow:0 .5rem 0 var(--graphite)}
+.how-g{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5cqi,5rem);align-items:start}
+.how-side{position:sticky;top:7rem;display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
+.how-side .kicker{margin:0}
+.hsteps{display:flex;flex-direction:column;gap:clamp(1.75rem,3.5cqi,3rem)}
+.hstep{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.25rem;align-items:center}
+.hstep .num{width:clamp(4rem,6cqi,5.25rem);aspect-ratio:1;border-radius:50%;background:var(--c);border:3px solid var(--graphite);display:grid;place-items:center;font-family:var(--fd);font-weight:700;font-size:clamp(1.75rem,2.6cqi,2.25rem);transition:rotate .5s var(--ease)}
+.hstep:nth-child(odd) .num{rotate:-8deg}
+.hstep:nth-child(even) .num{rotate:6deg}
+.hstep:hover .num{rotate:0deg}
+.hstep p{font-size:clamp(1.0625rem,1.3cqi,1.1875rem);line-height:1.5}
+.infra{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.25rem,3cqi,2.25rem);align-items:center;padding-top:clamp(1.75rem,3.5cqi,2.75rem);border-top:2px dashed var(--graphite)}
+.infra .ico{width:5rem;height:5rem;border-radius:50%;display:grid;place-items:center;border:2px solid var(--graphite)}
+@container site (max-width:53.75rem){.how-g{grid-template-columns:minmax(0,1fr)}.how-side{position:static}}
+@container site (max-width:32.5rem){.infra{grid-template-columns:minmax(0,1fr)}}
 
-/* Estrada: a Colorê chega e deixa cor no caminho */
-.pi-road .road-st { padding-block: clamp(3rem, 6cqi, 5rem); display: grid; gap: 3rem; }
-.road-way { position: relative; height: 11rem; margin-inline: clamp(1.25rem, 4.5cqi, 4rem); }
-.road-way::before { content: ""; position: absolute; left: 0; right: 0; top: 7rem; border-top: 4px dashed var(--graphite); }
-.trail { transform-origin: left; position: absolute; left: 6%; width: 88%; top: 7rem; height: 8px; margin-top: -4px; border-radius: 4px; background: var(--graphite); }
-.stop { position: absolute; top: 7rem; left: calc(6% + var(--f) * 88%); width: 1.5rem; height: 1.5rem; margin: -.75rem 0 0 -.75rem; border-radius: 50%; background: var(--cream); border: 3px solid var(--graphite); }
-.stop-l { position: absolute; top: 8.25rem; left: calc(6% + var(--f) * 88%); translate: -50% 0; font-family: var(--fd); font-weight: 600; font-size: clamp(1rem, 1.6cqi, 1.375rem); white-space: nowrap; }
-.wheel { position: absolute; top: 0; left: 50%; translate: -50% 0; width: 7rem; aspect-ratio: 1; border-radius: 50%; background: var(--cream); border: 3px solid var(--graphite); }
-.wheel i { position: absolute; width: 22%; aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--graphite); }
+/* ── Formulário ── */
+.formband{background:var(--blue)}
+.big{margin:0;font-family:var(--fd);font-weight:700;font-size:clamp(2.75rem,6.5cqi,6rem);line-height:.95;letter-spacing:-.03em;text-wrap:balance}
+.form-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.75rem,4cqi,4rem);align-items:start}
+.form-side{position:sticky;top:6.875rem}
+.form-art{position:relative;aspect-ratio:1;max-width:17.5rem;margin-top:2.5rem}
+.form-art span{position:absolute;border-radius:50%}
+@container site (max-width:60rem){.form-g{grid-template-columns:minmax(0,1fr)}.form-side{position:static}.form-art{display:none}}
 
-/* Passo a passo: a linha avança e cada etapa ganha cor ao ser alcançada */
-.flow { list-style: none; margin: 3rem 0; padding: 0; position: relative; display: grid; gap: 2rem; }
-.flow::before, .flow::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; margin-left: -2px; background: var(--graphite); opacity: .2; }
-.flow::after { opacity: 1; background: var(--graphite); transform-origin: top; }
-.fs { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 1.5rem; align-items: center; position: relative; z-index: 1; }
-.fs .num { grid-column: 2; grid-row: 1; width: 4.5rem; height: 4.5rem; border-radius: 50%; border: 3px solid var(--graphite); display: grid; place-items: center; font-family: var(--fd); font-weight: 700; font-size: 1.75rem; color: var(--graphite); }
-.fs p { margin: 0; padding: 1.25rem 1.5rem; border: 2px solid var(--graphite); border-radius: 1.5rem; background: var(--paper); grid-row: 1; grid-column: 1; text-align: right; }
-.fs:nth-child(even) p { grid-column: 3; text-align: left; }
-
-@container site (max-width: 52rem) {
-  .pi-hero-g, .pi-quem-g, .pi-head { grid-template-columns: minmax(0, 1fr); }
-  .mix { max-width: 22rem; margin-bottom: 2rem; }
-  .archs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-  .arch { padding: 1.5rem .75rem 1.25rem; font-size: .9375rem; } .arch .ot { font-size: 1.375rem; }
-  .flow::before, .flow::after { left: 2.25rem; }
-  .fs { grid-template-columns: auto minmax(0, 1fr); }
-  .fs .num { grid-column: 1; }
-  .fs p, .fs:nth-child(even) p { grid-column: 2; text-align: left; }
-  .stop-l { font-size: .875rem; } .stop-l[style*="--f:1"] { translate: -78% 0; }
+/* ── Movimento ligado à rolagem ── */
+@supports (animation-timeline: view()){
+ @media (prefers-reduced-motion:no-preference){
+  /* herói: formas sobem cada uma no seu ritmo; letras entram e se soltam ao sair */
+  .fl{animation:sobe linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+  .ih-t .l{animation:entra .9s var(--ease) both,solta linear both;animation-delay:calc(var(--i) * 35ms),0s;animation-timeline:auto,scroll(root);animation-range:normal,0 90vh}
+  .ih-in>:not(.ih-t){animation:esvai linear both;animation-timeline:scroll(root);animation-range:0 60vh}
+  /* por que: a seção fica presa na tela enquanto os círculos crescem */
+  .rev{height:280svh;view-timeline:--rev block}
+  .rev-st{position:sticky;top:0;height:100svh}
+  .rg{animation:abre linear both;animation-timeline:--rev;animation-range:contain var(--de) contain var(--ate)}
+  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:contain 22% contain 72%}
+  .rev-card{animation:cartao linear both;animation-timeline:--rev;animation-range:contain 55% contain 90%}
+  /* objetivos: cada cartão cai girando e assenta sobre o anterior */
+  .gcard{animation:cai linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+  .deck-side .d1{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+  /* itinerante */
+  .giant-t{animation:viaja linear both;animation-timeline:view()}
+  .giant-t b:nth-child(odd){animation:onda linear both;animation-timeline:view()}
+  .trk b{opacity:1;animation:percorre linear both;animation-timeline:view();animation-range:cover 15% cover 60%}
+  .stops li i{animation:pulo linear both;animation-timeline:view();animation-range:cover 15% cover 60%}
+  /* como funciona: o cartão sobe por cima do verde */
+  .how-card{animation:cartao linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+  .big{animation:rvl linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+ }
 }
+@keyframes entra{from{opacity:0;transform:translateY(.5em) rotate(-18deg) scale(.5)}}
+@keyframes solta{to{translate:0 var(--d);rotate:var(--dr);opacity:0}}
+@keyframes sobe{to{translate:0 calc(var(--v) * 1px);rotate:calc(var(--rr) + 40deg)}}
+@keyframes esvai{to{opacity:0;translate:0 -3rem}}
+@keyframes recorte{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(75% at 50% 42%)}}
+@keyframes abre{from{scale:0}to{scale:1}}
+@keyframes cartao{from{translate:0 70%;rotate:8deg;opacity:0}to{translate:none;rotate:-1.5deg;opacity:1}}
+@keyframes cai{from{translate:0 50%;rotate:calc(var(--r) * -5)}to{translate:none;rotate:var(--r)}}
+@keyframes viaja{from{translate:30% 0}to{translate:-55% 0}}
+@keyframes onda{from{translate:0 calc(var(--y) - .25em)}to{translate:0 calc(var(--y) + .25em)}}
+@keyframes percorre{to{translate:100cqi 0}}
+@keyframes pulo{0%,30%{scale:1}40%{scale:1.2}50%,80%{scale:1}90%{scale:1.2}100%{scale:1}}
 
-/* Movimento só com suporte e sem preferência por menos movimento */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .mc { animation: pi-par linear both; animation-timeline: scroll(root); animation-range: 0 70vh; }
-    .m1 { --py: -4; } .m2 { --py: 7; } .m3 { --py: -9; }
-    .pi-ph img { animation: pi-rise linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
-    .chips2 li { animation: pi-drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
-    .ap { animation: pi-join linear both; animation-timeline: view(); animation-range: entry 10% cover 50%; }
-    .a1 { --dx: -42%; --dy: -12%; } .a2 { --dx: 42%; --dy: -12%; } .a3 { --dx: 0%; --dy: 40%; }
-    .ap-c { animation: pi-fade linear both; animation-timeline: view(); animation-range: cover 40% cover 55%; }
-    .ages li { animation: pi-grow linear both; animation-timeline: view(); animation-range: entry calc(var(--n) * 6%) cover calc(22% + var(--n) * 6%); }
-    .arch { animation: pi-color linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
-    .arch:nth-child(2) { --i: 1; } .arch:nth-child(3) { --i: 2; } .arch:nth-child(4) { --i: 3; }
-    @container site (min-width: 52.01rem) {
-      .arch { animation: pi-color linear both, pi-fan linear both; animation-timeline: view(), view(); animation-range: entry 10% cover 40%, entry 0% cover 35%; }
-    }
-    .flow::after { animation: pi-draw linear both; animation-timeline: view(); animation-range: cover 18% cover 72%; }
-    .fs .num { animation: pi-color linear both; animation-timeline: view(); animation-range: entry 30% cover 40%; }
-    .pi-road { view-timeline: --rd block; height: 280vh; }
-    .pi-road .road-st { position: sticky; top: 0; height: 100svh; align-content: center; padding-block: 0; }
-    .wheel { animation: pi-roll linear both; animation-timeline: --rd; animation-range: cover 28% cover 72%; }
-    .trail { transform-origin: left; animation: pi-trail linear both; animation-timeline: --rd; animation-range: cover 28% cover 72%; }
-    .stop { animation: pi-stop linear both; animation-timeline: --rd; animation-range: cover calc(28% + var(--f) * 44%) cover calc(31% + var(--f) * 44%); }
-  }
-}
-@keyframes pi-join { from { translate: var(--dx) var(--dy); } }
-@keyframes pi-fade { from { opacity: 0; } }
-@keyframes pi-grow { from { scale: 0; } }
-@keyframes pi-color { from { background: var(--paper); } }
-@keyframes pi-draw { from { scale: 1 0; } }
-@keyframes pi-roll { from { left: 6%; rotate: 0deg; } to { left: 94%; rotate: 900deg; } }
-@keyframes pi-trail { from { scale: 0 1; } }
-@keyframes pi-stop { to { scale: 1.6; background: var(--c); } }
-@keyframes pi-par { to { margin-top: calc(var(--py) * 1rem); } }
-@keyframes pi-rise { from { scale: .8; rotate: -3deg; translate: 0 4rem; } }
-@keyframes pi-drift { from { translate: 0 calc(var(--sp) * 2.5rem); } to { translate: 0 calc(var(--sp) * -2.5rem); } }
-@keyframes pi-fan { from { translate: calc((1.5 - var(--i)) * 105%) calc(abs(var(--i) - 1.5) * 1rem); rotate: calc((var(--i) - 1.5) * 9deg); } }
+/* tritanopia (amarelo vira grafite): cartões e números sobre amarelo mantêm texto legível */
+:root[data-tema=tritanopia] .deck .gcard, :root[data-tema=tritanopia] .deck .gcard * { color: var(--graphite); }
+:root[data-tema=tritanopia] .hstep.c-ye .num { color: var(--cream); }
