@@ -22,7 +22,7 @@
       f.replaceWith(frag);
     }
   };
-  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h").forEach((h) => { idx = 0; quebra(h); });
+  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { idx = 0; quebra(h); });
 
   // Super abertura: o círculo amarelo cresce com a rolagem (q de 0 a 1) e leva ao palco
   const ab = document.querySelector("[data-intro]");
