@@ -237,7 +237,7 @@
 .site .wrap { max-width: min(100%, 105rem); }
 .objs.deck .obj { width: min(86vw, 34rem); font-size: 1.4em; }
 .end .cloud-bg { z-index: 0; }
-#h-obj { position: sticky; top: 5.5rem; z-index: 4; width: fit-content; }
+#h-obj { position: sticky; top: 5.5rem; z-index: 0; width: fit-content; }
 .obj-block { position: relative; }
 .deck-stage { box-sizing: border-box; padding-top: 7rem; }
 

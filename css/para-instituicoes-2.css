@@ -1,0 +1,4 @@
+/* Para instituições 2: ajustes sobre a identidade de A exposição 2 */
+.pi-lead { max-width: 54rem; margin-top: 0; }
+.stage-card .d1 { font-size: clamp(1.875rem, 4.2cqi, 3.75rem); }
+.stage-card .btns { margin-top: 1.25rem; justify-content: center; }
