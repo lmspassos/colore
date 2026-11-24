@@ -175,7 +175,8 @@
 }
 /* colagem de fotos inclinadas */
 .prop2-r { display: grid; gap: 1.5rem; }
-.collage { position: relative; height: clamp(11rem, 24cqi, 20rem); }
+/* a caixa acompanha o tamanho das fotos (que é proporcional à largura): com altura fixa elas escapavam e cobriam o texto no tablet */
+.collage { position: relative; aspect-ratio: 100 / 56; }
 .collage img { position: absolute; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: .4375rem solid var(--cream); }
 .co-a { left: 6%; top: 0; width: 46%; rotate: -8deg; }
 .co-b { right: 4%; top: 18%; width: 38%; rotate: 9deg; }
@@ -204,11 +205,11 @@
 .side-l { position: relative; container-type: inline-size; }
 .side-sun { right: 0; left: auto; top: -.5rem; width: clamp(3.5rem, 14cqi, 6rem); }
 .side-dots { left: clamp(1rem, 3cqi, 3rem); right: auto; top: auto; bottom: 2rem; width: clamp(3.5rem, 6cqi, 5.5rem); }
-.polas { position: relative; width: 100%; height: clamp(16rem, 34cqi, 30rem); margin-top: 1rem; }
+.polas { position: relative; width: 100%; max-width: 34rem; aspect-ratio: 1 / .85; margin-top: 1rem; }
 .polas img { position: absolute; object-fit: cover; border: .4375rem solid var(--paper); box-shadow: 0 .25rem 0 var(--graphite); border-radius: 999px 999px 1.5rem 1.5rem; transition: rotate .5s var(--ease), scale .5s var(--ease); }
 .po-a { left: 0; top: 0; width: 58%; aspect-ratio: .82; rotate: -7deg; }
 .po-b { right: 0; bottom: 0; width: 52%; aspect-ratio: .82; rotate: 8deg; }
-.polas img:hover { rotate: 0deg; scale: 1.06; z-index: 2; }
+.polas img:is(:hover, .toque) { rotate: 0deg; scale: 1.06; z-index: 2; }
 @container site (max-width: 51.25rem) { .side-g { grid-template-columns: minmax(0, 1fr); } .side-r { position: static; } .side-sun { display: none; } }
 .side-h2 { text-transform: uppercase; font-size: clamp(2.5rem, 7cqi, 6.5rem); line-height: .9; }
 .next { display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.25rem; padding: .4rem 1rem; border-radius: 999px; background: var(--cream); border: 2px solid var(--graphite); font-family: var(--fd); font-weight: 600; }
@@ -229,7 +230,7 @@
   .gal .gt { transition: rotate .5s var(--ease), scale .5s var(--ease); }
   .gal .gt:hover { rotate: -2deg; scale: 1.04; z-index: 2; }
   .collage img { transition: rotate .5s var(--ease), scale .5s var(--ease); }
-  .collage img:hover { rotate: 0deg; scale: 1.08; }
+  .collage img:is(:hover, .toque) { rotate: 0deg; scale: 1.08; }
   .pano > img { transition: scale .6s var(--ease); }
 }
 
@@ -348,3 +349,13 @@ html { scroll-behavior: smooth; }
   .conc-dots li:hover + li { translate: 3cqi var(--wy); }
   .conc-dots li:has(+ li:hover) { translate: -3cqi var(--wy); }
 }
+/* no celular, o toque faz o mesmo que o hover (js/base.js) */
+@media (prefers-reduced-motion: no-preference) {
+  .conc-dots li.toque { scale: 1.16; rotate: 0deg; translate: 0 calc(var(--wy) - 1.25rem); z-index: 3; box-shadow: 0 .5rem 0 var(--graphite); }
+  .conc-dots li.toque + li { translate: 3cqi var(--wy); }
+  .conc-dots li:has(+ li.toque) { translate: -3cqi var(--wy); }
+}
+.conc-dots li.toque .face { opacity: 1; scale: 1; }
+
+/* tablet e celular: o título ocupa a largura toda, então o adesivo pontilhado sobe para a borda da seção */
+@container site (max-width: 60rem) { .prop2 .stk-dots { top: -1.5rem; } }

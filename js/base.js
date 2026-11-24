@@ -107,6 +107,16 @@ if (cab) {
   });
 }
 
+// Toque: em tela sem hover (celular), tocar num item de [data-toque] liga o mesmo efeito do hover (classe .toque);
+// tocar de novo, em outro item ou fora desliga.
+if (matchMedia("(hover: none)").matches) {
+  document.addEventListener("click", (e) => {
+    const it = e.target.closest("[data-toque] > *");
+    document.querySelectorAll(".toque").forEach((x) => { if (x !== it) x.classList.remove("toque"); });
+    if (it) it.classList.toggle("toque");
+  });
+}
+
 // Rodapé: cada hover sorteia uma cor da identidade visual (sem o grafite, que some no fundo).
 {
   const cores = ["--yellow", "--orange", "--blue", "--green", "--pink"];

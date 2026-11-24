@@ -381,3 +381,6 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 @media (prefers-reduced-motion: reduce) { .lb[open] { animation: none; } }
 
 :root[data-tema=acromatopsia] .logo-anim .lg { fill: var(--graphite); }
+
+/* itens que respondem ao toque no celular (js/base.js liga .toque): sem o destaque cinza padrão do toque */
+[data-toque] > * { -webkit-tap-highlight-color: transparent; }
