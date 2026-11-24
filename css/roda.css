@@ -14,12 +14,16 @@
 
 /* ── a roda: duas metades; a de educadores fica de cabeça para baixo até a roda virar.
    Sem corte entre elas: cada cenário some aos poucos enquanto o outro aparece (mais forte perto do meio da volta) ── */
-.roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 300vmax; height: 300vmax; margin: -150vmax 0 0 -150vmax; rotate: var(--a); will-change: rotate; }
-.fatia { position: absolute; inset: 0 0 50% 0; }
+/* a roda é só o eixo (uma caixa de tamanho zero): os cenários ficam pendurados nele. Uma roda do tamanho da volta
+   criava camadas gigantes que o Safari do iPhone não aguenta desenhar */
+.roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 0; height: 0; rotate: var(--a); }
+.fatia { position: absolute; left: 0; top: 0; width: 0; height: 0; }
 /* chão em forma de pequeno planeta: gira com a roda, está sempre no palco e muda de cor junto com o céu */
-.terra { --base: color-mix(in srgb, color-mix(in srgb, var(--blue) 55%, var(--cream)) calc((1 - cos(var(--a))) * 50%), color-mix(in srgb, var(--green) 55%, var(--cream))); position: absolute; left: 50%; top: 50%; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
-.f-inst { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
-.f-edu { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); rotate: 180deg; transform-origin: 50% 100%; }
+.terra { --base: color-mix(in srgb, color-mix(in srgb, var(--blue) 55%, var(--cream)) calc((1 - cos(var(--a))) * 50%), color-mix(in srgb, var(--green) 55%, var(--cream))); position: absolute; left: 0; top: 0; width: calc(2 * (var(--h) * .36 + var(--p))); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
+.f-edu { rotate: 180deg; }
+/* a transparência fica no cenário (do tamanho da tela), não na metade da roda */
+.f-inst .cena { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
+.f-edu .cena { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); }
 /* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem */
 .cena { position: absolute; left: 50%; bottom: 0; width: max(100vw, var(--h)); height: calc(var(--h) + var(--p)); translate: -50% 0; }
 .palco { position: absolute; inset: 0 0 var(--p) 0; }
