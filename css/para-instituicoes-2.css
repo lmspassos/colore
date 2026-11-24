@@ -21,7 +21,8 @@
 
 /* ── Por que receber: círculos que se abrem até virar a foto, cartão sobe por cima ── */
 .rev{position:relative;background:var(--cream)}
-.rev-st{position:relative;min-height:100svh;display:grid;place-items:end center;overflow:clip;padding:clamp(6rem,12cqi,10rem) clamp(1.25rem,4.5cqi,4rem) clamp(2rem,5cqi,4rem)}
+.rev-st{position:relative;min-height:100svh;display:grid;place-items:end center;overflow-x:clip;padding:clamp(6rem,12cqi,10rem) clamp(1.25rem,4.5cqi,4rem) clamp(2rem,5cqi,4rem)}
+/* sem recorte vertical: o círculo sobe inteiro por cima do herói, sem borda reta */
 .rev-art{position:absolute;inset:0}
 .rg{position:absolute;left:50%;top:42%;width:150vmax;aspect-ratio:1;margin:-75vmax 0 0 -75vmax;border-radius:50%;background:var(--c)}
 /* a foto fica parada e só o recorte em círculo cresce (clip-path), para não ampliar a imagem */
@@ -100,7 +101,7 @@
   .rev{height:220svh;view-timeline:--rev block}
   .rev-st{position:sticky;top:0;height:100svh}
   .rg{animation:abre linear both;animation-timeline:--rev;animation-range:var(--de) var(--ate)}
-  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:entry 55% contain 55%}
+  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:contain 0% contain 50%}
   .rev-card{animation:cartao linear both;animation-timeline:--rev;animation-range:contain 40% contain 80%}
   /* objetivos: cada cartão cai girando e assenta sobre o anterior */
   .gcard{animation:cai linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
