@@ -30,10 +30,10 @@
 .stage-art .tri { display: block; }
 /* nuvem: aglomerado de círculos chapados, sem sombra */
 .cloud { position: absolute; display: block; aspect-ratio: 2.4; background:
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 6% 100% / 30% 72% no-repeat,
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 38% 0 / 38% 100% no-repeat,
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 74% 100% / 32% 78% no-repeat,
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 100% 100% / 22% 56% no-repeat; }
+  radial-gradient(circle closest-side, var(--cl, var(--paper)) 97%, transparent 100%) 6% 100% / 30% 72% no-repeat,
+  radial-gradient(circle closest-side, var(--cl, var(--paper)) 97%, transparent 100%) 38% 0 / 38% 100% no-repeat,
+  radial-gradient(circle closest-side, var(--cl, var(--paper)) 97%, transparent 100%) 74% 100% / 32% 78% no-repeat,
+  radial-gradient(circle closest-side, var(--cl, var(--paper)) 97%, transparent 100%) 100% 100% / 22% 56% no-repeat; }
 /* carinha: dois olhos e um sorriso */
 .face { position: absolute; left: 50%; top: 50%; width: 34%; aspect-ratio: 1.5; translate: -50% -45%; background:
   radial-gradient(circle closest-side, var(--fc, var(--graphite)) 96%, transparent 100%) 8% 0 / 20% 30% no-repeat,
@@ -51,9 +51,9 @@
 
 /* ── 2. Palavra-escultura + panorama: o slogan sangra a largura e passa por trás da foto ── */
 .gword { position: relative; z-index: 0; margin: clamp(2rem, 5cqi, 5rem) 0 -.08em; color: var(--blue); font-family: var(--fd); font-weight: 700; font-size: clamp(3.75rem, 20cqi, 18rem); line-height: .8; letter-spacing: -.02em; pointer-events: none; user-select: none; }
-.gword span { display: block; white-space: nowrap; }
-.gword span:nth-child(1) { margin-left: 3cqi; rotate: -3deg; }
-.gword span:nth-child(2) { margin-left: 12cqi; rotate: 2deg; }
+.gword > span { display: block; white-space: nowrap; }
+.gword > span:nth-child(1) { margin-left: 3cqi; rotate: -3deg; }
+.gword > span:nth-child(2) { margin-left: 12cqi; rotate: 2deg; }
 :root[data-tema=acromatopsia] .gword { -webkit-text-stroke: 3px var(--graphite); letter-spacing: .02em; }
 .pano { position: relative; z-index: 1; margin: 0 clamp(1rem, 3.3cqi, 3rem); height: clamp(20rem, 46cqi, 42rem); border-radius: clamp(2rem, 8cqi, 8rem); overflow: clip; background: var(--graphite); }
 .pano > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
@@ -140,8 +140,8 @@
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .stage-art { animation: a2-up linear both; animation-timeline: scroll(root); animation-range: 0 60vh; }
-    .gword span:nth-child(1) { animation: a2-in-l linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
-    .gword span:nth-child(2) { animation: a2-in-r linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    .gword > span:nth-child(1) { animation: a2-in-l linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    .gword > span:nth-child(2) { animation: a2-in-r linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
     .pano { animation: a2-open linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
     .pano > img { scale: 1.12; animation: a2-pan linear both; animation-timeline: view(); animation-range: cover; }
     .objs:not(.descobrem) .obj { animation: a2-disc linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
@@ -149,3 +149,22 @@
   }
 }
 @keyframes a2-pan { from { translate: 0 -3rem; } to { translate: 0 3rem; } }
+
+/* nuvens de fundo dos cards e letras espalhadas */
+.band { position: relative; }
+.band > .wrap { position: relative; z-index: 1; }
+.cloud-bg { --cl: var(--blue); z-index: 0; pointer-events: none; }
+.cloud-bg.cb2 { --cl: var(--pink); }
+.gl { display: inline-block; }
+.gw { display: inline-block; white-space: nowrap; }
+@keyframes a2-drift-l { from { translate: -14cqi 0; } to { translate: 14cqi 0; } }
+@keyframes a2-drift-r { from { translate: 14cqi 0; } to { translate: -14cqi 0; } }
+@keyframes a2-letter { from { opacity: 0; translate: var(--dx) var(--dy); rotate: var(--r); scale: .6; } to { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .cloud-bg { animation: a2-drift-l linear both; animation-timeline: view(); }
+    .cloud-bg.cb2 { animation-name: a2-drift-r; }
+    .gword > span, .d2, .stage-card .d1, .end .d1 { view-timeline: --h block; }
+    .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry 0% entry 100%; }
+  }
+}
