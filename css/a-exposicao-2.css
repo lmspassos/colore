@@ -1,0 +1,32 @@
+/* a-exposicao-2: camada de estilo sobre a-exposicao.css. Só sobrescreve.
+   Referência: mundo de brincar (capítulos de cor cheios, tipografia de cartaz, baralho de cartões,
+   palavra gigante, navegação flutuante). Cores só por token; formas circulares. */
+
+/* Navegação flutuante: cápsula + controles redondos soltos sobre a cena */
+.hdr { top: .75rem; margin-bottom: -4.5rem; background: transparent; border-bottom: 0; }
+:root .hdr.bg-pink { border: 0; }
+.hdr.oculto { transform: translateY(calc(-100% - 1.5rem)); }
+.hdr-in { padding-block: .5rem; }
+@media (width > 67.5rem) { .nav-wrap { background: var(--paper); border: 2px solid var(--graphite); border-radius: 999px; padding: .1875rem; } }
+.ibtn, .search { background: var(--paper); }
+.phero { padding-top: calc(4.5rem + clamp(2rem, 4cqi, 4rem)); }
+
+/* Títulos de cartaz: maiúsculas, entrelinha curta (só em títulos curtos; parágrafos ficam em caixa normal) */
+.phero .d1, .end .d1 { font-size: clamp(2.75rem, 6.5cqi, 6.25rem); line-height: .88; letter-spacing: 0; text-transform: uppercase; }
+.d2 { font-size: clamp(1.875rem, 4.4cqi, 3.75rem); line-height: .92; letter-spacing: 0; text-transform: uppercase; }
+
+/* Palavra-escultura: slogan gigante que sangra a largura e passa por trás do bloco seguinte */
+.gword { position: relative; z-index: 0; width: 100cqi; margin: clamp(2rem, 5cqi, 5rem) 0 -.3em calc(50% - 50cqi); color: var(--blue); font-family: var(--fd); font-weight: 700; font-size: clamp(3.75rem, 20cqi, 18rem); line-height: .8; letter-spacing: -.02em; pointer-events: none; user-select: none; }
+.gword span { display: block; white-space: nowrap; }
+.gword span:nth-child(1) { margin-left: 3cqi; rotate: -3deg; }
+.gword span:nth-child(2) { margin-left: 12cqi; rotate: 2deg; }
+.origin { position: relative; z-index: 1; }
+/* acromatopsia: o azul vira creme sobre creme, então a letra ganha contorno */
+:root[data-tema=acromatopsia] .gword { -webkit-text-stroke: 3px var(--graphite); letter-spacing: .02em; }
+
+/* Objetivos como baralho de discos: título, emblema e texto centrados, escalonados e sobrepostos */
+.objs:not(.descobrem) { gap: 0; padding-bottom: 2.5rem; align-items: start; }
+.objs:not(.descobrem) .obj { flex-direction: column; justify-content: center; gap: .75rem; width: min(100%, 19.5rem); aspect-ratio: 1; margin: -.75rem auto; padding: 2rem; border-radius: 50%; background: var(--c); text-align: center; font-weight: 600; font-size: clamp(1.125rem, 1.7cqi, 1.3125rem); }
+@container site (min-width: 60.0625rem) { .objs:not(.descobrem) .obj:nth-child(3n+2) { margin-top: 2rem; } }
+.objs:not(.descobrem) .obj i, .objs:not(.descobrem) .obj:hover i { width: 2.75rem; height: 2.75rem; background: radial-gradient(circle, var(--graphite) 0 .4375rem, var(--cream) .4375rem); border: 2px solid var(--graphite); transform: none; }
+:root[data-tema=tritanopia] .objs:not(.descobrem) .obj.c-ye { color: var(--cream); }
