@@ -4,17 +4,6 @@
    adesivos e fechamento com identidade monumental.
    Cores só por token (nada de hex); formas circulares; Fredoka + Codec. */
 
-/* ── Navegação flutuante: cápsula + controles redondos soltos sobre a cena ── */
-.hdr { top: .75rem; margin-bottom: -4.5rem; background: transparent; border-bottom: 0; }
-:root .hdr.bg-pink { border: 0; }
-.hdr.oculto { transform: translateY(calc(-100% - 1.5rem)); }
-.hdr-in { padding-block: .5rem; }
-.ibtn, .search { background: var(--paper); }
-@media (width > 67.5rem) {
-  .nav-wrap { background: var(--paper); border: 2px solid var(--graphite); border-radius: 999px; padding: .1875rem; }
-  /* ação de destaque, em laranja, separada visualmente dos demais itens */
-  .nav a[href="/contato"]:not(:hover):not(:focus-visible):not([aria-current=page]) { background: var(--orange); }
-}
 
 /* ── Títulos de cartaz: maiúsculas e entrelinha curta (só em títulos; parágrafos em caixa normal) ── */
 .stage-card .d1, .end .d1 { font-size: clamp(2.5rem, 5.2cqi, 4.5rem); line-height: .88; letter-spacing: 0; text-transform: uppercase; }
@@ -90,18 +79,6 @@
 /* ── Fechamento: mundo verde com o destino em letras grandes ── */
 .end { background: var(--green); }
 
-/* ── Rodapé monumental: painel claro dentro do mundo verde, com a identidade em escala enorme ── */
-.ftr { background: var(--green); color: var(--graphite); padding: 0 0 clamp(1rem, 2.4cqi, 2rem); }
-.ftr :focus-visible { outline-color: var(--graphite); }
-.ftr .wrap { width: auto; max-width: none; margin-inline: clamp(1rem, 3.3cqi, 3rem); padding: clamp(2rem, 4cqi, 3.5rem) clamp(1.5rem, 4cqi, 3.5rem) 1.5rem; background: var(--paper); border-radius: clamp(2rem, 5cqi, 4rem); }
-.ftr-g img { display: none; }
-.rodape-titulo { color: var(--graphite-soft); font-size: .875rem; letter-spacing: .04em; text-transform: uppercase; }
-.flinks a, .ftr-b a { color: var(--graphite); }
-.ftr-dots { margin-top: clamp(2rem, 4cqi, 3rem); }
-.ftr-mark { display: block; width: 100%; height: auto; margin-top: clamp(1.5rem, 4cqi, 3rem); }
-.ftr-b { margin-top: 1.5rem; padding-top: 0; border-top: 0; color: var(--graphite-soft); }
-:root[data-tema=tritanopia] .site .ftr .rodape-titulo { color: var(--graphite); }
-:root[data-tema=acromatopsia] .ftr .wrap { border: 2px solid var(--graphite); }
 
 /* Movimento (referência: página que respira — formas flutuam, entram em cascata, reagem ao toque). Só translate/rotate/scale. */
 @keyframes a2-float { 50% { translate: 0 -1.25rem; rotate: 4deg; } }
@@ -133,8 +110,6 @@
   .objs:not(.descobrem) .obj { transition: scale .45s var(--ease), rotate .45s var(--ease); }
   .objs:not(.descobrem) .obj:hover { scale: 1.08; rotate: -4deg; z-index: 3; }
   .objs:not(.descobrem) .obj:nth-child(even):hover { rotate: 4deg; }
-  .nav a { transition: background .25s, scale .3s var(--ease); }
-  .nav a:hover { scale: 1.06; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -145,7 +120,6 @@
     .pano { animation: a2-open linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
     .pano > img { scale: 1.12; animation: a2-pan linear both; animation-timeline: view(); animation-range: cover; }
     .objs:not(.descobrem) .obj { animation: a2-disc linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
-    .ftr-mark { animation: a2-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
   }
 }
 @keyframes a2-pan { from { translate: 0 -3rem; } to { translate: 0 3rem; } }
