@@ -41,10 +41,10 @@
 :root[data-tema=tritanopia] { --blue: #eca5a6; --green: #f26e36; --yellow: #2b2b29; }
 :root[data-tema=acromatopsia] { --orange: #fef8e6; --green: #fef8e6; --blue: #fef8e6; --pink: #fef8e6; filter: grayscale(100%); }
 /* cor igual à do fundo: a forma ganha contorno, para a informação não depender só da cor */
-:root[data-tema=protanopia] :is(.bg-pink, .st.c-pk, .dir.c-pk, .verb.c-pk, .vt.c-pk, .bub.c-pk, .ic.c-pk, .who-a),
-:root[data-tema=deuteranopia] :is(.bg-pink, .st.c-pk, .dir.c-pk, .verb.c-pk, .vt.c-pk, .bub.c-pk, .ic.c-pk, .who-a),
-:root[data-tema=acromatopsia] :is(.bg-pink, .bg-orange, .bg-green, .bg-blue, .st, .dir, .verb, .vt, .bub, .ic, .who-a, .criar, .inv-main, .origin, .node, .wq, .step .num) { border: 2px solid var(--graphite); }
-:root[data-tema=tritanopia] :is(.bg-yellow, .bg-yellow *:not(.qa, .qa *, .formcard, .formcard *, .lnk)) { color: var(--cream); }
+:root[data-tema=protanopia] :is(.bg-pink, .st.c-pk, .dir.c-pk, .verb.c-pk, .vt.c-pk, .bub.c-pk, .ic.c-pk),
+:root[data-tema=deuteranopia] :is(.bg-pink, .st.c-pk, .dir.c-pk, .verb.c-pk, .vt.c-pk, .bub.c-pk, .ic.c-pk),
+:root[data-tema=acromatopsia] :is(.bg-pink, .bg-orange, .bg-green, .bg-blue, .st, .dir, .verb, .vt, .bub, .ic, .criar, .inv-main, .origin, .node, .wq) { border: 2px solid var(--graphite); }
+:root[data-tema=tritanopia] :is(.bg-yellow, .bg-yellow *:not(.qa, .qa *, .formcard, .formcard *, .gcard, .gcard *, .lnk)) { color: var(--cream); }
 :root[data-tema=tritanopia] .bg-yellow .btn { box-shadow: inset 0 0 0 2px var(--cream); }
 :root[data-tema=tritanopia] :is(.st.c-ye, .dir.c-ye, .verb.c-ye, .vt.c-ye, .bub.c-ye, .ic.c-ye, .qa.c-ye .pm) { color: var(--cream); }
 :root[data-tema=tritanopia] .site :focus-visible { outline-color: var(--graphite); box-shadow: 0 0 0 6px var(--cream); }
@@ -364,7 +364,7 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 .f.full.fim { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .fim .privacy { max-width: 44ch; }
 /* tritanopia (amarelo vira grafite): textos e ícones sobre superfícies amarelas passam a creme */
-:root[data-tema=tritanopia] :is(.step.c-ye .num, .goal.c-ye i, .phase.c-ye .phase-top, .obj.c-ye:hover, .node.c-ye, .close .sig span, .chip input:checked + span) { color: var(--cream); }
+:root[data-tema=tritanopia] :is(.hstep.c-ye .num, .phase.c-ye .phase-top, .obj.c-ye:hover, .node.c-ye, .close .sig span, .chip input:checked + span) { color: var(--cream); }
 :root[data-tema=tritanopia] .chip input:checked + span::before { border-color: var(--cream); background: var(--cream); }
 
 /* Rótulo à esquerda + texto à direita (A exposição, Contato) */
