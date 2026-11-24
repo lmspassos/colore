@@ -102,3 +102,50 @@
 .ftr-b { margin-top: 1.5rem; padding-top: 0; border-top: 0; color: var(--graphite-soft); }
 :root[data-tema=tritanopia] .site .ftr .rodape-titulo { color: var(--graphite); }
 :root[data-tema=acromatopsia] .ftr .wrap { border: 2px solid var(--graphite); }
+
+/* Movimento (referência: página que respira — formas flutuam, entram em cascata, reagem ao toque). Só translate/rotate/scale. */
+@keyframes a2-float { 50% { translate: 0 -1.25rem; rotate: 4deg; } }
+@keyframes a2-sway { 50% { translate: 1.5rem .5rem; } }
+@keyframes a2-pop { from { opacity: 0; scale: .6; translate: 0 2rem; } }
+@keyframes a2-blink { 0%, 92%, 100% { scale: 1; } 96% { scale: 1 .15; } }
+@keyframes a2-spin { to { rotate: 360deg; } }
+@keyframes a2-in-l { from { translate: -22cqi 0; } }
+@keyframes a2-in-r { from { translate: 22cqi 0; } }
+@keyframes a2-open { from { clip-path: circle(12% at 50% 50%); } to { clip-path: circle(75% at 50% 50%); } }
+@keyframes a2-rise { from { opacity: 0; translate: 0 6rem; } }
+@keyframes a2-up { to { translate: 0 -7rem; } }
+@keyframes a2-disc { from { opacity: 0; scale: .5; rotate: -12deg; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage-card { animation: a2-pop .9s var(--ease) both; }
+  .stage-art .sa { animation: a2-float 7s ease-in-out infinite; }
+  .stage-art .sa:nth-child(2) { animation-duration: 9s; animation-delay: -2s; }
+  .stage-art .sa:nth-child(3) { animation-duration: 8s; animation-delay: -4s; }
+  .stage-art .sa:nth-child(4) { animation-duration: 10s; animation-delay: -1s; }
+  .stage-art .cloud { animation: a2-sway 12s ease-in-out infinite; }
+  .stage-art .cloud + .cloud { animation-duration: 15s; animation-direction: reverse; }
+  .stage-art .tri { animation: a2-float 6s ease-in-out infinite reverse; }
+  .face { animation: a2-blink 5s infinite; }
+  .down { animation: a2-float 2.4s ease-in-out infinite; }
+  .stk-sun, .stk-dots { animation: a2-spin 24s linear infinite; }
+  .dlband .btn, .end .btn { transition: translate .3s var(--ease), box-shadow .3s; }
+  .dlband .btn:hover, .end .btn:hover { translate: 0 -.25rem; box-shadow: 0 .5rem 0 var(--graphite); }
+  .objs:not(.descobrem) .obj { transition: scale .45s var(--ease), rotate .45s var(--ease); }
+  .objs:not(.descobrem) .obj:hover { scale: 1.08; rotate: -4deg; z-index: 3; }
+  .objs:not(.descobrem) .obj:nth-child(even):hover { rotate: 4deg; }
+  .nav a { transition: background .25s, scale .3s var(--ease); }
+  .nav a:hover { scale: 1.06; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .stage-art { animation: a2-up linear both; animation-timeline: scroll(root); animation-range: 0 60vh; }
+    .gword span:nth-child(1) { animation: a2-in-l linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    .gword span:nth-child(2) { animation: a2-in-r linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    .pano { animation: a2-open linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+    .pano > img { scale: 1.12; animation: a2-pan linear both; animation-timeline: view(); animation-range: cover; }
+    .objs:not(.descobrem) .obj { animation: a2-disc linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
+    .ftr-mark { animation: a2-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  }
+}
+@keyframes a2-pan { from { translate: 0 -3rem; } to { translate: 0 3rem; } }
