@@ -168,3 +168,15 @@
     .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry 0% entry 100%; }
   }
 }
+
+/* baralho (montado por JS) */
+.objs.deck { display: block; height: calc(var(--n) * 55vh + 45vh); padding: 0; }
+.deck-stage { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; }
+.objs.deck .obj { grid-area: 1 / 1; width: min(86vw, 26rem); margin: 0 !important; animation: none !important; opacity: 1 !important; transition: none; will-change: translate, rotate; font-size: 1.15em; }
+.band:has(.objs.deck) { overflow: clip; }
+.cloud-bg { translate: calc(var(--p, 0) * -40cqi) 0; }
+.cloud-bg.cb2 { translate: calc(var(--p, 0) * 40cqi) 0; }
+@keyframes a2-hero { from { opacity: 0; filter: blur(.6rem); translate: var(--dx) var(--dy); rotate: var(--r); scale: .5; } }
+@media (prefers-reduced-motion: no-preference) {
+  .stage-card .d1 .gl { animation: a2-hero .9s var(--ease) both; animation-delay: calc(.15s + var(--i) * 55ms); animation-timeline: auto; animation-range: normal; }
+}
