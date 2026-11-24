@@ -162,7 +162,7 @@
 .intro-sub { margin: 1.5rem auto 0; max-width: 28rem; font-weight: 600; }
 .intro-dot { position: absolute; aspect-ratio: 1; border-radius: 50%; z-index: 1; }
 .intro-zoom { display: none; }
-.intro-wrap.pin { height: 220vh; position: relative; }
+.intro-wrap.pin { position: relative; }
 .pin .intro { position: sticky; top: 0; height: 100svh; }
 .pin .intro-zoom-off { display: block; position: absolute; z-index: 3; left: 50%; top: 50%; width: 220vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; scale: calc(var(--q, 0) * var(--q, 0)); }
 .pin .intro-in { opacity: calc(1.6 - var(--q, 0) * 1.9); scale: calc(1 + var(--q, 0) * .25); rotate: calc(var(--q, 0) * -4deg); }
@@ -290,3 +290,24 @@ html { scroll-behavior: smooth; }
 .gword:not(.g2) { margin-bottom: -.38em; }
 .gword.g2 { margin-top: -.38em; }
 .pano .tag { top: 50%; }
+
+/* O conceito: afirmação centrada e cinco círculos sobrepostos, em onda, que sobem girando com a rolagem */
+.conc2 { padding-block: clamp(4rem, 9cqi, 9rem) clamp(2rem, 4cqi, 4rem); }
+.conc-in { display: grid; justify-items: center; text-align: center; gap: clamp(1.5rem, 3cqi, 3rem); }
+.conc-in .kicker { margin: 0; }
+.conc-in .statement { max-width: 62rem; font-weight: 600; font-size: clamp(1.5rem, 3.1cqi, 3rem); line-height: 1.15; }
+.conc-dots { list-style: none; margin: 0; padding: 0 0 2.5rem; display: flex; justify-content: center; }
+.conc-dots li { display: grid; place-items: center; width: clamp(7rem, 17cqi, 16rem); aspect-ratio: 1; border-radius: 50%; padding: 1rem; text-align: center; font-family: var(--fd); font-weight: 600; font-size: clamp(1rem, 2.1cqi, 1.9rem); line-height: 1.05; color: var(--graphite); rotate: var(--rt); translate: 0 var(--wy); }
+.conc-dots li + li { margin-left: -2.2cqi; }
+@keyframes a2-pop { from { opacity: 0; scale: .45; translate: 0 8rem; rotate: calc(var(--rt) * 4); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .conc-dots li { animation: a2-pop linear both; animation-timeline: view(); animation-range: entry calc(var(--n) * 7%) entry calc(55% + var(--n) * 7%); }
+  }
+}
+@container site (max-width: 51.25rem) {
+  .conc-dots { flex-wrap: wrap; row-gap: 0; }
+  .conc-dots li { width: 31cqi; font-size: 1rem; }
+  .conc-dots li + li { margin-left: -3cqi; }
+  .conc-dots li:nth-child(4) { margin-left: 0; }
+}
