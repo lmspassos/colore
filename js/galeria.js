@@ -29,7 +29,7 @@
   };
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-galeria] button");
-    if (!b || !b.querySelector("img")) return;
+    if (!b || !b.querySelector("img") || !d.isConnected) return; // a página pode ter trocado de lado na roda
     origem = b.closest("[data-galeria]");
     fotos = [...origem.querySelectorAll("li:not([data-clone]) button img, :scope > button img")];
     mostra(Math.max(0, fotos.findIndex((f) => f.src === b.querySelector("img").src))); // o clone da faixa aponta para a mesma foto

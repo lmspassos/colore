@@ -1,17 +1,14 @@
 /* Roda (moeda): topo compartilhado de Para instituições 2 e Para educadores 2, montado como um teatrinho de papel.
    A boca de cena (bambolina, lanternas, cortinas e piso) fica parada; atrás dela gira uma roda com eixo abaixo da tela,
    e cada metade é o cenário de uma página, em camadas de papel que se deslocam em velocidades diferentes.
-   A seta ou o arraste (dedo ou mouse) levam à outra página e a roda vira 180°. Sem JS, a seta só troca de página. */
-@view-transition { navigation: auto; }
-/* --a: ângulo da roda · --t: quanto do giro falta (-1 a 1), move as camadas e vira o cartão */
+   A seta ou o arraste (dedo ou mouse) giram a roda 180° na mesma página (js/roda.js). Sem JS, a seta é um link para a outra página.
+   Tudo que se mexe deriva de --a (ângulo da roda) por seno e cosseno, para não dar salto em nenhum ponto da volta. */
 @property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
-@property --t { syntax: "<number>"; inherits: true; initial-value: 0; }
 
 .roda { --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda[data-lado=instituicoes] { --a: 0deg; }
 .roda[data-lado=educadores] { --a: 180deg; }
 .roda.arrasta { cursor: grabbing; }
-.roda.gira { transition: --a 1.4s cubic-bezier(.7, 0, .2, 1.04), --t 1.4s cubic-bezier(.7, 0, .2, 1); }
 .roda img, .roda svg { -webkit-user-drag: none; }
 
 /* ── a roda: duas metades; a de educadores fica de cabeça para baixo até a roda virar ── */
@@ -23,7 +20,8 @@
 .cena { position: absolute; left: 50%; bottom: 0; width: max(100vw, var(--h)); height: calc(var(--h) + var(--p)); translate: -50% 0; }
 .palco { position: absolute; inset: 0 0 var(--p) 0; }
 /* camadas de papel: quanto maior --z, mais à frente e mais ela se desloca no giro */
-.cam { position: absolute; inset: 0; translate: calc(var(--t) * var(--z, 0) * 1vw) 0; }
+.cam { position: absolute; inset: 0; translate: calc(sin(var(--a)) * var(--z, 0) * 1.5vw) 0; }
+.f-edu .cam { translate: calc(sin(var(--a)) * -1 * var(--z, 0) * 1.5vw) 0; }
 
 /* formas recortadas (posição e tamanho em % do palco) */
 .s { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: var(--ar, 1); background: var(--c); border: 3px solid var(--graphite); border-radius: 50%; rotate: var(--r, 0deg); box-shadow: .375rem .375rem 0 var(--sombra); }
@@ -45,7 +43,7 @@
 .roda .face.dorme { background: radial-gradient(circle at 50% 0, transparent 44%, var(--graphite) 47% 68%, transparent 71%) 6% 0 / 26% 22% no-repeat, radial-gradient(circle at 50% 0, transparent 44%, var(--graphite) 47% 68%, transparent 71%) 94% 0 / 26% 22% no-repeat; }
 
 /* ── nuvens: não giram, só deslizam ── */
-.roda-ar { position: absolute; inset: 0; pointer-events: none; translate: calc(var(--t) * 30vw) 0; }
+.roda-ar { position: absolute; inset: 0; pointer-events: none; translate: calc(sin(2 * var(--a)) * 20vw) 0; }
 .nv { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 3; filter: drop-shadow(.3rem .3rem 0 var(--sombra)); background:
   radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 0 100% / 38% 80% no-repeat,
   radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 40% 0 / 46% 100% no-repeat,
@@ -62,7 +60,7 @@
 .lant b::before, .lant b::after { content: ""; position: absolute; left: 28%; right: 28%; height: 12%; background: var(--graphite); border-radius: .2rem; }
 .lant b::before { top: -8%; } .lant b::after { bottom: -8%; }
 /* cortinas laterais, presas no meio como no teatro */
-.cort { position: absolute; top: 0; bottom: 0; width: 13%; background: repeating-linear-gradient(90deg, var(--orange) 0 1.5rem, color-mix(in srgb, var(--orange) 82%, var(--graphite)) 1.5rem 1.75rem); border: 0 solid var(--graphite); translate: calc(var(--t) * -.75rem) 0; }
+.cort { position: absolute; top: 0; bottom: 0; width: 13%; background: repeating-linear-gradient(90deg, var(--orange) 0 1.5rem, color-mix(in srgb, var(--orange) 82%, var(--graphite)) 1.5rem 1.75rem); border: 0 solid var(--graphite); translate: calc(sin(2 * var(--a)) * .75rem) 0; }
 .cort.esq { left: 0; border-right-width: 3px; border-radius: 0 0 100% 0 / 0 0 46% 0; }
 .cort.dir { right: 0; border-left-width: 3px; border-radius: 0 0 0 100% / 0 0 0 46%; }
 .cort i { position: absolute; top: 50%; width: 40%; height: 1rem; border-radius: 999px; background: var(--yellow); border: 2px solid var(--graphite); }
@@ -70,8 +68,8 @@
 /* piso do palco em tábuas */
 .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 13%; border-top: 3px solid var(--graphite); background: repeating-linear-gradient(90deg, var(--yellow) 0 5rem, color-mix(in srgb, var(--yellow) 78%, var(--graphite)) 5rem 5.2rem); }
 
-/* cartão: vira como moeda conforme a roda gira (fino no meio do giro, inteiro em repouso) */
-.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(25rem, 80%); translate: -50% 0; rotate: -3deg; scale: max(0, calc(1 - 2 * max(var(--t), -1 * var(--t)))) 1; display: flex; flex-direction: column; align-items: center; gap: .75rem; padding: clamp(1.25rem, 3cqi, 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
+/* cartão: vira como moeda conforme a roda gira (|cos|: inteiro em repouso, fino no meio da volta, quando troca de lado) */
+.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(25rem, 80%); translate: -50% 0; rotate: -3deg; scale: max(cos(var(--a)), -1 * cos(var(--a))) 1; display: flex; flex-direction: column; align-items: center; gap: .75rem; padding: clamp(1.25rem, 3cqi, 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
 .roda-card .crumb { margin: 0; justify-content: center; }
 .roda-card h1 { margin: 0; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, 5.5cqi, 4.5rem); line-height: .9; letter-spacing: -.03em; }
 .roda-card .tag { background: var(--cream); border-width: 2px; }
