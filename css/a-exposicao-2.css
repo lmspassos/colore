@@ -138,7 +138,7 @@
     .cloud-bg.cb2 { animation-name: a2-drift-r; }
     .gword { view-timeline: --g block; }
     .d2, .stage-card .d1, .end .d1, .side-h > span, .side-h2 { view-timeline: --h block; }
-    .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry calc(var(--i) * 3.5%) entry calc(38% + var(--i) * 3.5%); }
+    .gl { animation: a2-letter linear both; animation-timeline: --h; animation-range: entry calc(var(--i) * .8%) entry calc(22% + var(--i) * .8%); }
   }
 }
 
