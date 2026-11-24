@@ -4,6 +4,8 @@
   if (matchMedia("(prefers-reduced-motion: reduce)").matches || !CSS.supports("animation-timeline: view()")) return;
   let n = 7, idx = 0;
   const rnd = () => (n = (n * 16807) % 2147483647) / 2147483647 - .5; // fixo: mesma bagunça a cada visita
+  // Leitor de tela lê o texto inteiro (cópia oculta); as letras soltas ficam só para o olho.
+  const sr = (h) => { const t = h.textContent.trim(), c = document.createElement("span"); c.className = "sr-only"; c.textContent = t; return c; };
   const quebra = (no) => {
     for (const f of [...no.childNodes]) {
       if (f.nodeType === 1) { quebra(f); continue; }
@@ -11,7 +13,7 @@
       const frag = document.createDocumentFragment();
       f.textContent.split(/(\s+)/).forEach((w) => {
         if (/^\s*$/.test(w)) { frag.append(w); return; }
-        const p = document.createElement("span"); p.className = "gw";
+        const p = document.createElement("span"); p.className = "gw"; p.setAttribute("aria-hidden", "true");
         for (const ch of w) {
           const l = document.createElement("span"); l.className = "gl"; l.textContent = ch; l.style.setProperty("--i", idx++);
           l.style.cssText += `;--dx:${(rnd() * 9).toFixed(1)}rem;--dy:${(rnd() * 7).toFixed(1)}rem;--r:${Math.round(rnd() * 100)}deg`;
@@ -22,7 +24,7 @@
       f.replaceWith(frag);
     }
   };
-  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { idx = 0; quebra(h); });
+  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { idx = 0; const c = h.closest("[aria-hidden=true]") ? null : sr(h); quebra(h); if (c) h.append(c); });
 
   // Super abertura: o círculo amarelo cresce com a rolagem (q de 0 a 1) e leva ao palco
   const ab = document.querySelector("[data-intro]");

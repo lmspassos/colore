@@ -196,7 +196,7 @@
 .intro .cloud { --cl: var(--blue); }
 .intro .cloud.cb2 { --cl: var(--pink); }
 .intro .gl { display: inline-block; }
-@keyframes a2-hero2 { from { opacity: 0; filter: blur(.6rem); translate: var(--dx) var(--dy); rotate: var(--r); scale: .5; transform: skewX(-20deg); } }
+@keyframes a2-hero2 { from { opacity: 0; filter: blur(.6rem); translate: var(--dx) var(--dy); rotate: var(--r); scale: .5; } }
 @media (prefers-reduced-motion: no-preference) {
   .intro .gl { animation: a2-hero2 1s var(--ease) both; animation-delay: calc(.1s + var(--i) * 40ms); animation-timeline: auto; animation-range: normal; }
 }
