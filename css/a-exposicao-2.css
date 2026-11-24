@@ -218,17 +218,18 @@
 
 /* respiro: menos branco entre as seções */
 .band { padding-block: clamp(2.5rem, 4.5cqi, 4.5rem); }
-.intro-wrap.pin { height: 170vh; }
+.intro-wrap.pin { height: 150vh; }
 .objs.deck { height: calc(var(--n) * 38vh + 40vh); }
 
 /* texto gigante lateralizado (referência: "the first years matter most") */
 .side { overflow: clip; }
 .side-g { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(1.5rem, 4cqi, 4rem); align-items: start; }
-.side-h { margin: 0; font-family: var(--fd); font-weight: 700; text-transform: uppercase; font-size: clamp(2.5rem, 7.2cqi, 7.25rem); line-height: .92; color: var(--graphite); white-space: nowrap; }
+.side-h { margin: 0; font-family: var(--fd); font-weight: 700; text-transform: uppercase; font-size: 12cqi; line-height: .94; color: var(--graphite); white-space: nowrap; }
 .side-h > span { display: block; width: fit-content; }
 .side-h > span::after { content: ""; display: inline-block; width: .42em; height: .42em; margin-left: .18em; border-radius: 50%; background: var(--c); border: 3px solid var(--graphite); vertical-align: .02em; }
 .side-r { position: sticky; top: 6rem; display: grid; gap: 1.5rem; justify-items: start; padding-top: clamp(1rem, 3cqi, 3rem); }
-.side-sun { left: clamp(1rem, 47cqi, 60rem); top: 12%; right: auto; width: clamp(4rem, 8cqi, 7rem); }
+.side-l { position: relative; container-type: inline-size; }
+.side-sun { right: 0; left: auto; top: -.5rem; width: clamp(3.5rem, 14cqi, 6rem); }
 .side-dots { left: clamp(1rem, 3cqi, 3rem); right: auto; top: auto; bottom: 2rem; width: clamp(3.5rem, 6cqi, 5.5rem); }
 .polas { position: relative; width: 100%; height: clamp(16rem, 34cqi, 30rem); margin-top: 1rem; }
 .polas img { position: absolute; object-fit: cover; border: .4375rem solid var(--paper); box-shadow: 0 .25rem 0 var(--graphite); border-radius: 999px 999px 1.5rem 1.5rem; transition: rotate .5s var(--ease), scale .5s var(--ease); }
@@ -259,3 +260,12 @@
   .collage img:hover { rotate: 0deg; scale: 1.08; }
   .pano > img { transition: scale .6s var(--ease); }
 }
+
+/* revisão: mais largura em telas grandes, baralho maior e nada cobrindo texto */
+.site .wrap { max-width: min(100%, 105rem); }
+.objs.deck .obj { width: min(86vw, 34rem); font-size: 1.4em; }
+.objs.deck .obj i { width: 3.5rem !important; height: 3.5rem !important; }
+.end .cloud-bg { z-index: 0; }
+#h-obj { position: sticky; top: 5.5rem; z-index: 4; width: fit-content; }
+.obj-block { position: relative; }
+.deck-stage { box-sizing: border-box; padding-top: 7rem; }

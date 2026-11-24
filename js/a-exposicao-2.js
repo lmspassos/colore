@@ -51,7 +51,7 @@
     sec.style.setProperty("--p", p.toFixed(3));
     cards.forEach((c, i) => {
       const dir = i % 2 ? 1 : -1, t = k(cur - i, 0, 1), d = k(i - cur, 0, 3);
-      c.style.translate = t ? `${(dir * t * 0.8 * innerWidth).toFixed(0)}px ${(-t * 1.1 * innerHeight).toFixed(0)}px` : `${(dir * d * 1.4).toFixed(2)}rem ${(d * 1.1).toFixed(2)}rem`;
+      c.style.translate = t ? `${(dir * t * 1.1 * innerWidth).toFixed(0)}px ${(-t * 0.2 * innerHeight).toFixed(0)}px` : `${(dir * d * 1.4).toFixed(2)}rem ${(d * 1.1).toFixed(2)}rem`;
       c.style.rotate = `${(base[i % 6] + dir * t * 40).toFixed(1)}deg`;
       c.style.scale = (1 - d * 0.03).toFixed(3);
       c.style.zIndex = N - i;
