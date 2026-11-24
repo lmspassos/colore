@@ -1,7 +1,7 @@
 /* Para instituições 2: rolagem em camadas (parallax). Sem suporte a animação ligada à rolagem, tudo fica no estado final. */
 
 /* ── Herói: título letra a letra e formas que sobem em velocidades diferentes ── */
-.ih{position:relative;min-height:calc(100svh - 4.5rem);display:grid;align-items:center;overflow:clip;padding-block:clamp(3rem,7cqi,6rem)}
+.ih{position:relative;min-height:80svh;display:grid;align-items:center;overflow:clip;padding-block:clamp(3rem,7cqi,6rem)}
 .ih-sky{position:absolute;inset:0;pointer-events:none}
 .fl{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;border-radius:50%;rotate:var(--rr)}
 .fl.arc{border-radius:999px 999px 0 0;aspect-ratio:2/1}
@@ -94,9 +94,10 @@
 @supports (animation-timeline: view()){
  @media (prefers-reduced-motion:no-preference){
   /* herói: formas sobem cada uma no seu ritmo; letras entram e se soltam ao sair */
-  .fl{animation:sobe linear both;animation-timeline:scroll(root);animation-range:0 100vh}
-  .ih-t .l{animation:entra .9s var(--ease) both,solta linear both;animation-delay:calc(var(--i) * 35ms),0s;animation-timeline:auto,scroll(root);animation-range:normal,0 90vh}
-  .ih-in>:not(.ih-t){animation:esvai linear both;animation-timeline:scroll(root);animation-range:0 60vh}
+  /* a abertura vem depois da roda: tudo conta a partir de quando ela aparece na tela */
+  .fl{animation:sobe linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  .ih-t .l{animation:entra linear both,solta linear both;animation-timeline:view(),view();animation-range:entry calc(10% + var(--i) * 1.5%) entry calc(70% + var(--i) * 1.5%),exit 10% exit 90%}
+  .ih-in>:not(.ih-t){animation:esvai linear both;animation-timeline:view();animation-range:exit 20% exit 80%}
   /* por que: os círculos já crescem enquanto a seção entra (sem tela vazia) e ela fica presa até o cartão assentar */
   .rev{height:220svh;view-timeline:--rev block}
   .rev-st{position:sticky;top:0;height:100svh}
@@ -118,7 +119,7 @@
 }
 @keyframes entra{from{opacity:0;transform:translateY(.5em) rotate(-18deg) scale(.5)}}
 @keyframes solta{to{translate:0 var(--d);rotate:var(--dr);opacity:0}}
-@keyframes sobe{to{translate:0 calc(var(--v) * 1px);rotate:calc(var(--rr) + 40deg)}}
+@keyframes sobe{from{translate:0 calc(var(--v) * -.5px)}to{translate:0 calc(var(--v) * .5px);rotate:calc(var(--rr) + 40deg)}}
 @keyframes esvai{to{opacity:0;translate:0 -3rem}}
 @keyframes recorte{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(75% at 50% 42%)}}
 @keyframes abre{from{scale:var(--s0,0)}to{scale:1}}
