@@ -272,10 +272,13 @@ html { scroll-behavior: smooth; }
 .dlband { padding-top: clamp(3rem, 6cqi, 5.5rem); }
 
 /* "descobrir é colorir": letra a letra, a 1ª palavra e depois "é colorir"; cada letra vem de um canto, alternando por cima e por baixo */
-@keyframes a2-gl { from { opacity: 0; translate: calc(var(--dx) * 5) calc(var(--dy) * var(--sy, 2.4)); rotate: calc(var(--r) * 2.5); scale: .6; } to { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; } }
+@keyframes a2-gl { from { opacity: 0; translate: calc(var(--dx) * 5) calc(var(--dy) * var(--sy, 2.4)); rotate: calc(var(--r) * 3); scale: .6; } to { opacity: 1; translate: 0 var(--ry, 0); rotate: var(--rr, 0deg); scale: 1; } }
 .gword .gl:nth-child(even) { --sy: -2.4; }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .gword .gl { animation: a2-gl linear both; animation-timeline: --g; animation-range: cover calc(var(--i) * 1.7%) cover calc(20% + var(--i) * 1.7%); }
   }
 }
+
+.gword { letter-spacing: -.05em; }
+.gword .gl { transform-origin: 50% 70%; }

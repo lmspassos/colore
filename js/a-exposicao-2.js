@@ -2,7 +2,7 @@
 // Sem JS ou com movimento reduzido o título fica inteiro e parado.
 (() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches || !CSS.supports("animation-timeline: view()")) return;
-  let n = 7, idx = 0;
+  let n = 7, idx = 0, big = false;
   const rnd = () => (n = (n * 16807) % 2147483647) / 2147483647 - .5; // fixo: mesma bagunça a cada visita
   // Leitor de tela lê o texto inteiro (cópia oculta); as letras soltas ficam só para o olho.
   const sr = (h) => { const t = h.textContent.trim(), c = document.createElement("span"); c.className = "sr-only"; c.textContent = t; return c; };
@@ -17,6 +17,7 @@
         for (const ch of w) {
           const l = document.createElement("span"); l.className = "gl"; l.textContent = ch; l.style.setProperty("--i", idx++);
           l.style.cssText += `;--dx:${(rnd() * 3).toFixed(1)}rem;--dy:${(rnd() * 2 + 3.5).toFixed(1)}rem;--r:${Math.round(rnd() * 28)}deg`;
+          if (big) l.style.cssText += `;--rr:${Math.round(rnd() * 44)}deg;--ry:${(rnd() * .3).toFixed(2)}em`; // repouso torto, como na referência
           p.append(l);
         }
         frag.append(p);
@@ -24,7 +25,7 @@
       f.replaceWith(frag);
     }
   };
-  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { if (!h.parentElement.classList.contains("gword") || !h.previousElementSibling) idx = 0; const c = h.closest("[aria-hidden=true]") ? null : sr(h); quebra(h); if (c) h.append(c); });
+  document.querySelectorAll(".gword > span, .d2, .stage-card .d1, .end .d1, .intro-h, .side-h > span, .side-h2").forEach((h) => { big = h.parentElement.classList.contains("gword"); if (!h.parentElement.classList.contains("gword") || !h.previousElementSibling) idx = 0; const c = h.closest("[aria-hidden=true]") ? null : sr(h); quebra(h); if (c) h.append(c); });
 
   // Super abertura: o círculo amarelo cresce com a rolagem (q de 0 a 1) e leva ao palco
   const ab = document.querySelector("[data-intro]");
