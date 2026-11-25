@@ -241,7 +241,7 @@ html:not(.js) .panel-item+.panel-item{margin-top:1.75rem}
 }
 
 /* super abertura: tela cheia que "afunda" num círculo amarelo até o palco */
-.intro { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: clip; text-align: center; }
+.intro { position: relative; min-height: var(--hero-h); display: grid; place-items: center; overflow: clip; text-align: center; }
 .intro-in { position: relative; z-index: 2; padding: 6rem 1.5rem 3rem; max-width: 70rem; }
 .intro-logo { display: block; margin: 0 auto 1.25rem; width: 8rem; height: auto; }
 .intro-h { margin: 0; font-family: var(--fd); font-weight: 700;  font-size: clamp(2.5rem, 9cqi, 8rem); line-height: .9; color: var(--graphite); }
@@ -249,7 +249,7 @@ html:not(.js) .panel-item+.panel-item{margin-top:1.75rem}
 .intro-dot { position: absolute; aspect-ratio: 1; border-radius: 50%; z-index: 1; }
 .intro-zoom { display: none; }
 .intro-wrap.pin { position: relative; }
-.pin .intro { position: sticky; top: 0; height: 100svh; }
+.pin .intro { position: sticky; top: 4.5rem; height: var(--hero-h); }
 .pin .intro-zoom-off { display: block; position: absolute; z-index: 3; left: 50%; top: 50%; width: 220vmax; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; scale: calc(var(--q, 0) * var(--q, 0)); }
 .pin .intro-in { opacity: calc(1.6 - var(--q, 0) * 1.9); scale: calc(1 + var(--q, 0) * .25); rotate: calc(var(--q, 0) * -4deg); }
 .intro .cloud { --cl: var(--blue); }

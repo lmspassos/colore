@@ -6,7 +6,7 @@
 @property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
 
 /* céu único: passa do azul (instituições) ao rosa (educadores) conforme a roda gira */
-.roda { --cw: min(max(100vw, var(--h)), calc(var(--h) * 1.5)); --R: calc(var(--h) * .44 + var(--p)); background: var(--blue); contain: paint; --h: max(34rem, calc(100svh - 4.5rem)); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.roda { --cw: min(max(100vw, var(--h)), calc(var(--h) * 1.5)); --R: calc(var(--h) * .44 + var(--p)); background: var(--blue); contain: paint; --h: var(--hero-h); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda[data-lado=instituicoes] { --a: 0deg; }
 .roda[data-lado=educadores] { --a: 180deg; }
 .roda.arrasta { cursor: grabbing; }

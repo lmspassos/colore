@@ -8,7 +8,7 @@
 .c2-face::after { content: ""; position: absolute; left: 22%; right: 22%; top: 46%; height: 42%; border: .2rem solid var(--graphite); border-top: 0; border-radius: 0 0 999px 999px; }
 
 /* ── Abertura ── */
-.c2-hero { position: relative; overflow: clip; padding-block: clamp(2.5rem, 6cqi, 5rem) clamp(4.5rem, 9cqi, 8rem); text-align: center; }
+.c2-hero { position: relative; overflow: clip; min-height: var(--hero-h); display: grid; align-content: center; padding-block: clamp(2rem, 5svh, 4rem) clamp(4.5rem, 9svh, 8rem); text-align: center; }
 .c2-ceu { position: absolute; inset: 0; pointer-events: none; }
 .nuvem { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 3; background:
   radial-gradient(circle closest-side, var(--blue) 97%, transparent 100%) 0 100% / 38% 80% no-repeat,
@@ -17,7 +17,7 @@
 .bola { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; border-radius: 50%; background: var(--c); border: 3px solid var(--graphite); }
 .c2-hero-in { position: relative; display: flex; flex-direction: column; align-items: center; }
 .c2-hero .crumb { justify-content: center; }
-.c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3.25rem, 11cqi, 9.5rem); line-height: .88; letter-spacing: -.03em;  text-wrap: balance; }
+.c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3rem, min(11cqi, 15svh), 9.5rem); line-height: .88; letter-spacing: -.03em;  text-wrap: balance; }
 .c2-t .w { display: inline-block; white-space: nowrap; }
 .c2-t .l { display: inline-block; }
 .c2-t .l:nth-child(3n+1) { rotate: -5deg; }
