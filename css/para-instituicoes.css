@@ -1,7 +1,7 @@
 /* Para instituições: rolagem em camadas (parallax). Sem suporte a animação ligada à rolagem, tudo fica no estado final. */
 
 /* ── Herói: título letra a letra e formas que sobem em velocidades diferentes ── */
-.ih{position:relative;min-height:80svh;display:grid;align-items:center;overflow:clip;padding-block:clamp(3rem,7cqi,6rem)}
+.ih{position:relative;min-height:var(--hero-h);display:grid;align-items:center;overflow:clip;padding-block:clamp(3rem,7cqi,6rem)}
 .ih-sky{position:absolute;inset:0;pointer-events:none}
 .fl{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;border-radius:50%;rotate:var(--rr)}
 .fl.arc{border-radius:999px 999px 0 0;aspect-ratio:2/1}
@@ -134,3 +134,10 @@
 /* tritanopia (amarelo vira grafite): cartões e números sobre amarelo mantêm texto legível */
 :root[data-tema=tritanopia] .deck .gcard, :root[data-tema=tritanopia] .deck .gcard * { color: var(--graphite); }
 :root[data-tema=tritanopia] .hstep.c-ye .num { color: var(--cream); }
+
+/* Herói do desktop: mesma altura nas cinco páginas (--hero-h); o título escala também pela altura da tela */
+@container site (min-width:56.3125rem){
+  .ih{height:var(--hero-h);padding-block:1.5rem}
+  .ih-t{font-size:clamp(2.75rem,min(9cqi,13svh),8.5rem)}
+  .ed-ih .ih-t{font-size:clamp(2.75rem,min(7.5cqi,12svh),7rem)}
+}

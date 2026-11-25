@@ -34,7 +34,7 @@
   --ease: cubic-bezier(.3, 1.5, .5, 1);
   --soft: cubic-bezier(.6, 0, .2, 1);
 }
-:root { scroll-padding-top: 6rem; }
+:root { scroll-padding-top: 6rem; --hero-h: max(34rem, calc(100svh - 4.5rem)); } /* altura única do herói no desktop: a tela menos o cabeçalho */
 
 /* ── Modos de daltonismo (menu de acessibilidade): trocam as cores da paleta ── */
 :root[data-tema=protanopia], :root[data-tema=deuteranopia] { --green: #93bee6; --orange: #f1d51c; --pink: #fef8e6; }
