@@ -16,7 +16,10 @@
 .ih-t .l{display:inline-block}
 .ih-t .l:nth-child(4n+1){rotate:-4deg}
 .ih-t .l:nth-child(4n+3){rotate:3deg;translate:0 .04em}
-.ih .hint{margin-top:clamp(.5rem,3cqi,2.5rem)}
+.ih-logo{display:block;width:8rem;height:auto}
+.ih-in{gap:clamp(1rem,3svh,1.75rem)}
+.ih-in .lead{margin:0}
+.ih .hint{margin-top:clamp(.25rem,1.5svh,1rem)}
 @container site (max-width:40rem){.fl.ph{display:none}}
 
 /* ── Por que receber: círculos que se abrem até virar a foto, cartão sobe por cima ── */
