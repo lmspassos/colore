@@ -93,6 +93,8 @@
 /* ── Movimento ligado à rolagem ── */
 @supports (animation-timeline: view()){
  @media (prefers-reduced-motion:no-preference){
+  .dlband .btn { transition: translate .3s var(--ease), box-shadow .3s; }
+  .dlband .btn:hover { translate: 0 -.25rem; box-shadow: 0 .5rem 0 var(--graphite); }
   /* herói: formas sobem cada uma no seu ritmo; letras entram e se soltam ao sair */
   .fl{animation:sobe linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
   .ih-t .l{animation:entra linear both,solta linear both;animation-timeline:view(),view();animation-range:entry calc(10% + var(--i) * 1.5%) entry calc(70% + var(--i) * 1.5%),exit 10% exit 90%}
@@ -142,3 +144,7 @@
 
 /* botão do herói: cada página tem a sua cor da paleta (instituições azul, educadores rosa, exposição laranja, contato verde) */
 .ih .btn{background:var(--blue);color:var(--graphite)}
+/* ── Material para download (catálogo em PDF) ── */
+.dl{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;border:2px solid var(--graphite);border-radius:2.5rem;padding:clamp(1.5rem,3.5cqi,3rem)}
+.dlband { padding-top: clamp(3rem, 6cqi, 5.5rem); }
+.dlband .dl { background: var(--paper); border-radius: clamp(2rem, 5cqi, 4rem); padding: clamp(1.75rem, 4cqi, 3.5rem); }

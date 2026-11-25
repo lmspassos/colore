@@ -28,10 +28,6 @@
 .bub:is(:hover,.toque){transform:rotate(-3deg) scale(1.04)}
 .note{margin-top:1.25rem;font-size:0.9375rem;color:var(--graphite-soft);display:flex;gap:0.625rem;align-items:flex-start}
 @container site (max-width:47.5rem){.phase-top{grid-template-columns:minmax(0,1fr)}.sugs{grid-template-columns:minmax(0,1fr)}}
-.mat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.25rem,3cqi,2.5rem);align-items:center;border:2px dashed var(--graphite);border-radius:2.5rem;padding:clamp(1.5rem,3.5cqi,2.75rem)}
-.papers{position:relative;width:7.5rem;height:7.5rem}
-.papers span{position:absolute;width:4.75rem;height:6rem;border-radius:0.75rem;border:2px solid var(--graphite)}
-@container site (max-width:35rem){.mat{grid-template-columns:minmax(0,1fr)}}
 .cta{background:var(--green);overflow:clip}
 .cta-g{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:2.5rem;align-items:center}
 .cta-art{position:relative;aspect-ratio:1;max-width:22.5rem;width:100%;justify-self:end}
@@ -77,7 +73,6 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
 
 /* ── Cores para experimentar e materiais ── */
 .ed-cores .big { margin-bottom: 0; }
-.ed-mat .mat { border-style: solid; background: var(--paper); box-shadow: 0 .5rem 0 var(--graphite); }
 
 /* ── Movimento ligado à rolagem ── */
 @supports (animation-timeline: view()) {
@@ -89,8 +84,6 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
     .ed-cores .gt { animation: ed-leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
     .ed-cores .gt:nth-child(1) { --i: 0; } .ed-cores .gt:nth-child(2) { --i: 1; } .ed-cores .gt:nth-child(3) { --i: 2; }
     .ed-cores .big, .cta .big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
-    /* materiais: o cartão sobe girando e assenta reto sobre o azul */
-    .ed-mat .mat { animation: assenta linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
     .ed-vis-h .big { animation: rv linear both; animation-timeline: view(); animation-range: entry 0% cover 25%; }
 
     /* tela larga e alta: a seção fica presa e os três momentos passam de lado, com pausa em cada um */

@@ -61,7 +61,6 @@ html:not(.js) .wheel,html:not(.js) .trilha,html:not(.js) .route-note{display:non
 html:not(.js) .est + .est{margin-top:clamp(2.5rem,5cqi,4rem)}
 html:not(.js) .pil-d{margin-top:1.5rem}
 .pil-d .kicker{margin:0}
-.dl{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;border:2px solid var(--graphite);border-radius:2.5rem;padding:clamp(1.5rem,3.5cqi,3rem)}
 /* a-exposicao: camada de estilo sobre a-exposicao.css. Só sobrescreve.
    Referência: "mundo de brincar" — palco de abertura com cartão central, capítulos de cor cheios,
    baralho de cartões, palavra gigante, painel claro de informações, botões em pílula,
@@ -131,7 +130,6 @@ html:not(.js) .pil-d{margin-top:1.5rem}
 :root[data-tema=tritanopia] .objs:not(.descobrem) .obj.c-ye { color: var(--cream); }
 
 /* ── Painel claro de informações práticas (Atividades) e do material ── */
-.dlband .dl { background: var(--paper); border-radius: clamp(2rem, 5cqi, 4rem); padding: clamp(1.75rem, 4cqi, 3.5rem); }
 
 /* ── Botões: pílula de conversão em azul (o ponto de tinta do hover continua) ── */
 .btn { background: var(--blue); color: var(--graphite); }
@@ -167,8 +165,8 @@ html:not(.js) .pil-d{margin-top:1.5rem}
   .face { animation: a2-blink 5s infinite; }
   .down { animation: a2-float 2.4s ease-in-out infinite; }
   .stk-sun, .stk-dots { animation: a2-spin 24s linear infinite; }
-  .dlband .btn, .end .btn { transition: translate .3s var(--ease), box-shadow .3s; }
-  .dlband .btn:hover, .end .btn:hover { translate: 0 -.25rem; box-shadow: 0 .5rem 0 var(--graphite); }
+  .end .btn { transition: translate .3s var(--ease), box-shadow .3s; }
+  .end .btn:hover { translate: 0 -.25rem; box-shadow: 0 .5rem 0 var(--graphite); }
   .objs:not(.descobrem) .obj { transition: scale .45s var(--ease), rotate .45s var(--ease); }
   .objs:not(.descobrem) .obj:hover { scale: 1.08; rotate: -4deg; z-index: 3; }
   .objs:not(.descobrem) .obj:nth-child(even):hover { rotate: 4deg; }
@@ -325,7 +323,6 @@ html:not(.js) .pil-d{margin-top:1.5rem}
 .pin .intro .intro-dot { scale: calc(1 - var(--q, 0)); }
 
 /* ── Ritmo de seções: faixas coloridas separadas por creme e bordas recortadas ── */
-.dlband { padding-top: clamp(3rem, 6cqi, 5.5rem); }
 
 /* "descobrir é colorir": letra a letra, a 1ª palavra e depois "é colorir"; cada letra vem de um canto, alternando por cima e por baixo */
 @keyframes a2-gl { from { opacity: 0; translate: calc(var(--dx) * 5) calc(var(--dy) * var(--sy, 2.4)); rotate: calc(var(--r) * 3); scale: .6; } to { opacity: 1; translate: 0 var(--ry, 0); rotate: var(--rr, 0deg); scale: 1; } }
