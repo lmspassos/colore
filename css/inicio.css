@@ -135,7 +135,7 @@
 @keyframes faixa{to{transform:translateX(-50%)}}
 
 /* Logo animada como abertura da home: só o triângulo se mexe (pula, vira e amassa ao pousar) */
-.hero-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.5rem,4svh,2.5rem);padding:clamp(2rem,5cqi,4.5rem) clamp(1.25rem,4.5cqi,4rem) clamp(3.5rem,8cqi,7rem)}
+.hero-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(2.5rem,9svh,5rem);padding:clamp(2rem,5cqi,4.5rem) clamp(1.25rem,4.5cqi,4rem) clamp(3.5rem,8cqi,7rem)}
 .logo-anim{display:block;width:min(100%,clamp(18rem,52cqi,46rem));height:auto;overflow:visible}
 .logo-anim .lg{fill:var(--cream)}
 .logo-anim .lt{fill:var(--yellow);transform-box:fill-box;transform-origin:50% 100%}
@@ -189,5 +189,7 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
   .hero-logo{flex:1}
 }
 
-/* aviso de rolagem sobre o azul: grafite, sem peso */
-.hero-logo .hint{color:var(--graphite)}
+/* aviso de rolagem sobre o azul: creme, com a bolinha amarela */
+.hero-logo .hint{color:var(--cream)}
+.hero-logo .hint b{border-color:var(--cream)}
+.hero-logo .hint b::after{background:var(--yellow)}
