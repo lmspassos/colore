@@ -427,3 +427,24 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 .pit{position:absolute;inset:0;z-index:1;touch-action:pan-y;user-select:none}
 .pit span{position:absolute;left:0;top:0;border-radius:50%;cursor:grab;touch-action:none;will-change:transform}
 .pit.agarra span{cursor:grabbing}
+
+
+/* ── Mobile (só telas estreitas; desktop e tablet largo ficam como estão) ── */
+.hdr-logo { display: none; }
+@media (width <= 67.5rem) {
+  /* gaveta do menu: rola sozinha se a tela for baixa (celular deitado) */
+  .js .nav-wrap { max-height: calc(100dvh - 4.5rem); overflow-y: auto; overscroll-behavior: contain; }
+}
+@media (width <= 47.99rem) {
+  /* a logo do herói sai da tela ao rolar: a do cabeçalho leva de volta à Início */
+  .hdr-logo { display: block; grid-column: 1; grid-row: 1; justify-self: start; padding-block: .5rem; }
+  .hdr-logo img { display: block; height: 2.25rem; width: auto; }
+  .hdr-logo:focus-visible { outline: 3px solid var(--graphite); outline-offset: 2px; border-radius: .5rem; }
+  .ibtn, .search, .search button { -webkit-tap-highlight-color: transparent; }
+}
+@container site (max-width: 35rem) {
+  .site .hint { display: none; } /* "Role para…" é dica de mouse: no toque sobrepunha a logo do herói */
+  .rodape-mapa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1rem; }
+  .flinks a { min-height: 2.75rem; }
+  .ftr-b a { display: inline-block; padding-block: .5rem; }
+}
