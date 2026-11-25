@@ -20,8 +20,6 @@
 .c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3.25rem, 11cqi, 9.5rem); line-height: .88; letter-spacing: -.03em; text-wrap: balance; }
 .c2-t .w { display: inline-block; white-space: nowrap; }
 .c2-t .l { display: inline-block; }
-.c2-t .l:nth-child(3n+1) { rotate: -5deg; }
-.c2-t .l:nth-child(3n+2) { rotate: 4deg; translate: 0 .05em; }
 .c2-hero .lead { margin: 1.5rem auto 0; max-width: 46ch; }
 .c2-cta { margin-top: clamp(2rem, 4cqi, 3rem); }
 

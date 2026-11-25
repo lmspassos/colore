@@ -14,8 +14,6 @@
 .ih-t{margin:0;font-family:var(--fd);font-weight:700;font-size:clamp(3rem,9cqi,8.5rem);line-height:.92;letter-spacing:-.03em;max-width:12ch;text-wrap:balance}
 .ih-t .w{display:inline-block;white-space:nowrap}
 .ih-t .l{display:inline-block}
-.ih-t .l:nth-child(4n+1){rotate:-4deg}
-.ih-t .l:nth-child(4n+3){rotate:3deg;translate:0 .04em}
 .ih-logo{display:block;width:8rem;height:auto}
 .ih-in{gap:clamp(1rem,3svh,1.75rem)}
 .ih-in .lead{margin:0}
