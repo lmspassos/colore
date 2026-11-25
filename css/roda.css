@@ -89,7 +89,7 @@
 
 .sol { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; }
 /* sol único: nasce à esquerda em A exposição, cruza o céu e se põe à direita em Contato (posição escrita por js/roda.js); fica atrás de chão e cenários */
-.roda > .sol { --c: var(--orange); --w: clamp(4.5rem, 10cqi, 8.5rem); translate: -50% -50%; z-index: 0; }
+.roda > .sol { --c: var(--yellow); --w: clamp(4.5rem, 10cqi, 8.5rem); translate: -50% -50%; z-index: 0; }
 .sol .raios { position: absolute; inset: -70%; border-radius: 50%; background: repeating-conic-gradient(color-mix(in srgb, var(--c) 50%, transparent) 0 9deg, transparent 9deg 22.5deg); }
 .sol .s { --x: 0%; --y: 0%; --w: 100%; }
 @media (prefers-reduced-motion: no-preference) { .sol .raios { animation: spin 40s linear infinite; } }
@@ -108,6 +108,11 @@ main > .roda[data-pagina="0"] { z-index: auto; }
 .teatro-logo { position: absolute; inset: 9% 13% 13%; z-index: 2; display: grid; place-items: center; }
 .teatro-logo .logo-anim { width: min(100%, clamp(18rem, 50cqi, 44rem)); }
 /* A exposição: arcos das quatro estações */
+/* estações: pirulitos de papel (disco com outro disco sobreposto, como tinta que se mistura) presos ao chão por uma haste */
+.s.pirulito { overflow: visible; display: grid; place-items: center; }
+.s.pirulito::before { content: ""; position: absolute; right: -8%; bottom: -8%; width: 52%; aspect-ratio: 1; border-radius: 50%; background: var(--c2); }
+.s.pirulito::after { content: ""; position: absolute; left: 48%; top: 100%; width: 4%; height: calc((var(--up) - 1) * 100% + 3rem); background: var(--graphite); }
+.s.pirulito em { position: relative; z-index: 1; font: normal 700 clamp(1.4rem, 3.4cqi, 3rem)/1 var(--fd); color: var(--graphite); }
 .s.estacao { display: grid; justify-items: center; align-content: start; }
 .s.estacao em { margin-top: 16%; font: normal 700 clamp(1.1rem, 2.6cqi, 2.25rem)/1 var(--fd); color: var(--graphite); }
 /* Contato: balões de conversa */

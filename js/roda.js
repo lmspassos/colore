@@ -8,8 +8,8 @@
   if (!r) return;
   const N = 5, PASSO = 72, atual = Number(r.dataset.pagina);
   const URLS = ["/", "/a-exposicao/", "/para-instituicoes/", "/para-educadores/", "/contato/"];
-  const CEU = ["var(--blue)", "var(--yellow)", "var(--blue)", "var(--pink)", "var(--green)"];
-  const SOLO = [null, "color-mix(in srgb, var(--orange) 38%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
+  const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
+  const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
   const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [62, 30, 1], [80, 54, 1], [85, 74, 0]];
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
 

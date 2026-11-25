@@ -13,8 +13,8 @@ const PAGINAS = [
   { url: "/para-educadores/", pagina: "para-educadores/index.html", nome: "Para educadores", tag: "professores · mediadores · equipes" },
   { url: "/contato/", pagina: "contato/index.html", nome: "Contato", tag: "fale com a gente" },
 ];
-const CEU = ["var(--blue)", "var(--yellow)", "var(--blue)", "var(--pink)", "var(--green)"];
-const SOLO = [null, "color-mix(in srgb, var(--orange) 38%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
+const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
+const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
 // sol: x e y em % do palco, opacidade. Nasce à esquerda em "A exposição" (u=1), sobe, cruza o céu e se põe à direita em "Contato" (u=4)
 const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [62, 30, 1], [80, 54, 1], [85, 74, 0]];
 const lerp = (a, b, f) => a + (b - a) * f;
