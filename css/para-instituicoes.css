@@ -141,4 +141,4 @@
 }
 
 /* botão do herói: cada página tem a sua cor da paleta (instituições azul, educadores rosa, exposição laranja, contato verde) */
-.ih .btn{background:var(--blue);color:var(--graphite);--bc:var(--cream)}
+.ih .btn{background:var(--blue);color:var(--graphite)}
