@@ -23,7 +23,7 @@ Busca: Pagefind (índice estático em `pagefind/`). Depois de mudar texto, reger
 ├─ index.html · 404.html · favicon.svg · .nojekyll
 ├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ (só redireciona para a-exposicao) · contato/ · privacidade/ · obrigado/   (cada um com index.html)
 ├─ css/                      # base.css (tokens, cabeçalho, rodapé, FAQ, formulários, temas de daltonismo) + um CSS por página (inicio, a-exposicao, para-instituicoes, para-educadores, contato) · roda.css (teatro de papel de instituições e educadores) · unifica.css (acabamento chapado, por último)
-├─ js/                       # base.js (cabeçalho, menu, busca, acessibilidade) · orb.js (heróis) · galeria.js (faixa + foto ampliada) · form.js (validação) · inicio.js · roda.js (teatro de papel) · contato.js · para-instituicoes.js · trilha.js (caminho amarelo da home) · bolinhas.js (bolinhas com gravidade do fechamento) · a-exposicao.js · para-educadores.js · busca.js
+├─ js/                       # base.js (cabeçalho, menu, busca, acessibilidade) · orb.js (heróis) · galeria.js (faixa + foto ampliada) · form.js (validação) · inicio.js · roda.js (teatro de papel e giro entre instituições e educadores) · giro.js (giro entre as demais páginas) · contato.js · para-instituicoes.js · trilha.js (caminho amarelo da home) · bolinhas.js (bolinhas com gravidade do fechamento) · a-exposicao.js · para-educadores.js · busca.js
 ├─ img/ · fonts/ · pagefind/ # fotos (webp/jpg), fontes Codec, índice da busca
 ├─ _astro/                   # fontes Fredoka, logos, imagem do herói
 ├─ docs/marca/               # identidade visual (referência)

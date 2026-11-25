@@ -49,7 +49,7 @@ Todo herói ocupa **uma tela menos o cabeçalho**: `--hero-h: max(34rem, calc(10
 
 ## 4.0.1 Teatro de papel em todas as páginas (teste, 2026-11-24)
 
-Cada página abre com o teatro de papel (boca de cena, lanternas, cortinas e piso, de `css/roda.css`). Início: só a logo no palco, sem cenário. A exposição: sol e quatro arcos de estação (01 a 04). Contato: balões de conversa. Instituições e educadores: a roda que gira. O cenário sempre fala do conteúdo da página; o conteúdo antigo continua abaixo do teatro, nada foi removido neste teste.
+Cada página abre com o teatro de papel (boca de cena, lanternas, cortinas e piso, de `css/roda.css`). Início: só a logo no palco, sem cenário. A exposição: sol e quatro arcos de estação (01 a 04). Contato: balões de conversa. Instituições e educadores: a roda que gira. As setas do teatro seguem a ordem circular Início → A exposição → Para instituições → Para educadores → Contato → Início: a roda gira para fora e a página seguinte chega do lado oposto (`js/giro.js`; entre instituições e educadores o giro acontece na mesma página, `js/roda.js`). O cenário sempre fala do conteúdo da página; o conteúdo antigo continua abaixo do teatro, nada foi removido neste teste.
 
 ## 4.1 Movimento (vocabulário comum)
 

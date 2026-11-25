@@ -150,3 +150,32 @@ main > .roda[data-cena=home] { z-index: auto; }
   radial-gradient(circle closest-side, var(--graphite) 90%, transparent) 72% 50% / 11% 16% no-repeat; }
 .s.balao::after { content: ""; position: absolute; left: 16%; top: 86%; width: 18%; aspect-ratio: 1; background: var(--c); clip-path: polygon(0 0, 100% 0, 0 100%); }
 .s.balao.dir::after { left: auto; right: 16%; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+
+/* ── Giro entre páginas (js/giro.js): a roda sai girando para um lado e a próxima página chega do outro.
+   O ângulo parte de --a (0 nas páginas fixas, 180° no lado dos educadores), então vale para todos os teatros. ── */
+@media (prefers-reduced-motion: no-preference) {
+  .giro-sai-prox .roda-w { animation: giro-sai-prox .6s cubic-bezier(.6, 0, .4, 1) forwards; }
+  .giro-sai-ant .roda-w { animation: giro-sai-ant .6s cubic-bezier(.6, 0, .4, 1) forwards; }
+  .giro-entra-prox .roda-w { animation: giro-entra-prox .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  .giro-entra-ant .roda-w { animation: giro-entra-ant .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  [class*=giro-sai] .roda-ar, .roda[class*=giro-sai]:not([data-lado=educadores]) .f-inst .cena, .roda[class*=giro-sai][data-lado=educadores] .f-edu .cena { animation: giro-some .6s forwards; }
+  [class*=giro-entra] .roda-ar, .roda[class*=giro-entra]:not([data-lado=educadores]) .f-inst .cena, .roda[class*=giro-entra][data-lado=educadores] .f-edu .cena { animation: giro-surge .8s backwards; }
+  [class*=giro-sai] .roda-card { animation: giro-card-sai .3s forwards; }
+  [class*=giro-entra] .roda-card { animation: giro-card-entra .45s .35s backwards; }
+  .giro-sai-prox .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-sai-prox .6s cubic-bezier(.6, 0, .4, 1) forwards; }
+  .giro-sai-ant .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-sai-ant .6s cubic-bezier(.6, 0, .4, 1) forwards; }
+  .giro-entra-prox .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-entra-prox .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  .giro-entra-ant .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-entra-ant .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+}
+@keyframes giro-sai-prox { to { rotate: calc(var(--a) - 72deg); } }
+@keyframes giro-sai-ant { to { rotate: calc(var(--a) + 72deg); } }
+@keyframes giro-entra-prox { from { rotate: calc(var(--a) + 72deg); } }
+@keyframes giro-entra-ant { from { rotate: calc(var(--a) - 72deg); } }
+@keyframes giro-some { 30% { opacity: 1; } to { opacity: 0; } }
+@keyframes giro-surge { from { opacity: 0; } 70% { opacity: 1; } }
+@keyframes giro-card-sai { to { scale: 0 1; } }
+@keyframes giro-card-entra { from { scale: 0 1; } }
+@keyframes giro-logo-sai-prox { to { rotate: -26deg; opacity: 0; } }
+@keyframes giro-logo-sai-ant { to { rotate: 26deg; opacity: 0; } }
+@keyframes giro-logo-entra-prox { from { rotate: 26deg; opacity: 0; } }
+@keyframes giro-logo-entra-ant { from { rotate: -26deg; opacity: 0; } }

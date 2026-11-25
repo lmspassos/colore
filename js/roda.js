@@ -5,7 +5,7 @@
 (() => {
   const r = document.querySelector("[data-roda]");
   if (!r) return;
-  const main = r.parentElement, card = r.querySelector(".roda-card"), setas = [...r.querySelectorAll(".roda-seta")];
+  const main = r.parentElement, card = r.querySelector(".roda-card"), todas = [...r.querySelectorAll(".roda-seta")], internas = () => todas.filter((x) => !x.hasAttribute("data-fora"));
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const aviso = document.createElement("p");
   aviso.className = "sr-only"; aviso.setAttribute("aria-live", "polite"); r.append(aviso);
@@ -16,19 +16,21 @@
   const lados = { [lado0]: { url: location.pathname, title: document.title, nome: card.querySelector("h1").textContent, card: card.innerHTML, nav: navAtual() } };
   history.replaceState({ roda: lado0 }, "");
 
-  fetch(setas[0].getAttribute("href")).then((x) => x.text()).then((t) => {
+  fetch(internas()[0].getAttribute("href")).then((x) => x.text()).then((t) => {
     const d = new DOMParser().parseFromString(t, "text/html"), nr = d.querySelector("[data-roda]");
     if (!nr) return;
     d.querySelectorAll("link[rel=stylesheet]").forEach((l) => {
       if (!document.querySelector(`link[href="${l.getAttribute("href")}"]`)) document.head.append(document.importNode(l));
     });
     lados[nr.dataset.lado] = {
-      url: setas[0].getAttribute("href"), title: d.title, nome: nr.querySelector("h1").textContent, card: nr.querySelector(".roda-card").innerHTML,
+      url: internas()[0].getAttribute("href"), title: d.title, nome: nr.querySelector("h1").textContent, card: nr.querySelector(".roda-card").innerHTML,
       nav: [...d.querySelectorAll(".nav a")].map((a) => a.getAttribute("aria-current")),
       nodes: [...d.querySelector("main").children].filter((c) => c !== nr),
-      scripts: [...d.querySelectorAll("script[src]")].map((s) => s.getAttribute("src")).filter((s) => !/\/(base|roda)\.js$/.test(s)),
+      scripts: [...d.querySelectorAll("script[src]")].map((s) => s.getAttribute("src")).filter((s) => !/\/(base|roda|giro)\.js$/.test(s)),
     };
   }).catch(() => {});
+  // vizinhas na ordem circular Início, A exposição, Para instituições, Para educadores, Contato: [endereço, nome, sai da página?]
+  const VIZINHAS = { instituicoes: { ant: ["/a-exposicao/", "A exposição", true], prox: ["/para-educadores/", "Para educadores", false] }, educadores: { ant: ["/para-instituicoes/", "Para instituições", false], prox: ["/contato/", "Contato", true] } };
   const pronto = () => !!lados[outro(r.dataset.lado)];
 
   // ângulo da roda: múltiplos pares de 180° = instituições no topo, ímpares = educadores
@@ -64,7 +66,10 @@
     document.title = novo.title;
     document.querySelectorAll(".nav a").forEach((a, i) => (novo.nav[i] ? a.setAttribute("aria-current", novo.nav[i]) : a.removeAttribute("aria-current")));
     r.dataset.lado = l;
-    setas.forEach((s) => { s.href = lados[de].url; s.setAttribute("aria-label", "Girar para " + lados[de].nome); });
+    todas.forEach((s) => {
+      const [href, nome, fora] = VIZINHAS[l][s.classList.contains("ant") ? "ant" : "prox"];
+      s.href = href; s.toggleAttribute("data-fora", fora); s.setAttribute("aria-label", (fora ? "Ir para " : "Girar para ") + nome);
+    });
     aviso.textContent = "Agora em " + novo.nome;
     if (empurra) history.pushState({ roda: l }, "", novo.url);
   };
@@ -90,8 +95,8 @@
   // g = +1: "próximo" (roda anti-horária, a outra metade vem da direita)
   const gira = (g, empurra = true) => vai(repouso - g * 180, empurra);
 
-  setas.forEach((s) => s.addEventListener("click", (e) => {
-    if (!pronto()) return; // ainda não baixou: segue o link
+  todas.forEach((s) => s.addEventListener("click", (e) => {
+    if (s.hasAttribute("data-fora") || !pronto()) return; // de fora: é do giro.js; ainda não baixou: segue o link
     e.preventDefault();
     gira(Number(s.dataset.giro));
   }));
