@@ -193,3 +193,7 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
 .hero-logo .hint{color:var(--cream);position:absolute;left:50%;bottom:clamp(1.5rem,5svh,3rem);translate:-50% 0}
 .hero-logo .hint b{border-color:var(--cream)}
 .hero-logo .hint b::after{background:var(--yellow)}
+
+/* rastro do mouse no herói (js/rastro.js): círculos que nascem, ficam um instante e somem; atrás da logo */
+.rastro{position:absolute;z-index:-1;width:var(--s);aspect-ratio:1;border-radius:50%;background:var(--c);translate:-50% -50%;pointer-events:none;animation:rastro 1.5s ease-out forwards}
+@keyframes rastro{0%{scale:.2;opacity:0}15%{scale:1;opacity:.95}100%{scale:.55;opacity:0}}
