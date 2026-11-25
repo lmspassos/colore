@@ -62,7 +62,7 @@ Movimento serve à descoberta e nunca é a única forma de ver o conteúdo (tudo
 - **Cartões em leque ao rolar:** `leque` (`--i` é a posição).
 - **Círculo que abre sobre a foto:** `recorte` (`--c0` raio inicial, `--cy` altura do centro).
 - **Ambiente parado:** `bob` (flutuar), `spin` (girar), `blink` (piscar dos rostinhos), `balanca` (lanternas).
-- **Só animação ligada à rolagem em `@supports (animation-timeline: ...)` e dentro de `prefers-reduced-motion: no-preference`.** Animações de uma página só (trilha amarela e bolinhas da Início, roda do teatro) ficam no CSS e JS da própria página.
+- **Só animação ligada à rolagem em `@supports (animation-timeline: ...)` e dentro de `prefers-reduced-motion: no-preference`.** Animações de uma página só (bolinhas da Início, roda do teatro) ficam no CSS e JS da própria página.
 
 ## 5. A exposição
 

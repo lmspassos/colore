@@ -23,7 +23,7 @@ Busca: Pagefind (índice estático em `pagefind/`). Depois de mudar texto, reger
 ├─ index.html · 404.html · favicon.svg · .nojekyll
 ├─ a-exposicao/ · para-instituicoes/ · para-educadores/ · sobre/ (só redireciona para a-exposicao) · contato/ · privacidade/ · obrigado/   (cada um com index.html)
 ├─ css/                      # base.css (tokens, cabeçalho, rodapé, FAQ, formulários, temas de daltonismo) + um CSS por página (inicio, a-exposicao, para-instituicoes, para-educadores, contato) · roda.css (teatro de papel de instituições e educadores) · unifica.css (acabamento chapado, por último)
-├─ js/                       # base.js (cabeçalho, menu, busca, acessibilidade) · orb.js (heróis) · galeria.js (faixa + foto ampliada) · form.js (validação) · inicio.js · roda.js (a roda do teatro: giro entre as cinco páginas) · contato.js · para-instituicoes.js · trilha.js (caminho amarelo da home) · bolinhas.js (bolinhas com gravidade do fechamento) · a-exposicao.js · para-educadores.js · busca.js
+├─ js/                       # base.js (cabeçalho, menu, busca, acessibilidade) · orb.js (heróis) · galeria.js (faixa + foto ampliada) · form.js (validação) · inicio.js · roda.js (a roda do teatro: giro entre as cinco páginas) · contato.js · para-instituicoes.js · bolinhas.js (bolinhas com gravidade do fechamento) · a-exposicao.js · para-educadores.js · busca.js
 ├─ tools/gera-teatro.js       # reescreve o teatro (a roda de cinco cenários) no topo de cada página a partir de tools/teatro/ (node tools/gera-teatro.js)
 ├─ img/ · fonts/ · pagefind/ # fotos (webp/jpg), fontes Codec, índice da busca
 ├─ _astro/                   # fontes Fredoka, logos, imagem do herói

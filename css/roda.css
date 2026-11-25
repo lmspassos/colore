@@ -101,7 +101,7 @@
 /* celular: a fachada cresce para não sobrar morro vazio embaixo */
 @container site (max-width: 40rem) { .arco:has(.desenho) { --d: .39; } }
 
-/* Início: o azul é camada própria (como era), para a trilha amarela nascer do triângulo da logo por cima dele */
+/* Início: o azul é camada própria (como era) */
 .roda[data-pagina="0"] { background: none; contain: none; isolation: auto; }
 .roda[data-pagina="0"]::before { content: ""; position: absolute; inset: 0; background: var(--ceu, var(--blue)); z-index: -2; }
 main > .roda[data-pagina="0"] { z-index: auto; }
