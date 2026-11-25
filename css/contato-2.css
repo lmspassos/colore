@@ -17,7 +17,7 @@
 .bola { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; border-radius: 50%; background: var(--c); border: 3px solid var(--graphite); }
 .c2-hero-in { position: relative; display: flex; flex-direction: column; align-items: center; }
 .c2-hero .crumb { justify-content: center; }
-.c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3.25rem, 11cqi, 9.5rem); line-height: .88; letter-spacing: -.03em; text-transform: uppercase; text-wrap: balance; }
+.c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3.25rem, 11cqi, 9.5rem); line-height: .88; letter-spacing: -.03em;  text-wrap: balance; }
 .c2-t .w { display: inline-block; white-space: nowrap; }
 .c2-t .l { display: inline-block; }
 .c2-t .l:nth-child(3n+1) { rotate: -5deg; }

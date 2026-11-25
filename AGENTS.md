@@ -34,7 +34,7 @@ Busca: Pagefind (índice estático em `pagefind/`). Depois de mudar texto, reger
 ## Convenções
 
 - Todos os links e recursos começam com `/` (o site mora na raiz do domínio). Não use o prefixo `/colore/`: ele só existia quando o site ficava em lmspassos.github.io/colore/.
-- Cada página carrega `/css/base.css` + o CSS da própria página e os scripts de `/js/` com `defer`. Cada script é uma IIFE (não declare `const` global). Cabeçalho e rodapé se repetem em todas as páginas: ao mudar um, mude em todas.
+- Cada página carrega `/css/base.css` + o CSS da própria página (as páginas Início, A exposição 2, Para instituições 2, Para educadores 2 e Contato 2 carregam também `/css/unifica.css` por último: acabamento chapado, sem contorno nem sombra dura; mudanças de acabamento vão lá) e os scripts de `/js/` com `defer`. Cada script é uma IIFE (não declare `const` global). Cabeçalho e rodapé se repetem em todas as páginas: ao mudar um, mude em todas.
 - Cores **só por token** (`var(--orange)`…), nunca hex solto, e pelas classes `c-or/ye/bl/pk/gr/cr/ink` (define `--c`) e `bg-orange/yellow/…` (fundo): o menu de acessibilidade troca os tokens para os modos de daltonismo (`data-tema`). Ao criar um componente com fundo colorido, confira os quatro modos (regras em `css/base.css`).
 - Conteúdo interativo precisa funcionar sem JS: o HTML já traz todo o texto e o JS só esconde/mostra (classe `js` no `<html>`). Respeite `prefers-reduced-motion`.
 - Animações ligadas à rolagem usam as propriedades `translate`/`rotate` (não `transform`), para não brigar com os `:hover`.
