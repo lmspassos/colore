@@ -1,4 +1,4 @@
-// Para instituições 2: o título do herói vira letras soltas (entram uma a uma e se espalham ao rolar).
+// Para instituições: o título do herói vira letras soltas (entram uma a uma e se espalham ao rolar).
 // Sem JS o título fica inteiro; o aria-label mantém a leitura de tela como uma frase só.
 (() => {
   document.querySelectorAll("[data-letras]").forEach((h) => {

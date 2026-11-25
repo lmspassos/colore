@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/contato.css" />
     <script src="/js/base.js" defer></script>
     <script src="/js/form.js" defer></script>
+    <script src="/js/contato.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -21,14 +22,10 @@
           <nav class="nav-wrap" id="menu" aria-label="Principal">
             <ul class="nav">
               <li><a href="/" class="c-or"><i></i>Início</a></li>
-              <li><a href="/a-exposicao" class="c-ye"><i></i>A exposição</a></li>
-              <li><a href="/a-exposicao-2" class="c-or"><i></i>A exposição 2</a></li>
+              <li><a href="/a-exposicao" class="c-or"><i></i>A exposição</a></li>
               <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
-              <li><a href="/para-instituicoes-2" class="c-bl"><i></i>Para instituições 2</a></li>
               <li><a href="/para-educadores" class="c-pk"><i></i>Para educadores</a></li>
-              <li><a href="/para-educadores-2" class="c-pk"><i></i>Para educadores 2</a></li>
               <li><a href="/contato" class="c-gr" aria-current="page"><i></i>Contato</a></li>
-              <li><a href="/contato-2" class="c-gr"><i></i>Contato 2</a></li>
             </ul>
           </nav>
           <div class="tools">
@@ -80,29 +77,44 @@
         </div>
       </header>
       <main id="conteudo" data-pagefind-body>
-        <section class="ct bg-green" aria-labelledby="h-top">
-          <div class="wrap ct-g">
-            <div class="ct-side">
-              <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Contato</span></p>
-              <h1 class="d1" id="h-top">Vamos conversar?</h1>
-              <p class="lead" style="margin-top:1.5rem">Dúvidas, ideias ou vontade de receber a exposição? Escreva para a gente. Queremos conhecer seu interesse e entender como a Colorê pode chegar até você.</p>
-              <div class="ct-art" aria-hidden="true">
-                <span style="left:0;top:6%;width:62%;height:62%;background:var(--cream)"></span>
-                <span style="left:34%;top:30%;width:60%;height:60%;background:var(--blue);mix-blend-mode:multiply"></span>
-                <span style="left:8%;top:70%;width:24%;height:24%;background:var(--orange)"></span>
-                <svg class="tri spin-s" style="--c:var(--yellow)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
-              </div>
+        <section class="c2-hero" aria-labelledby="h-top">
+          <div class="c2-ceu" aria-hidden="true">
+            <span class="nuvem" style="--x:6%;--y:14%;--w:clamp(5rem,10cqi,9rem);--v:-1"></span>
+            <span class="nuvem" style="--x:78%;--y:8%;--w:clamp(4rem,8cqi,7rem);--v:1.4"></span>
+            <span class="nuvem" style="--x:84%;--y:62%;--w:clamp(5rem,11cqi,10rem);--v:-.8"></span>
+            <span class="bola" style="--x:4%;--y:52%;--w:clamp(4rem,9cqi,8rem);--c:var(--orange);--v:-2"><b class="c2-face"></b></span>
+            <span class="bola" style="--x:86%;--y:30%;--w:clamp(3rem,6cqi,5.5rem);--c:var(--blue);--v:1.6"><b class="c2-face"></b></span>
+            <span class="bola" style="--x:14%;--y:84%;--w:clamp(1.5rem,3cqi,2.5rem);--c:var(--pink);--v:2.4"></span>
+          </div>
+          <div class="wrap c2-hero-in">
+            <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Contato</span></p>
+            <h1 class="c2-t" id="h-top" data-letras>Vamos conversar?</h1>
+            <p class="lead">Dúvidas, ideias ou vontade de receber a exposição? Escreva para a gente. Queremos conhecer seu interesse e entender como a Colorê pode chegar até você.</p>
+            <a class="btn c-ye c2-cta" href="#formulario">Começar a conversa <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
+          </div>
+        </section>
+
+        <div class="sc up" style="--c:var(--green)" aria-hidden="true"></div>
+        <section class="band c2-form bg-green" id="formulario" aria-labelledby="h-form">
+          <div class="wrap c2-form-g">
+            <div class="c2-side">
+              <p class="kicker c-ink"><i></i>Formulário</p>
+              <h2 class="c2-big" id="h-form">Escreva para a gente</h2>
+              <p class="lead">Conte o que você tem em mente. Respondemos pelo e-mail ou telefone que você informar.</p>
             </div>
-            <div class="formcard">
+            <div class="c2-card">
+              <div class="masc" aria-hidden="true"><span class="olho" style="left:20%"><i></i></span><span class="olho" style="right:20%"><i></i></span><span class="boca"></span></div>
+              <span class="mao" style="right:calc(var(--mr) + var(--mw) * .02)" aria-hidden="true"></span><span class="mao" style="right:calc(var(--mr) + var(--mw) * .7)" aria-hidden="true"></span>
+              <div class="formcard">
               <form class="form" name="contato" method="get" action="/obrigado" data-validar style="--fc:var(--green)">
                 <p class="f full privacy">Campos com <span class="req">*</span> são obrigatórios.</p>
                 <fieldset class="f full" style="border:0;padding:0;margin:0">
-                  <legend class="lbl" style="margin-bottom:.625rem">Tipo de contato <span class="req" aria-hidden="true">*</span></legend>
-                  <div class="chips">
-                    <label class="chip"><input type="radio" name="tipo" value="receber" required /><span>Quero receber a exposição</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="educador" required /><span>Sou educador(a)</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="duvida" required /><span>Tenho uma dúvida</span></label>
-                    <label class="chip"><input type="radio" name="tipo" value="outro" required /><span>Outro assunto</span></label>
+                  <legend class="lbl c2-pergunta">Sobre o que você quer falar? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="chips bolhas">
+                    <label class="chip bolha c-ye" style="--r:-2deg"><input type="radio" name="tipo" value="receber" required /><span>Quero receber a exposição</span></label>
+                    <label class="chip bolha c-pk" style="--r:2deg"><input type="radio" name="tipo" value="educador" required /><span>Sou educador(a)</span></label>
+                    <label class="chip bolha c-bl" style="--r:-1.5deg"><input type="radio" name="tipo" value="duvida" required /><span>Tenho uma dúvida</span></label>
+                    <label class="chip bolha c-or" style="--r:2.5deg"><input type="radio" name="tipo" value="outro" required /><span>Outro assunto</span></label>
                   </div>
                   <p class="emsg" data-erro="tipo" hidden style="margin-top:.5rem"></p>
                 </fieldset>
@@ -143,30 +155,33 @@
                   <button class="btn c-gr" type="submit">Enviar mensagem <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
                 </div>
               </form>
+              </div>
             </div>
           </div>
         </section>
         <div class="sc" style="--c:var(--green)" aria-hidden="true"></div>
 
-        <section class="band" aria-labelledby="h-dir">
+        <section class="band c2-atalhos" aria-labelledby="h-dir">
           <div class="wrap">
             <p class="kicker c-gr"><i></i>Atalhos</p>
-            <h2 class="d2" id="h-dir">Procurando algo específico?</h2>
-            <div class="dirs">
-              <a class="dir c-bl rv" href="/para-instituicoes"><span class="d3">Quero receber a exposição</span><p>Formato itinerante, como funciona o contato e formulário para instituições.</p><span class="go">Para instituições →</span></a>
-              <a class="dir c-pk rv" href="/para-educadores"><span class="d3">Sou educador(a)</span><p>Proposta pedagógica e ideias para antes, durante e depois da visita.</p><span class="go">Para educadores →</span></a>
-              <a class="dir c-ye rv" href="/a-exposicao"><span class="d3">Quero conhecer a exposição</span><p>Conceito, pilares, estações e a oficina Criar.</p><span class="go">A exposição →</span></a>
-            </div>
-            <div class="priv rv">
-              <span class="ico bg-yellow" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="3"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span>
-              <div>
-                <h2 class="d3">Privacidade e tratamento dos dados</h2>
-                <p class="muted" style="margin-top:.5rem;max-width:72ch">Pedimos apenas as informações necessárias para responder ao seu contato. Os dados enviados por este formulário são usados para retornar sua mensagem. Consulte a <a class="lnk c-ye" href="/privacidade">Política de Privacidade</a> completa para saber como as informações são tratadas e como fazer solicitações sobre seus dados pessoais, conforme a LGPD.</p>
+            <h2 class="c2-big" id="h-dir">Procurando algo específico?</h2>
+            <ul class="dirs2" data-toque>
+              <li style="--i:0;--r:-5deg"><a class="dir2 c-bl" href="/para-instituicoes"><span class="selo bg-yellow" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Para instituições</span><span>Formato itinerante, como funciona o contato e formulário para instituições.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+              <li style="--i:1;--r:2deg"><a class="dir2 c-pk" href="/para-educadores"><span class="selo bg-green" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">Para educadores</span><span>Proposta pedagógica e ideias para antes, durante e depois da visita.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+              <li style="--i:2;--r:6deg"><a class="dir2 c-ye" href="/a-exposicao"><span class="selo bg-orange" aria-hidden="true"><b class="c2-face"></b></span><span class="d3">A exposição</span><span>Conceito, pilares, estações e a oficina Criar.</span><span class="go">Ver a página <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a></li>
+            </ul>
+            <div class="c2-info">
+              <div class="c2-priv rv">
+                <span class="ico bg-yellow" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="3"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span>
+                <div>
+                  <h2 class="d3">Privacidade e tratamento dos dados</h2>
+                  <p class="muted" style="margin-top:.5rem;max-width:72ch">Pedimos apenas as informações necessárias para responder ao seu contato. Os dados enviados por este formulário são usados para retornar sua mensagem. Consulte a <a class="lnk c-ye" href="/privacidade">Política de Privacidade</a> completa para saber como as informações são tratadas e como fazer solicitações sobre seus dados pessoais, conforme a LGPD.</p>
+                </div>
               </div>
-            </div>
-            <div class="concept rv" style="margin-top:clamp(3rem,6cqi,5.5rem)">
-              <p class="kicker c-or"><i></i>Redes sociais e outros canais</p>
-              <p class="muted">TODO(conteudo): redes sociais, e-mail e telefone de contato.</p>
+              <div class="c2-redes rv">
+                <p class="kicker c-or"><i></i>Redes sociais e outros canais</p>
+                <p class="muted">TODO(conteudo): redes sociais, e-mail e telefone de contato.</p>
+              </div>
             </div>
           </div>
         </section>

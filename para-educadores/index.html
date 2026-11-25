@@ -8,9 +8,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Para educadores · Colorê</title>
     <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/roda.css" />
+    <link rel="stylesheet" href="/css/para-instituicoes.css" />
     <link rel="stylesheet" href="/css/para-educadores.css" />
     <script src="/js/base.js" defer></script>
-    <script src="/js/para-educadores.js" defer></script>
+    <script src="/js/roda.js" defer></script>
+    <script src="/js/para-instituicoes.js" defer></script>
     <script src="/js/galeria.js" defer></script>
   </head>
   <body>
@@ -22,14 +25,10 @@
           <nav class="nav-wrap" id="menu" aria-label="Principal">
             <ul class="nav">
               <li><a href="/" class="c-or"><i></i>Início</a></li>
-              <li><a href="/a-exposicao" class="c-ye"><i></i>A exposição</a></li>
-              <li><a href="/a-exposicao-2" class="c-or"><i></i>A exposição 2</a></li>
+              <li><a href="/a-exposicao" class="c-or"><i></i>A exposição</a></li>
               <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
-              <li><a href="/para-instituicoes-2" class="c-bl"><i></i>Para instituições 2</a></li>
               <li><a href="/para-educadores" class="c-pk" aria-current="page"><i></i>Para educadores</a></li>
-              <li><a href="/para-educadores-2" class="c-pk"><i></i>Para educadores 2</a></li>
               <li><a href="/contato" class="c-gr"><i></i>Contato</a></li>
-              <li><a href="/contato-2" class="c-gr"><i></i>Contato 2</a></li>
             </ul>
           </nav>
           <div class="tools">
@@ -81,66 +80,95 @@
         </div>
       </header>
       <main id="conteudo" data-pagefind-body>
-        <section class="phero bg-pink" aria-labelledby="h-top">
-          <div class="wrap phero-g">
-            <div>
-              <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Para educadores</span></p>
-              <h1 class="d1" id="h-top">Para educadores</h1>
-              <p class="lead" style="margin:1.5rem 0 2.125rem">A experiência não termina na exposição. Descubra possibilidades para preparar a visita e continuar a conversa sobre as cores em sala de aula.</p>
-              <a class="btn c-cr" href="#visita">Antes, durante e depois <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
+        <section class="roda" data-roda data-lado="educadores" aria-labelledby="h-roda">
+          <div class="roda-ceu" aria-hidden="true"></div><div class="roda-w" aria-hidden="true"><div class="terra"><i class="terra-b"></i><i class="marco" style="--g:-35deg"><b style="--s:4.5rem;--c:var(--yellow)"></b></i><i class="marco" style="--g:-62deg"><b style="--s:6rem;--c:var(--green)"></b></i><i class="marco" style="--g:-90deg"><b style="--s:3.5rem;--c:var(--orange)"></b></i><i class="marco" style="--g:-118deg"><b style="--s:5rem;--c:var(--pink)"></b></i><i class="marco" style="--g:-145deg"><b style="--s:4rem;--c:var(--green)"></b></i><i class="marco" style="--g:35deg"><b style="--s:4rem;--c:var(--orange)"></b></i><i class="marco" style="--g:62deg"><b style="--s:5.5rem;--c:var(--yellow)"></b></i><i class="marco" style="--g:90deg"><b style="--s:4rem;--c:var(--green)"></b></i><i class="marco" style="--g:118deg"><b style="--s:6rem;--c:var(--blue)"></b></i><i class="marco" style="--g:145deg"><b style="--s:3.5rem;--c:var(--yellow)"></b></i></div><div class="fatia f-inst"><div class="cena"><div class="palco"><div class="cam" style="--z:0"><div class="sol" style="--x:62%;--y:15%;--w:12%;--c:var(--yellow)"><span class="raios"></span><span class="s" style="--c:var(--yellow)"><b class="face"></b></span></div></div><div class="cam chao" style="--z:3"><i class="arco" style="--g:-40deg;--d:0.46;--up:0.42"><b class="s" style="--c:color-mix(in srgb, var(--green) 45%, var(--cream))"></b></i><i class="arco" style="--g:-14deg;--d:0.5;--up:0.36"><b class="s" style="--c:color-mix(in srgb, var(--green) 45%, var(--cream))"></b></i><i class="arco" style="--g:14deg;--d:0.44;--up:0.4"><b class="s" style="--c:color-mix(in srgb, var(--green) 45%, var(--cream))"></b></i><i class="arco" style="--g:40deg;--d:0.5;--up:0.42"><b class="s" style="--c:color-mix(in srgb, var(--green) 45%, var(--cream))"></b></i></div><div class="cam chao" style="--z:6"><i class="arco" style="--g:0deg;--d:.3;--up:.97"><svg class="s desenho" viewBox="0 0 200 200" role="presentation"><path d="M100 40V6" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round" fill="none"/><path d="M100 8h30l-7 8 7 8h-30z" style="fill:var(--green)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="18" y="92" width="164" height="72" style="fill:var(--yellow)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><path d="M84 164V126a16 16 0 0 1 32 0v38z" style="fill:var(--blue)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="28" y="92" width="16" height="72" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="58" y="92" width="16" height="72" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="126" y="92" width="16" height="72" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="156" y="92" width="16" height="72" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><path d="M12 80L100 40L188 80z" style="fill:var(--orange)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="64" r="9" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="8" y="80" width="184" height="12" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="6" y="164" width="188" height="12" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/><rect x="0" y="176" width="200" height="12" style="fill:var(--paper)" stroke="var(--graphite)" stroke-width="3" stroke-linejoin="round"/></svg></i></div><div class="cam chao" style="--z:10"><i class="arco" style="--g:-72deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-66deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-60deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-54deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-48deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-42deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-36deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-30deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-24deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-18deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-12deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:-6deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:0deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:6deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:12deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:18deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:24deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:30deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:36deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:42deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:48deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:54deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:60deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:66deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--green)"></b></i><i class="arco" style="--g:72deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--green)"></b></i></div></div></div></div><div class="fatia f-edu"><div class="cena"><div class="palco"><div class="cam" style="--z:0"><div class="sol" style="--x:24%;--y:16%;--w:11%;--c:var(--orange)"><span class="raios"></span><span class="s" style="--c:var(--orange)"><b class="face dorme"></b></span></div></div><div class="cam chao" style="--z:3"><i class="arco" style="--g:-40deg;--d:0.46;--up:0.42"><b class="s" style="--c:color-mix(in srgb, var(--blue) 45%, var(--cream))"></b></i><i class="arco" style="--g:-14deg;--d:0.5;--up:0.36"><b class="s" style="--c:color-mix(in srgb, var(--blue) 45%, var(--cream))"></b></i><i class="arco" style="--g:14deg;--d:0.44;--up:0.4"><b class="s" style="--c:color-mix(in srgb, var(--blue) 45%, var(--cream))"></b></i><i class="arco" style="--g:40deg;--d:0.5;--up:0.42"><b class="s" style="--c:color-mix(in srgb, var(--blue) 45%, var(--cream))"></b></i></div><div class="cam" style="--z:6"><span class="s fala" style="--x:62%;--y:20%;--w:10%"></span><span class="s lapis" style="--x:74%;--y:22%;--w:3.5%;--ar:.16;--r:22deg"></span></div><div class="cam chao" style="--z:6"><i class="arco" style="--g:-9deg;--d:.17;--up:1.05"><b class="s pg" style="--ar:.78;--r:-8deg"></b></i><i class="arco" style="--g:9deg;--d:.17;--up:1.05"><b class="s pg" style="--ar:.78;--r:8deg"></b></i></div><div class="cam chao" style="--z:10"><i class="arco" style="--g:-72deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-66deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-60deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-54deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-48deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-42deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-36deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-30deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-24deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-18deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-12deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:-6deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:0deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:6deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:12deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:18deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:24deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:30deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:36deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:42deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:48deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:54deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:60deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:66deg;--d:.075;--up:0.62"><b class="s arbusto" style="--c:var(--yellow)"></b></i><i class="arco" style="--g:72deg;--d:.075;--up:0.48"><b class="s arbusto" style="--c:var(--yellow)"></b></i></div></div></div></div></div>
+          <div class="roda-ar" aria-hidden="true"><span class="nv" style="--x:17%;--y:24%;--w:12%"></span><span class="nv" style="--x:44%;--y:13%;--w:9%"></span><span class="nv" style="--x:72%;--y:33%;--w:14%"></span></div>
+          <div class="boca" aria-hidden="true"><div class="bambo"></div><span class="lant" style="--x:20%;--fio:1.5rem;--c:var(--pink)"><b></b></span><span class="lant" style="--x:33%;--fio:3.25rem;--c:var(--yellow)"><b></b></span><span class="lant" style="--x:66%;--fio:2.25rem;--c:var(--green)"><b></b></span><span class="lant" style="--x:78%;--fio:3.75rem;--c:var(--cream)"><b></b></span><div class="cort esq"><i></i></div><div class="cort dir"><i></i></div><div class="piso"></div></div>
+          <div class="roda-card">
+            <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>Para educadores</span></p>
+            <h1 id="h-roda">Para educadores</h1>
+            <p class="tag">professores · mediadores · equipes</p>
+          </div>
+          <a class="roda-seta ant" href="/para-instituicoes/" data-giro="-1" aria-label="Girar para Para instituições"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+          <a class="roda-seta prox" href="/para-instituicoes/" data-giro="1" aria-label="Girar para Para instituições"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </section>
+
+        <section class="ih ed-ih" aria-labelledby="h-top">
+          <div class="ih-sky" aria-hidden="true">
+            <span class="fl" style="--x:6%;--y:12%;--s:clamp(4rem,10cqi,9rem);--v:-240;--rr:-30deg;background:var(--yellow)"></span>
+            <span class="fl arc" style="--x:76%;--y:10%;--s:clamp(6rem,15cqi,13rem);--v:-150;--rr:20deg;background:var(--pink)"></span>
+            <span class="fl" style="--x:90%;--y:58%;--s:clamp(2.5rem,6cqi,5rem);--v:-380;--rr:0deg;background:var(--green)"></span>
+            <span class="fl" style="--x:12%;--y:74%;--s:clamp(2rem,4cqi,3.5rem);--v:-420;--rr:0deg;background:var(--blue)"></span>
+            <svg class="fl tri" style="--x:66%;--y:78%;--s:clamp(4rem,9cqi,7.5rem);--v:-300;--rr:40deg;--c:var(--orange)" viewBox="0 0 100 70"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+            <span class="fl ph" style="--x:-3%;--y:38%;--s:clamp(6rem,14cqi,12rem);--v:-120;--rr:-10deg"><img src="/img/godes-de-tinta.jpg" alt="" width="280" height="360" /></span>
+            <span class="fl ph" style="--x:84%;--y:24%;--s:clamp(5rem,11cqi,9.5rem);--v:-220;--rr:8deg"><img src="/img/tintas-circulos.webp" alt="" width="1200" height="675" /></span>
+          </div>
+          <div class="wrap ih-in">
+            <h2 class="ih-t" id="h-top" data-letras>A experiência não termina na exposição</h2>
+            <p class="lead">Descubra possibilidades para preparar a visita e continuar a conversa sobre as cores em sala de aula.</p>
+            <div class="btns">
+              <a class="btn c-ye" href="#visita">Antes, durante e depois <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
             </div>
-            <div class="orb" aria-hidden="true">
-              <span class="c" style="left:0;top:14%;width:60%;height:60%;background:var(--yellow)"></span>
-              <span class="c" style="left:30%;top:0;width:64%;height:64%;background:var(--blue);mix-blend-mode:multiply"></span>
-              <div class="ph blob" style="left:22%;top:30%;width:58%;height:58%;z-index:3;border-radius:62% 38% 55% 45% / 48% 60% 40% 52%"><img src="/img/maos-no-papel.jpg" alt="" width="440" height="270" /></div>
-              <span class="c rot" style="left:76%;top:64%;width:18%;height:18%;background:var(--green);z-index:4"></span>
-              <svg class="tri spin-s" style="left:4%;top:76%;width:22%;z-index:5;--c:var(--orange)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
-            </div>
+            <p class="hint" aria-hidden="true"><b></b>Role para conhecer</p>
           </div>
         </section>
-        <div class="sc" style="--c:var(--pink)" aria-hidden="true"></div>
 
-        <section class="band" aria-labelledby="h-ped">
-          <div class="wrap ped">
-            <div class="ped-a rv">
+        <section class="band ed-ped" aria-labelledby="h-ped">
+          <div class="wrap ed-ped-g">
+            <div class="ed-ped-a">
               <p class="kicker c-pk"><i></i>Abordagem</p>
-              <h2 class="d2" id="h-ped">Proposta pedagógica</h2>
-              <p class="lead" style="margin-top:1.375rem">A aprendizagem infantil ganha significado quando a criança participa da construção do conhecimento. A Colorê aproxima arte e educação por meio de uma abordagem experimental, investigativa e participativa. Em vez de apresentar respostas prontas, a exposição cria situações para observar, levantar hipóteses, testar possibilidades, conversar e criar.</p>
-              <ul class="verbs" aria-label="O que a exposição propõe">
-                <li class="verb c-ye">observar</li>
-                <li class="verb c-bl">levantar hipóteses</li>
-                <li class="verb c-pk">testar possibilidades</li>
-                <li class="verb c-gr">conversar</li>
-                <li class="verb c-or">criar</li>
-              </ul>
+              <h2 class="big" id="h-ped">Proposta pedagógica</h2>
+              <p class="lead">A aprendizagem infantil ganha significado quando a criança participa da construção do conhecimento. A Colorê aproxima arte e educação por meio de uma abordagem experimental, investigativa e participativa. Em vez de apresentar respostas prontas, a exposição cria situações para observar, levantar hipóteses, testar possibilidades, conversar e criar.</p>
             </div>
-            <div class="ped-b bg-yellow rv">
-              <h2 class="d3">Relação com a aprendizagem infantil</h2>
+            <ul class="ed-pilha" data-toque aria-label="O que a exposição propõe">
+              <li class="c-ye" style="--i:0;--r:-6deg;--x:-8%">observar</li>
+              <li class="c-bl" style="--i:1;--r:4deg;--x:10%">levantar hipóteses</li>
+              <li class="c-pk" style="--i:2;--r:-3deg;--x:-4%">testar possibilidades</li>
+              <li class="c-gr" style="--i:3;--r:7deg;--x:8%">conversar</li>
+              <li class="c-or" style="--i:4;--r:-5deg;--x:-2%">criar</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="rev ed-rev" aria-labelledby="h-rel">
+          <div class="rev-st">
+            <div class="rev-art" aria-hidden="true">
+              <span class="rg" style="--c:var(--yellow);--de:entry 0%;--ate:contain 25%;--s0:.14"></span>
+              <span class="rg" style="--c:var(--green);--de:entry 15%;--ate:contain 35%;--s0:.07"></span>
+              <span class="rg" style="--c:var(--blue);--de:entry 35%;--ate:contain 45%;--s0:0"></span>
+              <span class="rev-ph"><img src="/img/criancas-pintando.webp" alt="" width="980" height="980" loading="lazy" /></span>
+            </div>
+            <div class="rev-card">
+              <p class="kicker c-cr"><i></i>Entre 4 e 8 anos</p>
+              <h2 class="d2" id="h-rel">Relação com a aprendizagem infantil</h2>
               <p>Entre 4 e 8 anos, as crianças ampliam suas formas de perceber, comunicar, imaginar e compreender o mundo. A experiência respeita diferentes ritmos e valoriza a curiosidade, a experimentação e a expressão individual. O contato com cores, materiais, luzes e composições pode abrir oportunidades para observar relações, formular perguntas e compartilhar interpretações.</p>
             </div>
           </div>
         </section>
 
-        <section class="band" id="visita" aria-labelledby="h-vis" style="padding-top:0">
-          <div class="wrap">
-            <div style="text-align:center">
-              <p class="kicker c-bl" style="justify-content:center"><i></i>A visita</p>
-              <h2 class="d2" id="h-vis">Antes, durante e depois</h2>
+        <div class="sc up" style="--c:var(--cream)" aria-hidden="true"></div>
+        <section class="ed-vis" id="visita" aria-labelledby="h-vis">
+          <div class="ed-vis-st">
+            <div class="wrap ed-vis-h">
+              <p class="kicker c-bl"><i></i>A visita</p>
+              <h2 class="big" id="h-vis">Antes, durante e depois</h2>
+              <ol class="ed-marcos" aria-hidden="true">
+                <li class="c-ye"><b>1</b>Antes</li>
+                <li class="c-bl"><b>2</b>Durante</li>
+                <li class="c-pk"><b>3</b>Depois</li>
+              </ol>
             </div>
-            <div class="venn" role="tablist" aria-label="Momentos da visita" data-abas>
-              <button type="button" role="tab" class="vt c-ye" id="tab-0" aria-selected="true" aria-controls="painel-0"><small>Momento 1</small><span>Antes</span></button>
-              <button type="button" role="tab" class="vt c-bl" id="tab-1" aria-selected="false" aria-controls="painel-1" tabindex="-1"><small>Momento 2</small><span>Durante</span></button>
-              <button type="button" role="tab" class="vt c-pk" id="tab-2" aria-selected="false" aria-controls="painel-2" tabindex="-1"><small>Momento 3</small><span>Depois</span></button>
-            </div>
-
-            <div class="phase c-ye" id="painel-0" role="tabpanel" aria-labelledby="tab-0">
+            <div class="ed-trilho">
+              <div class="ed-fases">
+              <div class="ed-fase">
+              <div class="phase c-ye">
               <div class="phase-top">
                 <h3 class="d3">Antes da visita</h3>
                 <p class="lead">Prepare o grupo para uma experiência de observação e descoberta. Não é necessário antecipar respostas ou ensinar previamente um conteúdo específico sobre cores. O mais importante é despertar a curiosidade e convidar as crianças a observar o que já conhecem.</p>
               </div>
               <div class="phase-body">
                 <h4 class="d4">Sugestões de preparação</h4>
-                <ul class="sugs">
+                <ul class="sugs" data-toque>
                   <li class="sug c-ye"><i></i><span>Convide as crianças a observar as cores presentes no caminho até a escola, no pátio ou na sala.</span></li>
                   <li class="sug c-ye"><i></i><span>Proponha uma conversa: existem cores que parecem mudar dependendo da luz ou do lugar?</span></li>
                   <li class="sug c-ye"><i></i><span>Peça que cada criança escolha uma cor de que gosta e conte o que ela faz lembrar, sem exigir uma justificativa única.</span></li>
@@ -148,30 +176,32 @@
                 </ul>
               </div>
             </div>
-
-            <div class="phase c-bl" id="painel-1" role="tabpanel" aria-labelledby="tab-1">
+              </div>
+              <div class="ed-fase">
+              <div class="phase c-bl">
               <div class="phase-top">
                 <h3 class="d3">Durante a visita</h3>
                 <p class="lead">Acompanhe a curiosidade das crianças sem antecipar conclusões. Estimule a observação, escute as hipóteses e valorize diferentes interpretações. Perguntas abertas podem ajudar a ampliar a experiência.</p>
               </div>
               <div class="phase-body">
                 <h4 class="d4" style="margin-bottom:1.125rem">Perguntas abertas que podem ajudar</h4>
-                <ul class="bubbles">
+                <ul class="bubbles" data-toque>
                   <li class="bub c-ye">“O que você percebeu?”</li>
                   <li class="bub c-pk">“O que mudou?”</li>
                   <li class="bub c-cr">“Como podemos experimentar de outro jeito?”</li>
                 </ul>
               </div>
             </div>
-
-            <div class="phase c-pk" id="painel-2" role="tabpanel" aria-labelledby="tab-2">
+              </div>
+              <div class="ed-fase">
+              <div class="phase c-pk">
               <div class="phase-top">
                 <h3 class="d3">Depois da visita</h3>
                 <p class="lead">Retome as descobertas e convide as crianças a compartilhar o que chamou sua atenção. A experiência pode continuar em sala por meio de conversas, registros visuais e novas experimentações. Mais do que reproduzir uma atividade da exposição, a proposta é manter viva a curiosidade despertada.</p>
               </div>
               <div class="phase-body">
                 <h4 class="d4">Sugestões de continuidade</h4>
-                <ul class="sugs">
+                <ul class="sugs" data-toque>
                   <li class="sug c-pk"><i></i><span><b>Mapa coletivo de descobertas:</b> registrar palavras, desenhos e perguntas que surgiram durante a visita.</span></li>
                   <li class="sug c-pk"><i></i><span><b>Composição com recortes:</b> criar imagens a partir de formas e cores, observando como a organização altera a leitura visual.</span></li>
                   <li class="sug c-pk"><i></i><span><b>Observação da luz:</b> comparar como um mesmo objeto pode parecer diferente em ambientes ou condições de iluminação distintas.</span></li>
@@ -180,25 +210,29 @@
                 <p class="note"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16v.5"></path></svg>As atividades acima são sugestões complementares para educadores, não descrições das estações da exposição. Ajustar materiais e orientações conforme a faixa etária, o contexto e as condições da escola.</p>
               </div>
             </div>
+              </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section class="band" aria-labelledby="h-cores" style="padding-top:0">
+        <section class="band ed-cores" aria-labelledby="h-cores">
           <div class="wrap">
             <p class="kicker c-or"><i></i>Referências visuais</p>
-            <h2 class="d2" id="h-cores">Cores para experimentar</h2>
+            <h2 class="big" id="h-cores">Cores para experimentar</h2>
             <div class="cores" data-galeria>
-              <button type="button" class="gt rv"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." data-legenda="Tintas em círculos" width="1200" height="675" loading="lazy" /><span class="cap">Tintas em círculos</span></button>
-              <button type="button" class="gt rv"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." data-legenda="Misturas de tinta" width="980" height="980" loading="lazy" /><span class="cap">Misturas de tinta</span></button>
-              <button type="button" class="gt rv"><img src="/img/materiais-de-cores.webp" alt="Mesa com cartões, círculos cromáticos, quebra-cabeça e arcos de madeira nas cores do arco-íris." data-legenda="Materiais de cores" width="1200" height="900" loading="lazy" /><span class="cap">Materiais de cores</span></button>
+              <button type="button" class="gt"><img src="/img/tintas-circulos.webp" alt="Folhas de papel com manchas de tinta em formato de círculos laranja, roxos, rosa, azuis e verdes, ao lado de pincéis." data-legenda="Tintas em círculos" width="1200" height="675" loading="lazy" /><span class="cap">Tintas em círculos</span></button>
+              <button type="button" class="gt"><img src="/img/criancas-pintando.webp" alt="Quatro crianças de avental derramando tinta colorida sobre telas brancas e criando misturas de cores." data-legenda="Misturas de tinta" width="980" height="980" loading="lazy" /><span class="cap">Misturas de tinta</span></button>
+              <button type="button" class="gt"><img src="/img/materiais-de-cores.webp" alt="Mesa com cartões, círculos cromáticos, quebra-cabeça e arcos de madeira nas cores do arco-íris." data-legenda="Materiais de cores" width="1200" height="900" loading="lazy" /><span class="cap">Materiais de cores</span></button>
             </div>
             <p class="muted gal-nota">Imagens de referência do universo da exposição. A Colorê ainda está em desenvolvimento. Toque para ampliar.</p>
           </div>
         </section>
 
-        <section class="band" aria-labelledby="h-mat" style="padding-top:0">
+        <div class="sc up" style="--c:var(--blue)" aria-hidden="true"></div>
+        <section class="band ed-mat bg-blue" aria-labelledby="h-mat">
           <div class="wrap">
-            <div class="mat rv">
+            <div class="mat">
               <div class="papers" aria-hidden="true">
                 <span style="left:0;top:.875rem;background:var(--blue);transform:rotate(-10deg)"></span>
                 <span style="left:1.375rem;top:.375rem;background:var(--yellow);transform:rotate(4deg)"></span>
@@ -216,7 +250,8 @@
         <section class="band cta bg-green" aria-labelledby="h-cta">
           <div class="wrap cta-g">
             <div class="rv">
-              <h2 class="d1" id="h-cta">Leve a experiência para sua turma.</h2>
+              <p class="kicker c-ink"><i></i>Próxima parada</p>
+              <h2 class="big" id="h-cta">Leve a experiência para sua turma.</h2>
               <p class="lead" style="margin:1.5rem 0 2.125rem">Quer conhecer a exposição ou conversar sobre uma visita com seus alunos? Entre em contato com a equipe da Colorê.</p>
               <a class="btn c-ye" href="/contato">Fale com a Colorê <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
             </div>
