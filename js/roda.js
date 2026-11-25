@@ -1,89 +1,63 @@
-// Roda (moeda) de Para instituições e Para educadores.
-// O giro acontece dentro da mesma página: o outro lado é baixado em segundo plano e, ao girar (seta, arraste com dedo
-// ou mouse, ou voltar do navegador), o cartão troca no meio da volta e o conteúdo, o título e o endereço trocam no fim.
-// Sem JS (ou se o outro lado não carregou) a seta é um link comum para a outra página.
+// Roda do teatro (todas as páginas): cinco cenários na ordem Início, A exposição, Para instituições, Para educadores e Contato,
+// sempre girando em sentido horário (para frente) e em loop. A página abre com a roda parada no seu cenário; a seta ou o arraste
+// giram a roda até o vizinho e, ao chegar, abre a página dele, que já nasce com o mesmo quadro (sem salto).
+// Tudo muda aos poucos com o ângulo: céu, chão, sol, cenários e cartões. Sem JS ou com movimento reduzido, as setas são links comuns.
+// As contas de repouso (céu, chão, sol) são as mesmas de tools/gera-teatro.js.
 (() => {
-  const r = document.querySelector("[data-roda]");
+  const r = document.querySelector(".roda");
   if (!r) return;
-  const main = r.parentElement, card = r.querySelector(".roda-card"), todas = [...r.querySelectorAll(".roda-seta")], internas = () => todas.filter((x) => !x.hasAttribute("data-fora"));
+  const N = 5, PASSO = 72, atual = Number(r.dataset.pagina);
+  const URLS = ["/", "/a-exposicao/", "/para-instituicoes/", "/para-educadores/", "/contato/"];
+  const CEU = ["var(--blue)", "var(--yellow)", "var(--blue)", "var(--pink)", "var(--green)"];
+  const SOLO = [null, "color-mix(in srgb, var(--orange) 38%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
+  const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [62, 30, 1], [80, 54, 1], [85, 74, 0]];
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const aviso = document.createElement("p");
-  aviso.className = "sr-only"; aviso.setAttribute("aria-live", "polite"); r.append(aviso);
 
-  // cada lado: endereço, título, nome, cartão, estado do menu e, fora da tela, os blocos do conteúdo
-  const lado0 = r.dataset.lado, outro = (l) => (l === "instituicoes" ? "educadores" : "instituicoes");
-  const navAtual = () => [...document.querySelectorAll(".nav a")].map((a) => a.getAttribute("aria-current"));
-  const lados = { [lado0]: { url: location.pathname, title: document.title, nome: card.querySelector("h1").textContent, card: card.innerHTML, nav: navAtual() } };
-  history.replaceState({ roda: lado0 }, "");
-
-  fetch(internas()[0].getAttribute("href")).then((x) => x.text()).then((t) => {
-    const d = new DOMParser().parseFromString(t, "text/html"), nr = d.querySelector("[data-roda]");
-    if (!nr) return;
-    d.querySelectorAll("link[rel=stylesheet]").forEach((l) => {
-      if (!document.querySelector(`link[href="${l.getAttribute("href")}"]`)) document.head.append(document.importNode(l));
-    });
-    lados[nr.dataset.lado] = {
-      url: internas()[0].getAttribute("href"), title: d.title, nome: nr.querySelector("h1").textContent, card: nr.querySelector(".roda-card").innerHTML,
-      nav: [...d.querySelectorAll(".nav a")].map((a) => a.getAttribute("aria-current")),
-      nodes: [...d.querySelector("main").children].filter((c) => c !== nr),
-      scripts: [...d.querySelectorAll("script[src]")].map((s) => s.getAttribute("src")).filter((s) => !/\/(base|roda|giro)\.js$/.test(s)),
-    };
-  }).catch(() => {});
-  // vizinhas na ordem circular Início, A exposição, Para instituições, Para educadores, Contato: [endereço, nome, sai da página?]
-  const VIZINHAS = { instituicoes: { ant: ["/a-exposicao/", "A exposição", true], prox: ["/para-educadores/", "Para educadores", false] }, educadores: { ant: ["/para-instituicoes/", "Para instituições", false], prox: ["/contato/", "Contato", true] } };
-  const pronto = () => !!lados[outro(r.dataset.lado)];
-
-  // ângulo da roda: múltiplos pares de 180° = instituições no topo, ímpares = educadores
-  let ang = parseFloat(getComputedStyle(r).getPropertyValue("--a")), repouso = ang, mostrado = lado0, anima = 0;
-  const ladoDe = (a) => (((Math.round(a / 180) % 2) + 2) % 2 === 0 ? "instituicoes" : "educadores");
-  // peças que se mexem: cada quadro escreve só transformações e transparências nelas (o celular move camadas prontas)
-  const q = (sel) => [...r.querySelectorAll(sel)];
-  const W = r.querySelector(".roda-w"), ceu = q(".roda-ceu, .terra-b"), cenaI = r.querySelector(".f-inst .cena"), cenaE = r.querySelector(".f-edu .cena");
-  const cams = q(".cam").map((el) => [el, parseFloat(el.style.getPropertyValue("--z")) || 0, el.closest(".f-edu") ? -1 : 1]);
-  const ar = r.querySelector(".roda-ar"), corts = q(".cort");
+  const q = (s) => [...r.querySelectorAll(s)];
+  const fatias = q(".fatia").map((el) => ({ el, cena: el.querySelector(".cena"), cams: [...el.querySelectorAll(".cam")].map((c) => [c, parseFloat(c.style.getPropertyValue("--z")) || 0]) }));
+  const cards = q(".roda-card"), chao = r.querySelector(".planeta"), terra = r.querySelector(".terra"), marcos = r.querySelector(".terra.marcos"), sol = r.querySelector(".sol"), ar = r.querySelector(".roda-ar");
   const lim = (v) => Math.max(0, Math.min(1, v));
+  const mix = (a, b, f) => `color-mix(in srgb, ${a} ${((1 - f) * 100).toFixed(1)}%, ${b})`;
+  const lerp = (a, b, f) => a + (b - a) * f;
+  const rel = (a, i) => (((((-i * PASSO + a) % 360) + 540) % 360) - 180); // ângulo da fatia i em relação ao topo, entre -180° e 180°
+
+  let ang = atual * PASSO, repouso = ang, anima = 0;
+
   const poe = (a) => {
     ang = a;
-    const rad = (a * Math.PI) / 180, sn = Math.sin(rad), cs = Math.cos(rad), s2 = Math.sin(2 * rad);
-    W.style.rotate = a + "deg";
-    ceu.forEach((el) => (el.style.opacity = ((1 - cs) / 2).toFixed(3)));
-    cenaI.style.opacity = lim(0.5 + cs * 0.9).toFixed(3);
-    cenaE.style.opacity = lim(0.5 - cs * 0.9).toFixed(3);
-    cams.forEach(([el, z, k]) => (el.style.rotate = `${(sn * z * k * 0.6).toFixed(2)}deg`));
-    ar.style.translate = `${(s2 * 20).toFixed(2)}vw 0`;
-    corts.forEach((el) => (el.style.translate = `${(s2 * 0.75).toFixed(3)}rem 0`));
-    card.style.scale = `${Math.abs(cs).toFixed(3)} 1`;
-    const l = ladoDe(a);
-    if (l !== mostrado && lados[l]) { card.innerHTML = lados[l].card; mostrado = l; } // o cartão vira no meio da volta
-  };
-
-  const trocaPagina = (l, empurra) => {
-    const de = r.dataset.lado, novo = lados[l];
-    lados[de].nodes = [...main.children].filter((c) => c !== r);
-    lados[de].nodes.forEach((c) => c.remove());
-    main.append(...novo.nodes);
-    if (novo.scripts) { novo.scripts.forEach((src) => { const s = document.createElement("script"); s.src = src; document.body.append(s); }); novo.scripts = null; }
-    document.title = novo.title;
-    document.querySelectorAll(".nav a").forEach((a, i) => (novo.nav[i] ? a.setAttribute("aria-current", novo.nav[i]) : a.removeAttribute("aria-current")));
-    r.dataset.lado = l;
-    todas.forEach((s) => {
-      const [href, nome, fora] = VIZINHAS[l][s.classList.contains("ant") ? "ant" : "prox"];
-      s.href = href; s.toggleAttribute("data-fora", fora); s.setAttribute("aria-label", (fora ? "Ir para " : "Girar para ") + nome);
+    const u = (((a / PASSO) % N) + N) % N, i = Math.floor(u), f = u - i, j = (i + 1) % N;
+    r.style.setProperty("--ceu", mix(CEU[i], CEU[j], f));
+    // chão: some e volta junto com o Início (que é só a logo); entre os demais, passa de uma cor à outra
+    const cor = i === 0 ? SOLO[1] : i === 4 ? SOLO[4] : mix(SOLO[i], SOLO[j], f);
+    terra.style.setProperty("--base", cor);
+    terra.style.opacity = marcos.style.opacity = i === 0 ? f : i === 4 ? 1 - f : 1;
+    chao.style.rotate = a + "deg";
+    // sol: nasce à esquerda em A exposição, cruza o céu e se põe à direita em Contato; some atrás do chão antes e depois
+    const s0 = SOL[i], s1 = SOL[i + 1];
+    sol.style.setProperty("--x", lerp(s0[0], s1[0], f).toFixed(2) + "%");
+    sol.style.setProperty("--y", lerp(s0[1], s1[1], f).toFixed(2) + "%");
+    sol.style.opacity = lerp(s0[2], s1[2], f).toFixed(3);
+    ar.style.translate = `${(Math.sin((a * Math.PI) / 180) * 18).toFixed(2)}vw 0`;
+    fatias.forEach((x, n) => {
+      const d = rel(a, n), o = lim(1 - Math.abs(d) / PASSO), sn = Math.sin((d * Math.PI) / 180);
+      x.el.style.rotate = d.toFixed(3) + "deg";
+      x.el.style.visibility = o > 0 ? "visible" : "hidden";
+      x.cena.style.opacity = o.toFixed(3);
+      x.cams.forEach(([c, z]) => (c.style.rotate = (sn * z * 0.6).toFixed(2) + "deg"));
     });
-    aviso.textContent = "Agora em " + novo.nome;
-    if (empurra) history.pushState({ roda: l }, "", novo.url);
+    cards.forEach((c) => {
+      const o = lim(1 - (2 * Math.abs(rel(a, Number(c.dataset.i)))) / PASSO); // o cartão fecha antes de a roda sair e abre quando ela chega
+      c.style.scale = o.toFixed(3) + " 1";
+      c.style.visibility = o > 0 ? "visible" : "hidden";
+    });
   };
 
-  // anima até um ângulo; se ele for o outro lado, troca a página ao chegar
-  const vai = (alvo, empurra) => {
+  const abre = (i) => { location.href = URLS[((i % N) + N) % N]; };
+  // anima até um ângulo (múltiplo de 72° = um cenário); ao chegar em outro cenário, abre a página dele
+  const vai = (alvo) => {
     cancelAnimationFrame(anima);
-    const a0 = ang, dur = calmo ? 0 : 1400 * Math.max(0.35, Math.abs(alvo - a0) / 180), t0 = performance.now();
-    const fim = () => {
-      poe(alvo);
-      // troca o conteúdo de baixo um instante depois de a roda parar: a pausa do navegador não aparece no giro
-      if (ladoDe(alvo) !== r.dataset.lado) { repouso = alvo; const l = ladoDe(alvo); setTimeout(() => trocaPagina(l, empurra), 80); }
-      else repouso = alvo;
-    };
+    const a0 = ang, dur = calmo ? 0 : 1100 * Math.max(0.4, Math.abs(alvo - a0) / PASSO), t0 = performance.now();
+    const fim = () => { poe(alvo); const i = Math.round(alvo / PASSO); if (((i % N) + N) % N !== atual) abre(i); else repouso = alvo; };
     if (!dur) return fim();
     const passo = (agora) => {
       const p = Math.min(1, (agora - t0) / dur), e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
@@ -92,21 +66,15 @@
     };
     anima = requestAnimationFrame(passo);
   };
-  // g = +1: "próximo" (roda anti-horária, a outra metade vem da direita)
-  const gira = (g, empurra = true) => vai(repouso - g * 180, empurra);
 
-  todas.forEach((s) => s.addEventListener("click", (e) => {
-    if (s.hasAttribute("data-fora") || !pronto()) return; // de fora: é do giro.js; ainda não baixou: segue o link
+  q(".roda-seta").forEach((s) => s.addEventListener("click", (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; // abrir em outra aba segue o link
     e.preventDefault();
-    gira(Number(s.dataset.giro));
+    vai(repouso + Number(s.dataset.giro) * PASSO);
   }));
-  addEventListener("popstate", (e) => {
-    const l = e.state && e.state.roda;
-    if (l && l !== r.dataset.lado && pronto()) gira(-1, false);
-    else if (l && l !== r.dataset.lado) location.reload();
-  });
+  addEventListener("pageshow", (e) => { if (e.persisted) { cancelAnimationFrame(anima); repouso = atual * PASSO; poe(repouso); } }); // voltar do navegador
 
-  // arraste: a roda acompanha o dedo/mouse; soltar depois de 1/4 da volta completa o giro, antes disso volta
+  // arraste: a roda acompanha o dedo/mouse (para a direita = sentido horário); soltar depois de 1/4 do caminho completa o giro
   let x0 = null, y0 = 0, id = null, mexeu = false;
   r.addEventListener("pointerdown", (e) => {
     if (e.button !== 0 || e.target.closest("a, button, .roda-card")) return;
@@ -120,18 +88,17 @@
       if (Math.abs(dx) < 8) return;
       mexeu = true; r.setPointerCapture(id); r.classList.add("arrasta"); cancelAnimationFrame(anima);
     }
-    // meia-volta inteira ao arrastar ~80% da largura; arrastar para a esquerda gira no sentido anti-horário
-    const t = Math.max(-1, Math.min(1, dx / (r.clientWidth * 0.8)));
-    poe(repouso + (pronto() ? t : t * 0.3) * 180);
+    poe(repouso + Math.max(-1, Math.min(1, dx / (r.clientWidth * 0.6))) * PASSO);
   });
   const solta = (e) => {
     if (x0 === null || e.pointerId !== id) return;
     x0 = null; r.classList.remove("arrasta");
     if (!mexeu) return;
-    const t = (ang - repouso) / 180;
-    if (Math.abs(t) > 0.25 && pronto()) gira(t < 0 ? 1 : -1);
-    else vai(repouso);
+    const t = (ang - repouso) / PASSO;
+    vai(Math.abs(t) > 0.25 ? repouso + Math.sign(t) * PASSO : repouso);
   };
   r.addEventListener("pointerup", solta);
   r.addEventListener("pointercancel", solta);
+
+  poe(ang);
 })();

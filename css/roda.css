@@ -1,43 +1,26 @@
-/* Roda (moeda): topo compartilhado de Para instituições e Para educadores, montado como um teatrinho de papel.
-   A boca de cena (bambolina, lanternas, cortinas e piso) fica parada; atrás dela gira uma roda com eixo abaixo da tela,
-   e cada metade é o cenário de uma página, em camadas de papel que se deslocam em velocidades diferentes.
-   A seta ou o arraste (dedo ou mouse) giram a roda 180° na mesma página (js/roda.js). Sem JS, a seta é um link para a outra página.
-   Tudo que se mexe deriva de --a (ângulo da roda) por seno e cosseno, para não dar salto em nenhum ponto da volta. */
-@property --a { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+/* Teatro de papel: topo de todas as páginas, montado como um teatrinho japonês.
+   A boca de cena (bambolina, lanternas, cortinas e piso) fica parada na frente. Atrás dela gira UMA roda com cinco cenários,
+   um por página, na ordem Início, A exposição, Para instituições, Para educadores e Contato, sempre em sentido horário e em loop.
+   Cada página abre com a roda parada no seu cenário; as setas (nos laços amarelos das cortinas) giram até o vizinho e abrem a página (js/roda.js).
+   Céu, chão, sol, cenários e cartões mudam aos poucos com o ângulo, nunca de uma vez. Tudo passa por trás da boca de cena.
+   O HTML do teatro é gerado por tools/gera-teatro.js. */
 
-/* céu único: passa do azul (instituições) ao rosa (educadores) conforme a roda gira */
-.roda { --cw: min(max(100vw, var(--h)), calc(var(--h) * 1.5)); --R: calc(var(--h) * .44 + var(--p)); background: var(--blue); contain: paint; --h: var(--hero-h); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
-.roda[data-lado=instituicoes] { --a: 0deg; }
-.roda[data-lado=educadores] { --a: 180deg; }
+.roda { --cw: min(max(100vw, var(--h)), calc(var(--h) * 1.5)); --R: calc(var(--h) * .44 + var(--p)); background: var(--ceu, var(--blue)); contain: paint; --h: var(--hero-h); --p: 25svh; --sombra: color-mix(in srgb, var(--graphite) 28%, transparent); position: relative; height: var(--h); overflow: clip; isolation: isolate; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
 .roda.arrasta { cursor: grabbing; }
 .roda img, .roda svg { -webkit-user-drag: none; }
 
-/* ── a roda: duas metades; a de educadores fica de cabeça para baixo até a roda virar.
-   Sem corte entre elas: cada cenário some aos poucos enquanto o outro aparece (mais forte perto do meio da volta) ── */
-/* a roda é só o eixo (uma caixa de tamanho zero): os cenários ficam pendurados nele. Uma roda do tamanho da volta
-   criava camadas gigantes que o Safari do iPhone não aguenta desenhar */
-.roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 0; height: 0; rotate: var(--a); }
-.fatia { position: absolute; left: 0; top: 0; width: 0; height: 0; }
-/* chão em forma de pequeno planeta: gira com a roda, está sempre no palco e muda de cor junto com o céu */
-.terra { --base: color-mix(in srgb, var(--green) 55%, var(--cream)); position: absolute; left: 0; top: 0; width: calc(2 * var(--R)); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
-.f-edu { rotate: 180deg; }
-/* a transparência fica no cenário (do tamanho da tela), não na metade da roda */
-.f-inst .cena { opacity: clamp(0, .5 + cos(var(--a)) * .9, 1); }
-.f-edu .cena { opacity: clamp(0, .5 - cos(var(--a)) * .9, 1); }
-/* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem; em tela larga e baixa (notebook) ela não passa de 1,5x a altura, para não ficar gigante */
+/* a roda é só o eixo (uma caixa de tamanho zero): chão e cenários ficam pendurados nele. Uma roda do tamanho da volta criava camadas gigantes que o Safari do iPhone não aguenta */
+.roda-w { position: absolute; left: 50%; top: calc(100% + var(--p)); width: 0; height: 0; }
+.fatia, .planeta { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.terra { position: absolute; left: 0; top: 0; width: calc(2 * var(--R)); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-conic-gradient(var(--base) 0 3deg, color-mix(in srgb, var(--base) 88%, var(--graphite)) 3deg 3.4deg); }
+.terra.marcos { background: none; border: 0; }
+/* em tela estreita a cena fica pelo menos tão larga quanto alta, para as formas não encolherem; em tela larga e baixa (notebook) ela não passa de 1,5x a altura */
 .cena { position: absolute; left: 50%; bottom: 0; width: var(--cw); height: calc(var(--h) + var(--p)); translate: -50% 0; }
-/* camadas que trocam aos poucos: só a transparência muda no giro (js/roda.js); sem JS, valem os lados em repouso */
-.roda-ceu { position: absolute; inset: 0; background: var(--pink); opacity: 0; }
-.terra-b { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(var(--b2) 0 3deg, color-mix(in srgb, var(--b2) 88%, var(--graphite)) 3deg 3.4deg); --b2: color-mix(in srgb, var(--blue) 55%, var(--cream)); opacity: 0; }
-.roda[data-lado=educadores] :is(.roda-ceu, .terra-b) { opacity: 1; }
-/* cada peça que se mexe vira camada própria: o celular só move, sem redesenhar */
-/* só o que se move muito vira camada (camadas demais estouram a memória do iPhone) */
-.roda-w, .cena, .terra-b, .roda-ceu, .roda-ar, .roda-card { will-change: transform, opacity; }
+/* só a roda e o que ela carrega viram camada própria durante o giro */
+.planeta, .cena, .sol, .roda-card { will-change: transform, opacity; }
 .palco { position: absolute; inset: 0 0 var(--p) 0; }
-/* camadas de papel: quanto maior --z, mais à frente e mais ela se desloca no giro */
-/* profundidade: cada camada gira um pouco mais ou menos que a roda, em volta do mesmo eixo (assim nada sai do chão redondo) */
-.cam { position: absolute; inset: 0; transform-origin: 50% calc(100% + var(--p)); rotate: calc(sin(var(--a)) * var(--z, 0) * .6deg); }
-.f-edu .cam { rotate: calc(sin(var(--a)) * -1 * var(--z, 0) * .6deg); }
+/* camadas de papel: quanto maior --z, mais à frente e mais ela se desloca no giro (rotate escrito por js/roda.js) */
+.cam { position: absolute; inset: 0; transform-origin: 50% calc(100% + var(--p)); }
 /* o que fica no chão é recortado pelo círculo do chão: montanhas, prédio e arbustos terminam no arco, sem ponta reta */
 /* camadas do chão: caixa grande com o eixo da roda no meio da borda de baixo, para o recorte do círculo valer em toda a volta */
 .cam.chao { inset: calc(-1 * var(--h)) calc(-.5 * var(--cw)) calc(-1 * var(--p)); transform-origin: 50% 100%; -webkit-mask-image: radial-gradient(circle var(--R) at 50% 100%, transparent 99.7%, #000 100%); mask-image: radial-gradient(circle var(--R) at 50% 100%, transparent 99.7%, #000 100%); }
@@ -63,25 +46,25 @@
 .roda .face::after { content: ""; position: absolute; left: 22%; right: 22%; top: 46%; height: 42%; border: .25rem solid var(--graphite); border-top: 0; border-radius: 0 0 999px 999px; }
 .roda .face.dorme { background: radial-gradient(circle at 50% 0, transparent 44%, var(--graphite) 47% 68%, transparent 71%) 6% 0 / 26% 22% no-repeat, radial-gradient(circle at 50% 0, transparent 44%, var(--graphite) 47% 68%, transparent 71%) 94% 0 / 26% 22% no-repeat; }
 
-/* ── nuvens: não giram, só deslizam ── */
-.roda-ar { position: absolute; inset: 0; pointer-events: none; translate: calc(sin(2 * var(--a)) * 20vw) 0; }
+/* ── nuvens: ficam atrás de tudo e deslizam com a roda ── */
+.roda-ar { position: absolute; inset: 0; pointer-events: none; }
 .nv { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 3; filter: drop-shadow(.3rem .3rem 0 var(--sombra)); background:
   radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 0 100% / 38% 80% no-repeat,
   radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 40% 0 / 46% 100% no-repeat,
   radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 100% 100% / 40% 84% no-repeat; }
 
 /* ── boca de cena: parada na frente da roda ── */
-.boca { position: absolute; inset: 0; pointer-events: none; }
+.boca { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 /* bambolina: faixa do alto com borda em círculos e lanternas penduradas */
 .bambo { position: absolute; left: 0; right: 0; top: 0; height: 9%; background: var(--graphite); }
 .bambo::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 1.75rem; background: radial-gradient(circle at 1.75rem 0, var(--graphite) 1.7rem, transparent 1.78rem) 0 0 / 3.5rem 1.75rem repeat-x; }
-.lant { position: absolute; top: 9%; left: var(--x); width: clamp(2.25rem, 3.6cqi, 3.5rem); aspect-ratio: .8; margin-top: var(--fio); transform-origin: 50% calc(-1 * var(--fio)); }
+.lant { position: absolute; top: 9%; left: var(--x); width: clamp(2.25rem, 3.6cqi, 3.5rem); aspect-ratio: .94; margin-top: var(--fio); transform-origin: 50% calc(-1 * var(--fio)); }
 .lant::before { content: ""; position: absolute; left: 50%; bottom: 100%; height: var(--fio); border-left: 2px solid var(--graphite); }
 .lant b { position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-linear-gradient(var(--c) 0 22%, color-mix(in srgb, var(--c) 78%, var(--graphite)) 22% 26%); }
 .lant b::before, .lant b::after { content: ""; position: absolute; left: 28%; right: 28%; height: 12%; background: var(--graphite); border-radius: .2rem; }
 .lant b::before { top: -8%; } .lant b::after { bottom: -8%; }
 /* cortinas laterais, presas no meio como no teatro */
-.cort { position: absolute; top: 0; bottom: 0; width: 13%; background: repeating-linear-gradient(90deg, var(--orange) 0 1.5rem, color-mix(in srgb, var(--orange) 82%, var(--graphite)) 1.5rem 1.75rem); border: 0 solid var(--graphite); translate: calc(sin(2 * var(--a)) * .75rem) 0; }
+.cort { position: absolute; top: 0; bottom: 0; width: 13%; background: repeating-linear-gradient(90deg, var(--orange) 0 1.5rem, color-mix(in srgb, var(--orange) 82%, var(--graphite)) 1.5rem 1.75rem); border: 0 solid var(--graphite); }
 .cort.esq { left: 0; border-right-width: 3px; border-radius: 0 0 100% 0 / 0 0 46% 0; }
 .cort.dir { right: 0; border-left-width: 3px; border-radius: 0 0 0 100% / 0 0 0 46%; }
 .cort i { position: absolute; top: 50%; width: 40%; height: 1rem; border-radius: 999px; background: var(--yellow); border: 2px solid var(--graphite); }
@@ -89,21 +72,22 @@
 /* piso do palco em tábuas */
 .piso { position: absolute; left: 0; right: 0; bottom: 0; height: 13%; border-top: 3px solid var(--graphite); background: repeating-linear-gradient(90deg, var(--yellow) 0 5rem, color-mix(in srgb, var(--yellow) 78%, var(--graphite)) 5rem 5.2rem); }
 
-/* cartão: vira como moeda conforme a roda gira (|cos|: inteiro em repouso, fino no meio da volta, quando troca de lado) */
-.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(22rem, 80%); translate: -50% 0; rotate: -3deg; scale: max(cos(var(--a)), -1 * cos(var(--a))) 1; display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: clamp(1rem, min(3cqi, 3svh), 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
+/* cartões: um por página, abrem como moeda quando a roda chega e fecham quando sai (scale escrito por js/roda.js) */
+.roda-card { position: absolute; left: 50%; bottom: clamp(1.25rem, 4svh, 2.75rem); z-index: 2; width: min(22rem, 80%); translate: -50% 0; rotate: -3deg; display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: clamp(1rem, min(3cqi, 3svh), 2rem); text-align: center; background: var(--orange); border: 2px solid var(--graphite); border-radius: 2rem; box-shadow: 0 .5rem 0 var(--graphite); cursor: auto; user-select: text; -webkit-user-select: text; }
 .roda-card .crumb { margin: 0; justify-content: center; }
-.roda-card h1 { margin: 0; font-family: var(--fd); font-weight: 700; font-size: clamp(2.25rem, min(5.5cqi, 7svh), 4.5rem); line-height: .9; letter-spacing: -.03em; }
+.roda-card h1, .roda-card .titulo { margin: 0; font-family: var(--fd); font-weight: 700; font-size: clamp(2.25rem, min(5.5cqi, 7svh), 4.5rem); line-height: .9; letter-spacing: -.03em; }
 .roda-card .tag { background: var(--cream); border-width: 2px; }
 
-/* setas: links de verdade para a outra página */
-.roda-seta { position: absolute; z-index: 3; bottom: 22%; display: grid; place-items: center; width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--paper); border: 2px solid var(--graphite); color: var(--graphite); box-shadow: .25rem .25rem 0 var(--graphite); transition: scale .35s var(--ease), background .25s; }
-.roda-seta:hover { scale: 1.1; background: var(--yellow); }
-.roda-seta.ant { left: 15%; }
-.roda-seta.prox { right: 15%; }
+/* setas: o próprio laço amarelo da cortina, pequeno e discreto; só o ícone avisa que é botão */
+.roda-seta { position: absolute; z-index: 3; top: 50%; width: 5.2%; height: 1rem; display: grid; place-items: center; border-radius: 999px; background: var(--yellow); color: var(--graphite); transition: scale .3s var(--ease); }
+.roda-seta::after { content: ""; position: absolute; inset: -.75rem -.5rem; }
+.roda-seta.ant { left: 8.84%; } .roda-seta.prox { right: 8.84%; }
+.roda-seta:hover, .roda-seta:focus-visible { scale: 1.14; }
+.roda-seta svg { display: block; }
 @container site (max-width: 40rem) {
   .cort { width: 9%; } .cort i { display: none; }
-  .roda-seta { width: 3.25rem; height: 3.25rem; bottom: 13.5rem; }
-  .roda-seta.ant { left: 11%; } .roda-seta.prox { right: 11%; }
+  .roda-seta { width: 2.25rem; height: 1.25rem; }
+  .roda-seta.ant { left: 1%; } .roda-seta.prox { right: 1%; }
   .roda-card { width: 82%; }
   .lant:nth-of-type(n+4) { display: none; }
 }
@@ -113,8 +97,9 @@
   .lant:nth-of-type(2n) { animation-duration: 5s; animation-direction: alternate-reverse; }
 }
 @keyframes balanca { from { rotate: -5deg; } to { rotate: 5deg; } }
-/* sol (ou lua) com raios girando atrás */
 .sol { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; }
+/* sol único: nasce à esquerda em A exposição, cruza o céu e se põe à direita em Contato (posição escrita por js/roda.js); fica atrás de chão e cenários */
+.roda > .sol { --c: var(--orange); --w: clamp(4.5rem, 10cqi, 8.5rem); translate: -50% -50%; z-index: 0; }
 .sol .raios { position: absolute; inset: -70%; border-radius: 50%; background: repeating-conic-gradient(color-mix(in srgb, var(--c) 50%, transparent) 0 9deg, transparent 9deg 22.5deg); }
 .sol .s { --x: 0%; --y: 0%; --w: 100%; }
 @media (prefers-reduced-motion: no-preference) { .sol .raios { animation: spin 40s linear infinite; } }
@@ -126,17 +111,10 @@
 /* celular: a fachada cresce para não sobrar morro vazio embaixo */
 @container site (max-width: 40rem) { .arco:has(.desenho) { --d: .39; } }
 
-/* ── Teatros fixos (Início, A exposição e Contato): a mesma boca de cena e as mesmas camadas da roda, sem giro.
-   O que muda é o cenário, que fala do conteúdo da página. ── */
-.roda[data-cena] { cursor: auto; touch-action: auto; user-select: auto; -webkit-user-select: auto; }
-.roda[data-cena=exposicao] { background: var(--yellow); }
-.roda[data-cena=exposicao] .terra { --base: color-mix(in srgb, var(--orange) 38%, var(--cream)); }
-.roda[data-cena=contato] { background: var(--green); }
-.roda[data-cena=contato] .terra { --base: color-mix(in srgb, var(--pink) 55%, var(--cream)); }
-/* Início: sem cenário, só a logo no palco. O azul é camada própria (como era), para a trilha amarela nascer do triângulo por cima dele */
-.roda[data-cena=home] { background: none; contain: none; isolation: auto; }
-.roda[data-cena=home]::before { content: ""; position: absolute; inset: 0; background: var(--blue); z-index: -2; }
-main > .roda[data-cena=home] { z-index: auto; }
+/* Início: o azul é camada própria (como era), para a trilha amarela nascer do triângulo da logo por cima dele */
+.roda[data-pagina="0"] { background: none; contain: none; isolation: auto; }
+.roda[data-pagina="0"]::before { content: ""; position: absolute; inset: 0; background: var(--ceu, var(--blue)); z-index: -2; }
+main > .roda[data-pagina="0"] { z-index: auto; }
 .teatro-logo { position: absolute; inset: 9% 13% 13%; z-index: 2; display: grid; place-items: center; }
 .teatro-logo .logo-anim { width: min(100%, clamp(18rem, 50cqi, 44rem)); }
 /* A exposição: arcos das quatro estações */
@@ -150,32 +128,7 @@ main > .roda[data-cena=home] { z-index: auto; }
   radial-gradient(circle closest-side, var(--graphite) 90%, transparent) 72% 50% / 11% 16% no-repeat; }
 .s.balao::after { content: ""; position: absolute; left: 16%; top: 86%; width: 18%; aspect-ratio: 1; background: var(--c); clip-path: polygon(0 0, 100% 0, 0 100%); }
 .s.balao.dir::after { left: auto; right: 16%; clip-path: polygon(0 0, 100% 0, 100% 100%); }
-
-/* ── Giro entre páginas (js/giro.js): a roda sai girando para um lado e a próxima página chega do outro.
-   O ângulo parte de --a (0 nas páginas fixas, 180° no lado dos educadores), então vale para todos os teatros. ── */
-@media (prefers-reduced-motion: no-preference) {
-  .giro-sai-prox .roda-w { animation: giro-sai-prox .6s cubic-bezier(.6, 0, .4, 1) forwards; }
-  .giro-sai-ant .roda-w { animation: giro-sai-ant .6s cubic-bezier(.6, 0, .4, 1) forwards; }
-  .giro-entra-prox .roda-w { animation: giro-entra-prox .8s cubic-bezier(.2, .7, .2, 1) backwards; }
-  .giro-entra-ant .roda-w { animation: giro-entra-ant .8s cubic-bezier(.2, .7, .2, 1) backwards; }
-  [class*=giro-sai] .roda-ar, .roda[class*=giro-sai]:not([data-lado=educadores]) .f-inst .cena, .roda[class*=giro-sai][data-lado=educadores] .f-edu .cena { animation: giro-some .6s forwards; }
-  [class*=giro-entra] .roda-ar, .roda[class*=giro-entra]:not([data-lado=educadores]) .f-inst .cena, .roda[class*=giro-entra][data-lado=educadores] .f-edu .cena { animation: giro-surge .8s backwards; }
-  [class*=giro-sai] .roda-card { animation: giro-card-sai .3s forwards; }
-  [class*=giro-entra] .roda-card { animation: giro-card-entra .45s .35s backwards; }
-  .giro-sai-prox .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-sai-prox .6s cubic-bezier(.6, 0, .4, 1) forwards; }
-  .giro-sai-ant .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-sai-ant .6s cubic-bezier(.6, 0, .4, 1) forwards; }
-  .giro-entra-prox .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-entra-prox .8s cubic-bezier(.2, .7, .2, 1) backwards; }
-  .giro-entra-ant .teatro-logo { transform-origin: 50% 300%; animation: giro-logo-entra-ant .8s cubic-bezier(.2, .7, .2, 1) backwards; }
-}
-@keyframes giro-sai-prox { to { rotate: calc(var(--a) - 72deg); } }
-@keyframes giro-sai-ant { to { rotate: calc(var(--a) + 72deg); } }
-@keyframes giro-entra-prox { from { rotate: calc(var(--a) + 72deg); } }
-@keyframes giro-entra-ant { from { rotate: calc(var(--a) - 72deg); } }
-@keyframes giro-some { 30% { opacity: 1; } to { opacity: 0; } }
-@keyframes giro-surge { from { opacity: 0; } 70% { opacity: 1; } }
-@keyframes giro-card-sai { to { scale: 0 1; } }
-@keyframes giro-card-entra { from { scale: 0 1; } }
-@keyframes giro-logo-sai-prox { to { rotate: -26deg; opacity: 0; } }
-@keyframes giro-logo-sai-ant { to { rotate: 26deg; opacity: 0; } }
-@keyframes giro-logo-entra-prox { from { rotate: 26deg; opacity: 0; } }
-@keyframes giro-logo-entra-ant { from { rotate: -26deg; opacity: 0; } }
+/* a logo do Início também aparece, parada, quando a roda gira passando por ela nas outras páginas */
+.teatro-logo .logo-anim { display: block; height: auto; overflow: visible; }
+.teatro-logo .lg { fill: var(--cream); }
+.teatro-logo .lt { fill: var(--yellow); }

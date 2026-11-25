@@ -47,9 +47,11 @@ Exposição **educativa, artística, interativa e itinerante** para crianças de
 
 Todo herói ocupa **uma tela menos o cabeçalho**: `--hero-h: max(34rem, calc(100svh - 4.5rem))` (definido em `css/base.css`). O teatro de papel (Para instituições e Para educadores) é a referência de altura; Início (só a faixa azul com a logo; a apresentação vem como outra seção), A exposição (abertura fixada) e Contato usam o mesmo valor. Em telas muito baixas o conteúdo pode passar do mínimo de 34rem. Tamanhos de texto do herói acompanham a altura (`svh`), não só a largura.
 
-## 4.0.1 Teatro de papel em todas as páginas (teste, 2026-11-24)
+## 4.0.1 Teatro de papel e a roda (todas as páginas)
 
-Cada página abre com o teatro de papel (boca de cena, lanternas, cortinas e piso, de `css/roda.css`). Início: só a logo no palco, sem cenário. A exposição: sol e quatro arcos de estação (01 a 04). Contato: balões de conversa. Instituições e educadores: a roda que gira. As setas do teatro seguem a ordem circular Início → A exposição → Para instituições → Para educadores → Contato → Início: a roda gira para fora e a página seguinte chega do lado oposto (`js/giro.js`; entre instituições e educadores o giro acontece na mesma página, `js/roda.js`). O cenário sempre fala do conteúdo da página; o conteúdo antigo continua abaixo do teatro, nada foi removido neste teste.
+Cada página abre com o teatro de papel: boca de cena (bambolina, lanternas redondas, cortinas e piso) parada na frente e, atrás dela, **uma roda com cinco cenários** que gira sempre em **sentido horário**, em ordem e em loop: Início (só a logo) → A exposição (arcos das estações) → Para instituições → Para educadores → Contato (balões de conversa) → Início. As setas são os laços amarelos das cortinas; o arraste também gira. Tudo muda aos poucos com o ângulo: cor do céu, cor do chão, cenários e cartões. Tudo passa por trás da boca de cena. **O sol é um só**: nasce à esquerda em A exposição, sobe, cruza o céu e se põe à direita em Contato; no Início ele não aparece.
+
+Cada página guarda a roda inteira, parada no seu cenário; ao chegar no vizinho, a roda abre a página dele, que já nasce com o mesmo quadro. O HTML do teatro é gerado por `node tools/gera-teatro.js` (peças em `tools/teatro/`); a animação está em `js/roda.js` e o visual em `css/roda.css`. As contas de repouso (céu, chão, sol) existem nos dois arquivos: se mudar uma, mude a outra.
 
 ## 4.1 Movimento (vocabulário comum)
 
