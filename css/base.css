@@ -388,4 +388,4 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 [data-toque] > * { -webkit-tap-highlight-color: transparent; }
 
 /* título do herói: mesmo tamanho, mesma largura e duas linhas em todas as páginas (a quebra vem de um <br> no HTML) */
-.t-hero { margin: 0; width: min(100%, 22ch); text-align: center; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, min(7cqi, 11svh), 7rem); line-height: .92; letter-spacing: -.03em; color: var(--graphite); }
+.t-hero { margin: 0 auto; width: min(100%, 22ch); text-align: center; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, min(7cqi, 11svh), 7rem); line-height: .92; letter-spacing: -.03em; color: var(--graphite); }

@@ -249,9 +249,9 @@ html:not(.js) .panel-item+.panel-item{margin-top:1.75rem}
 
 /* super abertura: tela cheia que "afunda" num círculo amarelo até o palco */
 .intro { position: relative; min-height: var(--hero-h); display: grid; place-items: center; overflow: clip; text-align: center; }
-.intro-in { position: relative; z-index: 2; padding: 6rem 1.5rem 3rem; max-width: 70rem; }
-.intro-logo { display: block; margin: 0 auto 1.25rem; width: 8rem; height: auto; }
-.intro .hint { margin-top: 1.75rem; }
+.intro-in { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; align-items: center; gap: clamp(1rem, 3svh, 1.75rem); padding: 6rem 1.5rem 3rem; max-width: 74rem; }
+.intro-logo { display: block; margin: 0; width: 8rem; height: auto; }
+.intro .hint { margin-top: clamp(.25rem, 1.5svh, 1rem); }
 .intro-dot { position: absolute; aspect-ratio: 1; border-radius: 50%; z-index: 1; }
 .intro-zoom { display: none; }
 .intro-wrap.pin { position: relative; }
