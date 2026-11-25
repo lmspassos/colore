@@ -10,7 +10,8 @@
   const URLS = ["/", "/a-exposicao/", "/para-instituicoes/", "/para-educadores/", "/contato/"];
   const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
   const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
-  const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [74, 24, 1], [80, 54, 1], [85, 74, 0]];
+  // sol: x anda em linha reta e y desenha uma parábola única de Início (u=0, abaixo do horizonte) a Início de novo (u=5); só aparece de A exposição a Contato
+  const soL = (u) => { const s = (u - 2.5) / 2.5; return [8 + 16.8 * u, 74 - 54 * (1 - s * s), u < 1 ? u : u > 4 ? 5 - u : 1]; };
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const q = (s) => [...r.querySelectorAll(s)];
@@ -34,12 +35,12 @@
     terra.style.opacity = marcos.style.opacity = i === 0 ? f : i === 4 ? 1 - f : 1;
     chao.style.rotate = a + "deg";
     // sol: nasce à esquerda em A exposição, cruza o céu e se põe à direita em Contato; some atrás do chão antes e depois
-    const s0 = SOL[i], s1 = SOL[i + 1];
-    sol.style.setProperty("--x", lerp(s0[0], s1[0], f).toFixed(2) + "%");
-    sol.style.setProperty("--y", lerp(s0[1], s1[1], f).toFixed(2) + "%");
+    const [sx, sy, so] = soL(u);
+    sol.style.setProperty("--x", sx.toFixed(2) + "%");
+    sol.style.setProperty("--y", sy.toFixed(2) + "%");
     // cor do sol: amarelo até Para instituições, vira laranja ao chegar em Para educadores
     sol.style.setProperty("--c", mix("var(--yellow)", "var(--orange)", u < 2 ? 0 : u < 3 ? u - 2 : 1));
-    sol.style.opacity = lerp(s0[2], s1[2], f).toFixed(3);
+    sol.style.opacity = so.toFixed(3);
     // nuvens: deslizam para a esquerda junto com a roda; 360° = uma volta de 140% de largura, então o loop não dá salto e o reinício acontece fora da tela
     nuvens.forEach((n, k) => n.style.setProperty("--x", nx(Number(n.dataset.x), a).toFixed(2) + "%"));
     fatias.forEach((x, n) => {

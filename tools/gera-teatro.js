@@ -15,10 +15,9 @@ const PAGINAS = [
 ];
 const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
 const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
-// sol: x e y em % do palco, opacidade. Nasce à esquerda em "A exposição" (u=1), sobe, cruza o céu e se põe à direita em "Contato" (u=4)
-const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [74, 24, 1], [80, 54, 1], [85, 74, 0]];
+// sol: x anda em linha reta e y desenha uma parábola única (igual a js/roda.js); nasce à esquerda em A exposição (u=1) e se põe à direita em Contato (u=4)
 const lerp = (a, b, f) => a + (b - a) * f;
-const sol = (u) => { const i = Math.min(4, Math.floor(u)), f = u - i; return SOL[i].map((v, k) => lerp(v, SOL[i + 1][k], f)); };
+const sol = (u) => { const s = (u - 2.5) / 2.5; return [8 + 16.8 * u, 74 - 54 * (1 - s * s), u < 1 ? u : u > 4 ? 5 - u : 1]; };
 
 const seta = (cl, p, g) => `<a class="roda-seta ${cl}" href="${p.url}" data-giro="${g}" aria-label="Ir para ${p.nome}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${cl === "ant" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}"></path></svg></a>`;
 const boca = `<div class="boca" aria-hidden="true"><div class="bambo"></div><div class="cort esq"><i></i></div><div class="cort dir"><i></i></div><div class="piso"></div></div>`;
