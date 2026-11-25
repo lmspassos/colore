@@ -152,9 +152,9 @@
   91%{transform:translateY(-7px) scale(.98,1.03)}
 }
 
-/* Trilha: caminho amarelo desenhado pela rolagem, por trás das seções (js/trilha.js) */
+/* Camadas das seções da Início (o caminho amarelo foi removido; o fundo de cada seção continua em camada própria) */
 main{position:relative;z-index:0}
-main>:not(.trilha){position:relative;z-index:1}
+main>*{position:relative;z-index:1}
 /* hero e o recorte abaixo dele ficam no mesmo plano do caminho: o azul vira camada própria para o amarelo sair do triângulo por cima dele */
 main>.hero,main>.apresenta{z-index:auto}
 .hero>.sc{z-index:-2}
@@ -167,14 +167,6 @@ main>section[aria-labelledby=h-prop]{z-index:auto}
 section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;background:var(--pink);z-index:-2}
 .hero-logo{position:relative;background:none}
 .hero-logo::before{content:"";position:absolute;inset:0;background:var(--blue);z-index:-2}
-.trilha{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.trilha svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.trilha path{fill:none;stroke-width:clamp(3rem,5.5cqi,5rem);stroke-linecap:round}
-.trilha path{opacity:.55}
-.trilha{visibility:hidden}
-.trilha-ativa .trilha{visibility:visible}
-.trilha-ativa .logo-anim .lt,.trilha-ativa .logo-anim:hover .lt{animation:none}
-:root[data-tema=tritanopia] .trilha path,:root[data-tema=acromatopsia] .trilha path{opacity:.25}
 
 /* Fechamento: bolinhas com gravidade (js/bolinhas.js) */
 .close-art.pit{position:absolute;inset:0;justify-self:stretch;z-index:1;max-width:none;width:auto;aspect-ratio:auto;touch-action:pan-y;user-select:none}
