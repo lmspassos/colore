@@ -18,7 +18,6 @@
 .c2-hero-in { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(1rem, 3svh, 1.75rem); }
 .c2-logo { display: block; width: 8rem; height: auto; }
 .c2-hero .crumb { justify-content: center; }
-.c2-t { margin: 0; max-width: 10ch; font-family: var(--fd); font-weight: 700; font-size: clamp(3.25rem, 11cqi, 9.5rem); line-height: .88; letter-spacing: -.03em; text-wrap: balance; }
 .c2-t .w { display: inline-block; white-space: nowrap; }
 .c2-t .l { display: inline-block; }
 
@@ -101,5 +100,4 @@
 /* Herói do desktop: mesma altura nas cinco páginas (--hero-h) */
 @container site (min-width:56.3125rem){
   .c2-hero{height:var(--hero-h);padding-block:1.5rem 3.25rem}
-  .c2-t{font-size:clamp(3.25rem,min(11cqi,17svh),9.5rem)}
 }

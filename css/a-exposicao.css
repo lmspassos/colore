@@ -251,7 +251,6 @@ html:not(.js) .panel-item+.panel-item{margin-top:1.75rem}
 .intro { position: relative; min-height: var(--hero-h); display: grid; place-items: center; overflow: clip; text-align: center; }
 .intro-in { position: relative; z-index: 2; padding: 6rem 1.5rem 3rem; max-width: 70rem; }
 .intro-logo { display: block; margin: 0 auto 1.25rem; width: 8rem; height: auto; }
-.intro-h { margin: 0; letter-spacing: -.03em; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, 9cqi, 8rem); line-height: .9; color: var(--graphite); }
 .intro .hint { margin-top: 1.75rem; }
 .intro-dot { position: absolute; aspect-ratio: 1; border-radius: 50%; z-index: 1; }
 .intro-zoom { display: none; }

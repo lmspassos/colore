@@ -5,7 +5,8 @@
   document.querySelectorAll("[data-letras]").forEach((h) => {
     const t = h.textContent.trim(); let i = 0;
     h.setAttribute("aria-label", t);
-    h.innerHTML = t.split(/\s+/).map((w) => `<span class="w" aria-hidden="true">${[...w].map((c) => `<span class="l" style="--i:${i++}">${c}</span>`).join("")}</span>`).join(" ");
+    const palavra = (w) => `<span class="w" aria-hidden="true">${[...w].map((c) => `<span class="l" style="--i:${i++}">${c}</span>`).join("")}</span>`;
+    h.innerHTML = h.innerHTML.split(/<br\s*\/?>/).map((l) => l.trim().split(/\s+/).map(palavra).join(" ")).join("<br>"); // o <br> do HTML marca a quebra de linha
   });
 
   const form = document.querySelector("#formulario form");

@@ -121,10 +121,4 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
 /* tritanopia: o amarelo vira grafite; texto sobre o verbo amarelo passa a creme */
 :root[data-tema=tritanopia] .ed-pilha li.c-ye, :root[data-tema=tritanopia] .ed-marcos li.c-ye b { color: var(--cream); }
 :root[data-tema=acromatopsia] :is(.ed-pilha li, .ed-marcos b) { border-color: var(--graphite); }
-/* abertura: frase mais longa que a de instituições, título um pouco menor */
-.ed-ih .ih-t { font-size: clamp(2.75rem, 7.5cqi, 7rem); max-width: 14ch; }
 
-/* Herói do desktop: o título também escala pela altura da tela, para caber na altura padrão */
-@container site (min-width:56.3125rem) {
-  .ed-ih .ih-t { font-size: clamp(2.75rem, min(7.5cqi, 10svh), 7rem); }
-}
