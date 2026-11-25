@@ -49,15 +49,16 @@
 @container site (max-width:51.25rem){.criar{grid-template-columns:minmax(0,1fr)} }
 
 /* Colorê — estilos da página Início */
-.hero{position:relative;overflow:clip;padding:0 0 clamp(4.375rem,7cqi,6.875rem)}
+.hero{position:relative}
+.apresenta{position:relative;overflow:clip;padding:0 0 clamp(4.375rem,7cqi,6.875rem)}
 .hero-body{padding-top:clamp(3rem,6cqi,5.5rem)}
 .hero-g{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:clamp(1.25rem,4cqi,4rem);align-items:center;position:relative;z-index:2}
-.hero .d1 span{display:inline-block;position:relative}
-.hero .d1 .u i{font-style:normal;color:var(--c);-webkit-text-stroke:.07em var(--graphite);paint-order:stroke fill}
+.apresenta .d1 span{display:inline-block;position:relative}
+.apresenta .d1 .u i{font-style:normal;color:var(--c);-webkit-text-stroke:.07em var(--graphite);paint-order:stroke fill}
 .tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.625rem}
-.hero .lead{margin:1.625rem 0 2.125rem}
+.apresenta .lead{margin:1.625rem 0 2.125rem}
 .hero-foot{display:flex;justify-content:space-between;align-items:center;margin-top:clamp(1.75rem,4cqi,3.5rem);gap:1.25rem;flex-wrap:wrap}
-@container site (max-width:56.25rem){.hero-g{grid-template-columns:minmax(0,1fr)}.hero .orb{max-width:28.75rem;order:-1} }
+@container site (max-width:56.25rem){.hero-g{grid-template-columns:minmax(0,1fr)}.apresenta .orb{max-width:28.75rem;order:-1} }
 .prop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.75rem,5cqi,5.5rem);align-items:center}
 .prop-vis{position:relative;aspect-ratio:1/1.02}
 .prop-vis .pk{position:absolute;inset:0 8% 10% 0;background:var(--blue);border-radius:999px 999px 999px 5rem}
@@ -155,7 +156,7 @@
 main{position:relative;z-index:0}
 main>:not(.trilha){position:relative;z-index:1}
 /* hero e o recorte abaixo dele ficam no mesmo plano do caminho: o azul vira camada própria para o amarelo sair do triângulo por cima dele */
-main>.hero{z-index:auto}
+main>.hero,main>.apresenta{z-index:auto}
 .hero>.sc{z-index:-2}
 /* a seção preta e o recorte dela também ficam sob o caminho; só o fundo desce, o conteúdo continua por cima */
 main>.sc[style*=graphite]{z-index:-2}
@@ -182,15 +183,8 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
 .pit span{left:0;top:0;cursor:grab;touch-action:none;will-change:transform}
 .pit.agarra span{cursor:grabbing}
 
-/* Herói do desktop: logo + chamada cabem em uma tela (mesma altura do teatro das outras páginas: --hero-h no base.css) */
+/* Herói do desktop: só a faixa azul com a logo, na altura padrão (--hero-h, igual ao teatro); a apresentação vem logo abaixo, como outra seção */
 @container site (min-width:56.3125rem){
-  .hero{display:flex;flex-direction:column;min-height:var(--hero-h);padding-bottom:0}
-  .hero-logo{padding-block:clamp(1.25rem,4svh,2.5rem) clamp(2rem,5svh,3.5rem)}
-  .logo-anim{width:auto;max-width:100%;height:clamp(5rem,15svh,10rem)}
-  .hero-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:clamp(1.75rem,4.5svh,3rem);padding-bottom:clamp(2.75rem,6svh,3.5rem)}
-  .hero .d1{font-size:clamp(1.75rem,min(4.6cqi,5.6svh),4rem)}
-  .tags{margin-bottom:clamp(.625rem,2svh,1.625rem)}
-  .hero .lead{margin:clamp(.5rem,1.5svh,1.25rem) 0 clamp(.75rem,2.5svh,1.75rem)}
-  .hero .orb{max-width:min(38.75rem,100%,calc(var(--hero-h) * .6))}
-  .hero-foot{position:absolute;left:0;right:0;bottom:clamp(.5rem,1.5svh,1rem);margin:0;justify-content:center}
+  .hero{display:flex;flex-direction:column;min-height:var(--hero-h)}
+  .hero-logo{flex:1;align-items:center}
 }

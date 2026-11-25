@@ -45,7 +45,7 @@ Exposição **educativa, artística, interativa e itinerante** para crianças de
 
 ## 4.0 Herói (desktop)
 
-Todo herói ocupa **uma tela menos o cabeçalho**: `--hero-h: max(34rem, calc(100svh - 4.5rem))` (definido em `css/base.css`). O teatro de papel (Para instituições e Para educadores) é a referência de altura; Início (logo + chamada), A exposição (abertura fixada) e Contato usam o mesmo valor. Em telas muito baixas o conteúdo pode passar do mínimo de 34rem. Tamanhos de texto do herói acompanham a altura (`svh`), não só a largura.
+Todo herói ocupa **uma tela menos o cabeçalho**: `--hero-h: max(34rem, calc(100svh - 4.5rem))` (definido em `css/base.css`). O teatro de papel (Para instituições e Para educadores) é a referência de altura; Início (só a faixa azul com a logo; a apresentação vem como outra seção), A exposição (abertura fixada) e Contato usam o mesmo valor. Em telas muito baixas o conteúdo pode passar do mínimo de 34rem. Tamanhos de texto do herói acompanham a altura (`svh`), não só a largura.
 
 ## 4.1 Movimento (vocabulário comum)
 
