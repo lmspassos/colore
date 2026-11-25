@@ -103,3 +103,5 @@
 @container site (min-width:56.3125rem){
   .c2-hero{height:var(--hero-h);padding-block:1.5rem 3.25rem}
 }
+
+.c2-cta { background: var(--green); color: var(--graphite); --bc: var(--cream); }

@@ -139,3 +139,6 @@
 @container site (min-width:56.3125rem){
   .ih{height:var(--hero-h);padding-block:1.5rem}
 }
+
+/* botão do herói: cada página tem a sua cor da paleta (instituições azul, educadores rosa, exposição laranja, contato verde) */
+.ih .btn{background:var(--blue);color:var(--graphite);--bc:var(--cream)}
