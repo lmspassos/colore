@@ -44,6 +44,9 @@
     grupo(trilha, tns, [...trilha.querySelectorAll(".est")])(0);
     // clicar numa bolinha também leva a leitura até o bloco da estação (rolagem suave vem do CSS)
     tns.forEach((b) => b.addEventListener("click", () => trilha.querySelector(".ativ").scrollIntoView({ block: "start" })));
+    // link com #est-1…#est-5 (ex.: cartões da Início) abre a estação correspondente
+    const alvo = location.hash.match(/^#est-([1-5])$/);
+    if (alvo) tns[alvo[1] - 1].click();
   }
 })();
 // A exposição: separa os títulos em letras; cada uma entra de uma posição/ângulo diferente ao rolar (CSS, ver a-exposicao.css).

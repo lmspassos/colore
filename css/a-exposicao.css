@@ -487,3 +487,6 @@ html:not(.js) .pil-d{margin-top:1.5rem}
     .side-h > span { animation: side-afina linear both; animation-timeline: view(); animation-range: contain 70% exit 100%; }
   }
 }
+
+/* âncora #metodo (botão "Conheça nossa metodologia" da Início): desce um pouco além do topo da seção, para o conteúdo ficar à vista */
+#metodo { scroll-margin-top: -4rem; }
