@@ -140,5 +140,4 @@
 @container site (min-width:56.3125rem){
   .ih{height:var(--hero-h);padding-block:1.5rem}
   .ih-t{font-size:clamp(2.75rem,min(9cqi,13svh),8.5rem)}
-  .ed-ih .ih-t{font-size:clamp(2.75rem,min(7.5cqi,12svh),7rem)}
 }
