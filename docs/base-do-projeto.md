@@ -47,6 +47,10 @@ Exposição **educativa, artística, interativa e itinerante** para crianças de
 
 Todo herói ocupa **uma tela menos o cabeçalho**: `--hero-h: max(34rem, calc(100svh - 4.5rem))` (definido em `css/base.css`). O teatro de papel (Para instituições e Para educadores) é a referência de altura; Início (só a faixa azul com a logo; a apresentação vem como outra seção), A exposição (abertura fixada) e Contato usam o mesmo valor. Em telas muito baixas o conteúdo pode passar do mínimo de 34rem. Tamanhos de texto do herói acompanham a altura (`svh`), não só a largura.
 
+## 4.0.1 Teatro de papel em todas as páginas (teste, 2026-11-24)
+
+Cada página abre com o teatro de papel (boca de cena, lanternas, cortinas e piso, de `css/roda.css`). Início: só a logo no palco, sem cenário. A exposição: sol e quatro arcos de estação (01 a 04). Contato: balões de conversa. Instituições e educadores: a roda que gira. O cenário sempre fala do conteúdo da página; o conteúdo antigo continua abaixo do teatro, nada foi removido neste teste.
+
 ## 4.1 Movimento (vocabulário comum)
 
 Movimento serve à descoberta e nunca é a única forma de ver o conteúdo (tudo funciona sem JS e com `prefers-reduced-motion`). Vocabulário compartilhado em `css/base.css`; as páginas só definem variáveis, não keyframes novos para o mesmo gesto:

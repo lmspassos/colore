@@ -125,3 +125,28 @@
 .marco b::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--c); border: 3px solid var(--graphite); box-shadow: .3rem .3rem 0 var(--sombra); }
 /* celular: a fachada cresce para não sobrar morro vazio embaixo */
 @container site (max-width: 40rem) { .arco:has(.desenho) { --d: .39; } }
+
+/* ── Teatros fixos (Início, A exposição e Contato): a mesma boca de cena e as mesmas camadas da roda, sem giro.
+   O que muda é o cenário, que fala do conteúdo da página. ── */
+.roda[data-cena] { cursor: auto; touch-action: auto; user-select: auto; -webkit-user-select: auto; }
+.roda[data-cena=exposicao] { background: var(--yellow); }
+.roda[data-cena=exposicao] .terra { --base: color-mix(in srgb, var(--orange) 38%, var(--cream)); }
+.roda[data-cena=contato] { background: var(--green); }
+.roda[data-cena=contato] .terra { --base: color-mix(in srgb, var(--pink) 55%, var(--cream)); }
+/* Início: sem cenário, só a logo no palco. O azul é camada própria (como era), para a trilha amarela nascer do triângulo por cima dele */
+.roda[data-cena=home] { background: none; contain: none; isolation: auto; }
+.roda[data-cena=home]::before { content: ""; position: absolute; inset: 0; background: var(--blue); z-index: -2; }
+main > .roda[data-cena=home] { z-index: auto; }
+.teatro-logo { position: absolute; inset: 9% 13% 13%; z-index: 2; display: grid; place-items: center; }
+.teatro-logo .logo-anim { width: min(100%, clamp(18rem, 50cqi, 44rem)); }
+/* A exposição: arcos das quatro estações */
+.s.estacao { display: grid; justify-items: center; align-content: start; }
+.s.estacao em { margin-top: 16%; font: normal 700 clamp(1.1rem, 2.6cqi, 2.25rem)/1 var(--fd); color: var(--graphite); }
+/* Contato: balões de conversa */
+.s.balao { aspect-ratio: 1.45; border-radius: 32% / 42%; background: var(--c); }
+.s.balao::before { content: ""; position: absolute; inset: 0; background:
+  radial-gradient(circle closest-side, var(--graphite) 90%, transparent) 28% 50% / 11% 16% no-repeat,
+  radial-gradient(circle closest-side, var(--graphite) 90%, transparent) 50% 50% / 11% 16% no-repeat,
+  radial-gradient(circle closest-side, var(--graphite) 90%, transparent) 72% 50% / 11% 16% no-repeat; }
+.s.balao::after { content: ""; position: absolute; left: 16%; top: 86%; width: 18%; aspect-ratio: 1; background: var(--c); clip-path: polygon(0 0, 100% 0, 0 100%); }
+.s.balao.dir::after { left: auto; right: 16%; clip-path: polygon(0 0, 100% 0, 100% 100%); }

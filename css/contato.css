@@ -37,9 +37,9 @@
 .masc { position: absolute; right: var(--mr); top: 0; width: var(--mw); aspect-ratio: 1; translate: 0 -62%; border-radius: 50%; background: var(--yellow); border: 3px solid var(--graphite); }
 .olho { position: absolute; top: 30%; width: 24%; aspect-ratio: 1; border-radius: 50%; background: var(--paper); border: 2px solid var(--graphite); overflow: hidden; }
 .olho i { position: absolute; inset: 26%; border-radius: 50%; background: var(--graphite); translate: calc(var(--ex, 0) * 55%) calc(var(--ey, 0) * 55%); transition: translate .25s var(--ease); }
-.boca { position: absolute; left: 38%; right: 38%; top: 60%; height: 12%; border: 3px solid var(--graphite); border-top: 0; border-radius: 0 0 999px 999px; transition: all .3s var(--ease); }
-.masc.ok .boca { left: 28%; right: 28%; height: 22%; background: var(--orange); }
-.masc.ops .boca { left: 41%; right: 41%; height: auto; aspect-ratio: 1; border-top: 3px solid var(--graphite); border-radius: 50%; background: var(--paper); }
+.c2-boca { position: absolute; left: 38%; right: 38%; top: 60%; height: 12%; border: 3px solid var(--graphite); border-top: 0; border-radius: 0 0 999px 999px; transition: all .3s var(--ease); }
+.masc.ok .c2-boca { left: 28%; right: 28%; height: 22%; background: var(--orange); }
+.masc.ops .c2-boca { left: 41%; right: 41%; height: auto; aspect-ratio: 1; border-top: 3px solid var(--graphite); border-radius: 50%; background: var(--paper); }
 .mao { position: absolute; z-index: 2; top: 0; width: calc(var(--mw) * .28); aspect-ratio: 1; translate: 0 -45%; border-radius: 50%; background: var(--yellow); border: 3px solid var(--graphite); }
 /* "Sobre o que você quer falar?": o tipo de contato em balões de fala (é a única escolha de assunto da página) */
 .c2-pergunta { margin-bottom: .875rem; font-family: var(--fd); font-weight: 600; font-size: clamp(1.25rem, 2cqi, 1.5rem); }
