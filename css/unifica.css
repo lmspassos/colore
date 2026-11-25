@@ -9,7 +9,7 @@
 /* personagens de Contato: círculo chapado, só os traços do rosto em grafite */
 .masc, .bola, .mao { border: 0; }
 /* fotos: sem sombra dura (o anel creme/papel fica, como nos godês) */
-.fl.ph, .polas img, .ed-mat .mat { box-shadow: none; }
+.fl.ph, .polas img { box-shadow: none; }
 /* hover/foco: sem sombra dura, o movimento (subir/girar) já avisa */
 .dlband .btn:hover, .end .btn:hover, .conc-dots li:hover, .conc-dots li:active, .conc-dots li.toque, .st:hover, .st:focus-visible,
 .chip.bolha span, .chip.bolha input:checked + span { box-shadow: none; }
