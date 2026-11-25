@@ -190,6 +190,6 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
 }
 
 /* aviso de rolagem sobre o azul: creme, com a bolinha amarela */
-.hero-logo .hint{color:var(--cream)}
+.hero-logo .hint{color:var(--cream);position:absolute;left:50%;bottom:clamp(1.5rem,5svh,3rem);translate:-50% 0}
 .hero-logo .hint b{border-color:var(--cream)}
 .hero-logo .hint b::after{background:var(--yellow)}
