@@ -25,7 +25,7 @@
     const f = fotos[i];
     img.src = f.currentSrc || f.src;
     img.alt = f.alt;
-    if (cap) cap.textContent = f.dataset.legenda ? f.dataset.legenda + " · " : "";
+    if (cap) cap.textContent = f.dataset.legenda || "";
   };
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-galeria] button");
