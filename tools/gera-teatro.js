@@ -21,15 +21,14 @@ const lerp = (a, b, f) => a + (b - a) * f;
 const sol = (u) => { const i = Math.min(4, Math.floor(u)), f = u - i; return SOL[i].map((v, k) => lerp(v, SOL[i + 1][k], f)); };
 
 const seta = (cl, p, g) => `<a class="roda-seta ${cl}" href="${p.url}" data-giro="${g}" aria-label="Ir para ${p.nome}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${cl === "ant" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}"></path></svg></a>`;
-const lanterna = (x, fio, c) => `<span class="lant" style="--x:${x}%;--fio:${fio}rem;--c:var(--${c})"><b></b></span>`;
-const boca = `<div class="boca" aria-hidden="true"><div class="bambo"></div>${lanterna(20, 1.5, "pink")}${lanterna(33, 3.25, "yellow")}${lanterna(66, 2.25, "green")}${lanterna(78, 3.75, "cream")}<div class="cort esq"><i></i></div><div class="cort dir"><i></i></div><div class="piso"></div></div>`;
+const boca = `<div class="boca" aria-hidden="true"><div class="bambo"></div><div class="cort esq"><i></i></div><div class="cort dir"><i></i></div><div class="piso"></div></div>`;
 const nuvem = (x, y, w) => `<span class="nv" style="--x:${x}%;--y:${y}%;--w:${w}%"></span>`;
 const cenas = [`<div class="teatro-logo">${P("logo.html")}</div>`, P("cena-1-exposicao.html"), P("cena-2-instituicoes.html"), P("cena-3-educadores.html"), P("cena-4-contato.html")];
 
 function teatro(k) {
-  const A = k * PASSO, p = PAGINAS[k];
+  const A = -k * PASSO, p = PAGINAS[k]; // a roda gira em sentido anti-horário: avançar = ângulo diminui
   const fatias = cenas.map((c, i) => {
-    const rel = i === k ? 0 : ((((-i * PASSO + A) % 360) + 540) % 360) - 180;
+    const rel = i === k ? 0 : ((((i * PASSO + A) % 360) + 540) % 360) - 180;
     const o = Math.max(0, 1 - Math.abs(rel) / PASSO);
     return `<div class="fatia" data-i="${i}" style="rotate:${rel}deg;visibility:${o ? "visible" : "hidden"}"><div class="cena" style="opacity:${o}"><div class="palco">${c}</div></div></div>`;
   }).join("");

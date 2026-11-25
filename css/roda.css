@@ -1,5 +1,5 @@
 /* Teatro de papel: topo de todas as páginas, montado como um teatrinho japonês.
-   A boca de cena (bambolina, lanternas, cortinas e piso) fica parada na frente. Atrás dela gira UMA roda com cinco cenários,
+   A boca de cena (bambolina, cortinas e piso) fica parada na frente. Atrás dela gira UMA roda com cinco cenários,
    um por página, na ordem Início, A exposição, Para instituições, Para educadores e Contato, sempre em sentido horário e em loop.
    Cada página abre com a roda parada no seu cenário; as setas (nos laços amarelos das cortinas) giram até o vizinho e abrem a página (js/roda.js).
    Céu, chão, sol, cenários e cartões mudam aos poucos com o ângulo, nunca de uma vez. Tudo passa por trás da boca de cena.
@@ -48,21 +48,17 @@
 
 /* ── nuvens: ficam atrás de tudo e deslizam com a roda ── */
 .roda-ar { position: absolute; inset: 0; pointer-events: none; }
-.nv { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 3; filter: drop-shadow(.3rem .3rem 0 var(--sombra)); background:
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 0 100% / 38% 80% no-repeat,
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 40% 0 / 46% 100% no-repeat,
-  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 100% 100% / 40% 84% no-repeat; }
+.nv { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 2.4; filter: drop-shadow(.3rem .3rem 0 var(--sombra)); background:
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 6% 100% / 30% 72% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 38% 0 / 38% 100% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 74% 100% / 32% 78% no-repeat,
+  radial-gradient(circle closest-side, var(--paper) 97%, transparent 100%) 100% 100% / 22% 56% no-repeat; }
 
 /* ── boca de cena: parada na frente da roda ── */
 .boca { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-/* bambolina: faixa do alto com borda em círculos e lanternas penduradas */
+/* bambolina: faixa do alto com borda em círculos */
 .bambo { position: absolute; left: 0; right: 0; top: 0; height: 9%; background: var(--graphite); }
 .bambo::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 1.75rem; background: radial-gradient(circle at 1.75rem 0, var(--graphite) 1.7rem, transparent 1.78rem) 0 0 / 3.5rem 1.75rem repeat-x; }
-.lant { position: absolute; top: 9%; left: var(--x); width: clamp(2.25rem, 3.6cqi, 3.5rem); aspect-ratio: .94; margin-top: var(--fio); transform-origin: 50% calc(-1 * var(--fio)); }
-.lant::before { content: ""; position: absolute; left: 50%; bottom: 100%; height: var(--fio); border-left: 2px solid var(--graphite); }
-.lant b { position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--graphite); background: repeating-linear-gradient(var(--c) 0 22%, color-mix(in srgb, var(--c) 78%, var(--graphite)) 22% 26%); }
-.lant b::before, .lant b::after { content: ""; position: absolute; left: 28%; right: 28%; height: 12%; background: var(--graphite); border-radius: .2rem; }
-.lant b::before { top: -8%; } .lant b::after { bottom: -8%; }
 /* cortinas laterais, presas no meio como no teatro */
 .cort { position: absolute; top: 0; bottom: 0; width: 13%; background: repeating-linear-gradient(90deg, var(--orange) 0 1.5rem, color-mix(in srgb, var(--orange) 82%, var(--graphite)) 1.5rem 1.75rem); border: 0 solid var(--graphite); }
 .cort.esq { left: 0; border-right-width: 3px; border-radius: 0 0 100% 0 / 0 0 46% 0; }
@@ -89,14 +85,8 @@
   .roda-seta { width: 2.25rem; height: 1.25rem; }
   .roda-seta.ant { left: 1%; } .roda-seta.prox { right: 1%; }
   .roda-card { width: 82%; }
-  .lant:nth-of-type(n+4) { display: none; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .lant { animation: balanca 4s ease-in-out infinite alternate; }
-  .lant:nth-of-type(2n) { animation-duration: 5s; animation-direction: alternate-reverse; }
-}
-@keyframes balanca { from { rotate: -5deg; } to { rotate: 5deg; } }
 .sol { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; }
 /* sol único: nasce à esquerda em A exposição, cruza o céu e se põe à direita em Contato (posição escrita por js/roda.js); fica atrás de chão e cenários */
 .roda > .sol { --c: var(--orange); --w: clamp(4.5rem, 10cqi, 8.5rem); translate: -50% -50%; z-index: 0; }

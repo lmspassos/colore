@@ -14,8 +14,8 @@
 .dlband .btn:hover, .end .btn:hover, .conc-dots li:hover, .conc-dots li:active, .conc-dots li.toque, .st:hover, .st:focus-visible,
 .chip.bolha span, .chip.bolha input:checked + span, .roda-seta { box-shadow: none; }
 /* teatro de papel (Para instituições e Para educadores) */
-.terra, .s, .marco b::after, .lant b, .cort.esq, .cort.dir, .cort i { border-color: transparent; box-shadow: none; }
-.terra, .s, .marco b::after, .lant b { border-width: 0; }
+.terra, .s, .marco b::after, .cort.esq, .cort.dir, .cort i { border-color: transparent; box-shadow: none; }
+.terra, .s, .marco b::after { border-width: 0; }
 .cort.esq { border-right-width: 0; } .cort.dir { border-left-width: 0; }
 .cort i { border-width: 0; }
 .piso { border-top: 0; }

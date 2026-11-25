@@ -1,5 +1,5 @@
 // Roda do teatro (todas as páginas): cinco cenários na ordem Início, A exposição, Para instituições, Para educadores e Contato,
-// sempre girando em sentido horário (para frente) e em loop. A página abre com a roda parada no seu cenário; a seta ou o arraste
+// sempre girando em sentido anti-horário (avançar = para a direita, o próximo cenário entra pela direita) e em loop. A página abre com a roda parada no seu cenário; a seta ou o arraste
 // giram a roda até o vizinho e, ao chegar, abre a página dele, que já nasce com o mesmo quadro (sem salto).
 // Tudo muda aos poucos com o ângulo: céu, chão, sol, cenários e cartões. Sem JS ou com movimento reduzido, as setas são links comuns.
 // As contas de repouso (céu, chão, sol) são as mesmas de tools/gera-teatro.js.
@@ -19,13 +19,13 @@
   const lim = (v) => Math.max(0, Math.min(1, v));
   const mix = (a, b, f) => `color-mix(in srgb, ${a} ${((1 - f) * 100).toFixed(1)}%, ${b})`;
   const lerp = (a, b, f) => a + (b - a) * f;
-  const rel = (a, i) => (((((-i * PASSO + a) % 360) + 540) % 360) - 180); // ângulo da fatia i em relação ao topo, entre -180° e 180°
+  const rel = (a, i) => (((((i * PASSO + a) % 360) + 540) % 360) - 180); // ângulo da fatia i em relação ao topo, entre -180° e 180°
 
-  let ang = atual * PASSO, repouso = ang, anima = 0;
+  let ang = -atual * PASSO, repouso = ang, anima = 0; // avançar = anti-horário = ângulo negativo
 
   const poe = (a) => {
     ang = a;
-    const u = (((a / PASSO) % N) + N) % N, i = Math.floor(u), f = u - i, j = (i + 1) % N;
+    const u = ((((-a) / PASSO) % N) + N) % N, i = Math.floor(u), f = u - i, j = (i + 1) % N;
     r.style.setProperty("--ceu", mix(CEU[i], CEU[j], f));
     // chão: some e volta junto com o Início (que é só a logo); entre os demais, passa de uma cor à outra
     const cor = i === 0 ? SOLO[1] : i === 4 ? SOLO[4] : mix(SOLO[i], SOLO[j], f);
@@ -57,7 +57,7 @@
   const vai = (alvo) => {
     cancelAnimationFrame(anima);
     const a0 = ang, dur = calmo ? 0 : 1100 * Math.max(0.4, Math.abs(alvo - a0) / PASSO), t0 = performance.now();
-    const fim = () => { poe(alvo); const i = Math.round(alvo / PASSO); if (((i % N) + N) % N !== atual) abre(i); else repouso = alvo; };
+    const fim = () => { poe(alvo); const i = Math.round(-alvo / PASSO); if (((i % N) + N) % N !== atual) abre(i); else repouso = alvo; };
     if (!dur) return fim();
     const passo = (agora) => {
       const p = Math.min(1, (agora - t0) / dur), e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
@@ -70,11 +70,11 @@
   q(".roda-seta").forEach((s) => s.addEventListener("click", (e) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; // abrir em outra aba segue o link
     e.preventDefault();
-    vai(repouso + Number(s.dataset.giro) * PASSO);
+    vai(repouso - Number(s.dataset.giro) * PASSO); // seta da direita (+1): anti-horário
   }));
-  addEventListener("pageshow", (e) => { if (e.persisted) { cancelAnimationFrame(anima); repouso = atual * PASSO; poe(repouso); } }); // voltar do navegador
+  addEventListener("pageshow", (e) => { if (e.persisted) { cancelAnimationFrame(anima); repouso = -atual * PASSO; poe(repouso); } }); // voltar do navegador
 
-  // arraste: a roda acompanha o dedo/mouse (para a direita = sentido horário); soltar depois de 1/4 do caminho completa o giro
+  // arraste: a roda acompanha o dedo/mouse (para a esquerda = anti-horário = avançar); soltar depois de 1/4 do caminho completa o giro
   let x0 = null, y0 = 0, id = null, mexeu = false;
   r.addEventListener("pointerdown", (e) => {
     if (e.button !== 0 || e.target.closest("a, button, .roda-card")) return;
