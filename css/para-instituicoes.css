@@ -146,8 +146,7 @@
 /* ── Material para download: capa do catálogo sobre folhas coloridas ── */
 .dl-g{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2rem,5cqi,4.5rem);align-items:center}
 .dl-txt .lead{margin:1rem 0 1.5rem}
-.dl-meta{display:flex;flex-wrap:wrap;gap:.625rem;margin:0 0 1.75rem;padding:0;list-style:none}
-.dl-meta li{padding:.375rem 1rem;border:2px solid var(--graphite);border-radius:999px;background:var(--cream);font-family:var(--fd);font-weight:600;font-size:1rem}
+.dlband .btn{--bc:var(--pink)}
 .dl-art{position:relative;width:100%;max-width:34rem;aspect-ratio:1.2;justify-self:center}
 .dl-art .pp{position:absolute;left:var(--x);top:var(--y);width:84%;aspect-ratio:16/9;object-fit:cover;border:2px solid var(--graphite);border-radius:1.25rem;rotate:var(--r)}
 .dl-art .dot{position:absolute;left:var(--l);top:var(--t);width:var(--z);aspect-ratio:1;border-radius:50%}
