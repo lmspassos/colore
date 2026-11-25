@@ -15,7 +15,8 @@
 
   const q = (s) => [...r.querySelectorAll(s)];
   const fatias = q(".fatia").map((el) => ({ el, cena: el.querySelector(".cena"), cams: [...el.querySelectorAll(".cam")].map((c) => [c, parseFloat(c.style.getPropertyValue("--z")) || 0]) }));
-  const cards = q(".roda-card"), chao = r.querySelector(".planeta"), terra = r.querySelector(".terra"), marcos = r.querySelector(".terra.marcos"), sol = r.querySelector(".sol"), ar = r.querySelector(".roda-ar");
+  const cards = q(".roda-card"), chao = r.querySelector(".planeta"), terra = r.querySelector(".terra"), marcos = r.querySelector(".terra.marcos"), sol = r.querySelector(".sol"), nuvens = q(".roda-ar .nv");
+  const nx = (x0, a) => ((((x0 + 20 + (a / 360) * 140) % 140) + 140) % 140) - 20;
   const lim = (v) => Math.max(0, Math.min(1, v));
   const mix = (a, b, f) => `color-mix(in srgb, ${a} ${((1 - f) * 100).toFixed(1)}%, ${b})`;
   const lerp = (a, b, f) => a + (b - a) * f;
@@ -37,7 +38,8 @@
     sol.style.setProperty("--x", lerp(s0[0], s1[0], f).toFixed(2) + "%");
     sol.style.setProperty("--y", lerp(s0[1], s1[1], f).toFixed(2) + "%");
     sol.style.opacity = lerp(s0[2], s1[2], f).toFixed(3);
-    ar.style.translate = `${(Math.sin((a * Math.PI) / 180) * 18).toFixed(2)}vw 0`;
+    // nuvens: deslizam para a esquerda junto com a roda; 360° = uma volta de 140% de largura, então o loop não dá salto e o reinício acontece fora da tela
+    nuvens.forEach((n, k) => n.style.setProperty("--x", nx(Number(n.dataset.x), a).toFixed(2) + "%"));
     fatias.forEach((x, n) => {
       const d = rel(a, n), o = lim(1 - Math.abs(d) / PASSO), sn = Math.sin((d * Math.PI) / 180);
       x.el.style.rotate = d.toFixed(3) + "deg";

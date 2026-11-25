@@ -22,7 +22,8 @@ const sol = (u) => { const i = Math.min(4, Math.floor(u)), f = u - i; return SOL
 
 const seta = (cl, p, g) => `<a class="roda-seta ${cl}" href="${p.url}" data-giro="${g}" aria-label="Ir para ${p.nome}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${cl === "ant" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}"></path></svg></a>`;
 const boca = `<div class="boca" aria-hidden="true"><div class="bambo"></div><div class="cort esq"><i></i></div><div class="cort dir"><i></i></div><div class="piso"></div></div>`;
-const nuvem = (x, y, w) => `<span class="nv" style="--x:${x}%;--y:${y}%;--w:${w}%"></span>`;
+const nx = (x0, a) => ((((x0 + 20 + (a / 360) * 140) % 140) + 140) % 140) - 20; // igual a js/roda.js
+const nuvem = (x, y, w, a) => `<span class="nv" data-x="${x}" style="--x:${nx(x, a).toFixed(2)}%;--y:${y}%;--w:${w}%"></span>`;
 const cenas = [`<div class="teatro-logo">${P("logo.html")}</div>`, P("cena-1-exposicao.html"), P("cena-2-instituicoes.html"), P("cena-3-educadores.html"), P("cena-4-contato.html")];
 
 function teatro(k) {
@@ -45,7 +46,7 @@ function teatro(k) {
   const soloOp = k === 0 ? 0 : 1, soloCor = SOLO[k === 0 ? 1 : k];
   const ant = PAGINAS[(k + N - 1) % N], prox = PAGINAS[(k + 1) % N];
   return `<section class="roda" data-pagina="${k}"${k ? ' aria-labelledby="h-roda"' : ' aria-label="Colorê"'} style="--ceu:${CEU[k]}">
-          <div class="roda-ar" aria-hidden="true">${nuvem(12, 24, 12)}${nuvem(46, 12, 10)}${nuvem(76, 34, 13)}</div>
+          <div class="roda-ar" aria-hidden="true">${nuvem(12, 24, 12, A)}${nuvem(46, 12, 10, A)}${nuvem(76, 34, 13, A)}</div>
           <div class="sol" aria-hidden="true" style="--x:${sx}%;--y:${sy}%;opacity:${so}"><span class="raios"></span><span class="s"><b class="face"></b></span></div>
           <div class="roda-w" aria-hidden="true"><div class="planeta" style="rotate:${A}deg"><div class="terra" style="--base:${soloCor};opacity:${soloOp}"></div><div class="terra marcos" style="opacity:${soloOp}">${P("marcos.html")}</div></div>${fatias}</div>
           ${boca}
