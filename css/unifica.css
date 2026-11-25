@@ -1,19 +1,19 @@
 /* Acabamento chapado (referência: Relatório de Desenvolvimento, cap. 4): círculos, fotos e cartões coloridos sem contorno grafite
    e sem sombra dura. Fica contorno só onde ele é função: campos de formulário, botões, FAQ, foco, tracejados de "arraste aqui".
-   Carregado por último nas páginas Início, A exposição 2, Para instituições 2, Para educadores 2 e Contato 2. */
+   Carregado por último nas páginas Início, A exposição, Para instituições, Para educadores e Contato. */
 
 /* cartões coloridos e de papel */
 .rev-card, .gcard, .how-card, .ed-pilha li, .dir2, .roda-card, .panel2, .mixer { border: 0; box-shadow: none; }
 /* círculos numerados, ícones e marcos */
 .gcard i, .stops li i, .trk b, .hstep .num, .infra .ico, .ed-marcos b, .c2-priv .ico, .dir2 .selo, .side-h > span::after, .s3 .g2 { border: 0; }
-/* personagens de Contato 2: círculo chapado, só os traços do rosto em grafite */
+/* personagens de Contato: círculo chapado, só os traços do rosto em grafite */
 .masc, .bola, .mao { border: 0; }
 /* fotos: sem sombra dura (o anel creme/papel fica, como nos godês) */
 .fl.ph, .polas img, .ed-mat .mat { box-shadow: none; }
 /* hover/foco: sem sombra dura, o movimento (subir/girar) já avisa */
 .dlband .btn:hover, .end .btn:hover, .conc-dots li:hover, .conc-dots li:active, .conc-dots li.toque, .st:hover, .st:focus-visible,
 .chip.bolha span, .chip.bolha input:checked + span, .roda-seta { box-shadow: none; }
-/* teatro de papel (Para instituições 2 e Para educadores 2) */
+/* teatro de papel (Para instituições e Para educadores) */
 .terra, .s, .marco b::after, .lant b, .cort.esq, .cort.dir, .cort i { border-color: transparent; box-shadow: none; }
 .terra, .s, .marco b::after, .lant b { border-width: 0; }
 .cort.esq { border-right-width: 0; } .cort.dir { border-left-width: 0; }
@@ -22,7 +22,7 @@
 .arco .s.pg, .arco .arbusto { box-shadow: none; }
 .s.desenho { filter: none; }
 .s.desenho :is(path, rect, circle):not([fill=none]) { stroke: none; }
-/* A exposição 2: discos dos objetivos e cartão do título */
+/* A exposição: discos dos objetivos e cartão do título */
 .objs:not(.descobrem) .obj, .objs:not(.descobrem) .obj i { border: 0; }
 .stage-card .d1 { white-space: nowrap; }
 /* nuvens do teatro: chapadas, sem sombra */

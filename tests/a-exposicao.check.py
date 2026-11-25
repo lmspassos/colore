@@ -1,7 +1,7 @@
-# Verificação da página /a-exposicao-2/: sem erro de script, sem rolagem horizontal, títulos mantêm o texto, baralho montado.
-# Uso: servir a pasta do projeto (python3 -m http.server 8793) e rodar `python3 tests/a-exposicao-2.check.py`.
+# Verificação da página /a-exposicao/: sem erro de script, sem rolagem horizontal, títulos mantêm o texto, baralho montado.
+# Uso: servir a pasta do projeto (python3 -m http.server 8793) e rodar `python3 tests/a-exposicao.check.py`.
 from playwright.sync_api import sync_playwright
-URL = "http://localhost:8793/a-exposicao-2/"
+URL = "http://localhost:8793/a-exposicao/"
 with sync_playwright() as p:
     b = p.chromium.launch(args=["--no-sandbox"])
     for w, h in ((1440, 900), (390, 844)):

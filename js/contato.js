@@ -1,4 +1,4 @@
-// Contato 2: título em letras soltas e mascote que acompanha o formulário.
+// Contato: título em letras soltas e mascote que acompanha o formulário.
 // Sem JS: o título fica inteiro e o mascote fica parado.
 (() => {
   // título letra a letra (o aria-label mantém a leitura como frase)

@@ -48,3 +48,77 @@
 /* sem JS os três momentos aparecem em lista e as abas somem */
 html:not(.js) .venn{display:none}
 html:not(.js) .phase+.phase{margin-top:1.75rem}
+/* Para educadores: o outro lado da roda. Usa as peças de para-instituicoes.css (abertura .ih, revelação .rev, títulos .big)
+   e acrescenta: verbos que caem e se empilham, linha do tempo Antes/Durante/Depois presa na tela, fotos em leque e materiais em cartão.
+   Sem suporte a animação ligada à rolagem (ou com menos movimento), tudo aparece no estado final, empilhado. */
+
+/* ── Proposta pedagógica: os verbos caem e formam uma pilha ── */
+.ed-ped-g { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: clamp(2rem, 6cqi, 6rem); align-items: center; }
+.ed-ped-a { display: flex; flex-direction: column; gap: 1.25rem; }
+.ed-ped-a .kicker { margin: 0; }
+.ed-pilha { display: flex; flex-direction: column; align-items: center; padding-block: 1rem; }
+.ed-pilha li { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: clamp(4rem, 7cqi, 5.5rem); margin-top: -.5rem; padding: .75rem clamp(1.5rem, 3cqi, 2.5rem); background: var(--c); border: 2px solid var(--graphite); border-radius: 999px; box-shadow: 0 .4rem 0 var(--graphite); font-family: var(--fd); font-weight: 700; font-size: clamp(1.375rem, 2.8cqi, 2.25rem); line-height: 1; translate: var(--x) 0; rotate: var(--r); transition: rotate .4s var(--ease), scale .4s var(--ease); }
+.ed-pilha li:is(:hover, .toque) { rotate: 0deg; scale: 1.06; z-index: 2; }
+@container site (max-width: 53.75rem) { .ed-ped-g { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Relação com a aprendizagem: mesma revelação por círculos de instituições, com cartão rosa ── */
+.ed-rev .rev-card { background: var(--pink); }
+
+/* ── A visita: Antes, durante e depois ── */
+.ed-vis { position: relative; padding-block: clamp(3.5rem, 6cqi, 6rem); }
+.ed-vis-h { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+.ed-vis-h .kicker { margin: 0; }
+.ed-marcos { position: relative; display: flex; justify-content: center; gap: clamp(2.5rem, 10cqi, 8rem); margin: .5rem 0 clamp(1.5rem, 3cqi, 2.5rem); }
+.ed-marcos::before { content: ""; position: absolute; left: 1.75rem; right: 1.75rem; top: 1.75rem; border-top: 3px dashed var(--graphite); }
+.ed-marcos li { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .5rem; font-family: var(--fd); font-weight: 600; }
+.ed-marcos b { display: grid; place-items: center; width: 3.5rem; aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--graphite); background: var(--c); font-size: 1.375rem; }
+.ed-fases { display: grid; gap: 1.75rem; }
+.ed-fase .phase { margin-top: 0; }
+
+/* ── Cores para experimentar e materiais ── */
+.ed-cores .big { margin-bottom: 0; }
+.ed-mat .mat { border-style: solid; background: var(--paper); box-shadow: 0 .5rem 0 var(--graphite); }
+
+/* ── Movimento ligado à rolagem ── */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* cada verbo cai de cima girando e assenta sobre o anterior */
+    .ed-pilha li { animation: ed-cai linear both; animation-timeline: view(); animation-range: entry calc(10% + var(--i) * 12%) entry calc(60% + var(--i) * 12%); }
+    .ed-ped .big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+    /* fotos abrem em leque */
+    .ed-cores .gt { animation: leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
+    .ed-cores .gt:nth-child(1) { --i: 0; } .ed-cores .gt:nth-child(2) { --i: 1; } .ed-cores .gt:nth-child(3) { --i: 2; }
+    .ed-cores .big, .cta .big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+    /* materiais: o cartão sobe girando e assenta reto sobre o azul */
+    .ed-mat .mat { animation: assenta linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+    .ed-vis-h .big { animation: rv linear both; animation-timeline: view(); animation-range: entry 0% cover 25%; }
+
+    /* tela larga e alta: a seção fica presa e os três momentos passam de lado, com pausa em cada um */
+    @container site (min-width: 53.76rem) {
+      @media (min-height: 54rem) {
+        .ed-vis { height: 330svh; padding: 0; view-timeline: --vis block; }
+        .ed-vis-st { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; overflow: clip; padding-block: 1rem; }
+        .ed-fases { display: flex; gap: 0; width: 300%; animation: ed-anda linear both; animation-timeline: --vis; animation-range: contain 0% contain 100%; }
+        .ed-fase { flex: 0 0 calc(100% / 3); padding-inline: clamp(1.25rem, 4.5cqi, 4rem); }
+        .ed-fase .phase { max-width: 70rem; margin-inline: auto; animation: none; }
+        /* tudo precisa caber numa tela: título e fases mais compactos */
+        .ed-vis .big { font-size: clamp(2.25rem, 4.2cqi, 3.75rem); }
+        .ed-marcos { margin-bottom: 1.25rem; }
+        .ed-fase .phase-top, .ed-fase .phase-body { padding-block: clamp(1.125rem, 2.2cqi, 1.75rem); }
+        .ed-marcos li:nth-child(2) b { animation: ed-acende linear both; animation-timeline: --vis; animation-range: contain 28% contain 38%; }
+        .ed-marcos li:nth-child(3) b { animation: ed-acende linear both; animation-timeline: --vis; animation-range: contain 62% contain 72%; }
+        .ed-marcos::after { content: ""; position: absolute; left: 1.75rem; right: 1.75rem; top: calc(1.75rem - 2px); height: 6px; border-radius: 3px; background: var(--graphite); transform-origin: left; animation: ed-linha linear both; animation-timeline: --vis; animation-range: contain 5% contain 72%; }
+      }
+    }
+  }
+}
+@keyframes ed-cai { from { translate: var(--x) -60vh; rotate: calc(var(--r) * -6); opacity: 0; } 60% { opacity: 1; } }
+@keyframes ed-anda { 0%, 22% { translate: 0 0; } 38%, 58% { translate: calc(-100% / 3) 0; } 74%, 100% { translate: calc(-200% / 3) 0; } }
+@keyframes ed-acende { from { background: var(--paper); scale: .8; } }
+@keyframes ed-linha { from { scale: 0 1; } }
+
+/* tritanopia: o amarelo vira grafite; texto sobre o verbo amarelo passa a creme */
+:root[data-tema=tritanopia] .ed-pilha li.c-ye, :root[data-tema=tritanopia] .ed-marcos li.c-ye b { color: var(--cream); }
+:root[data-tema=acromatopsia] :is(.ed-pilha li, .ed-marcos b) { border-color: var(--graphite); }
+/* abertura: frase mais longa que a de instituições, título um pouco menor */
+.ed-ih .ih-t { font-size: clamp(2.75rem, 7.5cqi, 7rem); max-width: 14ch; }

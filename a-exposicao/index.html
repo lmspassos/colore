@@ -9,6 +9,7 @@
     <title>A exposição · Colorê</title>
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/a-exposicao.css" />
+    <link rel="stylesheet" href="/css/unifica.css" />
     <script src="/js/base.js" defer></script>
     <script src="/js/orb.js" defer></script>
     <script src="/js/a-exposicao.js" defer></script>
@@ -23,14 +24,10 @@
           <nav class="nav-wrap" id="menu" aria-label="Principal">
             <ul class="nav">
               <li><a href="/" class="c-or"><i></i>Início</a></li>
-              <li><a href="/a-exposicao" class="c-ye" aria-current="page"><i></i>A exposição</a></li>
-              <li><a href="/a-exposicao-2" class="c-or"><i></i>A exposição 2</a></li>
+              <li><a href="/a-exposicao" class="c-or" aria-current="page"><i></i>A exposição</a></li>
               <li><a href="/para-instituicoes" class="c-bl"><i></i>Para instituições</a></li>
-              <li><a href="/para-instituicoes-2" class="c-bl"><i></i>Para instituições 2</a></li>
               <li><a href="/para-educadores" class="c-pk"><i></i>Para educadores</a></li>
-              <li><a href="/para-educadores-2" class="c-pk"><i></i>Para educadores 2</a></li>
               <li><a href="/contato" class="c-gr"><i></i>Contato</a></li>
-              <li><a href="/contato-2" class="c-gr"><i></i>Contato 2</a></li>
             </ul>
           </nav>
           <div class="tools">
@@ -82,38 +79,89 @@
         </div>
       </header>
       <main id="conteudo" data-pagefind-body>
-        <section class="phero bg-yellow" data-orb aria-labelledby="h-top">
-          <div class="wrap phero-g">
-            <div>
-              <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>A exposição</span></p>
-              <h1 class="d1" id="h-top">A exposição</h1>
-              <p class="statement" style="margin-top:1.375rem;max-width:22ch">Um percurso para olhar, misturar e conversar sobre cores e percepção.</p>
-              <div class="btns" style="margin-top:2.125rem">
-                <a class="btn c-cr" href="#estacoes">Ver o percurso <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
-              </div>
+        <div class="intro-wrap" data-intro>
+          <section class="intro bg-cream" aria-labelledby="h-intro">
+            <div class="intro-in">
+              <img class="intro-logo" src="/_astro/logo-grafite.CC9-Zpy-.svg" alt="" width="205" height="64" />
+              <h2 class="intro-h" id="h-intro">Cada pessoa vê o mundo do seu jeito</h2>
+              <p class="intro-sub">Colorê · exposição educativa e itinerante sobre cores e percepção</p>
             </div>
-            <div class="orb" aria-hidden="true">
-              <span class="c" style="left:6%;top:2%;width:62%;height:62%;background:var(--cream);z-index:1;--d:14"></span>
-              <span class="c" style="left:40%;top:34%;width:56%;height:56%;background:var(--pink);z-index:2;mix-blend-mode:multiply;--d:-20"></span>
-              <span class="c" style="left:0;top:58%;width:34%;height:34%;background:var(--orange);z-index:4;--d:30"></span>
-              <span class="c" style="left:74%;top:4%;width:18%;height:18%;background:var(--blue);z-index:4;--d:-34"></span>
-              <div class="ph" style="left:16%;top:12%;width:50%;height:50%;z-index:3;--d:6"><img src="/img/est2-aventais.webp" alt="" width="700" height="700" /></div>
-              <svg class="tri" style="left:58%;top:70%;width:18%;z-index:5;--d:-40;--c:var(--graphite)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+            <i class="cloud cloud-bg" style="left:4%;top:14%;width:16%" aria-hidden="true"></i>
+            <i class="cloud cloud-bg cb2" style="right:5%;top:26%;width:14%" aria-hidden="true"></i>
+            <i class="cloud cloud-bg" style="right:14%;bottom:10%;width:20%" aria-hidden="true"></i>
+            <span class="intro-dot" style="left:10%;bottom:16%;width:7%;background:var(--orange)" aria-hidden="true"></span>
+            <span class="intro-dot" style="right:8%;top:10%;width:5%;background:var(--green)" aria-hidden="true"></span>
+          </section>
+        
+        <section class="stage bg-yellow" aria-labelledby="h-top">
+          <div class="stage-art" aria-hidden="true">
+            <span class="ring r1 bg-blue" style="--k:0;--d:50"></span>
+            <span class="ring r2 bg-pink" style="--k:1;--d:-70"></span>
+            <span class="ring r3" style="--k:2;--d:90;background:var(--paper)"></span>
+            <span class="ring r4" style="--k:3;--d:-130"><img src="/img/est2-aventais.webp" alt="" width="700" height="700" /></span>
+            <span class="sa" style="left:-6%;top:34%;width:22%;background:var(--orange)"><b class="face"></b></span>
+            <span class="sa" style="left:86%;top:30%;width:20%;background:var(--green)"><b class="face"></b></span>
+            <svg class="tri" style="position:absolute;left:73%;top:8%;width:7%;--c:var(--graphite)" viewBox="0 0 100 70" aria-hidden="true"><path d="M40 8 Q50 -3 60 8 L95 48 Q104 62 88 64 L12 64 Q-4 62 5 48 Z"></path></svg>
+            <i class="cloud" style="left:17%;top:6%;width:13%"></i>
+            <i class="cloud" style="left:70%;top:70%;width:14%"></i>
+          </div>
+          <div class="stage-card bg-orange">
+            <p class="crumb"><a href="/">Início</a><span aria-hidden="true">·</span><span>A exposição</span></p>
+            <h1 class="d1" id="h-top">A exposição</h1>
+            <span class="tag" style="--c:var(--graphite)"><i></i>Crianças de 4 a 8 anos</span>
+            <p class="stage-sub">Um percurso para olhar, misturar e conversar sobre cores e percepção.</p>
+            <a class="down" href="#conceito" aria-label="Descer para o conceito"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a>
+          </div>
+        </section>
+        </div>
+        <div class="sc" style="--c:var(--yellow)" aria-hidden="true"></div>
+
+        <section class="band conc2" aria-labelledby="h-conc">
+          <div class="wrap">
+            <div class="conc-in rv" id="conceito">
+              <p class="kicker c-ye" id="h-conc"><i></i>O conceito</p>
+              <p class="statement">A Colorê é uma exposição educativa, artística, interativa e itinerante para crianças de 4 a 8 anos. Mais do que ensinar a identificar cores, desperta a curiosidade sobre as diferentes formas de perceber, interpretar e representar o mundo.</p>
+              <ul class="conc-dots" data-toque aria-label="A exposição em cinco palavras">
+                <li class="bg-orange" style="--n:0;--rt:-7deg;--wy:1.5rem">educativa<b class="face" aria-hidden="true"></b></li>
+                <li class="bg-yellow" style="--n:1;--rt:5deg;--wy:-1rem">artística<b class="face" aria-hidden="true"></b></li>
+                <li class="bg-blue" style="--n:2;--rt:-4deg;--wy:2rem">interativa<b class="face" aria-hidden="true"></b></li>
+                <li class="bg-green" style="--n:3;--rt:8deg;--wy:-.5rem">itinerante<b class="face" aria-hidden="true"></b></li>
+                <li class="bg-pink" style="--n:4;--rt:-6deg;--wy:1rem">de 4 a 8 anos<b class="face" aria-hidden="true"></b></li>
+              </ul>
             </div>
           </div>
         </section>
-        <div class="sc" style="--c:var(--yellow)" aria-hidden="true"></div>
 
-        <section class="band" aria-labelledby="h-conc">
-          <div class="wrap">
-            <div class="concept rv">
-              <p class="kicker c-ye" id="h-conc"><i></i>O conceito</p>
-              <p class="statement">A Colorê é uma exposição educativa, artística, interativa e itinerante para crianças de 4 a 8 anos. Mais do que ensinar a identificar cores, desperta a curiosidade sobre as diferentes formas de perceber, interpretar e representar o mundo.</p>
+        <section class="band side" aria-labelledby="h-side">
+          <span class="stk stk-dots side-dots" aria-hidden="true"></span>
+          <div class="wrap side-g">
+            <div class="side-l"><span class="stk stk-sun side-sun" aria-hidden="true"><b class="face"></b></span><h2 class="side-h" id="h-side"><span class="c-or">Descobrir</span> <span class="c-pk">Transformar</span> <span class="c-bl">Perceber</span> <span class="c-gr">Representar</span> <span class="c-ye">Criar</span></h2></div>
+            <div class="side-r">
+              <p class="lead rv">Em estações de interação acompanhadas por mediadores, as crianças exploram materiais, observam fenômenos e criam suas próprias formas de representação.</p>
+              <a class="btn c-bl rv" href="#estacoes">Ver o percurso <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <div class="polas" data-toque>
+                <img class="po-a" src="/img/est1-luz-e-cor.webp" alt="Ambientação da Estação 1: crianças desenham em volta de uma mesa redonda com círculo cromático, enquanto outras exploram acetatos coloridos e uma projeção de luz." width="1800" height="1012" loading="lazy" />
+                <img class="po-b" src="/img/est1-projecao.webp" alt="Ambientação da Estação 1: arco translúcido recebendo a projeção de luz colorida, com filtros pendurados e a marca colorê na parede." width="1800" height="1012" loading="lazy" />
+              </div>
             </div>
-            <div class="origin bg-blue rv" id="sobre" data-olhos>
+          </div>
+        </section>
+        <div class="gword" aria-hidden="true" data-pagefind-ignore><span>descobrir</span></div>
+        <figure class="pano rv">
+          <img src="/img/est2-criancas-pintando.webp" alt="Ambientação da Estação 2: crianças de uniforme misturam tintas e cores sobre papéis, em mesas laranja com bancos coloridos." width="1800" height="1012" loading="lazy" />
+          <span class="sa" style="left:-5%;bottom:-24%;width:24%;background:var(--orange)"></span>
+          <span class="sa" style="left:44%;bottom:-10%;width:12%;background:var(--pink)"></span>
+          <span class="sa" style="right:5%;bottom:-12%;width:17%;background:var(--blue)"><b class="face"></b></span>
+          <figcaption class="tag" style="--c:var(--graphite)"><i></i>Imagem de referência</figcaption>
+        </figure>
+        <div class="gword g2" aria-hidden="true" data-pagefind-ignore><span>é colorir</span></div>
+
+        <div class="sc up" style="--c:var(--blue)" aria-hidden="true"></div>
+        <section class="band chap bg-blue" id="sobre" aria-labelledby="h-orig">
+          <div class="wrap origin2 rv" data-olhos>
               <div>
                 <p class="kicker c-cr"><i></i>Origem</p>
-                <h2 class="d2">De onde surgiu a ideia</h2>
+                <h2 class="d2" id="h-orig">De onde surgiu a ideia</h2>
                 <p class="lead" style="margin-top:1.375rem">O ponto de partida do projeto é uma reflexão sobre o daltonismo e as diferentes formas de perceber as cores. O daltonismo interfere na maneira como algumas pessoas diferenciam certas cores, e isso abre uma pergunta mais ampla: será que todas as pessoas enxergam e interpretam o mundo da mesma maneira?</p>
                 <p class="lead" style="margin-top:1rem">Por isso, a Colorê <strong>não é uma exposição sobre daltonismo</strong>. Ele é a provocação que originou a investigação. A exposição trata de cores, percepção e expressão, e mostra às crianças que existem várias maneiras de observar, experimentar e representar o que enxergamos.</p>
               </div>
@@ -124,33 +172,43 @@
                 </div>
                 <p class="eyes-q">Será que todos enxergamos da mesma maneira?</p>
               </div>
-            </div>
           </div>
         </section>
 
-        <div class="sc up" style="--c:var(--pink)" aria-hidden="true"></div>
-        <section class="band prop2 bg-pink" id="proposito" aria-labelledby="h-prop">
+        <div class="sc up" style="--c:var(--yellow)" aria-hidden="true"></div>
+        <section class="band prop2 bg-yellow" id="proposito" aria-labelledby="h-prop">
+          <span class="stk stk-dots" aria-hidden="true"></span>
           <div class="wrap prop2-g">
             <div class="rv">
               <p class="kicker c-ink" id="h-prop"><i></i>Propósito</p>
               <p class="d2">Transformar a descoberta das cores em uma experiência de aprendizagem, experimentação e expressão.</p>
             </div>
+            <div class="prop2-r">
+            <div class="collage" data-toque>
+              <img class="co-a" src="/img/est2-menino-pintando.webp" alt="Ambientação da Estação 2: menino de uniforme pinta sentado em um banco rosa, perto da marca 02 no piso." width="550" height="550" loading="lazy" />
+              <img class="co-b" src="/img/est1-menina-desenhando.webp" alt="Ambientação da Estação 1: menina sorri enquanto desenha à mesa." width="620" height="380" loading="lazy" />
+            </div>
             <p class="lead rv">A Colorê acredita que aprender também é experimentar, questionar, errar e tentar de novo. Não existe uma única maneira correta de perceber ou representar as cores: cada criança constrói a sua relação com o que observa.</p>
+            </div>
           </div>
         </section>
-        <div class="sc" style="--c:var(--pink)" aria-hidden="true"></div>
+        <div class="sc" style="--c:var(--yellow)" aria-hidden="true"></div>
 
         <section class="band" aria-labelledby="h-obj">
+          <span class="stk stk-sun" aria-hidden="true"><b class="face"></b></span>
           <div class="wrap">
-            <h2 class="d2 rv" id="h-obj">Objetivos da experiência</h2>
+            <div class="obj-block">
+          <i class="cloud cloud-bg" style="left:-6%;top:22%;width:30%" aria-hidden="true"></i>
+          <i class="cloud cloud-bg cb2" style="right:-8%;top:48%;width:34%" aria-hidden="true"></i>
+          <i class="cloud cloud-bg" style="left:18%;bottom:4%;width:26%" aria-hidden="true"></i><h2 class="d2 rv" id="h-obj">Objetivos da experiência</h2>
             <ul class="objs">
-              <li class="obj c-or rv"><i></i>Estimular a curiosidade e a investigação infantil.</li>
-              <li class="obj c-ye rv"><i></i>Ampliar as possibilidades de percepção e interpretação visual.</li>
-              <li class="obj c-bl rv"><i></i>Incentivar a experimentação artística e a criação livre.</li>
-              <li class="obj c-pk rv"><i></i>Reconhecer as diferentes formas de perceber o mundo.</li>
-              <li class="obj c-gr rv"><i></i>Aproximar a arte dos processos de aprendizagem na infância.</li>
-              <li class="obj c-or rv"><i></i>Valorizar a diversidade e a expressão individual.</li>
-            </ul>
+              <li class="obj c-or rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="fy" cx="52" cy="12" r="3.5"/><circle class="fg" cx="10" cy="50" r="3"/><path class="fo" d="M38 41l5-5 15 15a3.6 3.6 0 0 1-5 5z"/><circle class="fb" cx="27" cy="27" r="17"/><circle class="fw" cx="21" cy="21" r="4.5" stroke-width="0"/></svg></i><strong class="ot">Estimular</strong> a curiosidade e a investigação infantil.</li>
+              <li class="obj c-ye rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><path class="fw" d="M4 32Q32 6 60 32Q32 58 4 32Z"/><circle class="fb" cx="32" cy="32" r="12"/><circle class="fk" cx="32" cy="32" r="5.5"/><circle class="fw" cx="36" cy="28" r="2.2" stroke-width="0"/><circle class="fy" cx="10" cy="12" r="3.5"/><circle class="fp" cx="54" cy="12" r="3.5"/><circle class="fg" cx="32" cy="8" r="3.5"/></svg></i><strong class="ot">Ampliar</strong> as possibilidades de percepção e interpretação visual.</li>
+              <li class="obj c-bl rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="fb" cx="48" cy="52" r="5"/><circle class="fg" cx="57" cy="41" r="3.2"/><circle class="fy" cx="11" cy="14" r="3.5"/><g transform="rotate(40 32 32)"><rect class="fo" x="28" y="4" width="8" height="26" rx="4"/><rect class="fk" x="27" y="29" width="10" height="9"/><path class="fp" d="M27 38h10c0 9-2 15-5 20-3-5-5-11-5-20z"/></g></svg></i><strong class="ot">Incentivar</strong> a experimentação artística e a criação livre.</li>
+              <li class="obj c-pk rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="fb" cx="32" cy="32" r="23"/><path class="fg" d="M17 22q7-9 15-5 3 4-3 8-6 2-7 9-6-3-5-12z"/><path class="fg" d="M37 38q7-3 10 3-2 9-9 8z"/><circle class="fw" cx="22" cy="14" r="3" stroke-width="0"/><circle class="fy" cx="54" cy="10" r="3.5"/></svg></i><strong class="ot">Reconhecer</strong> as diferentes formas de perceber o mundo.</li>
+              <li class="obj c-gr rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="fb" cx="32" cy="9" r="4.5"/><circle class="fo" cx="46" cy="14" r="3.2"/><circle class="fp" cx="18" cy="14" r="3.2"/><path class="fy" d="M5 24q14-4 27 3v28q-13-7-27-3z"/><path class="fg" d="M59 24q-14-4-27 3v28q13-7 27-3z"/></svg></i><strong class="ot">Aproximar</strong> a arte dos processos de aprendizagem na infância.</li>
+              <li class="obj c-or rv"><i><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="fb" cx="11" cy="14" r="4.5"/><circle class="fy" cx="54" cy="12" r="4"/><circle class="fg" cx="55" cy="50" r="3.5"/><path class="fp" d="M32 56C6 40 6 14 22 14c5 0 8 3 10 8 2-5 5-8 10-8 16 0 16 26-10 42z"/><circle class="fw" cx="21" cy="24" r="4" stroke-width="0"/></svg></i><strong class="ot">Valorizar</strong> a diversidade e a expressão individual.</li>
+            </ul></div>
 
             <div style="margin-top:clamp(5rem,10cqi,8.75rem)">
               <p class="kicker c-gr"><i></i>Base conceitual</p>
@@ -199,7 +257,7 @@
           <div class="wrap exp-g">
             <div class="rv">
               <p class="kicker c-ye"><i></i>A experiência</p>
-              <h2 class="statement" id="h-exp">A criança não é só visitante: <span>é participante.</span></h2>
+              <h2 class="statement side-h2" id="h-exp">A criança não é só visitante: <span>é participante.</span></h2>
               <p class="lead muted">Ela observa, investiga, testa possibilidades e cria, com liberdade, em um ambiente inspirado em museus interativos e ateliês de experimentação. Não há resposta certa nem resultado perfeito, e o processo vale tanto quanto o que é produzido.</p>
             </div>
             <div class="arch rv"><img src="/img/est1-painel-tatil.webp" alt="Ambientação da Estação 1: crianças tocam um painel de texturas coloridas, sob a marca colorê, ao lado de um arco amarelo." width="1800" height="1012" loading="lazy" /></div>
@@ -257,7 +315,8 @@
                 <p class="muted" style="margin-top:.75rem">Cada estação tem quatro pontos de interação. TODO(conteudo): descrição detalhada de cada atividade.</p>
               </div>
             </div>
-            <div class="concept rv" style="margin-top:clamp(3rem,6cqi,5.5rem)">
+            <div class="panel2 rv">
+            <div class="concept rv">
               <p class="kicker c-gr"><i></i>O que as crianças descobrem e desenvolvem</p>
               <ul class="objs descobrem">
                 <li class="obj c-ye"><i></i>Percepção visual e curiosidade.</li>
@@ -266,32 +325,34 @@
                 <li class="obj c-or"><i></i>O reconhecimento de que existem diferentes formas de perceber o mundo.</li>
               </ul>
             </div>
-            <div class="concept rv" style="margin-top:clamp(3rem,6cqi,5.5rem)">
+            <div class="concept rv">
               <p class="kicker c-bl"><i></i>A mediação</p>
               <p class="lead">Cada estação conta com um mediador, que acompanha a experiência, apresenta as possibilidades de interação e estimula perguntas. A mediação não é aula nem demonstração de respostas corretas: respeita a autonomia e as diferentes interpretações de cada criança.</p>
             </div>
-            <div class="concept rv" id="metodologia" style="margin-top:clamp(3rem,6cqi,5.5rem)">
+            <div class="concept rv" id="metodologia">
               <p class="kicker c-pk"><i></i>Proposta educativa</p>
               <p class="lead">A criança é protagonista da própria aprendizagem. A Colorê não é uma sala de aula, nem uma brinquedoteca, nem uma oficina de pintura convencional: está mais perto de uma experiência de museu interativo, com estações de exploração, mediação e liberdade de criação. Ninguém precisa produzir algo "correto" ou perfeito, porque o processo e as descobertas valem tanto quanto o resultado.</p>
             </div>
-            <div class="concept rv" style="margin-top:clamp(3rem,6cqi,5.5rem)">
+            <div class="concept rv">
               <p class="kicker c-ye"><i></i>Para quem foi criada</p>
               <div>
                 <p class="lead">Para crianças de 4 a 8 anos, da pré-escola aos primeiros anos do Ensino Fundamental. A Colorê também conversa com educadores, escolas, museus, centros culturais e famílias interessados em oferecer experiências de arte e aprendizagem às crianças.</p>
                 <p class="lead" style="margin-top:1rem">Por ser itinerante, a exposição foi pensada para ser montada em diferentes espaços e instituições.</p>
               </div>
             </div>
-            <div class="concept rv" style="margin-top:clamp(3rem,6cqi,5.5rem)">
+            <div class="concept rv">
               <p class="kicker c-gr"><i></i>A equipe</p>
               <p class="lead">A Colorê foi idealizada e desenvolvida por Eliandra Chimilouski, como projeto de Design (Projeto de Design VII, 2026). TODO(conteudo): demais pessoas e instituições envolvidas.</p>
+            </div>
             </div>
           </div>
         </section>
 
-        <section class="band galband" aria-labelledby="h-gal" style="padding-top:0">
+        <div class="sc up" style="--c:var(--pink)" aria-hidden="true"></div>
+        <section class="band galband bg-pink" aria-labelledby="h-gal">
           <div class="wrap">
             <div class="concept">
-              <p class="kicker c-or"><i></i>Referências visuais</p>
+              <p class="kicker c-ink"><i></i>Referências visuais</p>
               <div>
                 <h2 class="d2" id="h-gal">Galeria da exposição</h2>
                 <p class="muted" style="margin-top:.75rem">Imagens de referência do universo da exposição. A Colorê ainda está em desenvolvimento. Toque para ampliar.</p>
@@ -313,7 +374,8 @@
           </div>
         </section>
 
-        <section class="band dlband" aria-labelledby="h-dl" style="padding-top:0">
+        <div class="sc" style="--c:var(--pink)" aria-hidden="true"></div>
+        <section class="band dlband" aria-labelledby="h-dl">
           <div class="wrap">
             <div class="dl bg-blue rv">
               <div>
@@ -326,10 +388,13 @@
           </div>
         </section>
 
-        <div class="sc up" style="--c:var(--orange)" aria-hidden="true"></div>
-        <section class="band end bg-orange" aria-labelledby="h-end">
+        <div class="sc up" style="--c:var(--green)" aria-hidden="true"></div>
+        <section class="band end bg-green" aria-labelledby="h-end">
+          <i class="cloud cloud-bg" style="right:30%;top:-2%;width:18%;--cl:var(--paper)" aria-hidden="true"></i>
+          <i class="cloud cloud-bg cb2" style="right:4%;top:12%;width:16%;--cl:var(--paper)" aria-hidden="true"></i>
           <div class="wrap end-g">
             <div class="rv">
+              <p class="next"><i></i>Próxima parada</p>
               <h2 class="d1" id="h-end">Descobrir é só o começo.</h2>
               <p class="lead" style="margin:1.5rem 0 2.125rem">A Colorê transforma a curiosidade em experiência e convida cada criança a construir suas próprias relações com as cores.</p>
               <div class="btns">

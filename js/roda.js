@@ -1,4 +1,4 @@
-// Roda (moeda) de Para instituições 2 e Para educadores 2.
+// Roda (moeda) de Para instituições e Para educadores.
 // O giro acontece dentro da mesma página: o outro lado é baixado em segundo plano e, ao girar (seta, arraste com dedo
 // ou mouse, ou voltar do navegador), o cartão troca no meio da volta e o conteúdo, o título e o endereço trocam no fim.
 // Sem JS (ou se o outro lado não carregou) a seta é um link comum para a outra página.

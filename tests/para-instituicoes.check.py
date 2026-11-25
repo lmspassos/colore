@@ -1,7 +1,7 @@
-# Verificação da página /para-instituicoes-2/: sem erro de script, sem rolagem horizontal, módulos presentes, formulário presente.
-# Uso: servir a pasta do projeto (python3 -m http.server 8793) e rodar `python3 tests/para-instituicoes-2.check.py`.
+# Verificação da página /para-instituicoes/: sem erro de script, sem rolagem horizontal, módulos presentes, formulário presente.
+# Uso: servir a pasta do projeto (python3 -m http.server 8793) e rodar `python3 tests/para-instituicoes.check.py`.
 from playwright.sync_api import sync_playwright
-URL = "http://localhost:8793/para-instituicoes-2/"
+URL = "http://localhost:8793/para-instituicoes/"
 with sync_playwright() as p:
     b = p.chromium.launch(args=["--no-sandbox"])
     for w, h in ((1440, 900), (390, 844)):
