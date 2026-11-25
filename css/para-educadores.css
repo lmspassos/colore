@@ -48,7 +48,7 @@
 /* sem JS os três momentos aparecem em lista e as abas somem */
 html:not(.js) .venn{display:none}
 html:not(.js) .phase+.phase{margin-top:1.75rem}
-/* Para educadores: o outro lado da roda. Usa as peças de para-instituicoes.css (abertura .ih, revelação .rev, títulos .big)
+/* Para educadores: segue Para instituições. Usa as peças de para-instituicoes.css (abertura .ih, revelação .rev, títulos .big)
    e acrescenta: verbos que caem e se empilham, linha do tempo Antes/Durante/Depois presa na tela, fotos em leque e materiais em cartão.
    Sem suporte a animação ligada à rolagem (ou com menos movimento), tudo aparece no estado final, empilhado. */
 
