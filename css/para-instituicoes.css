@@ -21,7 +21,7 @@
 
 /* ── Por que receber: círculos que se abrem até virar a foto, cartão sobe por cima ── */
 .rev{position:relative;background:var(--cream)}
-.rev-st{position:relative;min-height:100svh;display:grid;place-items:end center;overflow-x:clip;padding:clamp(6rem,12cqi,10rem) clamp(1.25rem,4.5cqi,4rem) clamp(2rem,5cqi,4rem)}
+.rev-st{position:relative;min-height:100svh;display:grid;place-items:end center;overflow-x:clip;padding:clamp(6rem,12cqi,10rem) var(--gut) clamp(2rem,5cqi,4rem)}
 /* sem recorte vertical: o círculo sobe inteiro por cima do herói, sem borda reta */
 .rev-art{position:absolute;inset:0}
 .rg{position:absolute;left:50%;top:42%;width:150vmax;aspect-ratio:1;margin:-75vmax 0 0 -75vmax;border-radius:50%;background:var(--c)}
@@ -53,7 +53,7 @@
 .iti-in .kicker{margin:0}
 .iti .statement{font-size:clamp(1.75rem,3.4cqi,3rem);line-height:1.15}
 .giant{margin-block:clamp(1rem,3cqi,2.5rem)}
-.giant-t{display:flex;width:max-content;margin-left:4cqi;font-family:var(--fd);font-weight:700;font-size:clamp(6rem,24cqi,22rem);line-height:.9;letter-spacing:-.04em}
+.giant-t{display:flex;width:max-content;margin-left:var(--gut);font-family:var(--fd);font-weight:700;font-size:clamp(6rem,24cqi,22rem);line-height:.9;letter-spacing:-.04em}
 .giant-t b{display:block;color:var(--c);translate:0 var(--y);rotate:var(--r)}
 .stops{position:relative;display:flex;justify-content:space-between;gap:1rem;padding-top:.5rem}
 .stops::before{content:"";position:absolute;left:2.25rem;right:2.25rem;top:2.75rem;border-top:3px dashed var(--graphite)}

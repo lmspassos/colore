@@ -75,7 +75,9 @@ a { color: var(--graphite); text-underline-offset: .2em; }
 :where(.site) ul, :where(.site) ol { margin: 0; padding: 0; list-style: none; }
 
 /* ── Tipografia e botões ── */
-.wrap{width:100%;max-width:1320px;margin:0 auto;padding-inline:clamp(1.25rem,4.5cqi,4rem)}
+/* --gut: distância da borda da tela até a coluna de conteúdo (igual ao .wrap); fotos e enfeites usam o mesmo valor */
+:root{--pad:clamp(1.25rem,4.5cqi,4rem);--gut:max(var(--pad),calc((100cqi - 1320px) / 2 + var(--pad)))}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding-inline:var(--pad)}
 .band{position:relative;padding-block:clamp(3.5rem,6cqi,6rem)}
 .d1,.d2,.d3,.d4{font-family:var(--fd);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin:0;text-wrap:balance}
 .d1{font-size:clamp(2.25rem,4.6cqi,4rem)}
@@ -204,8 +206,6 @@ a { color: var(--graphite); text-underline-offset: .2em; }
 .ring svg{width:100%;height:100%;overflow:visible}
 .ring text{font-family:var(--fd);font-weight:600;font-size:13px;letter-spacing:.02em;fill:var(--graphite)}
 .rot{animation:spin 48s linear infinite}
-.cur{position:absolute;left:0;top:0;transform:translate(-50%,-50%) scale(0);width:8.125rem;height:8.125rem;border-radius:50%;pointer-events:none;mix-blend-mode:multiply;transition:left .18s ease-out,top .18s ease-out,transform .35s var(--ease),background .4s;z-index:1}
-@media (hover:none){.cur{display:none} }
 @keyframes spin{to{transform:rotate(360deg)} }
 .hint{display:inline-flex;align-items:center;gap:0.625rem;font-family:var(--fd);font-weight:500;font-size:0.9375rem;color:var(--graphite-soft)}
 .hint b{width:1.875rem;height:2.875rem;border-radius:999px;border:2px solid var(--graphite);position:relative}
@@ -288,11 +288,41 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 .flinks a i { width: .75rem; height: .75rem; border-radius: 50%; background: var(--hover, var(--c, var(--yellow))); transition: transform .4s var(--ease); flex: none; }
 .flinks a:hover i, .flinks a:focus-visible i { transform: scale(1.7); }
 .flinks a:hover, .flinks a:focus-visible { text-decoration: underline; text-underline-offset: .3125rem; }
-.ftr-dots { display: flex; gap: .625rem; margin-top: 2.5rem; }
-.ftr-dots i { width: 2.125rem; height: 2.125rem; border-radius: 50%; display: block; transition: transform .5s var(--ease); }
-.ftr-dots:hover i:nth-child(odd) { transform: translateY(-.625rem); }
-.ftr-dots:hover i:nth-child(even) { transform: translateY(.5rem); }
-.ftr-b { display: flex; flex-wrap: wrap; gap: .625rem 1.75rem; justify-content: space-between; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(254, 248, 230, .2); font-size: .875rem; color: var(--cream-soft); }
+/* Bichinhos do rodapé. Sem JS ficam em fila; com JS (bichos.js) circulam pelo rodapé todo. */
+.ftr-dots { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.5rem; padding-top: 1rem; }
+.bicho { position: relative; display: block; width: 2.75rem; height: 3.4rem; }
+.bicho s { position: absolute; left: .2rem; right: .2rem; bottom: -.1rem; height: .5rem; border-radius: 50%; background: color-mix(in srgb, var(--cream) 14%, transparent); }
+.bicho b { --g: var(--graphite); position: absolute; left: 0; top: 0; width: 2.75rem; height: 2.75rem; border-radius: 50%; transform-origin: 50% 100%; font-style: normal; font-weight: normal; }
+.bicho b::before, .bicho b::after { content: ""; position: absolute; }
+.bicho b::after { left: calc(50% + var(--lx, 3) * .1rem); top: 58%; translate: -50% 0; }
+.bicho u { position: absolute; top: 2.5rem; width: .34rem; height: .85rem; border-radius: .2rem; background: inherit; transform-origin: 50% 0; rotate: calc(var(--sw, 0) * 1deg); }
+.bicho u:nth-of-type(1) { left: 32%; }
+.bicho u:nth-of-type(2) { right: 32%; rotate: calc(var(--sw, 0) * -1deg); }
+.bicho u::after { content: ""; position: absolute; bottom: -.05rem; left: calc(50% + var(--f, 1) * .13rem - .27rem); width: .54rem; height: .28rem; border-radius: .3rem; background: inherit; }
+.bicho em { position: absolute; top: calc(28% + var(--ly, 0) * .1rem); width: .36rem; height: .55rem; border-radius: 50%; background: var(--g); animation: pisca 4.5s var(--w, 0s) infinite; }
+.bicho em:nth-of-type(1) { left: calc(50% - .58rem + var(--lx, 3) * .1rem); }
+.bicho em:nth-of-type(2) { left: calc(50% + .22rem + var(--lx, 3) * .1rem); }
+@keyframes pisca { 0%, 94%, 100% { scale: 1; } 97% { scale: 1 .1; } }
+/* carinhas e detalhes de cada um */
+.f1::after, .f3::after, .f4::after { width: 1.1rem; height: .55rem; border-bottom: 3px solid var(--g); border-radius: 0 0 1rem 1rem; }
+.f2::after, .f6::after { width: 1rem; height: .6rem; background: var(--g); border-radius: 0 0 1rem 1rem; }
+.f5::after { top: 62%; width: .5rem; height: .6rem; background: var(--g); border-radius: 50%; }
+.f1::before { left: calc(50% - .35rem + var(--lx, 3) * .12rem); top: -.45rem; width: .7rem; height: .7rem; border-radius: 50%; background: inherit; }
+.f2::before { left: calc(50% - .1rem + var(--lx, 3) * .15rem); top: -.7rem; width: .6rem; height: 1.1rem; border-radius: .6rem .6rem .2rem .2rem; background: inherit; rotate: 12deg; }
+.f4::before { left: calc(50% - .15rem); top: -.75rem; width: .3rem; height: .9rem; border-radius: .3rem; background: inherit; }
+.f5::before { left: calc(50% - 1rem - var(--lx, 3) * .2rem); top: -.25rem; width: .8rem; height: .8rem; border-radius: 50%; background: inherit; }
+.f3 em:nth-of-type(2) { height: .12rem; width: .45rem; border-radius: .1rem; top: calc(36% + var(--ly, 0) * .1rem); }
+.f4 em { height: .12rem; width: .45rem; border-radius: .1rem; top: calc(36% + var(--ly, 0) * .1rem); }
+.f6 em { width: .26rem; height: .34rem; }
+/* segurado: carinha de susto */
+.pega b::after { width: .5rem; height: .6rem; border: 0; background: var(--g); border-radius: 50%; }
+.pega em { animation: none; scale: 1.2; }
+.ftr-dots.viva { position: absolute; inset: 0; margin: 0; padding: 0; display: block; pointer-events: none; z-index: 2; isolation: isolate; } /* isolation: a mistura (multiply) só acontece entre os bichinhos, não com o fundo grafite */
+.viva .bicho { mix-blend-mode: multiply; position: absolute; left: 0; top: 0; pointer-events: auto; cursor: grab; touch-action: none; user-select: none; }
+.viva .bicho.arrasta { cursor: grabbing; z-index: 3; }
+.ftr-dots.viva ~ .ftr-b { margin-top: 9.5rem; }
+.ftr-b { display: flex; flex-wrap: wrap; gap: .625rem 1.75rem; justify-content: space-between; margin-top: 3.5rem; position: relative; padding-top: calc(1.5rem + 1px); font-size: .875rem; color: var(--cream-soft); }
+.ftr-b::before { content: ""; position: absolute; top: 0; left: calc(50% - 50cqi); width: 100cqi; height: 1px; background: rgba(254, 248, 230, .2); } /* a linha vai de ponta a ponta, por onde os bichinhos andam */
 .ftr-b a { color: var(--cream); }
 @container site (max-width: 47.5rem) { .ftr-g { grid-template-columns: minmax(0, 1fr); } }
 
@@ -369,7 +399,7 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 .f.full.fim { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .fim .privacy { max-width: 44ch; }
 /* tritanopia (amarelo vira grafite): textos e ícones sobre superfícies amarelas passam a creme */
-:root[data-tema=tritanopia] :is(.step.c-ye .num, .goal.c-ye i, .phase.c-ye .phase-top, .obj.c-ye:hover, .node.c-ye, .close .sig span, .chip input:checked + span) { color: var(--cream); }
+:root[data-tema=tritanopia] :is(.step.c-ye .num, .goal.c-ye i, .phase.c-ye .phase-top, .obj.c-ye:hover, .tn .node.c-ye, .close .sig span, .chip input:checked + span) { color: var(--cream); }
 :root[data-tema=tritanopia] .chip input:checked + span::before { border-color: var(--cream); background: var(--cream); }
 
 /* Rótulo à esquerda + texto à direita (A exposição, Contato) */
@@ -389,3 +419,11 @@ textarea.inp{min-height:9.375rem;resize:vertical;line-height:1.5}
 
 /* título do herói: mesmo tamanho, mesma largura e duas linhas em todas as páginas (a quebra vem de um <br> no HTML) */
 .t-hero { margin: 0 auto; width: min(100%, 22ch); text-align: center; font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem, min(7cqi, 11svh), 7rem); line-height: .92; letter-spacing: -.03em; color: var(--graphite); }
+
+/* links de âncora (botões "Descer", "Antes, durante e depois"…) rolam suavemente em todas as páginas */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* Bolinhas com gravidade (js/bolinhas.js): a área de física cobre a seção inteira, por trás do conteúdo */
+.pit{position:absolute;inset:0;z-index:1;touch-action:pan-y;user-select:none}
+.pit span{position:absolute;left:0;top:0;border-radius:50%;cursor:grab;touch-action:none;will-change:transform}
+.pit.agarra span{cursor:grabbing}

@@ -35,11 +35,15 @@
     vai(0);
   }
 
-  const mapa = document.querySelector("[data-percurso]");
-  if (mapa) {
-    const ns = [...mapa.querySelectorAll(".node")], ps = [...mapa.querySelectorAll(".panel-item")], painel = mapa.querySelector(".panel");
-    const vai = grupo(mapa, ns, ps, (n) => { ns.forEach((x, k) => { x.style.zIndex = k === n ? 3 : 2; }); painel.style.setProperty("--c", getComputedStyle(ps[n]).getPropertyValue("--c")); });
-    vai(0);
+  // link com âncora (ex.: #metodologia, #proposito) abre o menu recolhido que contém o alvo
+  try { const a = document.querySelector(location.hash), d = a && (a.matches("details") ? a : a.closest("details") || a.querySelector("details")); if (d) d.open = true; } catch (e) {}
+
+  const trilha = document.querySelector("[data-percurso]");
+  if (trilha) {
+    const tns = [...trilha.querySelectorAll(".tn")];
+    grupo(trilha, tns, [...trilha.querySelectorAll(".est")])(0);
+    // clicar numa bolinha também leva a leitura até o bloco da estação (rolagem suave vem do CSS)
+    tns.forEach((b) => b.addEventListener("click", () => trilha.querySelector(".ativ").scrollIntoView({ block: "start" })));
   }
 })();
 // A exposição: separa os títulos em letras; cada uma entra de uma posição/ângulo diferente ao rolar (CSS, ver a-exposicao.css).

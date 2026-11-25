@@ -135,7 +135,7 @@
 @keyframes faixa{to{transform:translateX(-50%)}}
 
 /* Logo animada como abertura da home: só o triângulo se mexe (pula, vira e amassa ao pousar) */
-.hero-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(2.5rem,9svh,5rem);padding:clamp(2rem,5cqi,4.5rem) clamp(1.25rem,4.5cqi,4rem) clamp(3.5rem,8cqi,7rem)}
+.hero-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(2.5rem,9svh,5rem);padding:clamp(2rem,5cqi,4.5rem) var(--gut) clamp(3.5rem,8cqi,7rem)}
 .logo-anim{display:block;width:min(100%,clamp(18rem,52cqi,46rem));height:auto;overflow:visible}
 .logo-anim .lg{fill:var(--cream)}
 .logo-anim .lt{fill:var(--yellow);transform-box:fill-box;transform-origin:50% 100%}
@@ -168,12 +168,10 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
 .hero-logo{position:relative;background:none}
 .hero-logo::before{content:"";position:absolute;inset:0;background:var(--blue);z-index:-2}
 
-/* Fechamento: bolinhas com gravidade (js/bolinhas.js) */
-.close-art.pit{position:absolute;inset:0;justify-self:stretch;z-index:1;max-width:none;width:auto;aspect-ratio:auto;touch-action:pan-y;user-select:none}
+/* Fechamento: bolinhas com gravidade (js/bolinhas.js; regras de .pit em base.css) */
+.close-art.pit{position:absolute;inset:0;justify-self:stretch;max-width:none;width:auto;aspect-ratio:auto}
 .close:has(.pit) .close-g{pointer-events:none}
 .close:has(.pit) .close-g .btn{pointer-events:auto}
-.pit span{left:0;top:0;cursor:grab;touch-action:none;will-change:transform}
-.pit.agarra span{cursor:grabbing}
 
 /* Herói do desktop: só a faixa azul com a logo, na altura padrão (--hero-h, igual nas cinco páginas); a apresentação vem logo abaixo, como outra seção */
 @container site (min-width:56.3125rem){

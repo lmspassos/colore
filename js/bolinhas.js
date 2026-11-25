@@ -1,7 +1,7 @@
-// Fechamento da home: bolinhas coloridas com gravidade que se pode segurar, arrastar e arremessar.
+// Fechamento da home e faixa verde do Contato: bolinhas coloridas com gravidade que se pode segurar, arrastar e arremessar.
 // Sem JS ou com movimento reduzido ficam as bolinhas estáticas (decoração: fora da árvore de acessibilidade).
 (() => {
-  const arte = document.querySelector(".close-art");
+  const arte = document.querySelector(".close-art, [data-bolinhas]");
   if (!arte) return;
   const parado = matchMedia("(prefers-reduced-motion: reduce)").matches;
   // diâmetro (fração do menor lado da seção) e cor; a cor verde fica de fora porque é a do fundo
@@ -9,20 +9,28 @@
   const COR = ["--yellow", "--pink", "--orange", "--blue", "--cream"];
   const ESPEC = [...TAM, ...TAM.slice(2, 18)].map((d, i) => [d, COR[(i * 3 + (i > 23 ? 1 : 0)) % COR.length]]);
   const G = 2200, E_PAREDE = .45, E_BOLA = .4, VMAX = 2200;
-  arte.closest(".close").prepend(arte); // a área de física ocupa a seção verde inteira, por trás do texto
+  arte.closest(".band").prepend(arte); // a área de física ocupa a seção verde inteira, por trás do texto
   arte.classList.add("pit");
   let W = arte.clientWidth, H = arte.clientHeight, arrasto = null, raf = 0, t0 = 0, visivel = false;
 
   arte.replaceChildren();
-  const U = Math.min(W, H);
+  arte.style.visibility = "hidden"; // só aparece quando a seção entra na tela e as bolinhas são semeadas com as medidas finais
   const bolas = ESPEC.map(([d, cor], i) => {
-    const el = document.createElement("span"), r = d * U / 2;
+    const el = document.createElement("span");
     el.style.background = `var(${cor})`;
-    el.style.width = el.style.height = 2 * r + "px";
     arte.append(el);
-    const dentro = parado;
-    return { el, r, dentro, x: r + Math.random() * (W - 2 * r), y: parado ? r + Math.random() * (H / 2) : -r - i * H * .04, vx: 0, vy: 0, m: r * r };
+    return { el, d, i, r: 0, dentro: false, x: 0, y: 0, vx: 0, vy: 0, m: 0 };
   });
+  const semeia = () => {
+    W = arte.clientWidth; H = arte.clientHeight;
+    const U = Math.min(W, H) * (+arte.dataset.escala || 1); // data-escala reduz/aumenta todas as bolinhas
+    bolas.forEach((b) => {
+      b.r = b.d * U / 2; b.m = b.r * b.r; b.dentro = parado; b.vx = b.vy = 0;
+      b.el.style.width = b.el.style.height = 2 * b.r + "px";
+      b.x = b.r + Math.random() * (W - 2 * b.r);
+      b.y = parado ? b.r + Math.random() * (H / 2) : -b.r - b.i * H * .04; // movimento normal: nascem acima da seção e caem
+    });
+  };
 
   const desenha = () => bolas.forEach((b) => { b.el.style.transform = `translate(${b.x - b.r}px,${b.y - b.r}px)`; });
 
@@ -51,7 +59,14 @@
     }
   };
 
-  if (parado) { for (let k = 0; k < 900; k++) passo(1 / 120); desenha(); return; }
+  if (parado) {
+    new IntersectionObserver(([e], o) => {
+      if (!e.isIntersecting) return;
+      semeia(); for (let k = 0; k < 900; k++) passo(1 / 120);
+      desenha(); arte.style.visibility = ""; o.disconnect();
+    }, { threshold: .25 }).observe(arte);
+    return;
+  }
 
   const quadro = (t) => {
     const dt = Math.min(.033, (t - t0) / 1000 || .016);
@@ -63,7 +78,12 @@
   };
   const acorda = () => { if (!raf && visivel) { t0 = performance.now(); raf = requestAnimationFrame(quadro); } };
 
-  new IntersectionObserver(([e]) => { visivel = e.isIntersecting; acorda(); }, { threshold: .25 }).observe(arte);
+  let semeado = false;
+  new IntersectionObserver(([e]) => {
+    visivel = e.isIntersecting;
+    if (visivel && !semeado) { semeado = true; semeia(); desenha(); arte.style.visibility = ""; }
+    acorda();
+  }, { threshold: .25 }).observe(arte);
   new ResizeObserver(() => {
     const w = arte.clientWidth, s = w / W;
     if (!w || s === 1) return;

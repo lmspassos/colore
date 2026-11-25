@@ -72,7 +72,7 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
 .ed-marcos::before { content: ""; position: absolute; left: 1.75rem; right: 1.75rem; top: 1.75rem; border-top: 3px dashed var(--graphite); }
 .ed-marcos li { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .5rem; font-family: var(--fd); font-weight: 600; }
 .ed-marcos b { display: grid; place-items: center; width: 3.5rem; aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--graphite); background: var(--c); font-size: 1.375rem; }
-.ed-fases { display: grid; gap: 1.75rem; }
+.ed-fases { display: grid; gap: 1.75rem; padding-inline: var(--gut); }
 .ed-fase .phase { margin-top: 0; }
 
 /* ── Cores para experimentar e materiais ── */
@@ -98,9 +98,9 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
       @media (min-height: 54rem) {
         .ed-vis { height: 330svh; padding: 0; view-timeline: --vis block; }
         .ed-vis-st { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; overflow: clip; padding-block: 1rem; }
-        .ed-fases { display: flex; gap: 0; width: 300%; animation: ed-anda linear both; animation-timeline: --vis; animation-range: contain 0% contain 100%; }
-        .ed-fase { flex: 0 0 calc(100% / 3); padding-inline: clamp(1.25rem, 4.5cqi, 4rem); }
-        .ed-fase .phase { max-width: 70rem; margin-inline: auto; animation: none; }
+        .ed-fases { display: flex; gap: 0; padding-inline: 0; width: 300%; animation: ed-anda linear both; animation-timeline: --vis; animation-range: contain 0% contain 100%; }
+        .ed-fase { flex: 0 0 calc(100% / 3); padding-inline: var(--gut); }
+        .ed-fase .phase { animation: none; }
         /* tudo precisa caber numa tela: título e fases mais compactos */
         .ed-vis .big { font-size: clamp(2.25rem, 4.2cqi, 3.75rem); }
         .ed-marcos { margin-bottom: 1.25rem; }
@@ -124,3 +124,9 @@ html:not(.js) .phase+.phase{margin-top:1.75rem}
 
 
 .ed-ih .btn { background: var(--pink); }
+
+/* marcos 1-2-3 clicáveis: levam à explicação de cada momento */
+.ed-marcos button { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.ed-marcos button:hover b { scale: 1.1; }
+.ed-marcos button:focus-visible { outline: 3px solid var(--graphite); outline-offset: .5rem; border-radius: 1rem; }
+.ed-fase { scroll-margin-top: 6rem; }

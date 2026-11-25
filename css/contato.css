@@ -105,3 +105,11 @@
 }
 
 .c2-cta { background: var(--green); color: var(--graphite); }
+
+/* reação do céu ao mouse (js/contato.js): o movimento é suavizado aqui */
+.c2-ceu > * { transition: transform .5s cubic-bezier(.3, 1.4, .5, 1); }
+
+/* Faixa verde do formulário: bolinhas com gravidade (js/bolinhas.js) por trás; só o cartão do formulário recebe cliques */
+.c2-form:has(.pit){overflow:clip}
+.c2-form:has(.pit) .c2-form-g{position:relative;z-index:2;pointer-events:none}
+.c2-form:has(.pit) .c2-card{pointer-events:auto}
