@@ -36,7 +36,7 @@
     .ed-pilha li { animation: ed-cai linear both; animation-timeline: view(); animation-range: entry calc(10% + var(--i) * 12%) entry calc(60% + var(--i) * 12%); }
     .ed-ped .big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
     /* fotos abrem em leque */
-    .ed-cores .gt { animation: ed-leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
+    .ed-cores .gt { animation: leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
     .ed-cores .gt:nth-child(1) { --i: 0; } .ed-cores .gt:nth-child(2) { --i: 1; } .ed-cores .gt:nth-child(3) { --i: 2; }
     .ed-cores .big, .cta .big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
     /* materiais: o cartão sobe girando e assenta reto sobre o azul */
@@ -63,7 +63,6 @@
   }
 }
 @keyframes ed-cai { from { translate: var(--x) -60vh; rotate: calc(var(--r) * -6); opacity: 0; } 60% { opacity: 1; } }
-@keyframes ed-leque { from { translate: calc((1 - var(--i)) * 90%) 3rem; rotate: calc((var(--i) - 1) * 14deg); } }
 @keyframes ed-anda { 0%, 22% { translate: 0 0; } 38%, 58% { translate: calc(-100% / 3) 0; } 74%, 100% { translate: calc(-200% / 3) 0; } }
 @keyframes ed-acende { from { background: var(--paper); scale: .8; } }
 @keyframes ed-linha { from { scale: 0 1; } }

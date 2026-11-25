@@ -80,10 +80,8 @@
 @keyframes a2-sway { 50% { translate: 1.5rem .5rem; } }
 @keyframes a2-pop { from { opacity: 0; scale: .6; translate: 0 2rem; } }
 @keyframes blink { 0%, 92%, 100% { scale: 1; } 96% { scale: 1 .15; } }
-@keyframes a2-spin { to { rotate: 360deg; } }
 @keyframes a2-in-l { from { translate: -22cqi 0; } }
 @keyframes a2-in-r { from { translate: 22cqi 0; } }
-@keyframes a2-open { from { clip-path: circle(12% at 50% 50%); } to { clip-path: circle(75% at 50% 50%); } }
 @keyframes a2-rise { from { opacity: 0; translate: 0 6rem; } }
 @keyframes a2-up { to { translate: 0 -7rem; } }
 @keyframes a2-disc { from { opacity: 0; scale: .5; rotate: -12deg; } }
@@ -99,7 +97,7 @@
   .stage-art .tri { animation: a2-float 6s ease-in-out infinite reverse; }
   .face { animation: blink 5s infinite; }
   .down { animation: a2-float 2.4s ease-in-out infinite; }
-  .stk-sun, .stk-dots { animation: a2-spin 24s linear infinite; }
+  .stk-sun, .stk-dots { animation: spin 24s linear infinite; }
   .dlband .btn, .end .btn { transition: translate .3s var(--ease), box-shadow .3s; }
   .dlband .btn:hover, .end .btn:hover { translate: 0 -.25rem; box-shadow: 0 .5rem 0 var(--graphite); }
   .objs:not(.descobrem) .obj { transition: scale .45s var(--ease), rotate .45s var(--ease); }
@@ -110,7 +108,7 @@
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .stage-art { animation: a2-up linear both; animation-timeline: scroll(root); animation-range: 0 60vh; }
-    .pano { animation: a2-open linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+    .pano { --c0: 12%; animation: recorte linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
     .pano > img { scale: 1.12; animation: a2-pan linear both; animation-timeline: view(); animation-range: cover; }
     .objs:not(.descobrem) .obj { animation: a2-disc linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
   }
@@ -294,10 +292,10 @@ html { scroll-behavior: smooth; }
 .conc-dots { list-style: none; margin: 0; padding: 0 0 2.5rem; display: flex; justify-content: center; }
 .conc-dots li { display: grid; place-items: center; width: clamp(7rem, 17cqi, 16rem); aspect-ratio: 1; border-radius: 50%; padding: 1rem; text-align: center; font-family: var(--fd); font-weight: 600; font-size: clamp(1rem, 2.1cqi, 1.9rem); line-height: 1.05; color: var(--graphite); rotate: var(--rt); translate: 0 var(--wy); }
 .conc-dots li + li { margin-left: -2.2cqi; }
-@keyframes a2-pop { from { opacity: 0; scale: .45; translate: 0 8rem; rotate: calc(var(--rt) * 4); } }
+@keyframes a2-conc-pop { from { opacity: 0; scale: .45; translate: 0 8rem; rotate: calc(var(--rt) * 4); } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .conc-dots li { animation: a2-pop linear both; animation-timeline: view(); animation-range: entry calc(var(--n) * 7%) entry calc(55% + var(--n) * 7%); }
+    .conc-dots li { animation: a2-conc-pop linear both; animation-timeline: view(); animation-range: entry calc(var(--n) * 7%) entry calc(55% + var(--n) * 7%); }
   }
 }
 @container site (max-width: 51.25rem) {

@@ -43,6 +43,17 @@ Exposição **educativa, artística, interativa e itinerante** para crianças de
 - **Decisões de unificação (2026-11-24):** (1) títulos em **maiúsculas e minúsculas** (Fredoka), sem CAIXA ALTA; (2) acabamento **chapado**: círculos, fotos e cartões sem contorno grafite e sem sombra dura; contorno só em campos de formulário, botões, FAQ, foco e tracejados funcionais (camada `css/unifica.css`, carregada por último nas cinco páginas principais); (3) **rostinhos** nos círculos fazem parte da marca (Início, A exposição 2, Contato 2 e sol do teatro), definidos uma vez em `base.css` (`.face`); (4) contorno em texto só onde é legibilidade (palavras coloridas do título da Início).
 - **Coerência entre telas:** todas as páginas falam a mesma língua visual (círculos chapados, godê, Fredoka + Codec, paleta fechada). Páginas novas reutilizam os componentes existentes antes de inventar outros.
 
+## 4.1 Movimento (vocabulário comum)
+
+Movimento serve à descoberta e nunca é a única forma de ver o conteúdo (tudo funciona sem JS e com `prefers-reduced-motion`). Vocabulário compartilhado em `css/base.css`; as páginas só definem variáveis, não keyframes novos para o mesmo gesto:
+
+- **Entrada de bloco ao rolar:** `rv` (sobe e aparece) e `rvl` (vem da lateral).
+- **Título do topo, letra a letra:** `entra`.
+- **Cartões em leque ao rolar:** `leque` (`--i` é a posição).
+- **Círculo que abre sobre a foto:** `recorte` (`--c0` raio inicial, `--cy` altura do centro).
+- **Ambiente parado:** `bob` (flutuar), `spin` (girar), `blink` (piscar dos rostinhos), `balanca` (lanternas).
+- **Só animação ligada à rolagem em `@supports (animation-timeline: ...)` e dentro de `prefers-reduced-motion: no-preference`.** Animações de uma página só (trilha amarela e bolinhas da Início, roda do teatro) ficam no CSS e JS da própria página.
+
 ## 5. A exposição
 
 **Conceito:** um espaço para descobrir, experimentar e criar. Percurso imersivo e interativo, sempre pelo brincar. **Modular, desmontável e adaptável** a diferentes espaços, preservando proposta educativa e identidade.

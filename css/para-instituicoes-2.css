@@ -102,7 +102,7 @@
   .rev{height:220svh;view-timeline:--rev block}
   .rev-st{position:sticky;top:0;height:100svh}
   .rg{animation:abre linear both;animation-timeline:--rev;animation-range:var(--de) var(--ate)}
-  .rev-ph{animation:recorte linear both;animation-timeline:--rev;animation-range:contain 0% contain 50%}
+  .rev-ph{--cy:42%;animation:recorte linear both;animation-timeline:--rev;animation-range:contain 0% contain 50%}
   .rev-card{animation:cartao linear both;animation-timeline:--rev;animation-range:contain 40% contain 80%}
   /* objetivos: cada cartão cai girando e assenta sobre o anterior */
   .gcard{animation:cai linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
@@ -118,11 +118,10 @@
   .big{animation:rvl linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
  }
 }
-@keyframes entra{from{opacity:0;transform:translateY(.5em) rotate(-18deg) scale(.5)}}
+
 @keyframes solta{to{translate:0 var(--d);rotate:var(--dr);opacity:0}}
 @keyframes sobe{from{translate:0 calc(var(--v) * -.5px)}to{translate:0 calc(var(--v) * .5px);rotate:calc(var(--rr) + 40deg)}}
 @keyframes esvai{to{opacity:0;translate:0 -3rem}}
-@keyframes recorte{from{clip-path:circle(0 at 50% 42%)}to{clip-path:circle(75% at 50% 42%)}}
 @keyframes abre{from{scale:var(--s0,0)}to{scale:1}}
 @keyframes cartao{from{translate:0 70%;rotate:8deg;opacity:0}to{translate:none;rotate:-1.5deg;opacity:1}}
 @keyframes assenta{from{translate:0 70%;rotate:4deg;opacity:0}to{translate:none;rotate:0deg;opacity:1}}

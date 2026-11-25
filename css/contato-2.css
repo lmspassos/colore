@@ -78,8 +78,8 @@
 
 /* ── Movimento ── */
 @media (prefers-reduced-motion: no-preference) {
-  .c2-t .l { animation: c2-entra .8s var(--ease) both; animation-delay: calc(var(--i) * 45ms); }
-  .olho { animation: c2-pisca 5s infinite; }
+  .c2-t .l { animation: entra .8s var(--ease) both; animation-delay: calc(var(--i) * 45ms); }
+  .olho { animation: blink 5s infinite; }
   @supports (animation-timeline: view()) {
     .nuvem, .bola { animation: c2-sobe linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
     .c2-big { animation: rvl linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
@@ -87,15 +87,12 @@
     /* os balões de assunto estouram um a um quando o formulário aparece */
     .chip.bolha { animation: c2-pop linear both; animation-timeline: view(); animation-range: entry calc(5% + var(--n, 0) * 8%) entry calc(45% + var(--n, 0) * 8%); }
     .chip.bolha:nth-child(2) { --n: 1; } .chip.bolha:nth-child(3) { --n: 2; } .chip.bolha:nth-child(4) { --n: 3; }
-    .dirs2 li { animation: c2-leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
+    .dirs2 li { animation: leque linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
   }
 }
-@keyframes c2-entra { from { opacity: 0; transform: translateY(.6em) rotate(-20deg) scale(.4); } }
 @keyframes c2-pop { from { opacity: 0; scale: .3; } }
-@keyframes c2-pisca { 0%, 94%, 100% { scale: 1; } 97% { scale: 1 .1; } }
 @keyframes c2-sobe { from { translate: 0 calc(var(--v) * 3rem); } to { translate: 0 calc(var(--v) * -3rem); } }
 @keyframes c2-espia { from { translate: 0 10%; } to { translate: 0 -62%; } }
-@keyframes c2-leque { from { translate: calc((1 - var(--i)) * 100%) 4rem; rotate: calc((var(--i) - 1) * 18deg); } }
 
 /* tritanopia: o amarelo vira grafite; a carinha e a boca do mascote passam a creme */
 :root[data-tema=tritanopia] :is(.masc, .mao) { background: var(--cream); }
