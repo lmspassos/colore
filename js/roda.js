@@ -10,7 +10,7 @@
   const URLS = ["/", "/a-exposicao/", "/para-instituicoes/", "/para-educadores/", "/contato/"];
   const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
   const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
-  const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [62, 30, 1], [80, 54, 1], [85, 74, 0]];
+  const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [74, 24, 1], [80, 54, 1], [85, 74, 0]];
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const q = (s) => [...r.querySelectorAll(s)];
@@ -37,6 +37,8 @@
     const s0 = SOL[i], s1 = SOL[i + 1];
     sol.style.setProperty("--x", lerp(s0[0], s1[0], f).toFixed(2) + "%");
     sol.style.setProperty("--y", lerp(s0[1], s1[1], f).toFixed(2) + "%");
+    // cor do sol: amarelo até Para instituições, vira laranja ao chegar em Para educadores
+    sol.style.setProperty("--c", mix("var(--yellow)", "var(--orange)", u < 2 ? 0 : u < 3 ? u - 2 : 1));
     sol.style.opacity = lerp(s0[2], s1[2], f).toFixed(3);
     // nuvens: deslizam para a esquerda junto com a roda; 360° = uma volta de 140% de largura, então o loop não dá salto e o reinício acontece fora da tela
     nuvens.forEach((n, k) => n.style.setProperty("--x", nx(Number(n.dataset.x), a).toFixed(2) + "%"));

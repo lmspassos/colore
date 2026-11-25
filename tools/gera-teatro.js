@@ -16,7 +16,7 @@ const PAGINAS = [
 const CEU = ["var(--blue)", "var(--pink)", "var(--blue)", "var(--pink)", "var(--green)"];
 const SOLO = [null, "color-mix(in srgb, var(--blue) 45%, var(--cream))", "color-mix(in srgb, var(--green) 55%, var(--cream))", "color-mix(in srgb, var(--blue) 55%, var(--cream))", "color-mix(in srgb, var(--pink) 55%, var(--cream))"];
 // sol: x e y em % do palco, opacidade. Nasce à esquerda em "A exposição" (u=1), sobe, cruza o céu e se põe à direita em "Contato" (u=4)
-const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [62, 30, 1], [80, 54, 1], [85, 74, 0]];
+const SOL = [[15, 74, 0], [19, 52, 1], [36, 24, 1], [74, 24, 1], [80, 54, 1], [85, 74, 0]];
 const lerp = (a, b, f) => a + (b - a) * f;
 const sol = (u) => { const i = Math.min(4, Math.floor(u)), f = u - i; return SOL[i].map((v, k) => lerp(v, SOL[i + 1][k], f)); };
 
@@ -47,7 +47,7 @@ function teatro(k) {
   const ant = PAGINAS[(k + N - 1) % N], prox = PAGINAS[(k + 1) % N];
   return `<section class="roda" data-pagina="${k}"${k ? ' aria-labelledby="h-roda"' : ' aria-label="Colorê"'} style="--ceu:${CEU[k]}">
           <div class="roda-ar" aria-hidden="true">${nuvem(12, 24, 12, A)}${nuvem(46, 12, 10, A)}${nuvem(76, 34, 13, A)}</div>
-          <div class="sol" aria-hidden="true" style="--x:${sx}%;--y:${sy}%;opacity:${so}"><span class="raios"></span><span class="s"><b class="face"></b></span></div>
+          <div class="sol" aria-hidden="true" style="--x:${sx}%;--y:${sy}%;--c:${k >= 3 ? "var(--orange)" : "var(--yellow)"};opacity:${so}"><span class="raios"></span><span class="s"><b class="face"></b></span></div>
           <div class="roda-w" aria-hidden="true"><div class="planeta" style="rotate:${A}deg"><div class="terra" style="--base:${soloCor};opacity:${soloOp}"></div><div class="terra marcos" style="opacity:${soloOp}">${P("marcos.html")}</div></div>${fatias}</div>
           ${boca}
           ${cards}
