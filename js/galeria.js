@@ -7,13 +7,16 @@
   const faixa = document.querySelector(".faixa");
   if (faixa && !reduz) {
     const ul = faixa.querySelector("ul");
-    [...ul.children].forEach((li) => {
+    const orig = [...ul.children];
+    // cópia 1 (data-clone) fecha o laço do desktop; cópia 2 (data-extra) só aparece no mobile, para dar folga ao arraste nos dois sentidos
+    ["", "extra"].forEach((extra) => orig.forEach((li) => {
       const c = li.cloneNode(true);
       c.setAttribute("aria-hidden", "true");
       c.querySelector("button").tabIndex = -1;
       c.dataset.clone = "";
+      if (extra) c.dataset.extra = "";
       ul.append(c);
-    });
+    }));
     faixa.classList.add("anda");
   }
   // Mobile: a faixa vira um carrossel arrastável (rolagem nativa) que também avança sozinho e dá a volta.
@@ -24,14 +27,23 @@
     const volta = () => vis("li[data-clone]").offsetLeft - vis("li:not([data-clone])").offsetLeft;
     let x = null, ultimo = 0, livre = 0, t0 = 0, toque = false; // x: posição própria (com fração); livre: instante em que o avanço pode voltar
     const segura = () => { livre = performance.now() + 1200; x = null; };
-    faixa.addEventListener("touchstart", () => { toque = true; x = null; }, { passive: true });
+    // ao encostar o dedo (a rolagem para aqui) a lista volta ao trecho do meio: a emenda é invisível e o arraste nunca chega ao fim
+    faixa.addEventListener("touchstart", () => {
+      toque = true; x = null;
+      if (!mobile()) return;
+      const v = volta();
+      let n = faixa.scrollLeft;
+      while (n < v * 0.5) n += v;
+      while (n > v * 1.5) n -= v;
+      if (n !== faixa.scrollLeft) faixa.scrollLeft = ultimo = n;
+    }, { passive: true });
     ["touchend", "touchcancel"].forEach((e) => faixa.addEventListener(e, () => { toque = false; segura(); }, { passive: true }));
     faixa.addEventListener("scroll", () => { if (!toque && Math.abs(faixa.scrollLeft - ultimo) > 2) segura(); }, { passive: true }); // embalo do arraste
     const passo = (agora) => {
       const dt = Math.min(agora - t0, 50); t0 = agora;
       if (mobile() && !toque && agora >= livre && !faixa.classList.contains("pausa") && !document.hidden) {
         const v = volta();
-        if (x === null) { x = faixa.scrollLeft; if (x < v * 0.5) x += v; else if (x > v * 1.5) x -= v; } // volta ao meio da lista duplicada sem o usuário ver
+        if (x === null) { x = faixa.scrollLeft; while (x < v * 0.5) x += v; while (x > v * 1.5) x -= v; } // recentraliza na cópia do meio sem o usuário ver
         x += dt * 0.06; // 60 px/s
         if (x > v * 1.5) x -= v;
         faixa.scrollLeft = x; ultimo = faixa.scrollLeft;
