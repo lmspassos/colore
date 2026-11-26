@@ -18,4 +18,20 @@
     escolhas = escolhas.includes(x) ? escolhas.filter((y) => y !== x) : [...escolhas, x].slice(-2);
     mostra();
   });
+
+  // Mobile: as quatro estações viram um carrossel lateral que avança sozinho (para quando a pessoa toca, passa o mouse ou foca)
+  const grid = document.querySelector(".st-grid");
+  if (grid && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let pausa = false, t;
+    const para = () => { pausa = true; clearTimeout(t); }, volta = () => { clearTimeout(t); t = setTimeout(() => (pausa = false), 4000); };
+    ["touchstart", "mouseenter", "focusin"].forEach((e) => grid.addEventListener(e, para, { passive: true }));
+    ["touchend", "mouseleave", "focusout"].forEach((e) => grid.addEventListener(e, volta, { passive: true }));
+    setInterval(() => {
+      const cards = [...grid.children];
+      if (pausa || document.hidden || grid.scrollWidth <= grid.clientWidth + 1) return; // só quando é carrossel (mobile)
+      const atual = cards.findIndex((c) => c.offsetLeft >= grid.scrollLeft + cards[0].offsetLeft - 4);
+      const prox = cards[(atual + 1) % cards.length];
+      grid.scrollTo({ left: prox.offsetLeft - cards[0].offsetLeft, behavior: "smooth" });
+    }, 3500);
+  }
 })();
