@@ -176,7 +176,7 @@ a { color: var(--graphite); text-underline-offset: .2em; }
   .js .nav { flex-direction: column; align-items: stretch; gap: 0; }
   .js .nav a { display: flex; min-height: 3.75rem; padding: 0; gap: .875rem; border-radius: 0; font-weight: 600; font-size: 1.75rem; border-bottom: 2px dashed rgba(43, 43, 41, .18); background: none; }
   .js .nav a i { width: 1.375rem; height: 1.375rem; transform: scale(1); flex: none; }
-  .js .nav a[aria-current=page] { background: none; color: var(--graphite); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .375rem; }
+  .js .nav a[aria-current=page] { background: none; box-shadow: none; color: var(--graphite); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .375rem; }
   .nav-wrap { grid-column: 1 / -1; grid-row: 2; }
 }
 @media (width <= 47.99rem) {
