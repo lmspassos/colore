@@ -17,25 +17,25 @@
     faixa.classList.add("anda");
   }
   // Mobile: a faixa vira um carrossel arrastável (rolagem nativa) que também avança sozinho e dá a volta.
+  // O avanço automático só escreve em scrollLeft quando ninguém está tocando nem com a rolagem em andamento (arraste, embalo), para não brigar com o dedo.
   if (faixa && !reduz) {
     const ul = faixa.querySelector("ul"), vis = (l) => [...ul.querySelectorAll(l)].find((li) => li.offsetParent);
-    let x = 0, toque = false, t;
     const mobile = () => !ul.querySelector("li.d").offsetParent;
     const volta = () => vis("li[data-clone]").offsetLeft - vis("li:not([data-clone])").offsetLeft;
-    faixa.addEventListener("scroll", () => {
-      if (!mobile()) return;
-      const v = volta();
-      if (faixa.scrollLeft < v * 0.5) faixa.scrollLeft += v; else if (faixa.scrollLeft > v * 1.5) faixa.scrollLeft -= v;
-    }, { passive: true });
-    faixa.addEventListener("touchstart", () => { toque = true; clearTimeout(t); }, { passive: true });
-    faixa.addEventListener("touchend", () => { clearTimeout(t); t = setTimeout(() => { toque = false; x = faixa.scrollLeft; }, 1500); }, { passive: true });
-    let ligado = false;
-    const passo = () => {
-      if (mobile() && !toque && !faixa.classList.contains("pausa") && !document.hidden) {
-        if (!ligado) { ligado = true; x = faixa.scrollLeft = volta(); }
-        x += 0.5;
-        faixa.scrollLeft = x;
-      } else ligado = false;
+    let x = null, ultimo = 0, livre = 0, t0 = 0, toque = false; // x: posição própria (com fração); livre: instante em que o avanço pode voltar
+    const segura = () => { livre = performance.now() + 1200; x = null; };
+    faixa.addEventListener("touchstart", () => { toque = true; x = null; }, { passive: true });
+    ["touchend", "touchcancel"].forEach((e) => faixa.addEventListener(e, () => { toque = false; segura(); }, { passive: true }));
+    faixa.addEventListener("scroll", () => { if (!toque && Math.abs(faixa.scrollLeft - ultimo) > 2) segura(); }, { passive: true }); // embalo do arraste
+    const passo = (agora) => {
+      const dt = Math.min(agora - t0, 50); t0 = agora;
+      if (mobile() && !toque && agora >= livre && !faixa.classList.contains("pausa") && !document.hidden) {
+        const v = volta();
+        if (x === null) { x = faixa.scrollLeft; if (x < v * 0.5) x += v; else if (x > v * 1.5) x -= v; } // volta ao meio da lista duplicada sem o usuário ver
+        x += dt * 0.06; // 60 px/s
+        if (x > v * 1.5) x -= v;
+        faixa.scrollLeft = x; ultimo = faixa.scrollLeft;
+      }
       requestAnimationFrame(passo);
     };
     requestAnimationFrame(passo);

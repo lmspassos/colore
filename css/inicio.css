@@ -207,3 +207,10 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
   .st{flex:0 0 78%;scroll-snap-align:start}
   .st.rv{animation:none}
 }
+
+/* Mobile: faixa azul do herói bem mais alta (~3x) e rolagem lateral da faixa sem puxar a página */
+@container site (max-width:35rem){
+  .hero-logo{min-height:32.5rem}
+  .faixa{overscroll-behavior-x:contain}
+}
+.hero-logo{touch-action:pan-y} /* rastro com o dedo: arrastar na horizontal desenha, na vertical continua rolando a página */
