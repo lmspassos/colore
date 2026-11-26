@@ -213,3 +213,4 @@ section[aria-labelledby=h-prop]::before{content:"";position:absolute;inset:0;bac
   .hero-logo{min-height:32.5rem}
   .faixa{overscroll-behavior-x:contain}
 }
+.hero-logo{touch-action:pan-y} /* rastro com o dedo: arrastar na horizontal desenha, na vertical continua rolando a página */

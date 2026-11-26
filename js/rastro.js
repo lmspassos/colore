@@ -1,4 +1,4 @@
-// Início: sobre a faixa azul do herói, o rastro do mouse deixa círculos coloridos (cores da paleta, tamanhos diferentes) que somem sozinhos,
+// Início: sobre a faixa azul do herói, o rastro do mouse (ou do dedo, ao arrastar na horizontal) deixa círculos coloridos (cores da paleta, tamanhos diferentes) que somem sozinhos,
 // e o clique (ou toque) estoura um punhado deles em volta do ponto. Sem "reduzir movimento" não faz nada; leitor de tela ignora (aria-hidden).
 (() => {
   const alvo = document.querySelector(".hero-logo");
@@ -15,7 +15,6 @@
     return c;
   };
   alvo.addEventListener("pointermove", (e) => {
-    if (e.pointerType !== "mouse") return;
     const r = alvo.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
     if (ux !== null && Math.hypot(x - ux, y - uy) < 26) return; // um círculo a cada ~26px de caminho
     ux = x; uy = y;
