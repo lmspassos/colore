@@ -128,6 +128,7 @@ a { color: var(--graphite); text-underline-offset: .2em; }
 .ibtn { width: 2.875rem; height: 2.875rem; border-radius: 50%; border: 2px solid var(--graphite); background: transparent; display: grid; place-items: center; padding: 0; font-family: var(--fd); font-weight: 600; font-size: 1rem; color: var(--graphite); cursor: pointer; transition: background .25s, transform .4s var(--ease); }
 .ibtn:hover { background: var(--yellow); transform: rotate(-10deg); }
 .menu-btn { display: none; }
+.nav-top { display: none; }
 
 /* Busca: a lupa abre o campo; sem JS o botão só leva à página de busca */
 .search { display: flex; align-items: center; width: 2.875rem; height: 2.875rem; border: 2px solid var(--graphite); border-radius: 999px; overflow: hidden; transition: width .35s ease, background-color .2s; }
@@ -181,6 +182,25 @@ a { color: var(--graphite); text-underline-offset: .2em; }
 @media (width <= 47.99rem) {
   .js .search.open { position: absolute; z-index: 3; left: clamp(1.25rem, 4.5vw, 4rem); right: clamp(1.25rem, 4.5vw, 4rem); top: 50%; width: auto; margin-top: -1.4375rem; }
 }
+
+/* Celular: o menu vira uma gaveta lateral (hambúrguer à esquerda, busca à direita; acessibilidade no pé da gaveta, movida por js/base.js) */
+@media (width <= 47.99rem) {
+  .js .hdr-in { display: flex; justify-content: space-between; }
+  .js .tools { display: contents; }
+  .js .menu-btn { order: -1; }
+  .js .nav-wrap { display: flex; flex-direction: column; position: absolute; z-index: 2; top: 0; left: 0; right: auto; width: min(22rem, 86vw); height: 100dvh; padding: 0; border: 0; border-right: 2px solid var(--graphite); border-radius: 0 2rem 2rem 0; overflow-y: auto; animation: none; visibility: hidden; translate: -100% 0; transition: translate .35s var(--soft), visibility 0s .35s; }
+  .js .nav-wrap.open { display: flex; visibility: visible; translate: 0 0; transition: translate .35s var(--soft); }
+  .js .hdr:has(.nav-wrap.open)::after { content: ""; position: absolute; z-index: 1; top: 0; left: 0; width: 100%; height: 100dvh; background: rgb(43 43 41 / .5); }
+  .js .nav-top { display: flex; flex: none; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; }
+  .nav-logo img { display: block; height: 2.5rem; width: auto; }
+  .js .nav { padding: 0 1.25rem; }
+  .js .nav a { font-size: 1.375rem; min-height: 3.5rem; }
+  .nav-wrap .a11y { margin-top: auto; padding: 1rem 1.25rem 1.5rem; border-top: 2px solid var(--graphite); }
+  .nav-wrap .a11y::before { content: "Acessibilidade"; display: block; margin-bottom: .5rem; font-family: var(--fd); font-weight: 600; font-size: 1.125rem; }
+  .nav-wrap .a11y-btn { display: none; }
+  .nav-wrap .a11y-menu { position: static; visibility: visible; opacity: 1; transform: none; width: auto; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+}
+@media (width <= 47.99rem) and (prefers-reduced-motion: reduce) { .js .nav-wrap, .js .nav-wrap.open { transition: none; } }
 
 /* Faixa corrida */
 .mq{background:var(--graphite);color:var(--cream);overflow:hidden;padding:0.875rem 0;position:relative;z-index:3}

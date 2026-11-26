@@ -18,7 +18,8 @@ if (f) {
 // Menu (telas estreitas): desce do cabeçalho; Esc, clique fora e escolher um link fecham.
 const nav = document.querySelector(".nav-wrap"), abrir = document.querySelector(".menu-btn");
 if (nav && abrir) {
-  const show = (v) => { nav.classList.toggle("open", v); abrir.setAttribute("aria-expanded", v); };
+  const show = (v) => { nav.classList.toggle("open", v); abrir.setAttribute("aria-expanded", v); if (v) nav.querySelector(".nav-x").focus({ preventScroll: true }); };
+  nav.querySelector(".nav-x").addEventListener("click", () => { show(false); abrir.focus({ preventScroll: true }); });
   abrir.addEventListener("click", () => show(!nav.classList.contains("open")));
   nav.addEventListener("click", (e) => { if (e.target.closest("a")) show(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && nav.classList.contains("open")) { show(false); abrir.focus({ preventScroll: true }); } });
@@ -29,6 +30,12 @@ if (nav && abrir) {
 const A = document.querySelector(".a11y");
 if (A) {
   const root = document.documentElement;
+  // celular: o menu de acessibilidade mora no pé da gaveta; telas maiores, ao lado da busca
+  if (nav && abrir) {
+    const cel = matchMedia("(width <= 47.99rem)"), lugar = () => (cel.matches ? nav.append(A) : abrir.parentElement.insertBefore(A, abrir));
+    cel.addEventListener("change", lugar);
+    lugar();
+  }
   const guarda = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
   const btn = A.querySelector(".a11y-btn"), sub = A.querySelector("#a11y-cores"), main = A.querySelector("#a11y-principal");
   const cores = A.querySelector("[data-cores]");
