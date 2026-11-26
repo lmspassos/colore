@@ -71,6 +71,13 @@
 .c2-priv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.25rem, 3cqi, 2rem); align-items: start; border: 2px dashed var(--graphite); border-radius: 2.5rem; padding: clamp(1.5rem, 3.5cqi, 2.5rem); }
 .c2-priv .ico { width: 4.5rem; height: 4.5rem; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--graphite); }
 .c2-redes { border-radius: 2.5rem; padding: clamp(1.5rem, 3.5cqi, 2.5rem); background: var(--paper); border: 2px solid var(--graphite); }
+.canais { display: grid; gap: .75rem; margin-top: 1.25rem; }
+.canais a, .canais .canal { display: flex; align-items: center; gap: .875rem; min-height: 3.5rem; font-family: var(--fd); font-weight: 600; font-size: 1.125rem; color: var(--graphite); text-decoration: none; overflow-wrap: break-word; }
+.canais .ci { flex: none; width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--graphite); background: var(--pink); transition: background .3s, transform .4s var(--ease); }
+.canais li:nth-child(2) .ci { background: var(--blue); }
+.canais li:nth-child(3) .ci { background: var(--yellow); }
+.canais a:hover .ci, .canais a:focus-visible .ci { transform: rotate(-10deg) scale(1.06); }
+.canais a:hover > span:last-child, .canais a:focus-visible > span:last-child { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .375rem; }
 @container site (max-width: 53.75rem) { .c2-info { grid-template-columns: minmax(0, 1fr); } }
 @container site (max-width: 32rem) { .c2-priv { grid-template-columns: minmax(0, 1fr); } }
 
@@ -113,3 +120,4 @@
 .c2-form:has(.pit){overflow:clip}
 .c2-form:has(.pit) .c2-form-g{position:relative;z-index:2;pointer-events:none}
 .c2-form:has(.pit) .c2-card{pointer-events:auto}
+@container site (max-width: 32rem) { .canais a, .canais .canal { font-size: 1rem; } }
