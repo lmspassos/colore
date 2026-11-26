@@ -23,7 +23,7 @@
   // O avanço automático só escreve em scrollLeft quando ninguém está tocando nem com a rolagem em andamento (arraste, embalo), para não brigar com o dedo.
   if (faixa && !reduz) {
     const ul = faixa.querySelector("ul"), vis = (l) => [...ul.querySelectorAll(l)].find((li) => li.offsetParent);
-    const mobile = () => !ul.querySelector("li.d").offsetParent;
+    const mobile = () => getComputedStyle(faixa).overflowX === "auto"; // só no mobile a faixa rola de verdade (no desktop o CSS a move)
     const volta = () => vis("li[data-clone]").offsetLeft - vis("li:not([data-clone])").offsetLeft;
     let x = null, ultimo = 0, livre = 0, t0 = 0, toque = false; // x: posição própria (com fração); livre: instante em que o avanço pode voltar
     const segura = () => { livre = performance.now() + 1200; x = null; };
@@ -67,7 +67,7 @@
     const b = e.target.closest("[data-galeria] button");
     if (!b || !b.querySelector("img") || !d.isConnected) return; // a página pode ter trocado de lado na roda
     origem = b.closest("[data-galeria]");
-    fotos = [...origem.querySelectorAll("li:not([data-clone]) button img, :scope > button img")].filter((f) => f.offsetParent); // a faixa tem um conjunto para desktop e outro para mobile
+    fotos = [...origem.querySelectorAll("li:not([data-clone]) button img, :scope > button img")].filter((f) => f.offsetParent);
     mostra(Math.max(0, fotos.findIndex((f) => f.src === b.querySelector("img").src))); // o clone da faixa aponta para a mesma foto
     if (faixa) faixa.classList.add("pausa");
     d.showModal();
