@@ -16,6 +16,30 @@
     });
     faixa.classList.add("anda");
   }
+  // Mobile: a faixa vira um carrossel arrastável (rolagem nativa) que também avança sozinho e dá a volta.
+  if (faixa && !reduz) {
+    const ul = faixa.querySelector("ul"), vis = (l) => [...ul.querySelectorAll(l)].find((li) => li.offsetParent);
+    let x = 0, toque = false, t;
+    const mobile = () => !ul.querySelector("li.d").offsetParent;
+    const volta = () => vis("li[data-clone]").offsetLeft - vis("li:not([data-clone])").offsetLeft;
+    faixa.addEventListener("scroll", () => {
+      if (!mobile()) return;
+      const v = volta();
+      if (faixa.scrollLeft < v * 0.5) faixa.scrollLeft += v; else if (faixa.scrollLeft > v * 1.5) faixa.scrollLeft -= v;
+    }, { passive: true });
+    faixa.addEventListener("touchstart", () => { toque = true; clearTimeout(t); }, { passive: true });
+    faixa.addEventListener("touchend", () => { clearTimeout(t); t = setTimeout(() => { toque = false; x = faixa.scrollLeft; }, 1500); }, { passive: true });
+    let ligado = false;
+    const passo = () => {
+      if (mobile() && !toque && !faixa.classList.contains("pausa") && !document.hidden) {
+        if (!ligado) { ligado = true; x = faixa.scrollLeft = volta(); }
+        x += 0.5;
+        faixa.scrollLeft = x;
+      } else ligado = false;
+      requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  }
   if (!d) return;
 
   const img = d.querySelector("img"), cap = d.querySelector(".lb-cap");
@@ -31,7 +55,7 @@
     const b = e.target.closest("[data-galeria] button");
     if (!b || !b.querySelector("img") || !d.isConnected) return; // a página pode ter trocado de lado na roda
     origem = b.closest("[data-galeria]");
-    fotos = [...origem.querySelectorAll("li:not([data-clone]) button img, :scope > button img")];
+    fotos = [...origem.querySelectorAll("li:not([data-clone]) button img, :scope > button img")].filter((f) => f.offsetParent); // a faixa tem um conjunto para desktop e outro para mobile
     mostra(Math.max(0, fotos.findIndex((f) => f.src === b.querySelector("img").src))); // o clone da faixa aponta para a mesma foto
     if (faixa) faixa.classList.add("pausa");
     d.showModal();
